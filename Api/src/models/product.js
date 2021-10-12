@@ -25,9 +25,8 @@ const ProductSchema = new Schema({
         type: Boolean,
         default: true
     },
-    seller: { 
-        type: Schema.Types.ObjectId, 
-        ref: "User", 
+    sellerDocument: { 
+        type: String,
         required: true 
     },
     updated: Date,
