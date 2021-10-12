@@ -1,57 +1,17 @@
 const { Router } = require('express');
 const router = Router();
+const products = require ('../controllers/products');
 
 //obtener todos productos
-router.get('/', async(req, res) =>{
-    try {
-        
-    } catch (error) {
-        
-    }
-});
-
-// router.get('/products_order', async(req, res) =>{
-//     try {
-        
-//     } catch (error) {
-        
-//     }
-// });
+router.get('/', products.productsAll);
 
 //crear productos
-router.post('/create', async(req, res) =>{
-    try {
-        
-    } catch (error) {
-        
-    }
-});
+router.post('/create', products.createProduct);
 
 //obtener detalle del producto
-router.get('/:id', async(req, res) =>{
-    try {
-        
-    } catch (error) {
-        
-    }
-});
-
-// //eliminar producto
-// router.delete('/:id/delete', async(req, res) =>{
-//     try {
-        
-//     } catch (error) {
-        
-//     }
-// });
+router.get('/:id', products.getProduct);
 
 //actualizar producto
-router.put('/:id', async(req, res) =>{
-    try {
-        
-    } catch (error) {
-        
-    }
-});
+router.put('/:id', products.updateProduct);
 
 module.exports = router;
