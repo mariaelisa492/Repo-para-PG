@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 import "./navBar.css";
 import { Search } from "../Search/SearchBar";
-import {BsFillCartFill} from "react-icons/bs"
-import {BsFillPersonFill} from "react-icons/bs"
+import {BsFillCartFill, BsFillPersonFill} from "react-icons/bs"
 import {GiHamburgerMenu} from "react-icons/gi"
 
 
