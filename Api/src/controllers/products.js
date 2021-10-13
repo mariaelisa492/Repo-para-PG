@@ -43,7 +43,7 @@ const getProduct= async (req, res) => {
         res.status(200).json(productId);
     } catch (error) {
         res.status(404).json({ 
-            message: "Cannot get the product"
+            message: "Cannot get the product by Id"
         });
     }
 };
@@ -60,11 +60,25 @@ const updateProduct = async (req, res) => {
         error: 'Your request could not be processed. Please try again.'
         })
     };
-}   
+}  
+
+const getProductByName= async (req, res) => { 
+    const {name} = req.query;
+    console.log(name)
+    try {
+        const productName = await Products.findOne({name:name});
+        res.status(200).json(productName);
+    } catch (error) {
+        res.status(404).json({ 
+            message: "Cannot get the product by name"
+        });
+    }
+};
 
 module.exports = {
     createProduct,
     productsAll,
     getProduct,
-    updateProduct
+    updateProduct,
+    getProductByName
 }
