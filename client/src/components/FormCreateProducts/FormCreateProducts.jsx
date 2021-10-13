@@ -3,6 +3,7 @@ import { saveImages } from './utils/saveImages';
 import { validationFunction } from './utils/validationFunction';
 // import { useDispatch } from 'react-redux';
 // import action from 'nose';
+import './FormCreateProducts.css'
 
 // Array con las categorias para hacer el <select>
 const productCategories = [];
@@ -54,13 +55,22 @@ export default function Create() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} >
+    <div className='backgroundCreateProducts'>
+      <form 
+        onSubmit={handleSubmit}
+        className='formCreateProducts'
+      >
         <div>
           <div>
-            <label>Name:</label>
+            <label className='labelCreateProducts'>Name:</label>
             <input
-              type='text' name='name' onChange={e => handleInputChange(e.target.name, e.target.value)} value={inputProducts.name} placeholder='Name of Prduct' />
+              type='text'
+              name='name'
+              onChange={e => handleInputChange(e.target.name, e.target.value)}
+              value={inputProducts.name}
+              placeholder='Name of Prduct'
+              className='inputCreateProducts'
+            />
           </div>
 
           {errorsProducts.name && (
@@ -70,9 +80,14 @@ export default function Create() {
 
         <div>
           <div>
-            <label>Description:</label>
+            <label className='labelCreateProducts'>Description:</label>
             <textarea
-              name='description' onChange={e => handleInputChange(e.target.name, e.target.value)} value={inputProducts.description} placeholder='Description of Pokemon' />
+              name='description'
+              onChange={e => handleInputChange(e.target.name, e.target.value)}
+              value={inputProducts.description}
+              placeholder='Description of Pokemon'
+              className='inputCreateProducts'
+            />
           </div>
 
           {errorsProducts.description && (
@@ -81,21 +96,33 @@ export default function Create() {
         </div>
 
         <div>
-            <div>
-              <label>Image:</label>
-              <input
-                type='file' name='image' onChange={e => handleInputChange(e.target.name, e.target.files[0])} value={inputProducts.image} placeholder='Image of Pokemon'/>
-            </div>
-            {errorsProducts.image && (
-              <p>{errorsProducts.image}</p>
-            )}
+          <div>
+            <label className='labelCreateProducts'>Image:</label>
+            <input
+              type='file'
+              name='image'
+              onChange={e => handleInputChange(e.target.name, e.target.files[0])}
+              value={inputProducts.image}
+              placeholder='Image of Pokemon'
+              className='inputCreateProducts'
+            />
           </div>
+          {errorsProducts.image && (
+            <p>{errorsProducts.image}</p>
+          )}
+        </div>
 
         <div>
           <div>
-            <label>Price:</label>
+            <label className='labelCreateProducts'>Price:</label>
             <input
-              type='number' name='price' onChange={e => handleInputChange(e.target.name, e.target.value)} value={inputProducts.price} placeholder='Price of Pokemon' />
+              type='number'
+              name='price'
+              onChange={e => handleInputChange(e.target.name, e.target.value)}
+              value={inputProducts.price}
+              placeholder='Price of Pokemon'
+              className='inputCreateProducts'
+            />
           </div>
 
           {errorsProducts.price && (
@@ -105,9 +132,15 @@ export default function Create() {
 
         <div>
           <div>
-            <label>Stock:</label>
+            <label className='labelCreateProducts'>Stock:</label>
             <input
-              type='number' name='stock' onChange={e => handleInputChange(e.target.name, e.target.value)} value={inputProducts.stock} placeholder='Stock of Pokemon' />
+              type='number'
+              name='stock'
+              onChange={e => handleInputChange(e.target.name, e.target.value)}
+              value={inputProducts.stock}
+              placeholder='Stock of Pokemon'
+              className='inputCreateProducts'
+            />
           </div>
 
           {errorsProducts.stock && (
@@ -117,9 +150,15 @@ export default function Create() {
 
         <div>
           <div>
-            <label>Brand:</label>
+            <label className='labelCreateProducts'>Brand:</label>
             <input
-              type='text' name='brand' onChange={e => handleInputChange(e.target.name, e.target.value)} value={inputProducts.brand} placeholder='Brand of Pokemon' />
+              type='text'
+              name='brand'
+              onChange={e => handleInputChange(e.target.name, e.target.value)}
+              value={inputProducts.brand}
+              placeholder='Brand of Pokemon'
+              className='inputCreateProducts'
+            />
           </div>
 
           {errorsProducts.brand && (
@@ -129,9 +168,15 @@ export default function Create() {
 
         <div>
           <div>
-            <label>Model:</label>
+            <label className='labelCreateProducts'>Model:</label>
             <input
-              type='text' name='model' onChange={e => handleInputChange(e.target.name, e.target.value)} value={inputProducts.model} placeholder='Model of Pokemon' />
+              type='text'
+              name='model'
+              onChange={e => handleInputChange(e.target.name, e.target.value)}
+              value={inputProducts.model}
+              placeholder='Model of Pokemon'
+              className='inputCreateProducts'
+            />
           </div>
 
           {errorsProducts.model && (
@@ -140,9 +185,13 @@ export default function Create() {
         </div>
 
         <div>
-          <label>Category:</label>
+          <label className='labelCreateProducts'>Category:</label>
 
-          <select name='category' onChange={e => handleInputChange(e.target.name, e.target.value)}>
+          <select
+            name='category'
+            onChange={e => handleInputChange(e.target.name, e.target.value)}
+            className='inputCreateProducts'
+          >
             {productCategories.map(category =>
               <option value={category} key={category}>{category}</option>
             )}

@@ -1,0 +1,39 @@
+.backgroundCreateProducts {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  padding-top: 30px;
+  background-color: #ff9f1c;
+}
+
+.formCreateProducts {
+  background-color: #f6f6f6;
+  font-size: 20px;
+  width: calc(50vw - 20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  border-radius: 30px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.labelCreateProducts {
+  margin: 8px;
+}
+
+.inputCreateProducts {
+  margin: 8px;
+  padding: 2px;
+  border-radius: 9px;
+  border: 1px solid #313131;
+  width: 300px;
+  font-size: 15px;
+  padding: 2px;
+}
+
+.inputCreate:focus{
+	border:  1px solid #313131;
+	border-radius: 9px;
+}
