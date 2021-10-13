@@ -4,12 +4,7 @@ const users = require('../controllers/user')
 
 //registrarse
 router.post('/signup', users.createUser)
-//     try {
-        
-//     } catch (error) {
-        
-//     }
-// });
+
 
 //logearse
 router.post('/login', async(req, res) =>{

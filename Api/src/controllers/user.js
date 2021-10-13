@@ -3,17 +3,20 @@ const User = require('../models/user');
 
 const createUser = async (req, res) => {
     //creamos el objeto producto
-    let newUser = new User({
-        email: req.body.email,
-        username: req.body.username,
-        password: req.body.password,
-        firstName: req.body.firstname,
-        lastName: req.body.lastname,
-        gender: req.body.gender,
-        nacionality: req.body.nacionality,
-        birthDate: req.body.birthdate,
-    });
-    console.log(newUser, "")
+    let { email, username, password, firstname, lastname, gender, nacionality, birthdate } = req.body;
+    if (email && username && password && firstname && lastname && gender && nacionality && birthdate) 
+         newUser = new User({
+            email: email,
+            username: username,
+            password: password,
+            firstName: firstname,
+            lastName: lastname,
+            gender: gender,
+            nacionality: nacionality,
+            birthDate: birthdate,
+        });
+    
+   g
     try {
         const user = await newUser.save();
         res.status(200).json({

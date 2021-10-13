@@ -59,7 +59,7 @@ function CreateUserForm() {
             </div>
             <div>
                 <label className='containers'>Password</label>
-                <input type="text" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="styleForm" required />
+                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="styleForm" required />
             </div>
             <div>
                 <label className='containers'>Firstname</label>
