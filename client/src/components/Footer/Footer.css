@@ -1,15 +1,7 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* body{
-	line-height: 1.5;
-	font-family: 'Poppins', sans-serif;
-}
 
-*{
-	margin:0;
-	padding:0;
-	box-sizing: border-box;
-} */
 .container{
 	max-width: 1170px;
 	margin:auto;
@@ -75,6 +67,7 @@ ul{
 	border-radius: 50%;
 	color: #ffffff;
 	transition: all 0.5s ease;
+	color: blue;
 }
 
 

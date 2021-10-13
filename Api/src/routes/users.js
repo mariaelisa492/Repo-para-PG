@@ -1,14 +1,10 @@
 const { Router } = require('express');
 const router = Router();
+const users = require('../controllers/user')
 
 //registrarse
-router.post('/signup', async(req, res) =>{
-    try {
-        
-    } catch (error) {
-        
-    }
-});
+router.post('/signup', users.createUser)
+
 
 //logearse
 router.post('/login', async(req, res) =>{

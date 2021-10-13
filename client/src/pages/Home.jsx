@@ -29,6 +29,8 @@ export const Home = () => {
         <Footer/>
       </div>
 
+
     </div>
   );
 };
+
