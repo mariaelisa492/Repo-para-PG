@@ -8,8 +8,9 @@ const createProduct = async (req, res) => {
         image: req.body.image,
         price: req.body.price,
         stock: req.body.stock,
-        sellerDocument: req.body.sellerDocument,
-        isActive: req.body.isActive
+        brand: req.body.brand,
+        model: req.body.model,
+        category: req.body.category,
     });
     console.log(newProduct)
     try {
@@ -43,7 +44,7 @@ const getProduct= async (req, res) => {
         res.status(200).json(productId);
     } catch (error) {
         res.status(404).json({ 
-            message: "Cannot get the product"
+            message: "Cannot get the product by Id"
         });
     }
 };
@@ -60,11 +61,26 @@ const updateProduct = async (req, res) => {
         error: 'Your request could not be processed. Please try again.'
         })
     };
-}   
+}  
+
+const getProductByName= async (req, res) => { 
+    const {name} = req.query;
+    console.log(name)
+    try {
+        const products = await Products.find()
+        const productsByName = products.filter((product) => product.name.includes(name))  
+        res.status(200).json(productsByName);
+    } catch (error) {
+        res.status(404).json({ 
+            message: "Cannot get the product by name"
+        });
+    }
+};
 
 module.exports = {
     createProduct,
     productsAll,
     getProduct,
-    updateProduct
+    updateProduct,
+    getProductByName
 }

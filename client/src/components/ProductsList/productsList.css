@@ -1,0 +1,8 @@
+.productList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3rem;
+    max-width: 70rem;
+    margin: 15px;
+    padding:15px 0 44px 0px;
+}
