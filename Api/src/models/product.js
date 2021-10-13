@@ -21,18 +21,22 @@ const ProductSchema = new Schema({
         type: Number,
         required:true
     },
-    isActive: {
-        type: Boolean,
-        default: true
-    },
-    sellerDocument: { 
-        type: String,
-        required: true 
-    },
     updated: Date,
     created: {
         type: Date,
         default: Date.now
+    },
+    brand:{
+        type: String,
+        required: true
+    },
+    model:{
+        type: String,
+        required: true
+    },
+    category:{
+        type: String,
+        required: true
     }
 });
 
