@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Route, Switch } from 'react-router';
-import {Login} from './pages/Login';
-import {Home} from './pages/Home';
+import Login from './pages/Login';
 import {Products} from './pages/Products';
 import {Home} from './pages/Home'
 import {getProducts} from './redux/actions/index'
