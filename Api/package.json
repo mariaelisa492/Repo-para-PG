@@ -23,5 +23,10 @@
     "mongoose-unique-validator": "^3.0.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.13"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "supertest": "^6.1.6",
+    "supertest-session": "^4.1.0"
   }
 }
