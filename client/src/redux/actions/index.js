@@ -3,7 +3,7 @@ import axios from "axios";
 export const getProducts = () => {
   return async (dispatch) => {
     try {
-      const products = await axios.get("http://localhost:27017/products");
+      const products = await axios.get("http://localhost:5000/products");
       return dispatch({
         type: "GET_PRODUCTS",
         payload: products.data,
