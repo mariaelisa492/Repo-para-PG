@@ -1,12 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import Login from "../components/Login/Login.jsx"
 
-export const Login = () => {
+export default function LoginRender() {
     return (
         <div>
-            <Link to={'/home'}>
-            Soy el Login
-            </Link>
+            <Login />
         </div>
     )
-}
+};
