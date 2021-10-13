@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { saveImages } from './utils/saveImages';
+import { validationFunction } from './utils/validationFunction';
 // import { useDispatch } from 'react-redux';
 // import action from 'nose';
 
@@ -26,7 +27,7 @@ export default function Create() {
   const handleInputChange = (name, value) => {
     setInputProducts((prev) => ({ ...prev, [name]: value }));
 
-    //setErrorsProducts(validate({ ...input, [name]: value }));
+    setErrorsProducts(validationFunction({ ...inputProducts, [name]: value }));
   }
 
   //Funcion para crear producto
@@ -62,8 +63,8 @@ export default function Create() {
               type='text' name='name' onChange={e => handleInputChange(e.target.name, e.target.value)} value={inputProducts.name} placeholder='Name of Prduct' />
           </div>
 
-          {errorProducts.name && (
-            <p>{errorProducts.name}</p>
+          {errorsProducts.name && (
+            <p>{errorsProducts.name}</p>
           )}
         </div>
 
@@ -74,8 +75,8 @@ export default function Create() {
               name='description' onChange={e => handleInputChange(e.target.name, e.target.value)} value={inputProducts.description} placeholder='Description of Pokemon' />
           </div>
 
-          {errorProducts.description && (
-            <p>{errorProducts.description}</p>
+          {errorsProducts.description && (
+            <p>{errorsProducts.description}</p>
           )}
         </div>
 
@@ -85,8 +86,8 @@ export default function Create() {
               <input
                 type='file' name='image' onChange={e => handleInputChange(e.target.name, e.target.files[0])} value={inputProducts.image} placeholder='Image of Pokemon'/>
             </div>
-            {errorProducts.image && (
-              <p>{errorProducts.image}</p>
+            {errorsProducts.image && (
+              <p>{errorsProducts.image}</p>
             )}
           </div>
 
@@ -97,8 +98,8 @@ export default function Create() {
               type='number' name='price' onChange={e => handleInputChange(e.target.name, e.target.value)} value={inputProducts.price} placeholder='Price of Pokemon' />
           </div>
 
-          {errorProducts.price && (
-            <p>{errorProducts.price}</p>
+          {errorsProducts.price && (
+            <p>{errorsProducts.price}</p>
           )}
         </div>
 
@@ -109,8 +110,8 @@ export default function Create() {
               type='number' name='stock' onChange={e => handleInputChange(e.target.name, e.target.value)} value={inputProducts.stock} placeholder='Stock of Pokemon' />
           </div>
 
-          {errorProducts.stock && (
-            <p>{errorProducts.stock}</p>
+          {errorsProducts.stock && (
+            <p>{errorsProducts.stock}</p>
           )}
         </div>
 
@@ -121,8 +122,8 @@ export default function Create() {
               type='text' name='brand' onChange={e => handleInputChange(e.target.name, e.target.value)} value={inputProducts.brand} placeholder='Brand of Pokemon' />
           </div>
 
-          {errorProducts.brand && (
-            <p>{errorProducts.brand}</p>
+          {errorsProducts.brand && (
+            <p>{errorsProducts.brand}</p>
           )}
         </div>
 
@@ -133,13 +134,13 @@ export default function Create() {
               type='text' name='model' onChange={e => handleInputChange(e.target.name, e.target.value)} value={inputProducts.model} placeholder='Model of Pokemon' />
           </div>
 
-          {errorProducts.model && (
-            <p>{errorProducts.model}</p>
+          {errorsProducts.model && (
+            <p>{errorsProducts.model}</p>
           )}
         </div>
 
         <div>
-          <label>Model:</label>
+          <label>Category:</label>
 
           <select name='category' onChange={e => handleInputChange(e.target.name, e.target.value)}>
             {productCategories.map(category =>
