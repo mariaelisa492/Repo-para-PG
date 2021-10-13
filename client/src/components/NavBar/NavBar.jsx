@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import "./navBar.css";
+import { Search } from "../Search/SearchBar";
 import {BsFillCartFill} from "react-icons/bs"
 import {BsFillPersonFill} from "react-icons/bs"
 import {GiHamburgerMenu} from "react-icons/gi"
-import {BsSearch} from "react-icons/bs"
+
+
 
 export default function NavBar() {
     const [showLinks, setShowLinks] = useState(false)
@@ -12,8 +14,7 @@ export default function NavBar() {
     <nav>
       <div className="NavBar">
         <div className="leftSide">
-            <input type="text" placeholder="Search..."/>
-            <button><BsSearch/></button>
+         <Search/>
         </div>
         <div className="rigthSide">
           <div className="links" id={showLinks ? "hidden" : ""}>

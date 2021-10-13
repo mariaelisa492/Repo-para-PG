@@ -12,9 +12,9 @@ export const rootReducer = (state = initialState, action) => {
 				products: action.payload,
 				filteredProducts: action.payload
 			};
-		case '':
-			return {
-				
+		case 'GET_BYNAME':
+			return { ...state,
+				filteredProducts: [...action.payload]
 			};
 		case '':
 			return {
