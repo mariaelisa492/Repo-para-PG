@@ -67,8 +67,9 @@ const getProductByName= async (req, res) => {
     const {name} = req.query;
     console.log(name)
     try {
-        const productName = await Products.findOne({name:name});
-        res.status(200).json(productName);
+        const products = await Products.find()
+        const productsByName = products.filter((product) => product.name.includes(name))  
+        res.status(200).json(productsByName);
     } catch (error) {
         res.status(404).json({ 
             message: "Cannot get the product by name"
