@@ -134,3 +134,9 @@ button.submit:hover {
 .additional-action {
     margin-top: -15px;
 }
+
+.error {
+    color: red;
+    margin-bottom: -17px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
