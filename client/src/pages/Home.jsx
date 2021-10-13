@@ -6,6 +6,7 @@ export const Home = () => {
         <>
             <div>
                 Yo soy el home
+                <Footer />
             </div>
         </>
     )

@@ -1,0 +1,128 @@
+* {
+    margin    : 0;
+    padding   : 0;
+    box-sizing: border-box;
+}
+
+.body {
+    font-family: 'Open Sans', sans-serif;
+    min-height: 100vh;
+    width: 100%;
+    font-size: 14px;
+    background-color: #FFA529;
+    color: #696969;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="text"],
+input[type="password"],
+button {
+    width: 100%;
+    padding: 10px 24px;
+    background: #e6e6e6;
+    color: #696969;
+    border: none;
+    outline: none;
+    font-size: 0.9em;
+}
+
+.login-container {
+    max-width: 320px;
+    background-color: #fff;
+    padding: 24px;
+    padding-bottom: 12px;
+    border-radius: 20px;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25), 
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    text-transform: uppercase;
+    font-size: 1.2em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 4px 0;
+    margin-bottom: 20px;
+}
+
+.welcome-message {
+    text-align: center;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    color: #696969b0;
+    line-height: 18px;
+}
+
+.form-control {
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-control input {
+    padding-left: 36px;
+    letter-spacing: 0.5px;
+    font-size: 1em;
+}
+
+
+.forgot-password {
+    position: absolute;
+    right: 0px;
+    top: 120%;
+    font-size: 0.75em;
+    cursor: pointer;
+}
+
+button.submit {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 32px auto;
+    cursor: pointer;
+    color: #fff;
+    background-color: #2EC4B6;
+    background-size: 300% 100%;    
+    transition: background-position 0.4s;
+}
+
+button.submit:hover {
+    background-position: 100% 0;
+}
+
+.social-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.social-login label {
+    color: #696969b0;
+    font-size: 0.9em;
+}
+
+.social-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-login button {
+    cursor: pointer;
+    width: 32px;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+    border: 1px solid #69696950;
+    padding: 8px;
+    border-radius: 2px;
+}
+
