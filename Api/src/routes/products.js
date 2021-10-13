@@ -2,7 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const products = require ('../controllers/products');
 
-//actualizar producto
+//obtener producto por nombre
 router.get('/byName', products.getProductByName);
 
 //obtener todos productos
@@ -16,8 +16,4 @@ router.get('/:id', products.getProduct);
 
 //actualizar producto
 router.put('/:id', products.updateProduct);
-
-
-
-
 module.exports = router;
