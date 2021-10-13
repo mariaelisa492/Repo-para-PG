@@ -71,6 +71,11 @@ button {
     font-size: 1em;
 }
 
+.icons {
+    position: absolute;
+    margin-top: 14px;
+    margin-left: 8px;
+}
 
 .forgot-password {
     position: absolute;
@@ -78,6 +83,7 @@ button {
     top: 120%;
     font-size: 0.75em;
     cursor: pointer;
+    font-style: italic;
 }
 
 button.submit {
@@ -115,14 +121,16 @@ button.submit:hover {
 
 .social-login button {
     cursor: pointer;
-    width: 32px;
+    width: 45px;
     background: none;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 8px;
-    border: 1px solid #69696950;
     padding: 8px;
-    border-radius: 2px;
+    color: blue;
 }
 
+.additional-action {
+    margin-top: -15px;
+}
