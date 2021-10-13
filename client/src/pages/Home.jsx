@@ -5,7 +5,9 @@ export const Home = () => {
     return (
         <>
             <div>
-                Yo soy el home
+                {filteredProducts.length > 0 ? <ProductsList filteredProducts={filteredProducts} /> : <p>loading</p>}
+            </div>
+            <div>
                 <Footer />
             </div>
         </>
