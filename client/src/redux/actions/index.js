@@ -58,7 +58,7 @@ export const filterProductsByPriceMoreThan = (price) => {
 
 export const filterProductsByPriceRange = (price1,price2) => {
   return{
-    type: "FILTER_PRICE_ONLY_LESSTHAN",
+    type: "FILTER_PRICE_RANGE",
     payload: {price1,price2}
   }
 }

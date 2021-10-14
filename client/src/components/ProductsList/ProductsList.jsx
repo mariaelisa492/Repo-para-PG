@@ -25,7 +25,7 @@ export const ProductsList = ({ filteredProducts }) => {
   }
 
   function handleSubmitPriceFilter(e, moreThan, lessThan){
-    e.preventDefaut()
+    e.preventDefault()
 
     if(lessThan === null){
       dispatch(filterProductsByPriceMoreThan(moreThan))
@@ -82,6 +82,7 @@ export const ProductsList = ({ filteredProducts }) => {
           </select>
         </div>
           <hr/>
+          
         <div className='formPrice'>
           <form onSubmit={(e) => handleSubmitPriceFilter(e, moreThan, lessThan)}>
             <label>Filter By Price</label>

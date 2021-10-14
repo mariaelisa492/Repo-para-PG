@@ -43,7 +43,7 @@ export const rootReducer = (state = initialState, action) => {
 			filteredProducts: [...filt2]
 		};
 
-		case 'FILTER_PRICE_BOTH':
+		case 'FILTER_PRICE_RANGE':
 			let filt3 = state.filteredProducts.filter((e) => e.price > action.payload.price1 && e.price < action.payload.price2)
 		return {...state,
 			filteredProducts: [...filt3]
