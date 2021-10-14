@@ -28,31 +28,37 @@ export const getProductsByName = (name) => {
   };
 };
 
+                      // FILTROS Y ORDENAMIENTOS //
+
 export const getProductsByPriceAsc = () => {
-  return async (dispatch) => {
-    try {
-      const productsByPriceAsc = await axios.get(`http://localhost:5000/products/orderedByPriceAsc`);
-      return dispatch({
-        type: "ORDER_PRICE_ASC",
-        payload: productsByPriceAsc.data
-      });
-    } catch (error) {
-      console.log(error , 'getProductsByPriceAsc ||Error||');
-    }
-  };
+  return{
+    type: 'ORDER_PRICE_ASC'
+  }
 };
 
 export const getProductsByPriceDesc = () => {
-  return async (dispatch) => {
-    try {
-      const productsByPriceDesc = await axios.get(`http://localhost:5000/products/orderedByPriceDesc`);
-      return dispatch({
-        type: "ORDER_PRICE_DESC",
-        payload: productsByPriceDesc.data
-      });
-    } catch (error) {
-      console.log(error, 'getProductsByPriceDesc ||Error||');
-    }
-  };
+  return{
+    type: 'ORDER_PRICE_DESC'
+  }
 };
 
+export const filterProductsByPriceLessThan = (price) => {
+  return{
+    type: "FILTER_PRICE_ONLY_LESSTHAN",
+    payload: price
+  }
+}
+
+export const filterProductsByPriceMoreThan = (price) => {
+  return{
+    type: "FILTER_PRICE_ONLY_MORETHAN",
+    payload: price
+  }
+}
+
+export const filterProductsByPriceRange = (price1,price2) => {
+  return{
+    type: "FILTER_PRICE_ONLY_LESSTHAN",
+    payload: {price1,price2}
+  }
+}
