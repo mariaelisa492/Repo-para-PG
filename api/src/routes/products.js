@@ -16,4 +16,5 @@ router.get('/:id', products.getProduct);
 
 //actualizar producto
 router.put('/:id', products.updateProduct);
+
 module.exports = router;
