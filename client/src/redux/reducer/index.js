@@ -22,7 +22,7 @@ export const rootReducer = (state = initialState, action) => {
 			};
 		case 'ORDER_PRICE_DESC':
 			return {...state,
-				filteredProducts: [action.payload]	
+				filteredProducts: [...action.payload]	
 			};
 		case '':
 			return {

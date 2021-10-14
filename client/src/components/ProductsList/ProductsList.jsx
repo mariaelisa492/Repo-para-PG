@@ -57,7 +57,7 @@ export const ProductsList = ({ filteredProducts }) => {
         <button onClick={raise} className='buttonss'>Next 6</button>
       </div>
         <div>
-          <label>Order by Price</label>
+          <label>Order by Price </label>
           <select name='orderByPrice' onChange={handleSelectChange}>
             <option value=''></option>
             <option value='Ascending Order'>Ascending Order</option>

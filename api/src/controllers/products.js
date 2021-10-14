@@ -77,20 +77,21 @@ const getProductByName= async (req, res) => {
     }
 };
 
-const orderedByPriceAsc= async (req,res) => {
+const orderByPriceAsc= async (req,res) => {
     try {
-        let products = await Products.find().sort({price:1})
+        let products = await Products.find().sort({price:1});
         res.send(products)
     } catch (error) {
+        console.log(error)
         res.status(404).json({
             message: "Couldn't get the products ordered ascendingly by price "
         })
     }
 }
 
-const orderedByPriceDesc= async (req,res) => {
+const orderByPriceDesc= async (req,res) => {
     try {
-        let products = await Products.find().sort({price:-1})
+        let products = await Products.find().sort({price:-1});
         res.send(products)
     } catch (error) {
         res.status(404).json({
@@ -105,6 +106,6 @@ module.exports = {
     getProduct,
     updateProduct,
     getProductByName,
-    orderedByPriceAsc,
-    orderedByPriceDesc
+    orderByPriceAsc,
+    orderByPriceDesc
 }
