@@ -1,9 +1,9 @@
 export const validationFunction = (input) => {
     let errors = {}
 
-    if(input.price <= 0) errors.price = ''
+    if(input.price <= 0) errors.price = 'Price greater than 0'
 
-    if(input.stock < 0) errors.stock = ''
+    if(input.stock < 0) errors.stock = 'Stock greater than or equal to 0'
 
     if(!input.name) errors.name = 'Name is required'
 
