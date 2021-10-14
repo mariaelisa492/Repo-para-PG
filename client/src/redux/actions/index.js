@@ -9,7 +9,7 @@ export const getProducts = () => {
         payload: products.data,
       });
     } catch (error) {
-      console.log(error);
+      console.log(error, 'getProducts ||Error||');
     }
   };
 };
@@ -23,7 +23,35 @@ export const getProductsByName = (name) => {
         payload: productsByName.data,
       });
     } catch (error) {
-      console.log(error);
+      console.log(error, 'getProductsByName ||Error||');
+    }
+  };
+};
+
+export const getProductsByPriceAsc = () => {
+  return async (dispatch) => {
+    try {
+      const productsByPriceAsc = await axios.get(`http://localhost:5000/products/orderedByPriceAsc`);
+      return dispatch({
+        type: "ORDER_PRICE_ASC",
+        payload: productsByPriceAsc.data
+      });
+    } catch (error) {
+      console.log(error , 'getProductsByPriceAsc ||Error||');
+    }
+  };
+};
+
+export const getProductsByPriceDesc = () => {
+  return async (dispatch) => {
+    try {
+      const productsByPriceDesc = await axios.get(`http://localhost:5000/products/orderedByPriceDesc`);
+      return dispatch({
+        type: "ORDER_PRICE_DESC",
+        payload: productsByPriceDesc.data
+      });
+    } catch (error) {
+      console.log(error, 'getProductsByPriceDesc ||Error||');
     }
   };
 };

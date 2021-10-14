@@ -1,10 +1,26 @@
 import React, {useState} from "react";
+import {useDispatch} from 'react-redux'
 import { Product } from "../Product/Product";
+import { getProductsByPriceAsc, getProductsByPriceDesc, getProducts } from "../../redux/actions";
 import "./productsList.css";
 
 export const ProductsList = ({ filteredProducts }) => {
   console.log(filteredProducts, "ProductsList");
 
+  const dispatch = useDispatch()
+
+  function handleSelectChange(e){
+    let value = e.target.value
+    if(value === 'Ascending Order'){
+      dispatch(getProductsByPriceAsc())
+    }
+    if(value === 'Descending Order'){
+      dispatch(getProductsByPriceDesc())
+    }
+    if(value === 'None'){
+      dispatch(getProducts())
+    }
+  }
   const [limit, setLimit] = useState(0);
 
   function raise(){
@@ -40,6 +56,15 @@ export const ProductsList = ({ filteredProducts }) => {
         <button onClick={lower} className='buttonss'>Previous 6</button>
         <button onClick={raise} className='buttonss'>Next 6</button>
       </div>
+        <div>
+          <label>Order by Price</label>
+          <select name='orderByPrice' onChange={handleSelectChange}>
+            <option value=''></option>
+            <option value='Ascending Order'>Ascending Order</option>
+            <option value='Descending Order'>Descending Order</option>
+            <option value='None'>None</option>
+          </select>
+        </div>
         <p>showing {limit} to {limit + 6 < filteredProducts.length? limit +6 : filteredProducts.length} of {filteredProducts.length} products</p>
 
     </div>

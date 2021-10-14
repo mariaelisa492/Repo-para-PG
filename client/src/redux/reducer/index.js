@@ -16,13 +16,13 @@ export const rootReducer = (state = initialState, action) => {
 			return { ...state,
 				filteredProducts: [...action.payload]
 			};
-		case '':
-			return {
-				
+		case 'ORDER_PRICE_ASC':
+			return {...state,
+				filteredProducts: [...action.payload]
 			};
-		case '':
-			return {
-				
+		case 'ORDER_PRICE_DESC':
+			return {...state,
+				filteredProducts: [action.payload]	
 			};
 		case '':
 			return {
