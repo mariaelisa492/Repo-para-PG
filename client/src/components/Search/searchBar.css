@@ -41,7 +41,7 @@ input::-ms-input-placeholder {
     font-size: 1rem;
     color: black;
 }
-button {
+.search button {
     font-size: 12px;
     border: 0;
     text-align: center;

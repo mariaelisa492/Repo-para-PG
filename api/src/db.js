@@ -6,7 +6,7 @@ const { CONNECTION_URL, CONNECTION_URL_DEV, NODE_ENV } = process.env;
 mongoose.Promise = global.Promise
 
 // Use an alternative db when testing so we don't pollute the original db
-const CONN = NODE_ENV === 'dev' ? CONNECTION_URL_DEV : CONNECTION_URL;
+const CONN = NODE_ENV === 'test' ? CONNECTION_URL_DEV : CONNECTION_URL;
 
 mongoose.connect(CONN, { useNewUrlParser: true})
     .then(() => {
