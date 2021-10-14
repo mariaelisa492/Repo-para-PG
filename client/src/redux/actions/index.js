@@ -28,3 +28,19 @@ export const getProductsByName = (name) => {
   };
 };
 
+export const setNewProduct = (objProduct) => {
+  return async (dispatch) => {
+    try{
+      const resProduct = await axios.post('http://localhost:5000/products/create', objProduct);
+
+      return dispatch({
+        type: 'CREATE_PRODUCT',
+        payload: resProduct
+      })
+    }
+
+    catch (error) {
+      console.log(error);
+    }
+  }
+}
