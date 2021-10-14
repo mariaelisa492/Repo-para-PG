@@ -37,3 +37,7 @@
 	border:  1px solid #313131;
 	border-radius: 9px;
 }
+
+.btnCreate{
+  cursor: pointer;
+}
