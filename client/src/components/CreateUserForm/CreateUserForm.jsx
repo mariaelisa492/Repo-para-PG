@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './CreateUserForm.css'
 // email: 
 // username: 
 // password: 
@@ -49,37 +50,38 @@ function CreateUserForm() {
     return (
         <div className='CreateFormContainer'>
             <form onSubmit={(e) => enviar(e,email, username, password, firstname, lastname, gender, nacionality, birthdate)} className="form">
-             <div>
-                <label className='containers'>Email</label>
+             <div className="Title">Create your account</div>
+             <div className="inputContainter">
+                {/* <label className='containers'>Email</label> */}
                 <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="styleForm" required />
               </div>
-            <div>
-                <label className='containers'>UserName</label>
+            <div className="inputContainter">
+                {/* <label className='containers'>UserName</label> */}
                 <input type="text" placeholder="UserName" value={username} onChange={(e) => setUserName(e.target.value)} className="styleForm" required />
             </div>
-            <div>
-                <label className='containers'>Password</label>
+            <div className="inputContainter">
+                {/* <label className='containers'>Password</label> */}
                 <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="styleForm" required />
             </div>
-            <div>
-                <label className='containers'>Firstname</label>
+            <div className="inputContainter">
+                {/* <label className='containers'>Firstname</label> */}
                 <input type="text" placeholder="Firstname" value={firstname} onChange={(e) => setFirstName(e.target.value)} className="styleForm" required />
             </div>
-            <div>
-                <label className='containers'>Lastname</label>
+            <div className="inputContainter">
+                {/* <label className='containers'>Lastname</label> */}
                 <input type="text" placeholder="Lastname" value={lastname} onChange={(e) => setLastName(e.target.value)} className="styleForm" required />
             </div>
-            <div>
-                <label className='containers'>Gender</label>
+            <div className="inputContainter">
+                {/* <label className='containers'>Gender</label> */}
                 <select name="gender" value={gender} onChange={(e) => setGender(e.target.value)} className="select" required >
-                    <option value="">Select one</option>
+                    <option value="">Gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                     <option value="Other">Other</option>
                  </select>
             </div>
-            <div>
-                <label className='containers'>Nacionality</label>
+            <div className="inputContainter">
+                {/* <label className='containers'>Nacionality</label> */}
                 <select name="pais" onChange={(e) => setNacionality(e.target.value)} className="select" required>
                     <option value={nacionality}>Select your country</option>
                     <option value="Argentina">Argentina</option>
@@ -282,16 +284,17 @@ function CreateUserForm() {
                     <option value="Uruguay">Uruguay</option>
                 </select>
             </div>
-            <div>
-                <label className='containers'>Birdthdate</label>
+            <div className="inputContainter">
+                {/* <label className='containers'>Birdthdate</label> */}
                 <input type="date" placeholder="Birdthdate" value={birthdate} onChange={(e) => setBirthDate(e.target.value)} className="styleForm" required />
             </div>
-            <div className="contenedores">
+            <div className="inputContainter">
                 <button type="submit" className="butt">Create</button>
                 <br></br>
                 <br></br>
+              
             <Link to='/home'>
-                <button className="posButt">Back</button>            
+                <button className="butt">Back</button>            
             </Link>
             </div>
             </form>
