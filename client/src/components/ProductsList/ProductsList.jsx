@@ -3,6 +3,7 @@ import {useDispatch} from 'react-redux'
 import { Product } from "../Product/Product";
 import { getProductsByPriceAsc, getProductsByPriceDesc, getProducts, filterProductsByPriceLessThan, filterProductsByPriceMoreThan, filterProductsByPriceRange } from "../../redux/actions";
 import "./productsList.css";
+import { PaginationOptions } from "../Pagination Options/PaginationOptions";
 
 export const ProductsList = ({ filteredProducts }) => {
   console.log(filteredProducts, "ProductsList");
@@ -54,6 +55,7 @@ export const ProductsList = ({ filteredProducts }) => {
     
   return (
     <div className="containerList">
+      <PaginationOptions lower={lower} raise={raise}/>
       <div className="productList">
         {filteredProducts.slice(limit, limit + 6).map((e) => {
           return (
@@ -69,10 +71,7 @@ export const ProductsList = ({ filteredProducts }) => {
       </div>
       <hr/>
         <p>showing {limit} to {limit + 6 < filteredProducts.length? limit +6 : filteredProducts.length} of {filteredProducts.length} products</p>
-      <div className='buttonsContainer' >
-        <button onClick={lower} className='buttonss'>Previous 6</button>
-        <button onClick={raise} className='buttonss'>Next 6</button>
-      </div>
+        <PaginationOptions lower={lower} raise={raise}/>
         <div>
           <label>Order by Price </label>
           <select name='orderByPrice' onChange={handleSelectOrderChange}>
@@ -82,7 +81,7 @@ export const ProductsList = ({ filteredProducts }) => {
           </select>
         </div>
           <hr/>
-          
+
         <div className='formPrice'>
           <form onSubmit={(e) => handleSubmitPriceFilter(e, moreThan, lessThan)}>
             <label>Filter By Price</label>
