@@ -77,10 +77,29 @@ const getProductByName= async (req, res) => {
     }
 };
 
+const deleteProduct = async (req, res) => {
+    const { id } = req.body;
+
+    try{
+        await Products.findOneAndRemove({_id: id});
+        res.status(200).json({
+            message: 'Seccessful'
+        });
+    }
+
+    catch(error){
+        console.log(error)
+        res.status(400).json({
+            message: 'Your request could not be processed. Please try again.'
+        })
+    };
+};
+
 module.exports = {
     createProduct,
     productsAll,
     getProduct,
     updateProduct,
-    getProductByName
+    getProductByName,
+    deleteProduct
 }

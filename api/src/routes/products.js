@@ -17,4 +17,7 @@ router.get('/:id', products.getProduct);
 //actualizar producto
 router.put('/:id', products.updateProduct);
 
+//borrar producto
+router.delete('/delete', products.deleteProduct);
+
 module.exports = router;
