@@ -27,9 +27,9 @@ export default function NavBar() {
         <i className="fas fa-bars"></i>
       </label>
       <ul className="items-nav">
-        <li><a href="#" className="active">Home</a></li>
-        <li> <a href="/"><BsFillPersonFill /></a></li>
-        <li><a href="/"><BsFillCartFill /></a></li>
+        <li><Link to="/home" className="active">Home</Link></li>
+        <li> {isAuthenticated?<Link to='/profile'><BsFillPersonFill /></Link>:null}</li>
+        <li>{isAuthenticated?<Link to="/"><BsFillCartFill /></Link>:null}</li>
         <li> {isAuthenticated?<Logout/>:<LoginTest/>}</li>
       </ul>
     </nav>

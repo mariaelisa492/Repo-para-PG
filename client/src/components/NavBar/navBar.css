@@ -35,7 +35,7 @@
     border-radius: 3px;
 }
 
-a:hover{
+.navBar a:hover{
     background-color: #FFE3C2;
     transition: .5s;
 }

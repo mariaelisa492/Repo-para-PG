@@ -1,14 +1,13 @@
 .loginBtn{
-    margin-right: 20px;
-    margin-top: 20px;
-    height: 40px;
-    width: auto;
-    border-radius: 7px;
-    background-color: #2EC4B6;
-    color: rgb(70, 62, 62);
+    color: black;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
     cursor: pointer;
+    background: none;
 }
 
 .loginBtn:hover{
-    background-color: #1fb6a7;
+    background-color: #FFE3C2;
+    transition: .5s;
 }
