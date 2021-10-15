@@ -148,7 +148,7 @@ const products = [
         "brand": "Nord",
         "model": "Lead A1",
         "category": "Digital Keyboards"
-    },
+    }
 
 
 ]
