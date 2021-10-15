@@ -23,7 +23,6 @@ function App() {
       <Switch>
       <Route exact path = "/profile" component={UserProfile}/>
       <Route exact path = "/" component={Home}/>
-      <Route exact path = "/home" component={Home}/>
       <Route exact path = "/create" component={Products}/>
       <Route exact path = "/detail/:id" component={Detail}/>
       </Switch>
