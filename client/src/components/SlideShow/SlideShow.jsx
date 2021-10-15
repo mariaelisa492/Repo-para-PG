@@ -46,7 +46,7 @@ const SlideShow = () => {
             slideshow.current.style.transition = 'none'
 
             const tamañoSlide = slideshow.current.children[0].offsetWidth;
-            slideshow.current.style.transform = `translateX(-${tamañoSlide}px)`
+            slideshow.current.style.transform = `translateX(${tamañoSlide}px)`
 
             setTimeout(()=>{
                 slideshow.current.style.transition = `300ms ease-out all`
