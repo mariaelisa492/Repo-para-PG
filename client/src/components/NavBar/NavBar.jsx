@@ -1,29 +1,29 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./navBar.css";
+import { BsFillCartFill, BsFillPersonFill } from "react-icons/bs"
+import logo from "../../images/logo.png"
 import { Search } from "../Search/SearchBar";
-import {BsFillCartFill, BsFillPersonFill} from "react-icons/bs"
-import {GiHamburgerMenu} from "react-icons/gi"
-
-
 
 export default function NavBar() {
-    const [showLinks, setShowLinks] = useState(false)
+  const [showLinks, setShowLinks] = useState(false)
 
   return (
-    <nav>
-      <div className="NavBar">
-        <div className="leftSide">
-         <Search/>
-        </div>
-        <div className="rigthSide">
-          <div className="links" id={showLinks ? "hidden" : ""}>
-            <a href="/"><BsFillCartFill/></a>
-            <a href="/"><BsFillPersonFill/></a>
-          </div>
-          <button onClick={() => setShowLinks(!showLinks)}><GiHamburgerMenu/></button>
-        </div>
-        <div className="items"></div>
+    <nav className="navBar">
+      <label className="logo">
+        <img src={logo} alt="logo"/>
+      </label>
+      <div>
+        <Search />
       </div>
+      <input type="checkbox" id="check" />
+      <label for="check" className="checkbtn">
+        <i className="fas fa-bars"></i>
+      </label>
+      <ul className="items-nav">
+        <li><a href="#" className="active">Home</a></li>
+        <li> <a href="/"><BsFillPersonFill /></a></li>
+        <li><a href="/"><BsFillCartFill /></a></li>
+      </ul>
     </nav>
   );
 }

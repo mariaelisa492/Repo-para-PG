@@ -4,11 +4,11 @@ import "./Footer.css"
 function Footer() {
     return (
         <footer className="footer">
-            <div className="container">
+            <div className="containerF">
                 <div className="row">
                     <div className="footer-col">
                         <h4>company</h4>
-                        <ul>
+                        <ul className="list-services">
                             <li><a href="/home">about us</a></li>
                             <li><a href="/home">our services</a></li>
                             <li><a href="/home">privacy policy</a></li>
@@ -16,7 +16,7 @@ function Footer() {
                     </div>
                     <div className="footer-col">
                         <h4>get help</h4>
-                        <ul>
+                        <ul className="list-services">
                             <li><a href="/home">FAQ</a></li>
                             <li><a href="/home">shipping</a></li>
                             <li><a href="/home">returns</a></li>
@@ -25,7 +25,7 @@ function Footer() {
                     </div>
                     <div className="footer-col">
                         <h4>online shop</h4>
-                        <ul>
+                        <ul className="list-services">
                             <li><a href="/home">guitars</a></li>
                             <li><a href="/home">pianos</a></li>
                             <li><a href="/home">harmonica</a></li>

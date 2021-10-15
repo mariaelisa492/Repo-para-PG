@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 
-.container{
+.containerF{
 	max-width: 1170px;
 	margin:auto;
 }
@@ -10,16 +10,17 @@
 	display: flex;
 	flex-wrap: wrap;
 }
-ul{
+.list-services{
 	list-style: none;
 }
 .footer{
-	background-color: #24262b;
-    padding: 60px 0;
+    background-color: #24262b;
+    padding: 20px 0 36px 36px;
+	
 }
 .footer-col{
-   width: 25%;
-   padding: 0 15px;
+    width: 25%;
+    padding: 0 15px;
 }
 .footer-col h4{
 	font-size: 18px;
@@ -32,7 +33,7 @@ ul{
 .footer-col h4::before{
 	content: '';
 	position: absolute;
-	left: 104px;
+	left: 13px;
 	bottom: -10px;
 	background-color: #FF9F1C;
 	height: 2px;
@@ -79,16 +80,13 @@ ul{
 
 /*responsive*/
 @media(max-width: 767px){
-    .footer-col h4::before {
-        margin-left: 60px;
-    }
-  .footer-col{
+    .footer-col{
     width: 50%;
     margin-bottom: 30px;
 }
 }
 @media(max-width: 574px){
-  .footer-col{
+    .footer-col{
     width: 100%;
 }
 }
