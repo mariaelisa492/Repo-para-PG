@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { saveImages } from './utils/saveImages';
 import { validationFunction } from './utils/validationFunction';
 import { useDispatch } from 'react-redux';
-import { setNewProduct } from '../../redux/actions';
 import './FormCreateProducts.css'
 
 // Array con las categorias para hacer el <select>
