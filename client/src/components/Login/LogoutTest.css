@@ -1,0 +1,13 @@
+.logoutBtn{
+    margin-right: 20px;
+    margin-top: 20px;
+    height: 40px;
+    width: auto;
+    border-radius: 7px;
+    background: none;
+    color: rgb(70, 62, 62);
+    cursor: pointer;
+}
+.logoutBtn:hover{
+    color: rgb(0, 0, 0);
+}

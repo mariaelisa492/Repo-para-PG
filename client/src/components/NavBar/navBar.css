@@ -65,6 +65,21 @@
     display: flex;  
 }
 
+.profileBtn{
+    border-radius: 7px;
+    background-color: #2EC4B6;
+    color: rgb(70, 62, 62);
+    cursor: pointer;
+    margin-right: 20px;
+    margin-top: 20px;
+    height: 40px;
+    width: auto;
+}
+.profileBtn:hover{
+    background-color: #1fb6a7;
+
+}
+
 @media(max-width: 600px) {
     .NavBar .rigthSide button{
         display: flex;
