@@ -48,7 +48,7 @@ export default function Create() {
 
     auxInput.image = urlImage;
 
-    dispatch(setNewProduct(auxInput));
+  
     setInputProducts({
       name: '',
       description: '',
