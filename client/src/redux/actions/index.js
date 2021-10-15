@@ -9,7 +9,7 @@ export const getProducts = () => {
         payload: products.data,
       });
     } catch (error) {
-      console.log(error);
+      console.log(error, 'getProducts ||Error||');
     }
   };
 };
@@ -23,7 +23,7 @@ export const getProductsByName = (name) => {
         payload: productsByName.data,
       });
     } catch (error) {
-      console.log(error);
+      console.log(error, 'getProductsByName ||Error||');
     }
   };
 };
@@ -42,5 +42,40 @@ export const setNewProduct = (objProduct) => {
     catch (error) {
       console.log(error);
     }
+  }
+}
+
+                      // FILTROS Y ORDENAMIENTOS //
+
+export const getProductsByPriceAsc = () => {
+  return{
+    type: 'ORDER_PRICE_ASC'
+  }
+};
+
+export const getProductsByPriceDesc = () => {
+  return{
+    type: 'ORDER_PRICE_DESC'
+  }
+};
+
+export const filterProductsByPriceLessThan = (price) => {
+  return{
+    type: "FILTER_PRICE_ONLY_LESSTHAN",
+    payload: price
+  }
+}
+
+export const filterProductsByPriceMoreThan = (price) => {
+  return{
+    type: "FILTER_PRICE_ONLY_MORETHAN",
+    payload: price
+  }
+}
+
+export const filterProductsByPriceRange = (price1,price2) => {
+  return{
+    type: "FILTER_PRICE_RANGE",
+    payload: {price1,price2}
   }
 }

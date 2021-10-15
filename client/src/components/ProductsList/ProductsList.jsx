@@ -1,11 +1,44 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
+import {useDispatch} from 'react-redux'
 import { Product } from "../Product/Product";
+import { getProductsByPriceAsc, getProductsByPriceDesc, getProducts, filterProductsByPriceLessThan, filterProductsByPriceMoreThan, filterProductsByPriceRange } from "../../redux/actions";
 import "./productsList.css";
+import { PaginationOptions } from "../Pagination Options/PaginationOptions";
 
 export const ProductsList = ({ filteredProducts }) => {
   console.log(filteredProducts, "ProductsList");
-
+  
   const [limit, setLimit] = useState(0);
+  const [lessThan, setLessThan] = useState(null)
+  const [moreThan, setMoreThan] = useState(null)
+  const dispatch = useDispatch()
+
+  function handleSelectOrderChange(e){
+
+    let value = e.target.value
+
+    if(value === 'Ascending Order'){
+      dispatch(getProductsByPriceAsc())
+    }
+    if(value === 'Descending Order'){
+      dispatch(getProductsByPriceDesc())
+    }
+  }
+
+  function handleSubmitPriceFilter(e, moreThan, lessThan){
+    e.preventDefault()
+
+    if(lessThan === null){
+      dispatch(filterProductsByPriceMoreThan(moreThan))
+    }
+    if(moreThan === null){
+      dispatch(filterProductsByPriceLessThan(lessThan))
+    }
+    else{
+      dispatch(filterProductsByPriceRange(moreThan,lessThan))
+    }
+
+  }
 
   function raise() {
     if (limit + 6 <= filteredProducts.length) {
