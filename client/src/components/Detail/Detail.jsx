@@ -7,6 +7,9 @@ const summary = description.split('.')[0];
 
 export default function(props) {
 
+  const id = props.id;
+
+
   return (
     <div className='detail'>
 
