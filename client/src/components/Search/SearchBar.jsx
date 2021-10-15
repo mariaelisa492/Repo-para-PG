@@ -14,7 +14,7 @@ export const Search = () => {
         setInputValue(e.target.value)  
     };
 
-    const handleClick = (e) =>{
+    const handleSubmit = (e) =>{
         e.preventDefault()
         dispatch(getProductsByName(inputValue))
         setInputValue("");
@@ -23,7 +23,7 @@ export const Search = () => {
     return (
         <div className="container-search">
             <div className="search-box">
-                <form className="search-form" onClick={handleClick}>
+                <form className="search-form" onSubmit={handleSubmit}>
                     <input
                         className = "search-text"
                         placeholder="Search musical instruments"
