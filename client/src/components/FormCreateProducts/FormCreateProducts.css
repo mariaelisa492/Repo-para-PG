@@ -10,13 +10,16 @@
 .formCreateProducts {
   background-color: #f6f6f6;
   font-size: 20px;
-  width: calc(50vw - 20px);
+  width: calc(100% - 10px);
+  max-width: 800px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   border-radius: 30px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .labelCreateProducts {
@@ -24,20 +27,29 @@
 }
 
 .inputCreateProducts {
-  margin: 8px;
+  margin: 8px 0px;
   padding: 2px;
   border-radius: 9px;
+  width: 100%;
+  padding: 10px 24px;
+  background: #e6e6e6;
+  color: #696969;
+  border: none;
+  outline: none;
+  font-size: 0.9em;
+  max-width: 600px;
+}
+
+.inputCreate:focus {
   border: 1px solid #313131;
-  width: 300px;
-  font-size: 15px;
-  padding: 2px;
+  border-radius: 9px;
 }
 
-.inputCreate:focus{
-	border:  1px solid #313131;
-	border-radius: 9px;
-}
-
-.btnCreate{
+.btnCreate {
   cursor: pointer;
+  color: white;
+  background: #2EC4B6;
+  border: none;
+  margin: 10px auto;
+  max-width: 250px;
 }

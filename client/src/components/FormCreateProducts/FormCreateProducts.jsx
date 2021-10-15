@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { saveImages } from './utils/saveImages';
 import { validationFunction } from './utils/validationFunction';
 import { useDispatch } from 'react-redux';
+import { setNewProduct } from './utils/setNewProduct';
 import './FormCreateProducts.css'
 
 // Array con las categorias para hacer el <select>
@@ -12,7 +13,8 @@ const productCategories = [
   'Electro-Acoustic Guitars',
   'Electric Bass',
   'Electric Guitars',
-  'Electric Violin'
+  'Electric Violin',
+  'Other'
 ];
 
 export default function Create() {
@@ -208,7 +210,9 @@ export default function Create() {
           )}
         </div>
 
-        <input type='submit' value='Create' className='btnCreate' />
+        <div>
+          <input type='submit' value='Create' className='btnCreate' />
+        </div>
       </form>
     </div>
   )
