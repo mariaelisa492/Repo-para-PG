@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router';
 import Login from './pages/Login';
 import {Products} from './pages/Products';
 import {Home} from './pages/Home'
+import {Detail} from './pages/Detail';
 import {getProducts} from './redux/actions/index'
 import {useDispatch, useSelector} from 'react-redux'
 
@@ -21,6 +22,7 @@ function App() {
       <Route exact path = "/" component={Login}/>
       <Route exact path = "/home" component={Home}/>
       <Route exact path = "/create" component={Products}/>
+      <Route exact path = "/detail" component={Detail}/>
       </Switch>
     </div>
   );

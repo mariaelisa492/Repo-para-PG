@@ -16,8 +16,8 @@
     align-items: center;
 }
 
-input[type="text"],
-input[type="password"],
+.form-control input[type="text"],
+.form-control input[type="password"],
 button {
     width: 100%;
     padding: 10px 24px;
