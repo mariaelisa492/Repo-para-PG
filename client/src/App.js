@@ -22,7 +22,7 @@ function App() {
     <div className="App">
       <Switch>
       <Route exact path = "/profile" component={UserProfile}/>
-      <Route exact path = "/"> <Redirect to='/home'></Redirect> </Route>
+      <Route exact path = "/" component={Home}/>
       <Route exact path = "/home" component={Home}/>
       <Route exact path = "/create" component={Products}/>
       <Route exact path = "/detail/:id" component={Detail}/>
