@@ -26,13 +26,23 @@
 .first h1 
 {
   margin: 0px 0px 0px 25px;
+  color: #2f2f2f;
 }
 
 .first h3 
 {
+  font-size: 22px;
   font-weight: normal;
   color: #9f9f9f;
   margin: 10px 0px 0px 25px;
+}
+
+.first b 
+{
+  color: lightskyblue;
+  font-size: 20px;
+  display: inline-block;
+  padding: 0px 20px;
 }
 
 .first p 
@@ -46,7 +56,7 @@
 .first img
 {
   width: 80%;
-  margin: 0 5%;
+  margin: 0 10%;
 }
 
 .second p
@@ -115,4 +125,96 @@
 {
   font-size: 40px;
   color: #7f7f7f;
+}
+
+.rating 
+{ 
+  color: lightskyblue;
+  position: absolute;
+  top: 200px;
+  right: 20px;
+  width: 150px;
+  font-size: 24px;
+}
+
+.rating span *
+{
+  display: inline-block;
+  margin: 0px 3px;
+}
+
+.second 
+{
+  font-family: 'Cantarell', sans-serif;
+}
+
+.second p
+{
+  margin: 0px 20px;
+}
+
+.second p:first-of-type 
+{
+  font-size: 20px;
+  color: #3f3f3f;
+  padding: 20px 0px;
+  margin-top: 20px;
+  border-top: 1px solid #d0d0d0;
+}
+
+
+.second p:last-of-type 
+{
+  margin-bottom: 40px;
+  font-style: italic;
+  color: #2f2f2f;
+  font-size: 18px;
+}
+
+.imgNav 
+{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 50%;
+  top: 50%;
+}
+
+.angle 
+{
+  display: block;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 40px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 20px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.pager 
+{
+  display: flex;
+  flex-direction: row;
+  width: 150px;
+  justify-content: space-between;
+  position: relative;
+  top: 90%;
+}
+
+.circle 
+{
+  display: block;
+  height: 14px;
+  width: 14px;
+  background-color: transparent;
+  border: 1px solid orange;
+  border-radius: 50%;
+}
+
+.circle:first-of-type 
+{
+  background-color: orange;
 }

@@ -1,5 +1,6 @@
 import './detail.css';
 import data from './data';
+import { FaHeart, FaStar, FaStarHalf, FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 const { name, description, image, stock, brand, model, price, category } = data[0];
 const summary = description.split('.')[0];
@@ -10,11 +11,24 @@ export default function(props) {
     <div className='detail'>
 
       <div className='first'>
-        <h3>{category}</h3>
+        <h3>{category} <b><FaHeart /></b></h3>
         <h1>{name}</h1>
-        <p>{summary}</p>
+        <p>{summary}.</p>
         <img src={image} alt='' />
 
+        <div className='imgNav'>
+          <span className='angle'><FaAngleLeft /></span>
+
+          <div className='pager'>
+            <span className='circle'></span>
+            <span className='circle'></span>
+            <span className='circle'></span>
+            <span className='circle'></span>
+            <span className='circle'></span>
+          </div>
+
+          <span className='angle'><FaAngleRight /></span>
+        </div>
         <div className='price'>
           <span>$ {price}</span>
         </div>
@@ -26,11 +40,14 @@ export default function(props) {
             <span className='add'>+</span>
           </div>
         </div>
+
+        <div className='rating'>
+          <span><FaStar /><FaStar /><FaStar /><FaStar /><FaStarHalf /></span>
+        </div>
       </div>
 
       <div className='second'>
-        <p>Brand: {brand} Model: {model}</p>
-        <hr />
+        <p>Brand: <strong>{brand}</strong> Model: <strong>{model}</strong></p>
         <p>{description}</p>
       </div>
 
