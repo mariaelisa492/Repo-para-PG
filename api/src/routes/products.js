@@ -18,6 +18,6 @@ router.get('/:id', products.getProduct);
 router.put('/:id', products.updateProduct);
 
 //borrar producto
-router.delete('/delete', products.deleteProduct);
+router.delete('/:id', products.deleteProduct);
 
 module.exports = router;

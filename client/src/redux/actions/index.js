@@ -34,6 +34,21 @@ export const getProductsByName = (name) => {
   };
 };
 
+export const deleteProduct = (id) => {
+  return async (dispatch) => {
+    try {
+      const deleteProd = await axios.delete(`http://localhost:5000/products/${id}`);
+      return dispatch({
+        type: "DELETE_PRODUCT",
+        payload: deleteProd,
+      })
+    }  
+    catch (error) {
+      console.log("Error al eliminar productos");
+    }
+  }
+}
+
   // FILTROS Y ORDENAMIENTOS //
 export const getProductsByPriceAsc = () => {
   return {
