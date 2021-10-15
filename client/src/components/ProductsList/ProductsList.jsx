@@ -69,6 +69,30 @@ export const ProductsList = ({ filteredProducts }) => {
             );
           })}
         </div>
+        {/* <hr/>
+        <p>showing {limit} to {limit + 6 < filteredProducts.length? limit +6 : filteredProducts.length} of {filteredProducts.length} products</p>
+        <PaginationOptions lower={lower} raise={raise}/>
+        <div>
+          <label>Order by Price </label>
+          <select name='orderByPrice' onChange={handleSelectOrderChange}>
+            <option value=''></option>
+            <option value='Ascending Order'>Ascending Order</option>
+            <option value='Descending Order'>Descending Order</option>
+          </select>
+        </div>
+          <hr/>
+
+        <div className='formPrice'>
+          <form onSubmit={(e) => handleSubmitPriceFilter(e, moreThan, lessThan)}>
+            <label>Filter By Price</label>
+            <p>More Than</p>
+            <input name='less' type='number' value={moreThan} onChange={e => setMoreThan(e.target.value)}></input>
+            <p>Less Than</p>
+            <input name='more' type='number' value={lessThan} onChange={e => setLessThan(e.target.value)}></input>
+            <p></p>
+            <button type='submit'>Filter</button>
+          </form>
+        </div> */}
         <div >
           <div className="button_pagination">
             <button onClick={lower} >Previous</button>
