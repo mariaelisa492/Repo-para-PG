@@ -77,12 +77,12 @@ const getProductByName= async (req, res) => {
 };
 
 const deleteProduct = async (req, res) => {
-    const { id } = req.body;
+    const { id } = req.params;
 
     try{
         await Products.findOneAndRemove({_id: id});
         res.status(200).json({
-            message: 'Seccessful'
+            message: 'Successful'
         });
     }
 
