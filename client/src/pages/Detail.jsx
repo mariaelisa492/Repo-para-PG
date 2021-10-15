@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer/Footer";
 import NavBar from "../components/NavBar/NavBar";
-import Detail from "../components/Detail/Detail";
+import ProductDetail from "../components/Detail/Detail";
 
 
 export const Detail = () => {
@@ -14,7 +14,7 @@ export const Detail = () => {
         <NavBar />
       </div>
 
-      <Detail />
+      <ProductDetail />
 
       <div>
         <Footer/>
