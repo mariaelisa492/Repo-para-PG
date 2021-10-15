@@ -8,6 +8,8 @@ import {Home} from './pages/Home'
 import {Detail} from './pages/Detail';
 import {getProducts} from './redux/actions/index'
 import {useDispatch, useSelector} from 'react-redux'
+import { UserProfile } from './components/User/UserProfile';
+
 
 function App() {
   const dispatch = useDispatch()
@@ -19,7 +21,8 @@ function App() {
   return (
     <div className="App">
       <Switch>
-      <Route exact path = "/" component={Login}/>
+      <Route exact path = "/profile" component={UserProfile}/>
+      <Route exact path = "/" component={Home}/>
       <Route exact path = "/home" component={Home}/>
       <Route exact path = "/create" component={Products}/>
       <Route exact path = "/detail" component={Detail}/>
