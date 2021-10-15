@@ -1,0 +1,78 @@
+
+.container {
+position: relative;
+overflow: hidden;
+height: 450px;
+object-fit: cover;
+
+}
+
+.slideContainer{
+max-width: 1000px;
+margin: 50px auto;
+overflow: hidden;
+display: flex;
+flex-wrap: nowrap; 
+}
+
+
+
+
+
+.slide{
+min-width: 100%;
+overflow: hidden;
+transition: .3 ease all;
+z-index: 10;
+position: relative;
+}
+.controls{
+position: absolute;
+top: 0;
+width: 100%;
+height: 100%;
+z-index: 20;
+}
+
+
+.btn{
+height: 50px;
+width: 50px;
+background: none;
+border: none;
+cursor: pointer;
+outline: none;
+align-items: center;
+position: absolute;
+transition: .3 ease all;
+left: 0;
+top: 50%
+}
+.btn:hover{
+transition: .3 ease all;
+background: rgba(200, 200, 200, 5);
+border-radius: 5px;
+
+}
+
+.btn2{
+height: 50px;
+width: 50px;
+background: none;
+border: none;
+cursor: pointer;
+outline: none;
+text-align: center;
+position: absolute;
+transition: .3 ease all;
+right: 0;
+top: 50%    
+}
+.btn2:hover{
+transition: .3 ease all;
+background: rgba(200, 200, 200, 5);
+border-radius: 5px;
+
+}
+
+
