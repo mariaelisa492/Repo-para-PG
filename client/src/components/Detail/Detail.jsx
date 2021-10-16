@@ -1,14 +1,25 @@
 import './detail.css';
 import data from './data';
+import { useDispatch } from "react-redux"
 import SideBar from '../SideBar/SideBar';
 import { FaHeart, FaStar, FaStarHalf, FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import { addCart } from '../../redux/actions';
 
-const { name, description, image, stock, brand, model, price, category } = data[0];
+const { name, description, image, stock, brand, model, price, category, _id } = data[0];
 const summary = description.split('.')[0];
 
 export default function(props) {
 
+  const dispatch = useDispatch()
+
   const id = props.id;
+
+  const handleCart = (e) => {
+    e.preventDefault()
+   // ES POR ID, NAME SOLO POR PRUEBA
+    console.log('NAMEEEEEEE', name)
+    dispatch(addCart(name)) 
+  }
 
 
   return (
@@ -41,7 +52,8 @@ export default function(props) {
             <span>$ {price}</span>
           </div>
           <div className='cartBtns'>
-            <span className='lbl'>Add to cart</span>
+
+            <span className='lbl' onClick={(e) => {handleCart(e)}}>Add to cart</span>
             <div className='btns'>
               <span className='remove'>-</span>
               <span className='quantity'>0</span>
@@ -51,6 +63,7 @@ export default function(props) {
 
           <div className='rating'>
             <span><FaStar /><FaStar /><FaStar /><FaStar /><FaStarHalf /></span>
+
           </div>
         </div>
 
