@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import DataTable from "react-data-table-component";
 import "./Dashboard.css";
+import { useSelector } from "react-redux";
 
 const columns = [
     {
@@ -17,12 +18,10 @@ const columns = [
     }
 ]
 
-const datita = [
-    { name: "flauta", price: 10 }
-    
-]
 
 export default function Dashboard() {
+
+    const products = useSelector(state => state.products);
 
     return (
         <>
@@ -33,7 +32,7 @@ export default function Dashboard() {
                 <div>
                 <DataTable
                     columns={columns}
-                    data={datita}
+                    data={products}
                     title="My products"
                 />
                 </div>
