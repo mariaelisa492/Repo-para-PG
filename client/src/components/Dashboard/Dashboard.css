@@ -1,0 +1,21 @@
+.add-button {
+    padding: 5px 25px;
+    background: rgba(19, 144, 247, 0.219);
+    color: #3a97fb;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.add-button:hover {
+    background-color: rgba(19, 144, 247, 0.363);
+    transition: 0.4s;
+}
+
+.add-button-div {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+}
+

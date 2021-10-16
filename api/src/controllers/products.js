@@ -94,11 +94,28 @@ const deleteProduct = async (req, res) => {
     };
 };
 
+const createManyProducts = async (req, res) => {
+    try{
+        await Products.insertMany(req.body)
+        res.status(200).json({
+            message: 'Successful'
+        });
+    }
+
+    catch{
+        console.log(error)
+        res.status(400).json({
+            message: 'Your request could not be processed. Please try again.'
+        })
+    }
+}   
+
 module.exports = {
     createProduct,
     productsAll,
     getProduct,
     updateProduct,
     getProductByName,
-    deleteProduct
+    deleteProduct,
+    createManyProducts
 }

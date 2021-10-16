@@ -28,7 +28,7 @@ export default function NavBar() {
       </label>
       <ul className="items-nav">
         <li> {isAuthenticated?<Link to='/profile'><BsFillPersonFill /></Link>:null}</li>
-        <li>{isAuthenticated?<Link to="/"><BsFillCartFill /></Link>:null}</li>
+        <li>{isAuthenticated?<Link to="/cart"><BsFillCartFill /></Link>:null}</li>
         <li> {isAuthenticated?<Logout/>:<LoginTest/>}</li>
       </ul>
     </nav>

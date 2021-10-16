@@ -3,7 +3,8 @@ import {
 	LOCALHOST_URL, GET_BYNAME,
 	ORDER_PRICE_ASC, ORDER_PRICE_DESC,
 	FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
-	FILTER_PRICE_RANGE, GET_PRODUCTS, FILTER_CATEGORIES
+  ADD_TO_CART, REMOVE_FROM_CART,
+  ADJUST_QTY, LOAD_CURRENT, FILTER_CATEGORIES
   } from "../constants/index"
 
 export const getProducts = () => {
@@ -89,3 +90,39 @@ export const filterByCategory = (category) => {
     payload: category
   }
 }
+
+// CART
+export const addCart = (itemId) => {
+  return {
+    type: ADD_TO_CART,
+    payload: {
+      id: itemId
+    }
+  }
+};
+ 
+export const removeCart = (itemId) => {
+  return {
+    type: REMOVE_FROM_CART,
+    payload: {
+      id: itemId
+    }
+  }
+};
+
+export const adjustQty = (itemId, value) => {
+  return {
+    type: ADJUST_QTY,
+    payload: {
+      id: itemId,
+      qty: value
+    }
+  }
+};
+
+export const currentCart = (item) => {
+  return {
+    type: LOAD_CURRENT,
+    payload: item,
+  }
+};

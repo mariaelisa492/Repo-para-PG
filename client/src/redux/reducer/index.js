@@ -2,14 +2,18 @@ import {
 	GET_PRODUCTS, GET_BYNAME,
 	ORDER_PRICE_ASC, ORDER_PRICE_DESC,
 	FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
-	FILTER_PRICE_RANGE, DELETE_PRODUCT, FILTER_CATEGORIES
-} from "../constants/index"
+	FILTER_PRICE_RANGE, DELETE_PRODUCT,
+	ADD_TO_CART, REMOVE_FROM_CART,
+  ADJUST_QTY, LOAD_CURRENT, FILTER_CATEGORIES
+ } from "../constants/index"
 
 const initialState = {
 	users: [],
 	sales: [],
 	products: [],
 	filteredProducts: [],
+	cart: [],
+	currentItem: null,
 	filteredTF: false
 };
 
@@ -37,7 +41,7 @@ export const rootReducer = (state = initialState, action) => {
 				products: [...deletedProduct]
 			};
 
-								// ORDENAMIENTOS //
+							    	// ---- ORDENAMIENTOS ---- //
 
 		case ORDER_PRICE_ASC:
 				var sortedPriceAsc
@@ -69,7 +73,7 @@ export const rootReducer = (state = initialState, action) => {
 				filteredTF: true
 			};
 
-							// FILTROS //
+						          // ---- FILTROS ---- //
 
 		case FILTER_PRICE_ONLY_LESSTHAN:
 			var filt1;
@@ -115,8 +119,8 @@ export const rootReducer = (state = initialState, action) => {
 				filteredProducts: [...filt3],
 				filteredTF: true
 			};
-
-		case FILTER_CATEGORIES:
+      
+   	case FILTER_CATEGORIES:
 			var filt4;
 			if(state.filteredTF){
 				filt4 = state.filteredProducts.filter((e) => e.category.includes(action.payload))
@@ -129,7 +133,46 @@ export const rootReducer = (state = initialState, action) => {
 				filteredProducts: [...filt4],
 				filteredTF: true
 			}
-
+      
+		                      // ---- Cart ---- //
+      
+		case ADD_TO_CART: 
+		// modificar name por id
+		const item = state.products.find(item => item.name === action.payload.id)
+		const inCart = state.cart.find(item => item.name === action.payload.id ? true : false)
+		return {
+			...state,
+			cart: inCart ? 
+			state.cart.map( item => item.name === action.payload.id ? 
+				{...item, qty: item.qty + 1} 
+				: item 
+			) 
+			: [...state.cart, {...item, qty: 1}]
+		};
+      
+		case REMOVE_FROM_CART: 
+		return {
+			...state,
+			cart: inCart ? 
+			state.cart.map( item => item.name === action.payload.id ? 
+				{...item, qty: item.qty + 1} 
+				: item 
+			) 
+			: [...state.cart, {...item, qty: 1}]
+		};
+      
+		case ADJUST_QTY: 
+		return {
+			...state,
+			cart: state.cart.map(item.name === action.payload.id ? {...item, qty: action.payload.qty} : item)
+		}; 
+      
+		case LOAD_CURRENT:
+		return {
+			...state,
+			currentItem: action.payload
+		};
+	
 		default:
 			return state;
 	}
