@@ -1,0 +1,16 @@
+.rating 
+{ 
+  color: orange;
+  position: absolute;
+  top: 200px;
+  right: 20px;
+  width: 150px;
+  font-size: 24px;
+}
+
+.rating span *
+{
+  display: inline-block;
+  margin: 0px 3px;
+}
+
