@@ -64,149 +64,168 @@ export default function Create() {
   }
 
   return (
-    <div className='backgroundCreateProducts'>
+    <div className='backgroundCreateProducts containerformProducts'>
       <form
         onSubmit={handleSubmit}
-        className='formCreateProducts'
+        className='formCreateProducts containerformProducts'
       >
         <div>
           <div>
-            <label className='labelCreateProducts'>Name:</label>
-            <input
-              type='text'
-              name='name'
-              onChange={e => handleInputChange(e.target.name, e.target.value)}
-              value={inputProducts.name}
-              placeholder='Name of Product'
-              className='inputCreateProducts'
-            />
+            <div className='containerformProducts'>
+              <label className='labelCreateProducts'>Name:</label>
+              <input
+                type='text'
+                name='name'
+                onChange={e => handleInputChange(e.target.name, e.target.value)}
+                value={inputProducts.name}
+                placeholder='Name of Product'
+                className='inputCreateProducts'
+              />
+            </div>
           </div>
 
           {errorsProducts.name && (
-            <p>{errorsProducts.name}</p>
+            <p className='errorText'>{errorsProducts.name}</p>
           )}
         </div>
 
         <div>
           <div>
-            <label className='labelCreateProducts'>Description:</label>
-            <textarea
-              name='description'
-              onChange={e => handleInputChange(e.target.name, e.target.value)}
-              value={inputProducts.description}
-              placeholder='Description of Product'
-              className='inputCreateProducts'
-            />
+            <div className='containerformProducts'>
+              <label className='labelCreateProducts'>Description:</label>
+              <textarea
+                name='description'
+                onChange={e => handleInputChange(e.target.name, e.target.value)}
+                value={inputProducts.description}
+                placeholder='Description of Product'
+                className='inputCreateProducts'
+              />
+            </div>
           </div>
+
 
           {errorsProducts.description && (
-            <p>{errorsProducts.description}</p>
+            <p className='errorText'>{errorsProducts.description}</p>
           )}
         </div>
 
         <div>
           <div>
-            <label className='labelCreateProducts'>Image:</label>
-            <input
-              type='file'
-              name='image'
-              onChange={e => handleInputChange(e.target.name, e.target.files[0])}
-              placeholder='Image of Product'
-              className='inputCreateProducts'
-            />
+            <div className='containerformProducts'>
+              <label className='labelCreateProducts'>Image:</label>
+              <input
+                type='file'
+                name='image'
+                onChange={e => handleInputChange(e.target.name, e.target.files[0])}
+                placeholder='Image of Product'
+                className='inputCreateProducts'
+              />
+            </div>
           </div>
+
           {errorsProducts.image && (
-            <p>{errorsProducts.image}</p>
+            <p className='errorText'>{errorsProducts.image}</p>
           )}
         </div>
 
         <div>
           <div>
-            <label className='labelCreateProducts'>Price:</label>
-            <input
-              type='number'
-              name='price'
-              onChange={e => handleInputChange(e.target.name, e.target.value)}
-              value={inputProducts.price}
-              placeholder='Price of Product'
-              className='inputCreateProducts'
-            />
+            <div className='containerformProducts'>
+              <label className='labelCreateProducts'>Price:</label>
+              <input
+                type='number'
+                name='price'
+                onChange={e => handleInputChange(e.target.name, e.target.value)}
+                value={inputProducts.price}
+                placeholder='Price of Product'
+                className='inputCreateProducts'
+              />
+            </div>
           </div>
 
           {errorsProducts.price && (
-            <p>{errorsProducts.price}</p>
+            <p className='errorText'>{errorsProducts.price}</p>
           )}
         </div>
 
         <div>
           <div>
-            <label className='labelCreateProducts'>Stock:</label>
-            <input
-              type='number'
-              name='stock'
-              onChange={e => handleInputChange(e.target.name, e.target.value)}
-              value={inputProducts.stock}
-              placeholder='Stock of Product'
-              className='inputCreateProducts'
-            />
+            <div className='containerformProducts'>
+              <label className='labelCreateProducts'>Stock:</label>
+              <input
+                type='number'
+                name='stock'
+                onChange={e => handleInputChange(e.target.name, e.target.value)}
+                value={inputProducts.stock}
+                placeholder='Stock of Product'
+                className='inputCreateProducts'
+              />
+            </div>
           </div>
 
           {errorsProducts.stock && (
-            <p>{errorsProducts.stock}</p>
+            <p className='errorText'>{errorsProducts.stock}</p>
           )}
         </div>
 
         <div>
           <div>
-            <label className='labelCreateProducts'>Brand:</label>
-            <input
-              type='text'
-              name='brand'
-              onChange={e => handleInputChange(e.target.name, e.target.value)}
-              value={inputProducts.brand}
-              placeholder='Brand of Product'
-              className='inputCreateProducts'
-            />
+            <div className='containerformProducts'>
+              <label className='labelCreateProducts'>Brand:</label>
+              <input
+                type='text'
+                name='brand'
+                onChange={e => handleInputChange(e.target.name, e.target.value)}
+                value={inputProducts.brand}
+                placeholder='Brand of Product'
+                className='inputCreateProducts'
+              />
+            </div>
           </div>
 
           {errorsProducts.brand && (
-            <p>{errorsProducts.brand}</p>
+            <p className='errorText'>{errorsProducts.brand}</p>
           )}
         </div>
 
         <div>
           <div>
-            <label className='labelCreateProducts'>Model:</label>
-            <input
-              type='text'
-              name='model'
-              onChange={e => handleInputChange(e.target.name, e.target.value)}
-              value={inputProducts.model}
-              placeholder='Model of Product'
-              className='inputCreateProducts'
-            />
+            <div className='containerformProducts'>
+              <label className='labelCreateProducts'>Model:</label>
+              <input
+                type='text'
+                name='model'
+                onChange={e => handleInputChange(e.target.name, e.target.value)}
+                value={inputProducts.model}
+                placeholder='Model of Product'
+                className='inputCreateProducts'
+              />
+            </div>
           </div>
 
           {errorsProducts.model && (
-            <p>{errorsProducts.model}</p>
+            <p className='errorText'>{errorsProducts.model}</p>
           )}
         </div>
 
         <div>
-          <label className='labelCreateProducts'>Category:</label>
+          <div className='containerformProducts'>
+            <label className='labelCreateProducts'>Category:</label>
 
-          <select
-            name='category'
-            onChange={e => handleInputChange(e.target.name, e.target.value)}
-            className='inputCreateProducts'
-          >
-            <option value=''>Select Category</option>
-            {productCategories.map(category =>
-              <option value={category} key={category}>{category}</option>
-            )}
-          </select>
+            <select
+              name='category'
+              onChange={e => handleInputChange(e.target.name, e.target.value)}
+              className='inputCreateProducts'
+            >
+              <option value=''>Select Category</option>
+              {productCategories.map(category =>
+                <option value={category} key={category}>{category}</option>
+              )}
+            </select>
+          </div>
+
           {errorsProducts.category && (
-            <p>{errorsProducts.category}</p>
+            <p className='errorText'>{errorsProducts.category}</p>
           )}
         </div>
 

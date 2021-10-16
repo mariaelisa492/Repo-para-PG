@@ -1,8 +1,12 @@
-.backgroundCreateProducts {
+.containerformProducts{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-content: center;
+}
+
+.backgroundCreateProducts {
+  flex-direction: row;
   padding-top: 30px;
   background-color: #ff9f1c;
 }
@@ -11,33 +15,31 @@
   background-color: #f6f6f6;
   font-size: 20px;
   width: calc(100% - 10px);
-  max-width: 800px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
+  max-width: 750px;
   border-radius: 30px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
 }
 
 .labelCreateProducts {
-  margin: 8px;
+  margin: 10px;
+  font-weight: 500;
 }
 
 .inputCreateProducts {
-  margin: 8px 0px;
+  margin: 8px auto 0px auto;
   padding: 2px;
   border-radius: 9px;
-  width: 100%;
+  width: calc(100vw - 30px);
   padding: 10px 24px;
   background: #e6e6e6;
   color: #696969;
   border: none;
   outline: none;
   font-size: 0.9em;
-  max-width: 600px;
+  max-width: 500px;
 }
 
 .inputCreate:focus {
@@ -45,11 +47,19 @@
   border-radius: 9px;
 }
 
+.errorText{
+  font-size: 15px;
+  color: red;
+}
+
 .btnCreate {
   cursor: pointer;
   color: white;
   background: #2EC4B6;
   border: none;
-  margin: 10px auto;
+  margin: 20px auto;
   max-width: 250px;
+  font-size: 20px;
+  padding: 8px 10px;
+  font-weight: 600;
 }
