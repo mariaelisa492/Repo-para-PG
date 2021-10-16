@@ -17,7 +17,7 @@ export default function NavBar() {
   return (
     <nav className="navBar">
       <label className="logo">
-        <img src={logo} alt="logo"/>
+        <Link to="/" className="active"><img src={logo} alt="logo"/></Link>
       </label>
       <div>
         <Search />
@@ -27,9 +27,8 @@ export default function NavBar() {
         <i className="fas fa-bars"></i>
       </label>
       <ul className="items-nav">
-        <li><Link to="/home" className="active">Home</Link></li>
         <li> {isAuthenticated?<Link to='/profile'><BsFillPersonFill /></Link>:null}</li>
-        <li>{isAuthenticated?<Link to="/"><BsFillCartFill /></Link>:null}</li>
+        <li>{isAuthenticated?<Link to="/cart"><BsFillCartFill /></Link>:null}</li>
         <li> {isAuthenticated?<Logout/>:<LoginTest/>}</li>
       </ul>
     </nav>

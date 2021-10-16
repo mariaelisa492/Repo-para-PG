@@ -55,6 +55,10 @@
 }
 
 @media (max-width: 858px){
+    .navBar{
+        position: absolute;
+        z-index: 100;
+    }
     .checkbtn{
         display: block;
         margin: 0 28px 0 8px;
