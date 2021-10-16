@@ -31,6 +31,7 @@ export const rootReducer = (state = initialState, action) => {
 
 		case DELETE_PRODUCT:
 			let deletedProduct = state.products.filter(el => el._id !== action.payload._id)
+			// console.log(deletedProduct)
 			return {
 				...state,
 				products: [...deletedProduct]
@@ -44,6 +45,7 @@ export const rootReducer = (state = initialState, action) => {
 				else{
 					sortedPriceAsc = state.products.sort((a, b) => (a.price > b.price) ? 1 : -1)
 				}
+				// console.log(sortedPriceAsc)
 			return {
 				...state,
 				filteredProducts: [...sortedPriceAsc],
@@ -58,7 +60,7 @@ export const rootReducer = (state = initialState, action) => {
 			else{
 				   sortedPriceDesc = state.products.sort((a, b) => (a.price > b.price) ? -1 : 1)
 			}
-			console.log(sortedPriceDesc, 'Desc order')
+			// console.log(sortedPriceDesc, 'Desc order')
 			return {
 				...state,
 				filteredProducts: [...sortedPriceDesc],
@@ -73,7 +75,7 @@ export const rootReducer = (state = initialState, action) => {
 			else{
 				filt1 = state.products.filter((e) => e.price < action.payload)
 			}
-			console.log('lessThan', filt1)
+			// console.log('lessThan', filt1)
 			return {
 				...state,
 				filteredProducts: [...filt1],
@@ -88,7 +90,7 @@ export const rootReducer = (state = initialState, action) => {
 			else{
 				filt2 = state.products.filter((e) => e.price > action.payload)
 			}
-			console.log('moreThan', filt2)
+			// console.log('moreThan', filt2)
 			return {
 				...state,
 				filteredProducts: [...filt2],
@@ -103,7 +105,7 @@ export const rootReducer = (state = initialState, action) => {
 			else{
 				filt3 = state.products.filter((e) => e.price > action.payload.price1 && e.price < action.payload.price2)
 			}
-			console.log('filterPriceRange', filt3)
+			// console.log('filterPriceRange', filt3)
 			return {
 				...state,
 				filteredProducts: [...filt3],
