@@ -10,6 +10,7 @@ import {Detail} from './pages/Detail';
 import {getProducts} from './redux/actions/index'
 import {useDispatch, useSelector} from 'react-redux'
 import { UserProfile } from './components/User/UserProfile';
+import Dashboard from "./components/Dashboard/Dashboard.jsx";
 
 function App() {
   const dispatch = useDispatch()
@@ -26,6 +27,7 @@ function App() {
       <Route exact path = "/create" component={Products}/>
       <Route exact path = "/detail/:id" component={Detail}/>
       <Route exact path = "/cart" component={Cart}/>
+      <Route exact path = "/login" component={Dashboard}/>
       </Switch>
     </div>
   );
