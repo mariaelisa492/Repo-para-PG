@@ -96,7 +96,14 @@ export const rootReducer = (state = initialState, action) => {
 			};
 
 		case FILTER_PRICE_RANGE:
-			let filt3 = state.filteredProducts.filter((e) => e.price > action.payload.price1 && e.price < action.payload.price2)
+			var filt3;
+			if(state.filteredTF){
+				filt3 = state.filteredProducts.filter((e) => e.price > action.payload.price1 && e.price < action.payload.price2)
+			}
+			else{
+				filt3 = state.products.filter((e) => e.price > action.payload.price1 && e.price < action.payload.price2)
+			}
+			console.log('filterPriceRange', filt3)
 			return {
 				...state,
 				filteredProducts: [...filt3],
