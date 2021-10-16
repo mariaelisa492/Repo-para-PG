@@ -9,7 +9,8 @@ const initialState = {
 	users: [],
 	sales: [],
 	products: [],
-	filteredProducts: []
+	filteredProducts: [],
+	filteredTF: false
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -18,14 +19,14 @@ export const rootReducer = (state = initialState, action) => {
 		case GET_PRODUCTS:
 			return {
 				...state,
-				products: action.payload,
-				filteredProducts: action.payload
+				products: action.payload
 			};
 
 		case GET_BYNAME:
 			return {
 				...state,
-				filteredProducts: [...action.payload]
+				filteredProducts: [...action.payload],
+				filteredTF: true
 			};
 
 		case DELETE_PRODUCT:
@@ -36,38 +37,70 @@ export const rootReducer = (state = initialState, action) => {
 			};
 
 		case ORDER_PRICE_ASC:
-			let sortedPriceAsc = state.filteredProducts.sort((a, b) => (a.price > b.price) ? 1 : -1)
+				var sortedPriceAsc
+				if(state.filteredTF){
+					sortedPriceAsc = state.filteredProducts.sort((a, b) => (a.price > b.price) ? 1 : -1)
+			}
+				else{
+					sortedPriceAsc = state.products.sort((a, b) => (a.price > b.price) ? 1 : -1)
+				}
 			return {
 				...state,
-				filteredProducts: [...sortedPriceAsc]
+				filteredProducts: [...sortedPriceAsc],
+				filteredTF: true
 			};
 
 		case ORDER_PRICE_DESC:
-			let sortedPriceDesc = state.filteredProducts.sort((a, b) => (a.price > b.price) ? -1 : 1)
+			var sortedPriceDesc
+			if(state.filteredTF){
+				   sortedPriceDesc = state.filteredProducts.sort((a, b) => (a.price > b.price) ? -1 : 1)
+			}
+			else{
+				   sortedPriceDesc = state.products.sort((a, b) => (a.price > b.price) ? -1 : 1)
+			}
+			console.log(sortedPriceDesc, 'Desc order')
 			return {
 				...state,
-				filteredProducts: [...sortedPriceDesc]
+				filteredProducts: [...sortedPriceDesc],
+				filteredTF: true
 			};
 
 		case FILTER_PRICE_ONLY_LESSTHAN:
-			let filt1 = state.filteredProducts.filter((e) => e.price < action.payload)
+			var filt1;
+			if(state.filteredTF){
+				filt1 = state.filteredProducts.filter((e) => e.price < action.payload)
+			}
+			else{
+				filt1 = state.products.filter((e) => e.price < action.payload)
+			}
+			console.log('lessThan', filt1)
 			return {
 				...state,
-				filteredProducts: [...filt1]
+				filteredProducts: [...filt1],
+				filteredTF: true
 			};
 
 		case FILTER_PRICE_ONLY_MORETHAN:
-			let filt2 = state.filteredProducts.filter((e) => e.price > action.payload)
+			var filt2;
+			if(state.filteredTF){
+				filt2 = state.filteredProducts.filter((e) => e.price > action.payload)
+			}
+			else{
+				filt2 = state.products.filter((e) => e.price > action.payload)
+			}
+			console.log('moreThan', filt2)
 			return {
 				...state,
-				filteredProducts: [...filt2]
+				filteredProducts: [...filt2],
+				filteredTF: true
 			};
 
 		case FILTER_PRICE_RANGE:
 			let filt3 = state.filteredProducts.filter((e) => e.price > action.payload.price1 && e.price < action.payload.price2)
 			return {
 				...state,
-				filteredProducts: [...filt3]
+				filteredProducts: [...filt3],
+				filteredTF: true
 			};
 
 		default:

@@ -9,6 +9,7 @@ import {Detail} from './pages/Detail';
 import {getProducts} from './redux/actions/index'
 import {useDispatch, useSelector} from 'react-redux'
 import { UserProfile } from './components/User/UserProfile';
+import { Categories } from './components/Categories/Categories';
 
 
 function App() {
@@ -21,10 +22,11 @@ function App() {
   return (
     <div className="App">
       <Switch>
-      <Route exact path = "/profile" component={UserProfile}/>
-      <Route exact path = "/" component={Home}/>
-      <Route exact path = "/create" component={Products}/>
-      <Route exact path = "/detail/:id" component={Detail}/>
+        <Route exact path = "/profile" component={UserProfile}/>
+        <Route exact path = "/" component={Home}/>
+        <Route exact path = "/create" component={Products}/>
+        <Route exact path = "/detail/:id" component={Detail}/>
+        <Route exact path = '/categories' component={Categories}/>
       </Switch>
     </div>
   );

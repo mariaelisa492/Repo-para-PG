@@ -3,7 +3,6 @@ import {useDispatch} from 'react-redux'
 import { Product } from "../Product/Product";
 import { getProductsByPriceAsc, getProductsByPriceDesc, getProducts, filterProductsByPriceLessThan, filterProductsByPriceMoreThan, filterProductsByPriceRange } from "../../redux/actions";
 import "./productsList.css";
-import { PaginationOptions } from "../Pagination Options/PaginationOptions";
 
 export const ProductsList = ({ filteredProducts }) => {
   console.log(filteredProducts, "ProductsList");
@@ -14,7 +13,7 @@ export const ProductsList = ({ filteredProducts }) => {
   const dispatch = useDispatch()
 
   function handleSelectOrderChange(e){
-
+    console.log('Entró al order')
     let value = e.target.value
 
     if(value === 'Ascending Order'){
@@ -28,10 +27,10 @@ export const ProductsList = ({ filteredProducts }) => {
   function handleSubmitPriceFilter(e, moreThan, lessThan){
     e.preventDefault()
 
-    if(lessThan === null){
+    if(lessThan !== null){
       dispatch(filterProductsByPriceMoreThan(moreThan))
     }
-    if(moreThan === null){
+    else if(moreThan !== null){
       dispatch(filterProductsByPriceLessThan(lessThan))
     }
     else{
@@ -52,6 +51,14 @@ export const ProductsList = ({ filteredProducts }) => {
     }
   }
 
+  function handleInputChange(e){
+    e.preventDefault()
+    let name = e.name
+    let value = e.target.value
+    if(name === 'less') setLessThan(value)
+    if(name === 'more') setMoreThan(value)
+  }
+
 
   return (
     <>
@@ -69,12 +76,10 @@ export const ProductsList = ({ filteredProducts }) => {
             );
           })}
         </div>
-        {/* <hr/>
-        <p>showing {limit} to {limit + 6 < filteredProducts.length? limit +6 : filteredProducts.length} of {filteredProducts.length} products</p>
-        <PaginationOptions lower={lower} raise={raise}/>
+        
         <div>
           <label>Order by Price </label>
-          <select name='orderByPrice' onChange={handleSelectOrderChange}>
+          <select name='orderByPrice' onChange={(e) => handleSelectOrderChange(e)}>
             <option value=''></option>
             <option value='Ascending Order'>Ascending Order</option>
             <option value='Descending Order'>Descending Order</option>
@@ -86,13 +91,13 @@ export const ProductsList = ({ filteredProducts }) => {
           <form onSubmit={(e) => handleSubmitPriceFilter(e, moreThan, lessThan)}>
             <label>Filter By Price</label>
             <p>More Than</p>
-            <input name='less' type='number' value={moreThan} onChange={e => setMoreThan(e.target.value)}></input>
+            <input name='more' type='number' value={moreThan} onChange={e => handleInputChange(e)}></input>
             <p>Less Than</p>
-            <input name='more' type='number' value={lessThan} onChange={e => setLessThan(e.target.value)}></input>
+            <input name='less' type='number' value={lessThan} onChange={e => handleInputChange(e)}></input>
             <p></p>
             <button type='submit'>Filter</button>
           </form>
-        </div> */}
+        </div> 
         <div >
           <div className="button_pagination">
             <button onClick={lower} >Previous</button>
