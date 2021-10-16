@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { saveImages } from './utils/saveImages';
 import { validationFunction } from './utils/validationFunction';
 import { useDispatch } from 'react-redux';
@@ -19,6 +19,7 @@ const productCategories = [
 
 export default function Create() {
   const dispatch = useDispatch();
+  const ref = useRef();
 
   //estados de intput y errores
   const [inputProducts, setInputProducts] = useState({
@@ -63,10 +64,18 @@ export default function Create() {
     })
   }
 
+  // 
+  const reset = () => {
+    ref.current.value = "";
+  };
+
   return (
     <div className='backgroundCreateProducts containerformProducts'>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={e => {
+          handleSubmit(e)
+          reset()
+        }}
         className='formCreateProducts containerformProducts'
       >
         <div>
@@ -119,6 +128,7 @@ export default function Create() {
                 onChange={e => handleInputChange(e.target.name, e.target.files[0])}
                 placeholder='Image of Product'
                 className='inputCreateProducts'
+                ref={ref}
               />
             </div>
           </div>
