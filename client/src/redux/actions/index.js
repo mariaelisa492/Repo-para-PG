@@ -3,7 +3,7 @@ import {
 	LOCALHOST_URL, GET_BYNAME,
 	ORDER_PRICE_ASC, ORDER_PRICE_DESC,
 	FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
-	FILTER_PRICE_RANGE, GET_PRODUCTS
+	FILTER_PRICE_RANGE, GET_PRODUCTS, FILTER_CATEGORIES
   } from "../constants/index"
 
 export const getProducts = () => {
@@ -80,5 +80,12 @@ export const filterProductsByPriceRange = (price1, price2) => {
   return {
     type: FILTER_PRICE_RANGE,
     payload: { price1, price2 }
+  }
+}
+
+export const filterByCategory = (category) => {
+  return {
+    type: FILTER_CATEGORIES,
+    payload: category
   }
 }

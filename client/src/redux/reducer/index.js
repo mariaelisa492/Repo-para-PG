@@ -2,7 +2,7 @@ import {
 	GET_PRODUCTS, GET_BYNAME,
 	ORDER_PRICE_ASC, ORDER_PRICE_DESC,
 	FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
-	FILTER_PRICE_RANGE, DELETE_PRODUCT
+	FILTER_PRICE_RANGE, DELETE_PRODUCT, FILTER_CATEGORIES
 } from "../constants/index"
 
 const initialState = {
@@ -37,6 +37,8 @@ export const rootReducer = (state = initialState, action) => {
 				products: [...deletedProduct]
 			};
 
+								// ORDENAMIENTOS //
+
 		case ORDER_PRICE_ASC:
 				var sortedPriceAsc
 				if(state.filteredTF){
@@ -66,6 +68,8 @@ export const rootReducer = (state = initialState, action) => {
 				filteredProducts: [...sortedPriceDesc],
 				filteredTF: true
 			};
+
+							// FILTROS //
 
 		case FILTER_PRICE_ONLY_LESSTHAN:
 			var filt1;
@@ -111,6 +115,20 @@ export const rootReducer = (state = initialState, action) => {
 				filteredProducts: [...filt3],
 				filteredTF: true
 			};
+
+		case FILTER_CATEGORIES:
+			var filt4;
+			if(state.filteredTF){
+				filt4 = state.filteredProducts.filter((e) => e.category.includes(action.payload))
+			}
+			else{
+				filt4 = state.products.filter((e) => e.category.includes(action.payload))
+			}
+			return {
+				...state,
+				filteredProducts: [...filt4],
+				filteredTF: true
+			}
 
 		default:
 			return state;
