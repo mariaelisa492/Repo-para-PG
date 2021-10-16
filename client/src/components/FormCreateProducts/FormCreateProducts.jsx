@@ -19,7 +19,7 @@ const productCategories = [
 
 export default function Create() {
   const dispatch = useDispatch();
-  const ref = useRef();
+  const refFileInput = useRef();
 
   //estados de intput y errores
   const [inputProducts, setInputProducts] = useState({
@@ -64,9 +64,8 @@ export default function Create() {
     })
   }
 
-  // 
-  const reset = () => {
-    ref.current.value = "";
+  const resetFileInput = () => {
+    refFileInput.current.value = "";
   };
 
   return (
@@ -74,7 +73,7 @@ export default function Create() {
       <form
         onSubmit={e => {
           handleSubmit(e)
-          reset()
+          resetFileInput()
         }}
         className='formCreateProducts containerformProducts'
       >
@@ -128,7 +127,7 @@ export default function Create() {
                 onChange={e => handleInputChange(e.target.name, e.target.files[0])}
                 placeholder='Image of Product'
                 className='inputCreateProducts'
-                ref={ref}
+                ref={refFileInput}
               />
             </div>
           </div>
@@ -226,6 +225,7 @@ export default function Create() {
               name='category'
               onChange={e => handleInputChange(e.target.name, e.target.value)}
               className='inputCreateProducts'
+              value={inputProducts.category}
             >
               <option value=''>Select Category</option>
               {productCategories.map(category =>
