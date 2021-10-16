@@ -21,23 +21,27 @@
   margin: 50px 0 0 48px;
 }
 
-.categories li
+.categories li, .submenu li
 {
   color: #666;
-  border-radius: 0px;
   font-size: 24px;
   font-family: 'ubuntu', 'cantarell', sans-serif;
-  border: 1px solid transparent;
-  border-bottom: 1px solid #d0d0d0;
-  padding: 15px 30px;
+  padding: 5px 30px;
   cursor: pointer;
   transition: all 400ms;
 }
 
-.categories ul li:hover 
+.categories li span 
 {
-  border-radius: 10px;
-  border: 1px solid orange;
+  display: inline-block;
+  border-bottom: 4px solid transparent;
+  padding: 10px;
+  transition: all 500ms;
+}
+
+.categories ul li span:hover 
+{
+  border-bottom: 4px solid orange;
 }
 
 .categories li:hover::after 
@@ -54,11 +58,15 @@
 .openclose 
 {
   text-align: right;
-  padding: 15px;
+  width: 60px;
 }
 
 .menuopen, .menuclose 
 {
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin: 14px;
   font-size: 32px;
   color: #afafaf;
   line-height: 32px;
@@ -85,3 +93,20 @@
 {
   left: 0;
 }
+
+.submenu 
+{
+  display: block;
+  position: absolute;
+  left: 365px;
+  margin-top: 40px;
+  background-color: white;
+  width: 400px;
+  border: 1px solid red;
+}
+
+.submenu div
+{
+  margin: 20px;
+}
+

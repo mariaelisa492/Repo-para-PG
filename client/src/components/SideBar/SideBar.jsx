@@ -9,7 +9,7 @@ const categories = {
     "Electric guitars",
     "Nylon/Classical",
   ],
-  "Piano/Keyboards": [
+  "Keyboards": [
     "Electronic keyboards",
     "Synthesizers",
     "Electric pianos",
@@ -25,11 +25,21 @@ const categories = {
     "Acoustic bass",
     "Electric bass",
   ],
+  "Pianos": [
+    "Grand piano",
+    "Vertical piano",
+  ],
+  "Mics": [
+    "Dinamic",
+    "Cardioid",
+    "Directional",
+  ],
 };
 
 export default function SideBar(props) {
 
   const [ hidden, setHidden ] = useState(true);
+  const [ submenu, setSubmenu ] = useState(<>hello</>);
 
   function show() {
     setHidden(false);
@@ -39,22 +49,22 @@ export default function SideBar(props) {
     setHidden(true);
   }
 
+  function toggle(e) {
+    setSubmenu(<ul>{categories[e.target.innerText].map(c => <li>{c}</li>)}</ul>);
+  }
+
   return (
     <div className={'sidebar' + (hidden ? ' hidden' : ' visible')}>
       <div id='menu' className='categories'>
         <ul>
-          <li>Guitars</li>
-          <li>Bass</li>
-          <li>Keyboards</li>
-          <li>Percusion</li>
-          <li>Pianos</li>
-          <li>Wind</li>
-          <li>Strings</li>
-          <li>Wood</li>
-          <li>Other</li>
-          <li>Accesories</li>
+          {Object.keys(categories).map(c => {
+            return (<li>
+              <span onClick={toggle}>{c}</span>
+            </li>)
+          })}
         </ul>
       </div>
+
       <div className='openclose'>
         <span
           className={'menuopen ' + (hidden ? 'block' : 'none')}
@@ -64,6 +74,11 @@ export default function SideBar(props) {
           onClick={hide}><FaTimes /></span>
       </div>
 
+      <div className='submenu'>
+        <div>
+          {submenu}
+        </div>
+      </div>
     </div>
   )
 }
