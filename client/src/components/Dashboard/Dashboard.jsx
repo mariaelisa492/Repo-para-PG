@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import DataTable from "react-data-table-component";
 import "./Dashboard.css";
@@ -83,9 +83,9 @@ export default function Dashboard() {
                         pagination
                     />
                 </div>
-                <div className="create">
-                    <Link to="/create" className="add-button">Create</Link>
-                </div>
+                {/* <div className="create"> */}
+                    <NavLink className="create" to="/create" className="add-button">Create</NavLink>
+                {/* </div> */}
             </div>
         </>
     )
