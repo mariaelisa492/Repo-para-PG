@@ -1,6 +1,6 @@
 import React from "react";
 import './product.css';
-import { Link } from 'react-router-dom';
+import { NavLink } from "react-router-dom"; 
 import Rating from '../Rating/Rating';
 
 export default function Product({ _id, img, name, price, rating, isActive }) {
@@ -21,12 +21,12 @@ export default function Product({ _id, img, name, price, rating, isActive }) {
                         <p><Rating rating={9}/></p>
                         <div class="product-bottom-details">
                             <div class="product-price"><small>$ {price + 200 }</small>$ {price}</div>
-                            <Link className="link-product" to={'detail/' + _id}>
+                            <NavLink className="link-product" to={'detail/' + _id}>
                             <div class="product-links">
                                 <a href=""><i class="fas fa-eye"></i></a>
                                 <a href=""><i class="fa fa-shopping-cart"></i></a>
                             </div>
-                            </Link>
+                            </NavLink>
                         </div>
                     </div>
                 </div>
