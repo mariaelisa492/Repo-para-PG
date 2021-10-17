@@ -4,13 +4,24 @@ import AddToCart from '../AddToCart/Addtocart';
 import Rating from '../Rating/Rating';
 import ImageSlider from '../ImageSlider/ImageSlider';
 import SideBar from '../SideBar/SideBar';
+import DropDownMenu from '../DropDownMenu/DropDownMenu';
 import { FaHeart } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import { categories } from '../Categories/categoriesExport';
 
+
 //>> Fake data for testing and mockup
 const { name, description, image, stock, brand, model, price, category, _id } = data[0];
 const summary = description.split('.')[0];
+//>> temp solution to rating
+const styleRating = { 
+  color: 'orange',
+  position: 'absolute',
+  top: '200px',
+  right: '20px',
+  width: '150px',
+  fontSize: '28px',
+};
 
 export default function(props) {
 
@@ -39,7 +50,9 @@ export default function(props) {
 
           <AddToCart id={id} />
 
-          <Rating rating={9} />
+          <div style={styleRating}>
+            <Rating rating={9} />
+          </div>
 
         </div>
 
