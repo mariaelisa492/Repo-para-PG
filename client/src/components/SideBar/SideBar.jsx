@@ -8,10 +8,20 @@ import { filterByCategory } from '../../redux/actions';
 export default function SideBar({categories}) {
 
   console.log(categories, 'sidebarCategories')
+//export default function SideBar({ categories }) {
 
   const [ hidden, setHidden ] = useState(true);
   const [ submenu, setSubmenu ] = useState(<></>);
+  const [ showSub, setShowSub ] = useState(false);
+  const [ active, setActive ] = useState('');
   const dispatch = useDispatch()
+
+  // Pongan aqui la funcion de filtrado
+  function filterFunction(e) {
+    const category = e.target.innerText;
+    dispatch(filterByCategory(category));
+    console.log(category, 'SubCategory Recieved on filter function (sideBar)');
+  }
 
   function show() {
     setHidden(false);
@@ -19,53 +29,49 @@ export default function SideBar({categories}) {
 
   function hide() {
     setHidden(true);
+    setShowSub(false);
+    setActive('');
   }
 
-  
-    function handleClick(event){
-      event.preventDefault()
-      console.log(event.target.innerText, 'value recieved from event on handleClick(subMenu)')
-      dispatch(filterByCategory(event.target.innerText))
-    }
-
   function toggle(e) {
-    setSubmenu(<ul>{
-      categories[e.target.innerText].map(c =>{
-        console.log(c,'|||| mappedInnerTextFromCategories ||||')
-        return(
-          <li onClick={handleClick} >{c}</li>
-            )
-          }
-        )
-      }
-      </ul>
-    );
+    
+    setSubmenu(<ul>{categories[e.target.innerText].map(c => {
+      return (
+        <li>
+          <span onClick={filterFunction}>{c}</span>
+        </li>
+      )}
+    )}</ul>);
+    setShowSub(true);
+    setActive(e.target.innerText);
   }
 
   return (
-    <div className={'sidebar' + (hidden ? ' hidden' : ' visible')}>
-      <div id='menu' className='categories'>
-        <ul>
-          {Object.keys(categories).map(c => {
-            return (<li>
-              <span onClick={toggle}>{c}</span>
-            </li>)
-          })}
-        </ul>
-      </div>
+    <div className='leftCol'>
+      <div className={'sidebar' + (hidden ? ' hidden' : ' visible')}>
+        <div id='menu' className='categories'>
+          <ul>
+            {Object.keys(categories).map(c => {
+              return (<li>
+                <span onClick={toggle} className={c === active ? 'active' : ''}>{c}</span>
+              </li>)
+            })}
+          </ul>
+        </div>
 
-      <div className='openclose'>
-        <span
-          className={'menuopen ' + (hidden ? 'block' : 'none')}
-          onClick={show}><FaBars /></span>
-        <span
-          className={'menuclose ' + (hidden ? 'none' : 'block')}
-          onClick={hide}><FaTimes /></span>
-      </div>
+          <div className={'submenu ' + (showSub ? 'fat' : 'thin')}>
+            <div>
+              {submenu}
+            </div>
+          </div>
 
-      <div className='submenu'>
-        <div>
-          {submenu}
+        <div className='openclose'>
+          <span
+            className={'menuopen ' + (hidden ? 'block' : 'none')}
+            onClick={show}><FaBars /></span>
+          <span
+            className={'menuclose ' + (hidden ? 'none' : 'block')}
+            onClick={hide}><FaTimes /></span>
         </div>
       </div>
     </div>

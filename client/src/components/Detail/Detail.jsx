@@ -3,6 +3,7 @@ import data from './data';
 import AddToCart from '../AddToCart/Addtocart';
 import Rating from '../Rating/Rating';
 import ImageSlider from '../ImageSlider/ImageSlider';
+import SideBar from '../SideBar/SideBar';
 import { FaHeart } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 
@@ -18,6 +19,8 @@ export default function(props) {
 
   return (
     <div className='fullview'>
+
+      <SideBar />
 
       <div className='detail'>
 
