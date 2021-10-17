@@ -96,6 +96,15 @@ export default function ProductsList({ filteredProducts }) {
           })}
         </div>
         
+        <div >
+          <div className="button_pagination">
+            <button onClick={lower} ><MdOutlineArrowBackIosNew/> <h4>Previous</h4> </button>
+            <div className="pagination">
+              <p>Showing {limit} to {limit + 6 < filteredProducts.length ? limit + 6 : filteredProducts.length} of {filteredProducts.length} products</p>
+            </div>
+            <button onClick={raise} ><h4>Next</h4> <MdOutlineArrowForwardIos /></button>
+          </div>
+        </div>
         <div>
           <label>Order by Price </label>
           <select name='orderByPrice' onChange={(e) => handleSelectOrderChange(e)}>
@@ -117,15 +126,7 @@ export default function ProductsList({ filteredProducts }) {
             <button type='submit'>Filter</button>
           </form>
         </div>
-        <div >
-          <div className="button_pagination">
-            <button><MdOutlineArrowBackIosNew onClick={lower} /> <h4>Previous</h4> </button>
-            <div className="pagination">
-              <p>Showing {limit} to {limit + 6 < filteredProducts.length ? limit + 6 : filteredProducts.length} of {filteredProducts.length} products</p>
-            </div>
-            <button><h4>Next</h4> <MdOutlineArrowForwardIos onClick={raise} /></button>
-          </div>
-        </div>
+       
       </div>
     </>
   );
