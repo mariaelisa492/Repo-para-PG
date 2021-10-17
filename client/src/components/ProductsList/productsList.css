@@ -4,8 +4,8 @@
 
 .productList {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-column-gap: 15px;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    grid-column-gap: 45px;
     grid-row-gap: 20px;
     margin:20px
 }
