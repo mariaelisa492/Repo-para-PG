@@ -5,13 +5,13 @@ export const validationFunction = (input) => {
 
     if(input.stock < 0) errors.stock = 'Stock greater than or equal to 0'
 
-    if(!input.name) errors.name = 'Name is required'
+    if(!input.name || /^([0-9])*$/.test(input.name)) errors.name = "Name is required and it can't be just numbers"
 
-    if(!input.description) errors.description = 'Description is required'
+    if(!input.description || /^([0-9])*$/.test(input.description)) errors.description = "Description is required and it can't be just numbers"
 
-    if(!input.brand) errors.brand = 'Brand is required'
+    if(!input.brand || /^([0-9])*$/.test(input.brand)) errors.brand = "Brand is required and it can't be just numbers"
 
-    if(!input.model) errors.model = 'Model is required'
+    if(!input.model || /^([0-9])*$/.test(input.model)) errors.model = "Model is required and it can't be just numbers"
 
     if(!input.category) errors.category = 'Category is required'
 
