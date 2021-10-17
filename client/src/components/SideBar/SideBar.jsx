@@ -1,55 +1,26 @@
 import './sideBar.css';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { filterByCategory } from '../../redux/actions';
 
 
-const categories = {
-  "Guitars": [
-    "Acoustic guitars",
-    "Electric guitars",
-    "Nylon/Classical",
-  ],
-  "Keyboards": [
-    "Electronic keyboards",
-    "Synthesizers",
-    "Electric pianos",
-    "Acoustic pianos",
-    "Grand pianos",
-  ],
-  "Percusion": [
-    "Acoustic drumkits",
-    "Electronic drumkits",
-    "Other",
-  ],
-  "Bass guitars": [
-    "Acoustic bass",
-    "Electric bass",
-  ],
-  "Pianos": [
-    "Grand piano",
-    "Vertical piano",
-  ],
-  "Mics": [
-    "Dinamic",
-    "Cardioid",
-    "Directional",
-  ],
-};
+export default function SideBar({categories}) {
 
-// Reemplaza esta linea por la de abajo y recibe categories por props!
-export default function SideBar(props) {
+  console.log(categories, 'sidebarCategories')
 //export default function SideBar({ categories }) {
 
   const [ hidden, setHidden ] = useState(true);
   const [ submenu, setSubmenu ] = useState(<></>);
   const [ showSub, setShowSub ] = useState(false);
   const [ active, setActive ] = useState('');
+  const dispatch = useDispatch()
 
   // Pongan aqui la funcion de filtrado
   function filterFunction(e) {
     const category = e.target.innerText;
-    // dispatch( algo con category );
-    console.log(category);
+    dispatch(filterByCategory(category));
+    console.log(category, 'SubCategory Recieved on filter function (sideBar)');
   }
 
   function show() {
@@ -63,6 +34,7 @@ export default function SideBar(props) {
   }
 
   function toggle(e) {
+    
     setSubmenu(<ul>{categories[e.target.innerText].map(c => {
       return (
         <li>
