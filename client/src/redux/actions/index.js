@@ -42,7 +42,7 @@ export const deleteProduct = (id) => {
       const deleteProd = await axios.delete(`http://localhost:5000/products/${id}`);
       return dispatch({
         type: "DELETE_PRODUCT",
-        payload: deleteProd,
+        payload: deleteProd.data.remove,
       })
     }  
     catch (error) {
