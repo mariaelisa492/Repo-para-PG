@@ -1,11 +1,13 @@
 import React, {useState} from "react";
 import {useDispatch} from 'react-redux'
-import { Product } from "../Product/Product";
+import Product  from "../Product/Product";
 import { getProductsByPriceAsc, getProductsByPriceDesc, getProducts, filterProductsByPriceLessThan, filterProductsByPriceMoreThan, filterProductsByPriceRange } from "../../redux/actions";
 import "./productsList.css";
 import { PaginationOptions } from "../Pagination Options/PaginationOptions";
+import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos} from 'react-icons/md';
 
-export const ProductsList = ({ filteredProducts }) => {
+
+export default function ProductsList ({ filteredProducts }){
   console.log(filteredProducts, "ProductsList");
   
   const [limit, setLimit] = useState(0);
@@ -64,6 +66,7 @@ export const ProductsList = ({ filteredProducts }) => {
                 name={e.name}
                 price={e.price}
                 rating={e.rating}
+                id={e._id}
                 isActive={e.isActive}
               />
             );
@@ -95,12 +98,9 @@ export const ProductsList = ({ filteredProducts }) => {
         </div> */}
         <div >
           <div className="button_pagination">
-            <button onClick={lower} >Previous</button>
-            <button onClick={raise} >Next</button>
+            <button><MdOutlineArrowBackIosNew onClick={lower}/> <h4>Previous</h4> </button>
+            <button><h4>Next</h4> <MdOutlineArrowForwardIos onClick={raise} /></button>
           </div>
-        </div>
-        <div className="pagination">
-          <p>Showing {limit} to {limit + 6 < filteredProducts.length ? limit + 6 : filteredProducts.length} of {filteredProducts.length} products</p>
         </div>
       </div>
     </>

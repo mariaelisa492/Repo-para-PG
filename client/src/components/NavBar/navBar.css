@@ -35,10 +35,10 @@
     border-radius: 3px;
 }
 
-.navBar a:hover{
+/* .navBar a:hover{
     background-color: #FFE3C2;
     transition: .5s;
-}
+} */
 
 .checkbtn{
     font-size:30px;

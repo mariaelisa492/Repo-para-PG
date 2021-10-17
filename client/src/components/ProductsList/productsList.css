@@ -16,30 +16,18 @@
 }
 
 .button_pagination button{
+    display: flex;
     border: 0px;
-    padding: 10px 11px;
+    padding: 10px 0px 10px 0px;
     width: 100px;
-    margin: 0px 6px 0px 6px;
-    background-color:#24262b;
-    color: white;
+    margin: 0 0px 8px 10px;
     cursor: pointer;
-    border-radius: 9px;
-    font-size: 16px;
-}
-
-.pagination{
-    text-align: center;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    border-radius: 5px;
     font-size: 15px;
+    color: rgb(39, 167, 154);
+    background: none;
 }
 
-.button_pagination :hover{
-    cursor: pointer;
-    background-color: rgba(255, 136, 0, 0.877);
-    box-shadow: 5px 5px 3px 0px gray;
-    color: black;
-}
 
 .formPrice {
     display: flex;

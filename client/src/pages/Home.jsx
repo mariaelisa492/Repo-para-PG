@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Footer from "../components/Footer/Footer";
-import { ProductsList } from "../components/ProductsList/ProductsList";
+import ProductsList from "../components/ProductsList/ProductsList";
 import NavBar from "../components/NavBar/NavBar";
 import SlideShow from "../components/SlideShow/SlideShow";
 
