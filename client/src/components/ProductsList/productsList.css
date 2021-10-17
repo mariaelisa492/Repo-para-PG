@@ -35,7 +35,7 @@
 }
 
 .arrowPage:hover{
-    color: rgb(15, 90, 83);
+    color: rgba(16, 107, 98, 0.685);
     text-decoration: underline;
 }
 .button_pagination .pagination{
