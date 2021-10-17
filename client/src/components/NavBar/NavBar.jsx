@@ -12,7 +12,7 @@ import { FaBars, FaUser, FaUserCheck, FaShoppingCart } from 'react-icons/fa';
 import { GrCart } from 'react-icons/gr';
 
 
-export default function NavBar() {
+export default function NavBar({ showDropDownMenu }) {
   const [showLinks, setShowLinks] = useState(false)
   const {isAuthenticated} = useAuth0()
 
@@ -34,7 +34,7 @@ export default function NavBar() {
 
           <GrCart />
 
-          <FaBars />
+          <FaBars onClick={showDropDownMenu}/>
       </div>
 
       <div className={'loginOptions ' + (showLinks ? 'visible' : 'hidden')}>
