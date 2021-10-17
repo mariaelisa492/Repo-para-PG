@@ -7,30 +7,50 @@ import {GiHamburgerMenu} from "react-icons/gi"
 import { LoginTest } from "../Login/LoginTest";
 import { Logout } from "../Login/LogoutTest";
 import {useAuth0} from "@auth0/auth0-react"
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom"; // a Link no se le pueden dar estilos...
+import { FaBars, FaUser, FaUserCheck, FaShoppingCart } from 'react-icons/fa';
+import { GrCart } from 'react-icons/gr';
 
 
 export default function NavBar() {
   const [showLinks, setShowLinks] = useState(false)
   const {isAuthenticated} = useAuth0()
 
+  function toggleLoginOptions() {
+    setShowLinks(!showLinks);
+  }
+
   return (
     <nav className="navBar">
       <label className="logo">
-        <Link to="/" className="active"><img src={logo} alt="logo"/></Link>
+        <NavLink to="/" className="active"><img src={logo} alt="logo"/></NavLink>
       </label>
       <div>
         <Search />
       </div>
-      <input type="checkbox" id="check" />
-      <label for="check" className="checkbtn">
-        <i className="fas fa-bars"></i>
-      </label>
-      <ul className="items-nav">
-        <li> {isAuthenticated?<Link to='/profile'><BsFillPersonFill /></Link>:null}</li>
-        <li>{isAuthenticated?<Link to="/cart"><BsFillCartFill /></Link>:null}</li>
-        <li> {isAuthenticated?<Logout/>:<LoginTest/>}</li>
-      </ul>
+      
+      <div className='mobileOptions'>
+          <FaUser onClick={toggleLoginOptions} />
+
+          <GrCart />
+
+          <FaBars />
+      </div>
+
+      <div className={'loginOptions ' + (showLinks ? 'visible' : 'hidden')}>
+        {isAuthenticated
+          ? <NavLink to='/profile' className='activeLink' activeStyle={{color: 'black'}}>
+              <FaUser />
+            </NavLink>
+          :null}
+        {isAuthenticated
+          ? <NavLink to="/cart" className='activeLink' activeStyle={{color: 'black'}}>
+              <GrCart />
+            </NavLink>
+          :null}
+        {isAuthenticated ? <Logout/> : <LoginTest/>}
+      </div>
+
     </nav>
   );
 }
