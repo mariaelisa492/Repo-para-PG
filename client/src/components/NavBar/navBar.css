@@ -11,12 +11,13 @@
     width: 100%;
 }
 
-.navBar label img{
+.logo img{
     width:30px;
     height:50px; 
     margin: 10px 0px 0px 40px;
 }
 
+/*
 .navBar ul{
     float: right;
     margin-right: 20px
@@ -38,8 +39,40 @@
 /* .navBar a:hover{
     background-color: #FFE3C2;
     transition: .5s;
-} */
+}
+*/
 
+.mobileOptions {
+  flex-direction: row;
+  align-items: center;
+  display: none;
+}
+
+.loginOptions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mobileOptions *  {
+  font-size: 28px;
+  margin: auto 16px;
+  cursor: pointer;
+}
+
+.activeLink {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  align-items: baseline;
+}
+.activeLink * {
+  font-size: 28px;
+  color: black;
+  margin: 0 16px;
+}
+
+/*
 .checkbtn{
     font-size:30px;
     color: black;
@@ -53,10 +86,12 @@
 #check{
     display: none;
 }
+*/
 
 @media (max-width: 858px){
     .navBar{
-        position: absolute;
+        /* it should be 'position: fixed' */ 
+        /*position: absolute;*/
         z-index: 100;
     }
     .checkbtn{
@@ -64,11 +99,34 @@
         margin: 0 28px 0 8px;
 
     }
-    .navBar label img{
+    .logo img{
         width:30px;
         height:50px; 
         margin: 10px 10px 0px 20px;
     }
+    .loginOptions {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: right;
+      position: absolute;
+      left: 200px;
+      top: 80px;
+      background-color: white;
+      width: 100%;
+      height: 80px;
+      z-index: 99;
+    }
+    .visible {
+      opacity: 1;
+    }
+    .hidden {
+      opacity: 0;
+    }
+    .mobileOptions {
+      display: flex;
+    }
+    /* Why?!
     .items-nav{
         position: absolute;
         width: 100%;
@@ -94,6 +152,7 @@
         left: 0;
         background-color:gray;
     }
+    */
 }
 
 
