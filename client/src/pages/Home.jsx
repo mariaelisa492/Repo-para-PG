@@ -21,13 +21,15 @@ export const Home = () => {
 
   return (
     <div>
-      
+
       <div>
         <NavBar />
       </div>
+
       <div>
         <SideBar categories={categories} />
       </div>
+
       <div>
         <SlideShow />
       </div>
