@@ -80,9 +80,10 @@ const deleteProduct = async (req, res) => {
     const { id } = req.params;
 
     try{
-        await Products.findOneAndRemove({_id: id});
+        const remove = await Products.findOneAndRemove({_id: id});
         res.status(200).json({
-            message: 'Successful'
+            message: 'Successful',
+            remove
         });
     }
 

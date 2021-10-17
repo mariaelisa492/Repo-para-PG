@@ -7,6 +7,7 @@ import SideBar from '../SideBar/SideBar';
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
 import { FaHeart } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
+import { categories } from '../Categories/categoriesExport';
 
 
 //>> Fake data for testing and mockup
@@ -31,7 +32,7 @@ export default function(props) {
   return (
     <div className='fullview'>
 
-      <SideBar />
+      <SideBar categories={categories} />
 
       <div className='detail'>
 
