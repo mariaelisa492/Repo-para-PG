@@ -10,6 +10,12 @@
     margin:20px
 }
 
+@media (max-width:830px) {
+    .productList{
+        grid-template-columns: repeat(1, minmax(300px, 1fr));
+    }
+}
+
 .button_pagination{
     display: flex;
     justify-content: center
