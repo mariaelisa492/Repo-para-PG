@@ -35,11 +35,15 @@ export default function Dashboard() {
         },
         {
             name: "Delete",
-            cell: row => (<button type="button" onClick={() => dispatch(deleteProduct(row._id))}>X</button>)
+            cell: row => (<button
+                    type="button"
+                    onClick={() => dispatch(deleteProduct(row._id))} 
+                    className='dashboard-button'
+                >X</button>)
         },
         {
             name: "Update",
-            cell: () => <button>Update</button>
+            cell: () => <button className='dashboard-button'>Update</button>
         }
         /*  {
              name: "",
