@@ -7,6 +7,17 @@
     font-size: 17px;
 }
 
+.table{
+    position: fixed;
+    width: 84vw;
+    margin: 4vw 0px 0px 1vw;
+}
+
+.create{
+    position: fixed;
+    margin: 4vw 0 0 72vw;
+}
+
 .add-button:hover {
     background-color: rgba(19, 144, 247, 0.363);
     transition: 0.4s;
@@ -17,5 +28,19 @@
     display: flex;
     justify-content: center;
     margin-left: 10px;
+}
+
+.actions{
+    display: flex;
+    justify-content: space-between;
+}
+
+.actions button{
+    border:none;
+    background-color: transparent;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 0 0 0;
+    padding: 0 7px 0 2px;
 }
 
