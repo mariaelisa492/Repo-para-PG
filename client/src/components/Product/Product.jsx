@@ -20,7 +20,7 @@ export default function Product({ _id, img, name, price, rating, isActive }) {
                         <h4><a href="">{name}</a></h4>
                         <p><Rating rating={9}/></p>
                         <div class="product-bottom-details">
-                            <div class="product-price"><small>$96.00</small>$ {price}</div>
+                            <div class="product-price"><small>$ {price + 200 }</small>$ {price}</div>
                             <Link className="link-product" to={'detail/' + _id}>
                             <div class="product-links">
                                 <a href=""><i class="fas fa-eye"></i></a>

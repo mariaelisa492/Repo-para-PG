@@ -28,6 +28,11 @@
     background: none;
 }
 
+.button_pagination .pagination{
+    display: flex;
+    margin: 6px 7px 0 0;
+
+}
 
 .formPrice {
     display: flex;

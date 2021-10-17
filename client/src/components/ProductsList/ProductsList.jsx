@@ -1,43 +1,43 @@
-import React, {useState} from "react";
-import {useDispatch} from 'react-redux'
-import Product  from "../Product/Product";
+import React, { useState } from "react";
+import { useDispatch } from 'react-redux'
+import Product from "../Product/Product";
 import { getProductsByPriceAsc, getProductsByPriceDesc, getProducts, filterProductsByPriceLessThan, filterProductsByPriceMoreThan, filterProductsByPriceRange } from "../../redux/actions";
 import "./productsList.css";
 import { PaginationOptions } from "../Pagination Options/PaginationOptions";
-import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos} from 'react-icons/md';
+import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/md';
 
 
-export default function ProductsList ({ filteredProducts }){
+export default function ProductsList({ filteredProducts }) {
   console.log(filteredProducts, "ProductsList");
-  
+
   const [limit, setLimit] = useState(0);
   const [lessThan, setLessThan] = useState(null)
   const [moreThan, setMoreThan] = useState(null)
   const dispatch = useDispatch()
 
-  function handleSelectOrderChange(e){
+  function handleSelectOrderChange(e) {
 
     let value = e.target.value
 
-    if(value === 'Ascending Order'){
+    if (value === 'Ascending Order') {
       dispatch(getProductsByPriceAsc())
     }
-    if(value === 'Descending Order'){
+    if (value === 'Descending Order') {
       dispatch(getProductsByPriceDesc())
     }
   }
 
-  function handleSubmitPriceFilter(e, moreThan, lessThan){
+  function handleSubmitPriceFilter(e, moreThan, lessThan) {
     e.preventDefault()
 
-    if(lessThan === null){
+    if (lessThan === null) {
       dispatch(filterProductsByPriceMoreThan(moreThan))
     }
-    if(moreThan === null){
+    if (moreThan === null) {
       dispatch(filterProductsByPriceLessThan(lessThan))
     }
-    else{
-      dispatch(filterProductsByPriceRange(moreThan,lessThan))
+    else {
+      dispatch(filterProductsByPriceRange(moreThan, lessThan))
     }
 
   }
@@ -98,7 +98,10 @@ export default function ProductsList ({ filteredProducts }){
         </div> */}
         <div >
           <div className="button_pagination">
-            <button><MdOutlineArrowBackIosNew onClick={lower}/> <h4>Previous</h4> </button>
+            <button><MdOutlineArrowBackIosNew onClick={lower} /> <h4>Previous</h4> </button>
+            <div className="pagination">
+              <p>Showing {limit} to {limit + 6 < filteredProducts.length ? limit + 6 : filteredProducts.length} of {filteredProducts.length} products</p>
+            </div>
             <button><h4>Next</h4> <MdOutlineArrowForwardIos onClick={raise} /></button>
           </div>
         </div>
