@@ -28,7 +28,6 @@ function App() {
       <Route exact path = "/cart" component={Cart}/>
       <Route exact path = "/admin" component={Dashboard}/>
       <Route exact path = "/" component={Home}/>
-      <Route exact path = "/create" component={Products}/>
       <Route exact path = '/categories' component={Categories}/>
       </Switch>
     </div>
