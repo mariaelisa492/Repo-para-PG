@@ -122,11 +122,12 @@ export const rootReducer = (state = initialState, action) => {
       
    	case FILTER_CATEGORIES:
 			var filt4;
+			console.log(action.payload, 'categories Filters redux')
 			if(state.filteredTF){
-				filt4 = state.filteredProducts.filter((e) => e.category.includes(action.payload))
+				filt4 = state.filteredProducts.filter((e) => e.category === action.payload)
 			}
 			else{
-				filt4 = state.products.filter((e) => e.category.includes(action.payload))
+				filt4 = state.products.filter((e) => e.category === action.payload)
 			}
 			return {
 				...state,

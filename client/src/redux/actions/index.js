@@ -86,6 +86,7 @@ export const filterProductsByPriceRange = (price1, price2) => {
 }
 
 export const filterByCategory = (category) => {
+  
   return {
     type: FILTER_CATEGORIES,
     payload: category

@@ -1,45 +1,17 @@
 import './sideBar.css';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { filterByCategory } from '../../redux/actions';
 
 
-const categories = {
-  "Guitars": [
-    "Acoustic guitars",
-    "Electric guitars",
-    "Nylon/Classical",
-  ],
-  "Keyboards": [
-    "Electronic keyboards",
-    "Synthesizers",
-    "Electric pianos",
-    "Acoustic pianos",
-    "Grand pianos",
-  ],
-  "Percusion": [
-    "Acoustic drumkits",
-    "Electronic drumkits",
-    "Other",
-  ],
-  "Bass guitars": [
-    "Acoustic bass",
-    "Electric bass",
-  ],
-  "Pianos": [
-    "Grand piano",
-    "Vertical piano",
-  ],
-  "Mics": [
-    "Dinamic",
-    "Cardioid",
-    "Directional",
-  ],
-};
+export default function SideBar({categories}) {
 
-export default function SideBar(props) {
+  console.log(categories, 'sidebarCategories')
 
   const [ hidden, setHidden ] = useState(true);
-  const [ submenu, setSubmenu ] = useState(<>hello</>);
+  const [ submenu, setSubmenu ] = useState(<></>);
+  const dispatch = useDispatch()
 
   function show() {
     setHidden(false);
@@ -49,8 +21,25 @@ export default function SideBar(props) {
     setHidden(true);
   }
 
+  
+    function handleClick(event){
+      event.preventDefault()
+      console.log(event.target.innerText, 'value recieved from event on handleClick(subMenu)')
+      dispatch(filterByCategory(event.target.innerText))
+    }
+
   function toggle(e) {
-    setSubmenu(<ul>{categories[e.target.innerText].map(c => <li>{c}</li>)}</ul>);
+    setSubmenu(<ul>{
+      categories[e.target.innerText].map(c =>{
+        console.log(c,'|||| mappedInnerTextFromCategories ||||')
+        return(
+          <li onClick={handleClick} >{c}</li>
+            )
+          }
+        )
+      }
+      </ul>
+    );
   }
 
   return (

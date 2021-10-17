@@ -4,6 +4,8 @@ import Footer from "../components/Footer/Footer";
 import { ProductsList } from "../components/ProductsList/ProductsList";
 import NavBar from "../components/NavBar/NavBar";
 import SlideShow from "../components/SlideShow/SlideShow";
+import SideBar from '../components/SideBar/SideBar'
+import { categories } from "../components/Categories/categoriesExport";
 
 export const Home = () => {
   const filteredProducts = useSelector((state) => state.filteredProducts);
@@ -22,6 +24,9 @@ export const Home = () => {
       
       <div>
         <NavBar />
+      </div>
+      <div>
+        <SideBar categories={categories} />
       </div>
       <div>
         <SlideShow />
