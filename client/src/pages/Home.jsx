@@ -1,10 +1,9 @@
-import React from "react";
+import React,{useState} from "react";
 import { useSelector } from "react-redux";
 import Footer from "../components/Footer/Footer";
 import ProductsList from "../components/ProductsList/ProductsList";
 import NavBar from "../components/NavBar/NavBar";
 import SlideShow from "../components/SlideShow/SlideShow";
-
 import SideBar from "../components/SideBar/SideBar";
 import DropDownMenu from "../components/DropDownMenu/DropDownMenu";
 import { categories } from "../components/Categories/categoriesExport";
