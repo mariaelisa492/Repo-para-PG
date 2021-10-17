@@ -34,10 +34,13 @@
     background: none;
 }
 
+.arrowPage:hover{
+    color: rgb(15, 90, 83);
+    text-decoration: underline;
+}
 .button_pagination .pagination{
     display: flex;
     margin: 6px 7px 0 0;
-
 }
 
 .formPrice {
