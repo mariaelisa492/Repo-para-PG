@@ -5,17 +5,21 @@
     border-radius: 4px;
     text-decoration: none;
     font-size: 17px;
+    height: 40px;
 }
 
 .table{
-    position: fixed;
-    width: 84vw;
-    margin: 4vw 0px 0px 1vw;
+    height: 74vh;
+    width: 85vw;
+    margin: 7vw -76px 35px 1vw;
 }
 
 .create{
-    position: fixed;
-    margin: 4vw 0 0 72vw;
+    padding: 6px 0 0 0;
+    margin: 0 0 0 0;
+    height: 40px;
+    width: 84px;
+    text-align: center;
 }
 
 .add-button:hover {
@@ -27,7 +31,7 @@
     margin-top: 20px;
     display: flex;
     justify-content: center;
-    margin-left: 10px;
+    margin-left: 12px;
 }
 
 .actions{
