@@ -1,4 +1,6 @@
 import './detail.css';
+import {useState, useEffect} from 'react'
+import { useSelector } from 'react-redux';
 import data from './data';
 import AddToCart from '../AddToCart/Addtocart';
 import Rating from '../Rating/Rating';
@@ -10,9 +12,6 @@ import { useParams } from 'react-router-dom';
 import { categories } from '../Categories/categoriesExport';
 
 
-//>> Fake data for testing and mockup
-const { name, description, image, stock, brand, model, price, category, _id } = data[0];
-const summary = description.split('.')[0];
 //>> temp solution to rating
 const styleRating = { 
   color: 'orange',
@@ -23,12 +22,33 @@ const styleRating = {
   fontSize: '28px',
 };
 
-export default function(props) {
 
-  const id = useParams();
-  // Still using fake data (above)
-  // use this id and and action to get the REAL data!
+export default function() {
+  
+  const {id} = useParams();
+  
+  const [initialQty, setInitialQty] = useState(0)
+  
+  const products = useSelector(state => state.products)
+  const detailProduct = products.find(item => item._id === id)
+  
+  const {image, name, description, category, _id, stock, brand, model, price} = detailProduct
+  const summary = description.split('.')[0];
+  
+  const itemsCart = useSelector(state => state.cart)
+  const item = itemsCart.find(item => item._id === _id)
 
+  useEffect(() => {
+    if (item) {
+      return setInitialQty(item.qty)
+    }
+  }, [AddToCart])
+  
+
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, [])
+	
   return (
     <div className='fullview'>
 
@@ -48,7 +68,7 @@ export default function(props) {
             <span>$ {price}</span>
           </div>
 
-          <AddToCart id={id} />
+          <AddToCart id={id} qty={item ? item.qty : initialQty}/>
 
           <div style={styleRating}>
             <Rating rating={9} />

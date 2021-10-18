@@ -17,7 +17,9 @@ export default function Product({ _id, img, name, price, rating, isActive }) {
                     </div>
                     <div class="product-details">
                         <span class="product-catagory">MUSIC</span>
+                        <NavLink className="link-product" to={'detail/' + _id}>
                         <h4><a href="">{name}</a></h4>
+                        </NavLink>
                         <p><Rating rating={9}/></p>
                         <div class="product-bottom-details">
                             <div class="product-price"><small>$ {price + 200 }</small>$ {price}</div>
