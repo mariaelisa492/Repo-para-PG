@@ -1,5 +1,5 @@
 .container{
-    height: 100%;
+    height: 175vh;
     
 }
 
@@ -70,10 +70,7 @@
     justify-content: center;
 }
 
-@media (max-width: 858px){
-    .container{
-        overflow-Y: scroll;
-    }
+@media (max-width: 858px){   
     .userName{
         width: 90%;
         margin-bottom: 30px;
