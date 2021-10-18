@@ -1,12 +1,12 @@
 import axios from "axios";
 import {
-	LOCALHOST_URL, GET_BYNAME,
-	ORDER_PRICE_ASC, ORDER_PRICE_DESC,
-	FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
+  LOCALHOST_URL, GET_BYNAME,
+  ORDER_PRICE_ASC, ORDER_PRICE_DESC,
+  FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
   ADD_TO_CART, REMOVE_FROM_CART,
   ADJUST_QTY, LOAD_CURRENT, FILTER_CATEGORIES,
   GET_PRODUCTS, FILTER_PRICE_RANGE
-  } from "../constants/index"
+} from "../constants/index"
 
 export const getProducts = () => {
   return async (dispatch) => {
@@ -44,14 +44,44 @@ export const deleteProduct = (id) => {
         type: "DELETE_PRODUCT",
         payload: deleteProd.data.remove,
       })
-    }  
+    }
     catch (error) {
       console.log("Error al eliminar productos");
     }
   }
+};
+
+export const getSingleProduct = (id) => {
+  return async (dispatch) => {
+    try {
+      const getSingle = await axios.get(`http://localhost:5000/products/${id}`);
+      return dispatch({
+        type: "GET_SINGLE_PRODUCT",
+        payload: getSingle.data
+      })
+    }
+    catch (error) {
+      console.log("Error al obtener un unico producto")
+    }
+  }
 }
 
-  // FILTROS Y ORDENAMIENTOS //
+export const updateProduct = (products, id) => {
+  return async (dispatch) => {
+    try {
+      const updateProd = await axios.put(`http://localhost:5000/products/${id}`, products);
+      return dispatch({
+        type: "UPDATE_PRODUCT",
+        payload: updateProd
+      })  
+    }
+    catch (error) {
+      console.log("Error al actualizar un producto")
+    }
+  }
+}
+
+// FILTROS Y ORDENAMIENTOS //
 export const getProductsByPriceAsc = () => {
   return {
     type: ORDER_PRICE_ASC
@@ -86,7 +116,7 @@ export const filterProductsByPriceRange = (price1, price2) => {
 }
 
 export const filterByCategory = (category) => {
-  
+
   return {
     type: FILTER_CATEGORIES,
     payload: category
@@ -102,7 +132,7 @@ export const addCart = (itemId) => {
     }
   }
 };
- 
+
 export const removeCart = (itemId) => {
   return {
     type: REMOVE_FROM_CART,
