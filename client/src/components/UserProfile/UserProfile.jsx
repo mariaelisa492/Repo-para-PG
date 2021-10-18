@@ -22,7 +22,7 @@ export function UserProfile() {
 
             <div>
                 <NavBar />
-                <div className='container'>
+                <div className='containerUserProfile'>
 
                     <div className='userProfileContainer'>
                         <div className='userImageContainer'>
