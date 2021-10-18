@@ -65,7 +65,7 @@ export function UserProfile() {
 
                         <div className='userName'>
                             <div className='cardContainer'>
-                                <img src="http://assets.stickpng.com/thumbs/58482363cef1014c0b5e49c1.png" className="imgCard" />
+                                <img src="https://pbs.twimg.com/profile_images/1417870168626274305/SQh0W_dC_400x400.jpg" className="imgCard" />
                                 <p className='userData'>Visa 5472</p>
                             </div>
                             <div className='cardContainer'>
