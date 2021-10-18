@@ -8,7 +8,7 @@ import {Home} from './pages/Home'
 import {Detail} from './pages/Detail';
 import {getProducts} from './redux/actions/index'
 import {useDispatch} from 'react-redux'
-import { UserProfile } from './components/User/UserProfile';
+import { UserProfile } from './components/UserProfile/UserProfile';
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import { Categories } from './components/Categories/Categories';
 
