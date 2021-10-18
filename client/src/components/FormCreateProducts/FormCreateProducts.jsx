@@ -3,19 +3,14 @@ import { saveImages } from './utils/saveImages';
 import { validationFunction } from './utils/validationFunction';
 import { useDispatch } from 'react-redux';
 import { setNewProduct } from './utils/setNewProduct';
+import { categories } from '../Categories/categoriesExport'
 import './FormCreateProducts.css'
 
-// Array con las categorias para hacer el <select>
-const productCategories = [
-  'Acoustic Violin',
-  'Digital Drums',
-  'Digital Keyboards',
-  'Electro-Acoustic Guitars',
-  'Electric Bass',
-  'Electric Guitars',
-  'Electric Violin',
-  'Other'
-];
+let AllCategories = []
+
+for( key in categories){
+  AllCategories = [...AllCategories, ...categories[key]]
+}
 
 export default function Create() {
   const dispatch = useDispatch();
@@ -228,7 +223,7 @@ export default function Create() {
               value={inputProducts.category}
             >
               <option value=''>Select Category</option>
-              {productCategories.map(category =>
+              {AllCategories.map(category => 
                 <option value={category} key={category}>{category}</option>
               )}
             </select>
