@@ -49,14 +49,14 @@ export default function ProductsList({ filteredProducts }) {
 
   
   function raise() {
-    if (limit + 6 <= filteredProducts.length) {
-      setLimit(limit + 6)
+    if (limit + 8 <= filteredProducts.length) {
+      setLimit(limit + 8)
     }
   }
 
   function lower() {
-    if (limit - 6 >= 0) {
-      setLimit(limit - 6)
+    if (limit - 8 >= 0) {
+      setLimit(limit - 8)
     }
   }
   
@@ -82,14 +82,14 @@ export default function ProductsList({ filteredProducts }) {
     <>
       <div className="containerList">
         <div className="productList">
-          {filteredProducts.slice(limit, limit + 6).map((e) => {
+          {filteredProducts.slice(limit, limit + 8).map((e) => {
             return (
               <Product
                 img={e.image}
                 name={e.name}
                 price={e.price}
                 rating={e.rating}
-                id={e._id}
+                _id={e._id}
                 isActive={e.isActive}
               />
             );
@@ -98,35 +98,37 @@ export default function ProductsList({ filteredProducts }) {
         
         <div >
           <div className="button_pagination">
-            <button onClick={lower} ><MdOutlineArrowBackIosNew/> <h4>Previous</h4> </button>
+            <button onClick={lower} className='arrowPage'><MdOutlineArrowBackIosNew  /> <h4  >Previous</h4> </button>
             <div className="pagination">
-              <p>Showing {limit} to {limit + 6 < filteredProducts.length ? limit + 6 : filteredProducts.length} of {filteredProducts.length} products</p>
+              <p>{limit} to {limit + 8 < filteredProducts.length ? limit + 8 : filteredProducts.length} of {filteredProducts.length}</p>
             </div>
-            <button onClick={raise} ><h4>Next</h4> <MdOutlineArrowForwardIos /></button>
+            <button onClick={raise} className='arrowPage'><h4>Next</h4> <MdOutlineArrowForwardIos /></button>
           </div>
-        </div>
-        <div>
-          <label>Order by Price </label>
-          <select name='orderByPrice' onChange={(e) => handleSelectOrderChange(e)}>
-            <option value=''></option>
-            <option value='Ascending Order'>Ascending Order</option>
-            <option value='Descending Order'>Descending Order</option>
-          </select>
         </div>
           <hr/>
 
         <div className='formPrice'>
-          <form onSubmit={(e) => handleSubmitPriceFilter(e, moreThan, lessThan)}>
-            <label>Filter By Price</label>
-            <p>More Than</p>
-            <input name='more' type='number' value={moreThan} onChange={(e) => handleInputChange(e)}></input>
-            <p>Less Than</p>
-            <input name='less' type='number' value={lessThan} onChange={(e) => handleInputChange(e)}></input>
-            <p></p>
-            <button type='submit'>Filter</button>
-          </form>
-        </div>
-       
+          <div>
+            <label className='labels'>Order by Price </label>
+            <select name='orderByPrice' onChange={(e) => handleSelectOrderChange(e)}>
+              <option value=''></option>
+              <option value='Ascending Order'>Ascending Order</option>
+              <option value='Descending Order'>Descending Order</option>
+            </select>
+          </div>
+          <div className='filterPrice'>
+              <form onSubmit={(e) => handleSubmitPriceFilter(e, moreThan, lessThan)}>
+                <label className='labels'>Filter By Price</label>
+                <p>More Than</p>
+                <input name='more' type='number' value={moreThan} onChange={(e) => handleInputChange(e)}></input>
+                <p>Less Than</p>
+                <input name='less' type='number' value={lessThan} onChange={(e) => handleInputChange(e)}></input>
+                <p></p>
+                <button type='submit'>Filter</button>
+              </form>
+            </div>
+          </div>
+        
       </div>
     </>
   );

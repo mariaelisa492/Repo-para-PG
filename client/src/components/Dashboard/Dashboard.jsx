@@ -78,8 +78,9 @@ export default function Dashboard() {
                         title="My products"
                         striped
                         highlightOnHover
-                        paginationPerPage={5}
-                        paginationRowsPerPageOptions={[5, 8]}
+                        // pointerOnHover
+                        paginationPerPage = {5}
+                        paginationRowsPerPageOptions = {[5,8]}
                         pagination
                     />
                 </div>

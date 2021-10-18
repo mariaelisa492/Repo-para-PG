@@ -1,0 +1,100 @@
+.dropDown 
+{
+  display: none;
+}
+
+@media (max-width: 858px){
+  .dropDown 
+  {
+    position: absolute;
+    top: 80px;
+    left: 0px;
+    width: 100%;
+    background-color: #f8f8f8;
+    z-index: 101;
+    display: flex;
+    flex-direction: column;
+    transition: all 500ms;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  .ddCategories 
+  {
+    font-size: 24px;
+    font-family: 'ubuntu', 'cantarell', sans-serif;
+    text-align: center;
+  }
+
+  .ddCategories li span
+  {
+    display: block;
+    padding: 20px;
+    border-top: 1px solid orange;
+    color: #787878;
+    cursor: pointer;
+  }
+
+  .ddCategories li:last-child span
+  {
+    border-bottom: 1px solid orange;
+  }
+
+  .ddSubcategories 
+  {
+    background-color: #eeeeee;
+    overflow: hidden;
+    transition: all 500ms;
+  }
+
+  .ddSubcategories li 
+  {
+    display: block;
+    padding: 20px;
+    font-size: 24px;
+    font-family: 'ubuntu', 'cantarel', sans-serif;
+    text-align: center;
+    border-top: 1px solid #d0d0d0;
+    color: #707070;
+  }
+
+  .ddOpenclose 
+  {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: orange;
+  }
+
+  .ddMenuclose
+  {
+    display: block;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+  .ddHidden 
+  {
+    top: -1000px;
+  }
+
+  .ddVisible
+  {
+    top: 80px;
+  }
+  
+  .smHidden 
+  {
+    max-height: 0px;
+    transition: all 500ms;
+  }
+
+  .smVisible 
+  {
+    max-height: 100%;
+    transition: all 500ms;
+  }
+}

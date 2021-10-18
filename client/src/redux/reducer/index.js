@@ -4,7 +4,7 @@ import {
 	FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
 	FILTER_PRICE_RANGE, DELETE_PRODUCT,
 	ADD_TO_CART, REMOVE_FROM_CART,
-	ADJUST_QTY, LOAD_CURRENT, FILTER_CATEGORIES, GET_SINGLE_PRODUCT, UPDATE_PRODUCT
+	ADJUST_QTY, LOAD_CURRENT, FILTER_CATEGORIES, GET_SINGLE_PRODUCT, UPDATE_PRODUCT, REMOVIE_ITEM
 } from "../constants/index"
 
 const initialState = {
@@ -40,16 +40,18 @@ export const rootReducer = (state = initialState, action) => {
 				...state,
 				products: [...deletedProduct]
 			};
+
 		case GET_SINGLE_PRODUCT:
 			return {
 				...state,
 				products: action.payload
-			}	
+			}
+
 		case UPDATE_PRODUCT:
 			return {
 				...state,
 				products: action.payload
-			}	
+			}
 
 		// ---- ORDENAMIENTOS ---- //
 
@@ -149,12 +151,12 @@ export const rootReducer = (state = initialState, action) => {
 
 		case ADD_TO_CART:
 			// modificar name por id
-			const item = state.products.find(item => item.name === action.payload.id)
-			const inCart = state.cart.find(item => item.name === action.payload.id ? true : false)
+			const item = state.products.find(item => item._id === action.payload.id)
+			const inCart = state.cart.find(item => item._id === action.payload.id ? true : false)
 			return {
 				...state,
 				cart: inCart ?
-					state.cart.map(item => item.name === action.payload.id ?
+					state.cart.map(item => item._id === action.payload.id ?
 						{ ...item, qty: item.qty + 1 }
 						: item
 					)
@@ -164,18 +166,16 @@ export const rootReducer = (state = initialState, action) => {
 		case REMOVE_FROM_CART:
 			return {
 				...state,
-				cart: inCart ?
-					state.cart.map(item => item.name === action.payload.id ?
-						{ ...item, qty: item.qty + 1 }
-						: item
-					)
-					: [...state.cart, { ...item, qty: 1 }]
+				cart: state.cart.map(item => item.name === action.payload.id ?
+					{ ...item, qty: item.qty - 1 }
+					: item
+				)
 			};
 
-		case ADJUST_QTY:
+		case REMOVE_ITEM:
 			return {
 				...state,
-				cart: state.cart.map(item.name === action.payload.id ? { ...item, qty: action.payload.qty } : item)
+				cart: state.cart.filter(item._id !== action.payload.id)
 			};
 
 		case LOAD_CURRENT:

@@ -1,0 +1,13 @@
+.mainView
+{
+  display: grid;
+  grid-template-columns: 50px 1fr;
+}
+
+@media (max-width: 858px)
+{
+  .mainView
+  {
+   display: flex;
+  } 
+}

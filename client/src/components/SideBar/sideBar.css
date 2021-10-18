@@ -12,7 +12,7 @@
   box-shadow: 2px 0px 2px rgba(0, 0, 0, 0.4);
   position: absolute;
   height: 100%;
-  background-color: rgba(255, 2550, 255, 0.8);
+  background-color: rgba(255, 2550, 255, 0.9);
   transition: all 500ms;
   z-index: 99;
 }
@@ -35,7 +35,7 @@
 
 .categories li, .submenu li
 {
-  color: #888;
+  color: #787878;
   font-size: 24px;
   font-family: 'ubuntu', 'cantarell', sans-serif;
   padding: 5px 30px;
