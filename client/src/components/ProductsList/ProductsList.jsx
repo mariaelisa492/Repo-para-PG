@@ -49,14 +49,14 @@ export default function ProductsList({ filteredProducts }) {
 
   
   function raise() {
-    if (limit + 6 <= filteredProducts.length) {
-      setLimit(limit + 6)
+    if (limit + 8 <= filteredProducts.length) {
+      setLimit(limit + 8)
     }
   }
 
   function lower() {
-    if (limit - 6 >= 0) {
-      setLimit(limit - 6)
+    if (limit - 8 >= 0) {
+      setLimit(limit - 8)
     }
   }
   
@@ -82,7 +82,7 @@ export default function ProductsList({ filteredProducts }) {
     <>
       <div className="containerList">
         <div className="productList">
-          {filteredProducts.slice(limit, limit + 6).map((e) => {
+          {filteredProducts.slice(limit, limit + 8).map((e) => {
             return (
               <Product
                 img={e.image}
@@ -100,7 +100,7 @@ export default function ProductsList({ filteredProducts }) {
           <div className="button_pagination">
             <button onClick={lower} className='arrowPage'><MdOutlineArrowBackIosNew  /> <h4  >Previous</h4> </button>
             <div className="pagination">
-              <p>{limit} to {limit + 6 < filteredProducts.length ? limit + 6 : filteredProducts.length} of {filteredProducts.length}</p>
+              <p>{limit} to {limit + 8 < filteredProducts.length ? limit + 8 : filteredProducts.length} of {filteredProducts.length}</p>
             </div>
             <button onClick={raise} className='arrowPage'><h4>Next</h4> <MdOutlineArrowForwardIos /></button>
           </div>

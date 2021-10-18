@@ -1,13 +1,19 @@
 .containerList {
-    width: 100%;
+    width: 90vw;
 }
 
 .productList {
-    display: grid;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px
+    /* display: grid;
     grid-template-columns: repeat(3, minmax(300px, 1fr));
     grid-column-gap: 45px;
     grid-row-gap: 20px;
-    margin:20px
+    margin:20px */
 }
 
 /* @media (max-width:830px) {
