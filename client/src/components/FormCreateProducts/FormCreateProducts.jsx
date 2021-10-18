@@ -8,7 +8,7 @@ import './FormCreateProducts.css'
 
 let AllCategories = []
 
-for( key in categories){
+for( let key in categories){
   AllCategories = [...AllCategories, ...categories[key]]
 }
 
