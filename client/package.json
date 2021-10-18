@@ -13,6 +13,7 @@
     "cloudinary": "^1.27.1",
     "fetch": "^1.1.0",
     "react": "^17.0.2",
+    "react-data-table-component": "^7.4.4",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "react-redux": "^7.2.5",
@@ -20,6 +21,7 @@
     "react-scripts": "4.0.3",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
+    "styled-components": "^5.3.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
