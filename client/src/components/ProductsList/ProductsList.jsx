@@ -105,28 +105,30 @@ export default function ProductsList({ filteredProducts }) {
             <button onClick={raise} className='arrowPage'><h4>Next</h4> <MdOutlineArrowForwardIos /></button>
           </div>
         </div>
-        <div>
-          <label>Order by Price </label>
-          <select name='orderByPrice' onChange={(e) => handleSelectOrderChange(e)}>
-            <option value=''></option>
-            <option value='Ascending Order'>Ascending Order</option>
-            <option value='Descending Order'>Descending Order</option>
-          </select>
-        </div>
           <hr/>
 
         <div className='formPrice'>
-          <form onSubmit={(e) => handleSubmitPriceFilter(e, moreThan, lessThan)}>
-            <label>Filter By Price</label>
-            <p>More Than</p>
-            <input name='more' type='number' value={moreThan} onChange={(e) => handleInputChange(e)}></input>
-            <p>Less Than</p>
-            <input name='less' type='number' value={lessThan} onChange={(e) => handleInputChange(e)}></input>
-            <p></p>
-            <button type='submit'>Filter</button>
-          </form>
-        </div>
-       
+          <div>
+            <label className='labels'>Order by Price </label>
+            <select name='orderByPrice' onChange={(e) => handleSelectOrderChange(e)}>
+              <option value=''></option>
+              <option value='Ascending Order'>Ascending Order</option>
+              <option value='Descending Order'>Descending Order</option>
+            </select>
+          </div>
+          <div className='filterPrice'>
+              <form onSubmit={(e) => handleSubmitPriceFilter(e, moreThan, lessThan)}>
+                <label className='labels'>Filter By Price</label>
+                <p>More Than</p>
+                <input name='more' type='number' value={moreThan} onChange={(e) => handleInputChange(e)}></input>
+                <p>Less Than</p>
+                <input name='less' type='number' value={lessThan} onChange={(e) => handleInputChange(e)}></input>
+                <p></p>
+                <button type='submit'>Filter</button>
+              </form>
+            </div>
+          </div>
+        
       </div>
     </>
   );
