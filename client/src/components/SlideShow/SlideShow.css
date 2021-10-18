@@ -8,9 +8,9 @@
 .containerS {
 position: relative;
 overflow: hidden;
-height: 450px;
+height: 60vh;
 object-fit: cover;
-width: 70vh ;
+width: 60vw ;
 text-align: center;
 align-self: center;
 }
