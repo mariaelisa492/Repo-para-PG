@@ -4,7 +4,7 @@ import {
 	ORDER_PRICE_ASC, ORDER_PRICE_DESC,
 	FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
   ADD_TO_CART, REMOVE_FROM_CART,
-  ADJUST_QTY, LOAD_CURRENT, FILTER_CATEGORIES,
+  REMOVE_ITEM, LOAD_CURRENT, FILTER_CATEGORIES,
   GET_PRODUCTS, FILTER_PRICE_RANGE
   } from "../constants/index"
 
@@ -112,19 +112,11 @@ export const removeCart = (itemId) => {
   }
 };
 
-export const adjustQty = (itemId, value) => {
+export const removeItem = (itemId) => {
   return {
-    type: ADJUST_QTY,
+    type: REMOVE_ITEM,
     payload: {
-      id: itemId,
-      qty: value
+      id: itemId
     }
-  }
-};
-
-export const currentCart = (item) => {
-  return {
-    type: LOAD_CURRENT,
-    payload: item,
   }
 };

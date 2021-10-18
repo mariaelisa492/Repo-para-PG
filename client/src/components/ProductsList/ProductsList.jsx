@@ -89,7 +89,7 @@ export default function ProductsList({ filteredProducts }) {
                 name={e.name}
                 price={e.price}
                 rating={e.rating}
-                id={e._id}
+                _id={e._id}
                 isActive={e.isActive}
               />
             );
