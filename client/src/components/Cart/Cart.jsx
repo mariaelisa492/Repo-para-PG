@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { useSelector } from 'react-redux'
 import ItemCart from '../itemCart/itemCart'
+import NavBar from '../NavBar/NavBar'
 import "./cart.css"
 
 export default function Cart() {
@@ -31,8 +32,7 @@ export default function Cart() {
             <div className='conteinerCart'>
             
                 <div className='navBar'>
-                    <h1 className='Logo'>HOME</h1>
-                    <strong><h2>CART</h2></strong>
+                 <NavBar/>
                 </div>
 
                 <div className='cartOptions'>
