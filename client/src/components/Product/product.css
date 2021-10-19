@@ -70,7 +70,7 @@
     font-size: 15px;
     line-height: 22px;
     margin-bottom: 18px;
-    color: #999;
+    color: #fbb72c
 }
 
 .product-bottom-details {
@@ -107,11 +107,12 @@
     margin-left: 5px;
     color: #e1e1e1;
     transition: 0.3s;
-    font-size: 17px;
+    font-size: 25px;
 }
 
 .product-links a:hover {
     color: #fbb72c;
 }
+
 
 
