@@ -1,0 +1,20 @@
+.cart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteinerCart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+}
+
+.cartOptions{
+    display: flex;
+    justify-content: center;
+    align-items: initial;
+    flex-direction: row;
+  
+}

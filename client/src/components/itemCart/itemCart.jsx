@@ -1,7 +1,7 @@
 import React from "react";
 import { removeItem } from "../../redux/actions/index";
-import Addtocart from "../AddToCart/Addtocart";
 import { useDispatch } from "react-redux";
+import SetItem from "../setItemCart/SetItem";
 import './itemCart.css'
 
 export default function ItemCart({ item }) {
@@ -23,9 +23,9 @@ export default function ItemCart({ item }) {
           <p className="itemPrice">${price}</p>
         </div>
           <div className="cartActions">
-              <Addtocart id={_id} qty={qty} />
-            <span>X</span>
-        </div>
+            <SetItem id={_id} qty={qty} />
+            <button onClick={(e) => {handleRemoveItem(e)}}>X</button>
+          </div>
       </div>
     </div>
   );
