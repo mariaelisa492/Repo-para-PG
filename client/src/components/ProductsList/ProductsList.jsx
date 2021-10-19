@@ -91,6 +91,7 @@ export default function ProductsList({ filteredProducts }) {
                 rating={e.rating}
                 _id={e._id}
                 isActive={e.isActive}
+                key={e.name}
               />
             );
           })}
