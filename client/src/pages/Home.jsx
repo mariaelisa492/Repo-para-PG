@@ -33,7 +33,7 @@ export const Home = () => {
       <div>
         <NavBar showDropDownMenu={showDropDownMenu} />
       </div>
-
+      <h1>HOLAAAAA</h1>
       <div className='mainView' >
         <DropDownMenu showMenu={showMenu} showDropDownMenu={showDropDownMenu} />
         <SideBar categories={categories} />
