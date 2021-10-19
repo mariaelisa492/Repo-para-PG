@@ -1,50 +1,86 @@
 .add-button {
-    padding: 5px 25px;
-    background: rgba(19, 144, 247, 0.219);
-    color: #3a97fb;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 17px;
-    height: 40px;
+  padding: 5px 25px;
+  background: rgba(19, 144, 247, 0.219);
+  color: #3a97fb;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 17px;
+  height: 40px;
 }
 
-.table{
-    height: 74vh;
-    width: 85vw;
-    margin: 7vw -76px 35px 1vw;
+.table {
+  height: 74vh;
+  width: 85vw;
+  margin: 7vw -76px 35px 1vw;
 }
 
-.create{
-    padding: 6px 0 0 0;
-    margin: 0 0 0 0;
-    height: 40px;
-    width: 84px;
-    text-align: center;
+.create {
+  padding: 6px 0 0 0;
+  margin: 0 0 0 0;
+  height: 40px;
+  width: 84px;
+  text-align: center;
 }
 
 .add-button:hover {
-    background-color: rgba(19, 144, 247, 0.363);
-    transition: 0.4s;
+  background-color: rgba(19, 144, 247, 0.363);
+  transition: 0.4s;
 }
 
 .add-button-div {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    margin-left: 12px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-left: 12px;
 }
 
-.actions{
-    display: flex;
-    justify-content: space-between;
+.actions {
+  display: flex;
+  justify-content: space-between;
 }
 
-.actions button{
-    border:none;
-    background-color: transparent;
-    font-size: 20px;
-    cursor: pointer;
-    margin: 0 0 0 0;
-    padding: 0 7px 0 2px;
+.actions button {
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 0 0 0 0;
+  padding: 0 7px 0 2px;
 }
 
+.reactModalOverlay {
+  background-color: #ffffffa9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: opacity 1000ms ease-in-out;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.reactModalContent {
+  background-color: #f6f6f6;
+  border-radius: 70px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  width: calc(100% - 10px);
+  max-width: 650px;
+  border-radius: 20px;
+  margin: 30px auto;
+  overflow: auto;
+}
+
+.reactModalContent::-webkit-scrollbar {
+  display: none;
+}

@@ -5,31 +5,32 @@
   align-content: center;
 }
 
-.backgroundCreateProducts {
+/* .backgroundCreateProducts {
   flex-direction: row;
   padding-top: 30px;
   background-color: #ff9f1c;
-}
+} */
 
 .formCreateProducts {
-  background-color: #f6f6f6;
-  font-size: 20px;
+  /* background-color: #f6f6f6;
   width: calc(100% - 10px);
   max-width: 750px;
-  border-radius: 30px;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px; 
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); */
   text-align: center;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   padding: 10px;
+  position: relative;
 }
 
 .labelCreateProducts {
-  margin: 10px;
-  font-weight: 500;
+  margin: 12px auto 8px auto;
+  font-weight: 400;
+  font-size: 18px;
 }
 
 .inputCreateProducts {
-  margin: 8px auto 0px auto;
+  margin: 0px auto;
   padding: 2px;
   border-radius: 9px;
   width: calc(100vw - 30px);
@@ -40,6 +41,7 @@
   outline: none;
   font-size: 0.9em;
   max-width: 500px;
+  font-size: 17px;
 }
 
 .inputCreate:focus {
@@ -54,7 +56,7 @@
 
 .btnCreate {
   cursor: pointer;
-  color: white;
+  color: #eee;
   background: #2EC4B6;
   border: none;
   margin: 20px auto;
@@ -62,4 +64,16 @@
   font-size: 20px;
   padding: 8px 10px;
   font-weight: 600;
+}
+
+.btnCloseFormProducts{
+  size: 15px;
+  cursor: pointer;
+  position: absolute;
+  width: 5px;
+  top: 12px;
+  right: 12px;
+  color: #eee;
+  background-color: rgb(230, 32, 32);
+  border-radius: 5px;
 }
