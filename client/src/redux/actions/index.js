@@ -39,7 +39,7 @@ export const getProductsByName = (name) => {
 export const deleteProduct = (id) => {
   return async (dispatch) => {
     try {
-      const deleteProd = await axios.delete(`http://localhost:5000/products/${id}`);
+      const deleteProd = await axios.delete(`${LOCALHOST_URL}/products/${id}`);
       return dispatch({
         type: "DELETE_PRODUCT",
         payload: deleteProd.data.remove,

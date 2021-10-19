@@ -37,7 +37,7 @@ export default function SideBar({categories}) {
     
     setSubmenu(<ul>{categories[e.target.innerText].map(c => {
       return (
-        <li>
+        <li key={c}>
           <span onClick={filterFunction}>{c}</span>
         </li>
       )}
@@ -52,7 +52,7 @@ export default function SideBar({categories}) {
         <div id='menu' className='categories'>
           <ul>
             {Object.keys(categories).map(c => {
-              return (<li>
+              return (<li key={c}>
                 <span onClick={toggle} className={c === active ? 'active' : ''}>{c}</span>
               </li>)
             })}

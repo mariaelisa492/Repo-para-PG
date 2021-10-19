@@ -2,6 +2,7 @@ import React from "react";
 import './product.css';
 import { NavLink } from "react-router-dom"; 
 import Rating from '../Rating/Rating';
+import { BsFillEyeFill, BsFillCartFill } from 'react-icons/bs';
 
 export default function Product({ _id, img, name, price, rating, isActive }) {
 
@@ -9,30 +10,28 @@ export default function Product({ _id, img, name, price, rating, isActive }) {
 
     return (
         <>
-            
-                <div class="product-card">
-                    <div class="badge">New</div>
-                    <div class="product-tumb">
+                <div className="product-card">
+                    <div className="badge">New</div>
+                    <div className="product-tumb">
                         <img src={img} alt=""/>
                     </div>
-                    <div class="product-details">
-                        <span class="product-catagory">MUSIC</span>
+                    <div className="product-details">
+                        <span className="product-catagory">MUSIC</span>
                         <NavLink className="link-product" to={'detail/' + _id}>
                         <h4><a href="">{name}</a></h4>
                         </NavLink>
                         <p><Rating rating={9}/></p>
-                        <div class="product-bottom-details">
-                            <div class="product-price"><small>$ {price + 200 }</small>$ {price}</div>
+                        <div className="product-bottom-details">
+                            <div className="product-price"><small>$ {price + 200 }</small>$ {price}</div>
                             <NavLink className="link-product" to={'detail/' + _id}>
-                            <div class="product-links">
-                                <a href=""><i class="fas fa-eye"></i></a>
-                                <a href=""><i class="fa fa-shopping-cart"></i></a>
+                            <div className="product-links">
+                                <a href=""><BsFillEyeFill/></a>
+                                <a href=""><BsFillCartFill/></a>
                             </div>
                             </NavLink>
                         </div>
                     </div>
                 </div>
-            
         </>
     )
 }
