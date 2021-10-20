@@ -9,8 +9,7 @@ function CheckoutBut({totalPrice, items}) {
 
   const createOrder = (data, actions) => {
     
-    console.log(data)
-    console.log(items)
+    
     return actions.order.create({
       purchase_units: [
         {
@@ -33,7 +32,9 @@ function CheckoutBut({totalPrice, items}) {
      
       <PayPalButton style={{ color: "blue", shape: "pill", label: "pay", height: 40 }}
         createOrder={(data, actions) => createOrder(data, actions)}
-        onApprove={(data, actions) => onApprove(data, actions)}
+        onApprove={(data, actions) => onApprove(data, actions).then(
+          console.log(data, "LA DATAAA")         
+        ) .then(console.log(items, "LOS ITEEEEMS"))}
         />
       
     </div>
