@@ -65,14 +65,24 @@ export default function Dashboard() {
         dispatch(deleteProduct(row._id));
       }
 
-    // estado para mostrar popup
-    const [showPopup, setShowPopup] = useState(false);
+    // estado para mostrar popup Crear
+    const [showPopupCreate, setShowPopupCreate] = useState(false);
 
-    const handleOpenPopup = () => {
-        setShowPopup(true)
+    const handleOpenPopupCreate = () => {
+        setShowPopupCreate(true)
     }
-    const handleClosePopup = () => {
-        setShowPopup(false)
+    const handleClosePopupCreate = () => {
+        setShowPopupCreate(false)
+    }
+
+    // estado para mostrar popup Update
+    const [showPopupUpdate, setShowPopupUpdate] = useState(false);
+
+    const handleOpenPopupUpdate = () => {
+        setShowPopupUpdate(true)
+    }
+    const handleClosePopupUpdate = () => {
+        setShowPopupUpdate(false)
     }
  
     return (
@@ -96,12 +106,16 @@ export default function Dashboard() {
                     />
                 </div>
                 {/* <div className="create"> */}
-                    <button className='create add-button' onClick={handleOpenPopup}>Create</button>
+                    <button className='create add-button' onClick={handleOpenPopupCreate}>Create</button>
                 {/* </div> */}
             </div>
 
-            <ReactModal isOpen={showPopup} className='reactModalContent' overlayClassName='reactModalOverlay'>
-                <FormCreateProducts handleClosePopup={handleClosePopup}/>
+            <ReactModal isOpen={showPopupCreate} className='reactModalContent' overlayClassName='reactModalOverlay'>
+                <FormCreateProducts handleClosePopup={handleClosePopupCreate}/>
+            </ReactModal>
+
+            <ReactModal isOpen={showPopupUpdate} className='reactModalContent' overlayClassName='reactModalOverlay'>
+                {/* <FormUpdateProducts handleClosePopup={handleClosePopupUpdate}/> */}
             </ReactModal>
         </>
     )
