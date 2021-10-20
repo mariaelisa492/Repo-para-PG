@@ -18,14 +18,14 @@ export default function EditableRow() {
     const product = useSelector((state) => state.product)
 
     const [items, setItems] = useState({
-        name: "",
-        description: "",
-        image: "",
-        price: "",
-        stock: "",
-        brand: "",
-        model: "",
-        category: "",
+        name: '',
+        description: '',
+        image: '',
+        price: '',
+        stock: '',
+        brand: '',
+        model: '',
+        category: ''
     })
 
     const { id } = useParams();
@@ -34,6 +34,7 @@ export default function EditableRow() {
 
     useEffect(() => {
         dispatch(getSingleProduct(id))
+        console.log("dispachado el single user")
     }, [])
 
     useEffect(() => {
@@ -48,7 +49,7 @@ export default function EditableRow() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         dispatch(updateProduct(items, id));
-        alert("Product successfully updated!");
+        alert("Product updated successfully")
     }
 
     return (
@@ -118,7 +119,6 @@ export default function EditableRow() {
                     />
                 </div>
             </form>
-
         </div>
     )
 };
