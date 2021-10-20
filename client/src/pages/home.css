@@ -1,13 +1,13 @@
 .mainView
 {
   display: grid;
-  grid-template-rows: 40px 1fr;
+  grid-template-rows: 36px 1fr;
 }
 
 @media (max-width: 858px)
 {
   .mainView
   {
-    display: flex;
+    grid-template-rows: 0px 1fr;
   } 
 }

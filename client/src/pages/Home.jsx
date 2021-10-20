@@ -4,7 +4,7 @@ import Footer from "../components/Footer/Footer";
 import ProductsList from "../components/ProductsList/ProductsList";
 import NavBar from "../components/NavBar/NavBar";
 import SlideShow from "../components/SlideShow/SlideShow";
-import SideBar from "../components/SideBar/SideBar";
+import TopMenu from "../components/TopMenu/TopMenu";
 import DropDownMenu from "../components/DropDownMenu/DropDownMenu";
 import { categories } from "../components/Categories/categoriesExport";
 import './home.css';
@@ -36,7 +36,7 @@ export const Home = () => {
      
       <div className='mainView' >
         <DropDownMenu showMenu={showMenu} showDropDownMenu={showDropDownMenu} />
-        <SideBar categories={categories} />
+        <TopMenu categories={categories} />
         <div className='slideAndProducts'>
           <div>
             <SlideShow />
