@@ -5,6 +5,7 @@ import img2 from './images/002.jpg'
 import img3 from './images/003.jpg'
 import { ReactComponent as FlechaDerecha } from './images/iconmonstr-arrow-63.svg'
 import { ReactComponent as FlechaIzquierda } from './images/iconmonstr-arrow-64.svg'
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
 import { useRef } from 'react'
 import './SlideShow.css'
 
@@ -75,8 +76,8 @@ const SlideShow = () => {
                 </div>
 
                 <div className="controls">
-                    <button className="btn" onClick={anterior}><FlechaIzquierda /></button>
-                    <button className="btn2" onClick={siguiente}><FlechaDerecha /></button>
+                    <button className="btn" onClick={anterior}><FaAngleLeft /></button>
+                    <button className="btn2" onClick={siguiente}><FaAngleRight /></button>
                 </div>
 
 
