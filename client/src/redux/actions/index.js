@@ -80,7 +80,7 @@ export const updateProduct = (product) => {
             category: product.category,
             brand: product.brand,
             isActive: true };
-          const products = await axios.put(`http://localhost:5000/${product._id}`, objProduct);
+          const products = await axios.put(`${LOCALHOST_URL}/products/${product._id}`, objProduct);
           return dispatch({
               type: "UPDATE_PRODUCT",
               payload: products.data.product

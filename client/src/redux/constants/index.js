@@ -5,6 +5,8 @@ export const LOCALHOST_URL = "http://localhost:5000"
 export const GET_PRODUCTS = "GET_PRODUCTS"
 export const GET_BYNAME = "GET_BYNAME"
 export const GET_SINGLE_PRODUCT = "GET_SINGLE_PRODUCT"
+
+// ------------------ TYPES FOR DASHBOARD / ADMIN
 export const DELETE_PRODUCT = "DELETE_PRODUCT"
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
 
