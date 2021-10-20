@@ -5,7 +5,7 @@ import {
 	FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
   ADD_TO_CART, REMOVE_FROM_CART,
   REMOVE_ITEM, LOAD_CURRENT, FILTER_CATEGORIES,
-  GET_PRODUCTS, FILTER_PRICE_RANGE
+  GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT
   } from "../constants/index"
 
 export const getProducts = () => {
@@ -120,3 +120,10 @@ export const removeItem = (itemId) => {
     }
   }
 };
+
+export const setLimit = (number) => {
+  return {
+    type: SET_LIMIT,
+    payload: number
+  }
+}

@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { FaTimes } from 'react-icons/fa'
 import { saveImages } from './utils/saveImages';
 import { validationFunction } from './utils/validationFunction';
 import { useDispatch } from 'react-redux';
@@ -8,11 +9,11 @@ import './FormCreateProducts.css'
 
 let AllCategories = []
 
-for( let key in categories){
+for (let key in categories) {
   AllCategories = [...AllCategories, ...categories[key]]
 }
 
-export default function Create() {
+export default function Create({ handleClosePopup }) {
   const dispatch = useDispatch();
   const refFileInput = useRef();
 
@@ -56,7 +57,8 @@ export default function Create() {
       brand: '',
       model: '',
       category: ''
-    })
+    });
+    handleClosePopup();
   }
 
   const resetFileInput = () => {
@@ -72,6 +74,8 @@ export default function Create() {
         }}
         className='formCreateProducts containerformProducts'
       >
+        <button onClick={handleClosePopup} className='btnCloseFormProducts'><FaTimes /></button>
+
         <div>
           <div>
             <div className='containerformProducts'>
@@ -223,7 +227,7 @@ export default function Create() {
               value={inputProducts.category}
             >
               <option value=''>Select Category</option>
-              {AllCategories.map(category => 
+              {AllCategories.map(category =>
                 <option value={category} key={category}>{category}</option>
               )}
             </select>
