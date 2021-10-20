@@ -1,8 +1,8 @@
 import axios from "axios";
 import {
-	LOCALHOST_URL, GET_BYNAME,
-	ORDER_PRICE_ASC, ORDER_PRICE_DESC,
-	FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
+  LOCALHOST_URL, GET_BYNAME,
+  ORDER_PRICE_ASC, ORDER_PRICE_DESC,
+  FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
   ADD_TO_CART, REMOVE_FROM_CART,
   REMOVE_ITEM, LOAD_CURRENT, FILTER_CATEGORIES,
   GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT
@@ -44,14 +44,54 @@ export const deleteProduct = (id) => {
         type: "DELETE_PRODUCT",
         payload: deleteProd.data.remove,
       })
-    }  
+    }
     catch (error) {
       console.log("Error al eliminar productos");
     }
   }
+};
+
+export const getSingleProduct = (id) => {
+  return async (dispatch) => {
+    try {
+      const getSingle = await axios.get(`${LOCALHOST_URL}/products/${id}`);
+      return dispatch({
+        type: "GET_SINGLE_PRODUCT",
+        payload: getSingle.data
+      })
+    }
+    catch (error) {
+      console.log("Error al obtener un unico producto")
+    }
+  }
 }
 
-  // FILTROS Y ORDENAMIENTOS //
+export const updateProduct = (product) => {
+  return async (dispatch) => {
+      try {
+          const objProduct = 
+          { 
+            name:product.name, 
+            description: product.description, 
+            image: product.image, 
+            price: product.price, 
+            stock: product.stock, 
+            model: product.model,
+            category: product.category,
+            brand: product.brand,
+            isActive: true };
+          const products = await axios.put(`${LOCALHOST_URL}/products/${product._id}`, objProduct);
+          return dispatch({
+              type: "UPDATE_PRODUCT",
+              payload: products.data.product
+          })
+      } catch (error) {
+        console.log("Error al actualizar producto")   
+      }
+  }
+}
+
+// FILTROS Y ORDENAMIENTOS //
 export const getProductsByPriceAsc = () => {
   return {
     type: ORDER_PRICE_ASC
@@ -86,7 +126,7 @@ export const filterProductsByPriceRange = (price1, price2) => {
 }
 
 export const filterByCategory = (category) => {
-  
+
   return {
     type: FILTER_CATEGORIES,
     payload: category
@@ -102,7 +142,7 @@ export const addCart = (itemId) => {
     }
   }
 };
- 
+
 export const removeCart = (itemId) => {
   return {
     type: REMOVE_FROM_CART,
