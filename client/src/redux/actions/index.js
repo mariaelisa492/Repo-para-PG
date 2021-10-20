@@ -51,6 +51,19 @@ export const deleteProduct = (id) => {
   }
 }
 
+// ORDER ACTIONS
+export const setNewOrder = (order) => {
+  return async () => {
+    try{
+      await axios.post(`${LOCALHOST_URL}/orders/create`, order);
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+
   // FILTROS Y ORDENAMIENTOS //
 export const getProductsByPriceAsc = () => {
   return {

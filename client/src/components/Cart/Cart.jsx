@@ -4,11 +4,13 @@ import ItemCart from '../itemCart/itemCart'
 import NavBar from '../NavBar/NavBar'
 import CheckoutBut from '../Paypal/PayPal'
 import "./cart.css"
+import { useAuth0 } from '@auth0/auth0-react'
 
 export default function Cart() {
-
+    const { user } = useAuth0()
     const [totalItems, setTotalItems] = useState(0)
     const [totalPrice, setTotalPrice] = useState(0)
+    console.log('EMAILLLLLLLLLLLLLL', user.email)
     
     const items = useSelector(state => state.cart)
 
@@ -47,7 +49,7 @@ export default function Cart() {
                             <span> Total Price: ${totalPrice}</span>
                         </div>
                         <div>
-                            <CheckoutBut  totalPrice={totalPrice} items={items} user={user.mail}/>
+                            <CheckoutBut  totalPrice={totalPrice} items={items} user={user.email} totalItems={totalItems}/>
                         </div>
                     </div>
                 </div>
