@@ -4,6 +4,7 @@ import { FaAngleRight } from 'react-icons/fa';
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
 import './UserProfile.css'
+import {CgProfile} from 'react-icons/cg'
 
 export function UserProfile() {
     const { user, isAuthenticated, isLoading } = useAuth0()
@@ -60,19 +61,13 @@ export function UserProfile() {
                         </div>
 
                         <div className='userInfo'>
-                            <h2>Cards</h2>
+                            <h2>My Orders</h2>
                         </div>
 
                         <div className='userName'>
                             <div className='cardContainer'>
-                                <img src="https://pbs.twimg.com/profile_images/1417870168626274305/SQh0W_dC_400x400.jpg" className="imgCard" />
-                                <p className='userData'>Visa 5472</p>
+                                <button onClick="handler">My orders<CgProfile/></button>
                             </div>
-                            <div className='cardContainer'>
-                                <img src="https://1000marcas.net/wp-content/uploads/2019/12/logo-Mastercard.png" className="imgCard" />
-                                <p className='userData'>Master Card 8910</p>
-                            </div>
-
                         </div>
                     </div>
                 </div>

@@ -3,8 +3,8 @@ const { Schema } = mongoose;
 
 const OrderSchema = new Schema({
     user: { 
-        type: Schema.Types.ObjectId, 
-        ref: "User" 
+        type: String, 
+        
     },
     orderDate: { 
         type: Date, 
@@ -19,18 +19,18 @@ const OrderSchema = new Schema({
     },
     totalPrice: {
         type: Number,
-        default: 0
+       
     },
     status: {
         type: String,
         default: 'Not processed',
         enum: ['Not processed', 'Processing', 'Shipped', 'Delivered', 'Cancelled']
     },
-    updated: Date,
-    created: {
-        type: Date,
-        default: Date.now
-    }
+    // updated: Date,
+    // created: {
+    //     type: Date,
+    //     default: Date.now
+    // }
 });
 
 const Order = mongoose.model("Order", OrderSchema);

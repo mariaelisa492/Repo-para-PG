@@ -4,21 +4,21 @@ const Order = require('../models/order');
 const createOrder = async (req, res) => {
     //creamos el objeto producto
     let { user, items, quantity, totalPrice, status } = req.body;
-    if (user && items && quantity && totalPrice && status) 
-         newOrder = new Order({
+    
+         let newOrder = new Order({
             user: user,
             items: items,
             quantity: quantity,
-            totalprice: totalPrice,
+            totalPrice: totalPrice,
             status: status           
         });
     
    
     try {
-        const user = await newOrder.save();
+        const order = await newOrder.save();
         res.status(200).json({
             message: "Added Succefully",   //agregado exitosamente
-            user
+            order
         });
     } catch (error) {
         res.status(400).json({
@@ -30,7 +30,7 @@ const createOrder = async (req, res) => {
 
 const getAllOrders = async (req, res) => {
     try {
-        const ordersAll = await Order.findAll();
+        const ordersAll = await Order.find();
         res.status(200).json(ordersAll);
     } catch (error) {
         res.status(400).json({ 
@@ -40,11 +40,12 @@ const getAllOrders = async (req, res) => {
 };
 
 const getOrder= async (req, res) => { 
-    const {user} = req.params;
+    const {user} = req.body;
     try {
-        const orderUser = await Order.find(user);
+        const orderUser = await Order.find({user});
         res.status(200).json(orderUser);
     } catch (error) {
+        console.log(error)
         res.status(404).json({ 
             message: "Cannot get the user orders"
         });
