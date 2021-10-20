@@ -1,4 +1,4 @@
-import './addtocart.css';
+import './setItem.css';
 import { useDispatch } from "react-redux"
 import { addCart, removeCart, removeItem } from '../../redux/actions';
 
@@ -9,8 +9,6 @@ export default function({ id, qty }) {
 
   const handleAddCart = (e) => {
     e.preventDefault()
-   // ES POR ID, NAME SOLO POR PRUEBA
-    console.log('NAMEEEEEEE', id)
     dispatch(addCart(id)) 
   }
 
@@ -24,13 +22,11 @@ export default function({ id, qty }) {
   }
 
   return(
-    <div className='cartBtns'>
-
-      <span className='lbl' onClick={(e) => {handleAddCart(e)}}>Add to cart</span>
+    <div className='setItemsBtn'>
       <div className='btns'>
-        <span className='remove' onClick={(e) => {handleRemoveCart(e)}}>-</span>
-        <span className='quantity'>{qty}</span>
-        <span className='add'onClick={(e) => {handleAddCart(e)}}>+</span>
+        <span className='Remove' onClick={(e) => {handleRemoveCart(e)}}>-</span>
+        <span className='qty'>{qty}</span>
+        <span className='Add'onClick={(e) => {handleAddCart(e)}}>+</span>
       </div>
     </div>
   );

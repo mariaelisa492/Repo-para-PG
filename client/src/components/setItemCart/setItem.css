@@ -1,0 +1,50 @@
+.setItemsBtn
+{
+  position: relative;
+}
+
+.lbl 
+{
+  display: block;
+  background-color: #19b9ac;
+  color: white;
+  width: 150px;
+  font-size: 20px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btns 
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.qty 
+{
+  display: block;
+  width: 40px;
+  border: 1px solid #d0d0d0;
+  font-size: 18px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+}
+
+.Add, .Remove 
+{
+  display: block;
+  width: 50px;
+  background-color: #19b9ac;
+  color: white;
+  font-size: 24px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  cursor: pointer;
+}
+

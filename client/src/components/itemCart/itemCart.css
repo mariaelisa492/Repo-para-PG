@@ -1,3 +1,39 @@
 .item {
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 3%;
+}
+.itemContainer {
+    max-width: 20%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    border: 1px;
+}
+ .itemCartImg {
+     width: 350px;
+     height: 200px;
+ }
+
+ .itemDetails{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 20px;
+    margin: 30px;
+ }
+
+ .itemDetails p {
+     padding-left: 30px;
+ }
+
+
+.cartActions{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 3% 3%; 
+    padding: 3% 3%;
 }

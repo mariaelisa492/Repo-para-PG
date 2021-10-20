@@ -154,7 +154,7 @@ export const rootReducer = (state = initialState, action) => {
 		case REMOVE_FROM_CART: 
 		return {
 			...state,
-			cart: state.cart.map( item => item.name === action.payload.id ? 
+			cart: state.cart.map( item => item._id === action.payload.id ? 
 				{...item, qty: item.qty - 1} 
 				: item 
 			) 
@@ -163,7 +163,7 @@ export const rootReducer = (state = initialState, action) => {
 		case REMOVE_ITEM: 
 		return {
 			...state,
-			cart: state.cart.filter(item._id !== action.payload.id)
+			cart: state.cart.filter((item) => item._id !== action.payload.id)
 		}; 
       
 		case LOAD_CURRENT:
