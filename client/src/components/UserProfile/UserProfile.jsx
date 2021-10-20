@@ -8,7 +8,7 @@ import './UserProfile.css'
 export function UserProfile() {
     const { user, isAuthenticated, isLoading } = useAuth0()
 
-    console.log(user)
+    console.log(user, 'User')
 
 
     if (isLoading) {

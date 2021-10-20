@@ -14,19 +14,17 @@ const UserSchema = new Schema({
         unique: true
     },
     password: {
-        type: String,
-        required: true 
+        type: String
     },
     firstName: {
-        type: String,
-        required: true
+        type: String
     },
     lastName: {
-        type: String,
-        required: true
+        type: String
     },
     gender: {
-        type: String
+        type: String,
+        enum: ['Male', 'Female', 'Other']
     },
     nacionality: {
         type: String
@@ -37,7 +35,7 @@ const UserSchema = new Schema({
     role: {
         type: String,
         default: 'ROLE_SELLER',
-        enum: ['ROLE_SELLER', 'ROLE_ADMIN']
+        enum: ['ROLE_USER', 'ROLE_ADMIN']
     },
     isActive: {
         type: Boolean,

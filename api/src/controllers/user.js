@@ -3,22 +3,15 @@ const User = require('../models/user');
 
 const createUser = async (req, res) => {
     //creamos el objeto producto
-    let { email, username, password, firstname, lastname, gender, nacionality, birthdate } = req.body;
-    if (email && username && password && firstname && lastname && gender && nacionality && birthdate) 
+    let { email, username} = req.body;
+    if (email && username) {
          newUser = new User({
             email: email,
-            username: username,
-            password: password,
-            firstName: firstname,
-            lastName: lastname,
-            gender: gender,
-            nacionality: nacionality,
-            birthDate: birthdate,
-        });
+            username: username
+        })}
     
-   g
     try {
-        const user = await newUser.save();
+        let user = await newUser.save();
         res.status(200).json({
             message: "Added Succefully",   //agregado exitosamente
             user
@@ -30,6 +23,25 @@ const createUser = async (req, res) => {
     }
 };
 
+const findUser = async (req,res) =>{
+    let email = req.body
+    if(email){
+        try {
+            let user = await User.find({email: email})
+            res.status(200).json({
+                message:'User found!',
+                user
+            })
+        }
+        catch (error){
+            res.status(404).json({
+                message: 'User not Found',
+                error
+            })
+        }
+    }
+}
 module.exports = {
-    createUser
+    createUser,
+    findUser
 }
