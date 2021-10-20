@@ -1,6 +1,7 @@
 import './setItem.css';
 import { useDispatch } from "react-redux"
 import { addCart, removeCart, removeItem } from '../../redux/actions';
+import {AiFillPlusCircle, AiFillMinusCircle} from "react-icons/ai"
 
 
 export default function({ id, qty }) {
@@ -22,12 +23,10 @@ export default function({ id, qty }) {
   }
 
   return(
-    <div className='setItemsBtn'>
-      <div className='btns'>
-        <span className='Remove' onClick={(e) => {handleRemoveCart(e)}}>-</span>
+    <div className='add-button-item'>
+        <button className='Remove-item' onClick={(e) => {handleRemoveCart(e)}}><AiFillMinusCircle/></button>
         <span className='qty'>{qty}</span>
-        <span className='Add'onClick={(e) => {handleAddCart(e)}}>+</span>
-      </div>
+        <button className='Add-item'onClick={(e) => {handleAddCart(e)}}><AiFillPlusCircle/></button>
     </div>
   );
 }
