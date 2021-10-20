@@ -145,38 +145,38 @@ export const rootReducer = (state = initialState, action) => {
 				filteredProducts: [...filt4],
 				filteredTF: true
 			}
-
-		// ---- Cart ---- //
-
-		case ADD_TO_CART:
-			// modificar name por id
-			const item = state.products.find(item => item._id === action.payload.id)
-			const inCart = state.cart.find(item => item._id === action.payload.id ? true : false)
-			return {
-				...state,
-				cart: inCart ?
-					state.cart.map(item => item._id === action.payload.id ?
-						{ ...item, qty: item.qty + 1 }
-						: item
-					)
-					: [...state.cart, { ...item, qty: 1 }]
-			};
-
-		case REMOVE_FROM_CART:
-			return {
-				...state,
-				cart: state.cart.map(item => item.name === action.payload.id ?
-					{ ...item, qty: item.qty - 1 }
-					: item
-				)
-			};
-
-		case REMOVE_ITEM:
-			return {
-				...state,
-				cart: state.cart.filter(item._id !== action.payload.id)
-			};
-
+      
+		                      // ---- Cart ---- //
+      
+		case ADD_TO_CART: 
+		// modificar name por id
+		const item = state.products.find(item => item._id === action.payload.id)
+		const inCart = state.cart.find(item => item._id === action.payload.id ? true : false)
+		return {
+			...state,
+			cart: inCart ? 
+			state.cart.map( item => item._id === action.payload.id ? 
+				{...item, qty: item.qty + 1} 
+				: item 
+			) 
+			: [...state.cart, {...item, qty: 1}]
+		};
+      
+		case REMOVE_FROM_CART: 
+		return {
+			...state,
+			cart: state.cart.map( item => item._id === action.payload.id ? 
+				{...item, qty: item.qty - 1} 
+				: item 
+			) 
+		};
+      
+		case REMOVE_ITEM: 
+		return {
+			...state,
+			cart: state.cart.filter((item) => item._id !== action.payload.id)
+		}; 
+      
 		case LOAD_CURRENT:
 			return {
 				...state,

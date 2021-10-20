@@ -17,7 +17,7 @@ export default function Cart() {
 
         items.forEach(item => {
             itemCarts += item.qty
-            priceCart += item.price
+            priceCart += item.price * item.qty
         })
 
         setTotalItems(itemCarts)
@@ -29,12 +29,8 @@ export default function Cart() {
 
     return (
         <div className='Cart'>
-            <div className='conteinerCart'>
-            
-                <div className='navBar'>
                  <NavBar/>
-                </div>
-
+            <div className='conteinerCart'>
                 <div className='cartOptions'>
 
                     <div className='itemsCart'>
