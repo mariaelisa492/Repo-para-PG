@@ -1,3 +1,5 @@
 .update-body {
-    background-color: red;
+    background-color: rgb(230, 96, 47);
+    display: flex;
+    justify-content: center;
 }

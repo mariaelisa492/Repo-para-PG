@@ -17,7 +17,7 @@ export default function EditableRow() {
 
     const products = useSelector((state) => state.products)
 
-    const [state, setState] = useState({
+    const [productState, setProductState] = useState({
         name: '',
         description: '',
         image: '',
@@ -30,7 +30,7 @@ export default function EditableRow() {
 
     const { id } = useParams();
     const dispatch = useDispatch()
-    const { name, description, image, price, stock, brand, model, category } = state;
+    const { name, description, image, price, stock, brand, model, category } = productState;
 
     useEffect(() => {
         dispatch(getSingleProduct(id))
@@ -39,19 +39,19 @@ export default function EditableRow() {
 
     useEffect(() => {
         if (products) {
-            setState({ ...products })
+            setProductState({...products})
         }
         console.log(products, "ESTE ES MI 2DO USEEFFECT")
     }, [products]);
 
     const handleInputChange = (e) => {
         let { name, value } = e.target;
-        setState({ ...state, [name]: value })
+        setProductState({ ...productState, [name]: value })
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(updateProduct(state, id));
+        dispatch(updateProduct(productState, id));
     }
 
 
@@ -62,6 +62,7 @@ export default function EditableRow() {
             <div>
                 <Link to="/admin">Back</Link>
             </div>
+        
             <form
                 onSubmit={handleSubmit}
             >
