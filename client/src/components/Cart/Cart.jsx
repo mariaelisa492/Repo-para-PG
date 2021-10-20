@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useSelector } from 'react-redux'
 import ItemCart from '../itemCart/itemCart'
 import NavBar from '../NavBar/NavBar'
+import CheckoutBut from '../Paypal/PayPal'
 import "./cart.css"
 
 export default function Cart() {
@@ -44,6 +45,9 @@ export default function Cart() {
                         <div className='totalPrice'>
                             <span>TOTAL ITEMS: {totalItems}</span>
                             <span> Total Price: ${totalPrice}</span>
+                        </div>
+                        <div>
+                            <CheckoutBut  totalPrice={totalPrice} items={items}/>
                         </div>
                     </div>
                 </div>
