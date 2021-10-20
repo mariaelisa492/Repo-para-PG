@@ -57,6 +57,26 @@
     
 }
 
+.div_no_cartItem{
+    max-width: 1150px;
+    margin: 0 auto;
+    /* height: 0px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #808080;
+    margin-bottom: 20px;
+}
+
+.div_no_cartItem .icon_cartEmpty{
+    font-size: 85px;
+}
+
+.div_no_cartItem h3{
+    text-decoration: underline
+}
+
+
 @media (max-width: 858px){
     .containerCart{
         margin: 5px 10px 5px 10px;

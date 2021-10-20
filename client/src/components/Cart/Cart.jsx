@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import ItemCart from '../itemCart/itemCart'
-import NavBar from '../NavBar/NavBar'
-import CheckoutBut from '../Paypal/PayPal'
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import ItemCart from '../itemCart/itemCart';
+import CheckoutBut from '../Paypal/PayPal';
+import {BsFillCartXFill} from "react-icons/bs"
+import {Link} from "react-router-dom"
 import "./cart.css"
 
 export default function Cart() {
@@ -50,11 +51,22 @@ export default function Cart() {
                             </div>
                         </div>
                     </div>
-                    : <div>
+                    : <div className="div_no_cartItem">
+                        
+                        <div className="icon_cartEmpty">
+                            <BsFillCartXFill/>
+                        </div>
                         <div>
-                            <h1>
+                            <h4>
                             Shopping cart empty
-                            </h1>
+                            </h4>
+                        </div>
+                        <div>
+                            <Link to="/">
+                                <h3>
+                                ¡Keep Shopping!
+                                </h3>
+                            </Link>
                         </div>
                     </div>
             }
