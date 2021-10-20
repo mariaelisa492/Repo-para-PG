@@ -10,12 +10,9 @@ const OrderSchema = new Schema({
         type: Date, 
         default: Date.now 
     },
-    products: { 
+    items: { 
         type: Array, 
         default: [] 
-    },
-    nameCustomer: {
-        type: String
     },
     quantity: {
         type: Number
