@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Product from "../Product/Product";
-import { getProductsByPriceAsc, getProductsByPriceDesc, getProducts, filterProductsByPriceLessThan, filterProductsByPriceMoreThan, filterProductsByPriceRange } from "../../redux/actions";
+import { getProductsByPriceAsc, getProductsByPriceDesc, setLimit, getProducts, filterProductsByPriceLessThan, filterProductsByPriceMoreThan, filterProductsByPriceRange } from "../../redux/actions";
 import "./productsList.css";
-import { PaginationOptions } from "../Pagination Options/PaginationOptions";
 import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/md';
 
 
 export default function ProductsList({ filteredProducts }) {
   console.log(filteredProducts, "ProductsList");
 
-  const [limit, setLimit] = useState(0);
+  const limit = useSelector((state)=> state.limit)
   const [lessThan, setLessThan] = useState(null)
   const [moreThan, setMoreThan] = useState(null)
   const dispatch = useDispatch()
@@ -31,8 +30,8 @@ export default function ProductsList({ filteredProducts }) {
   function handleSubmitPriceFilter(e, moreThan, lessThan) {
     e.preventDefault()
 
-    console.log(moreThan,'moreThan')
-    console.log(lessThan,'lessThan')
+    // console.log(moreThan,'moreThan')
+    // console.log(lessThan,'lessThan')
     
     if(lessThan === null){
       dispatch(filterProductsByPriceMoreThan(moreThan))
@@ -50,13 +49,13 @@ export default function ProductsList({ filteredProducts }) {
   
   function raise() {
     if (limit + 8 <= filteredProducts.length) {
-      setLimit(limit + 8)
+      dispatch(setLimit(limit + 8))
     }
   }
 
   function lower() {
     if (limit - 8 >= 0) {
-      setLimit(limit - 8)
+      dispatch(setLimit(limit - 8))
     }
   }
   
@@ -78,11 +77,15 @@ export default function ProductsList({ filteredProducts }) {
     }
   }
   
+  var slicedFilteredProducts = filteredProducts.slice(limit, limit + 8)
+  var keyblablabla = 0
+  
   return (
     <>
       <div className="containerList">
         <div className="productList">
-          {filteredProducts.slice(limit, limit + 8).map((e) => {
+          {slicedFilteredProducts.map((e) => {
+            keyblablabla++
             return (
               <Product
                 img={e.image}
@@ -91,7 +94,7 @@ export default function ProductsList({ filteredProducts }) {
                 rating={e.rating}
                 _id={e._id}
                 isActive={e.isActive}
-                key={e.name}
+                key={keyblablabla}
               />
             );
           })}

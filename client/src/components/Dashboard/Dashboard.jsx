@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import ReactModal from 'react-modal';
 import NavBar from "../NavBar/NavBar";
 import DataTable from "react-data-table-component";
+import FormCreateProducts from '../FormCreateProducts/FormCreateProducts'
 import { useDispatch, useSelector, } from "react-redux";
 import { deleteProduct } from "../../redux/actions";
 import { MdDeleteForever } from 'react-icons/md';
 import { FaRegEdit } from 'react-icons/fa';
+import { NavLink } from "react-router-dom";
 import "./Dashboard.css";
 
 export default function Dashboard() {
     const [pending, setPending] = useState(true);
+
     useEffect(() => {
         const timeout = setTimeout(() => {
             setPending(false);
@@ -65,6 +68,16 @@ export default function Dashboard() {
             dispatch(deleteProduct(row._id));
     }
 
+    // estado para mostrar popup
+    const [showPopup, setShowPopup] = useState(false);
+
+    const handleOpenPopup = () => {
+        setShowPopup(true)
+    }
+    const handleClosePopup = () => {
+        setShowPopup(false)
+    }
+ 
     return (
         <>
             <div>
@@ -84,8 +97,14 @@ export default function Dashboard() {
                         pagination
                     />
                 </div>
-                <NavLink className="create" to="/create" className="add-button">Create</NavLink>
+                {/* <div className="create"> */}
+                    <button className='create add-button' onClick={handleOpenPopup}>Create</button>
+                {/* </div> */}
             </div>
+
+            <ReactModal isOpen={showPopup} className='reactModalContent' overlayClassName='reactModalOverlay'>
+                <FormCreateProducts handleClosePopup={handleClosePopup}/>
+            </ReactModal>
         </>
     )
 };

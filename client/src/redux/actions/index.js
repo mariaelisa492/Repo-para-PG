@@ -5,8 +5,8 @@ import {
   FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
   ADD_TO_CART, REMOVE_FROM_CART,
   REMOVE_ITEM, LOAD_CURRENT, FILTER_CATEGORIES,
-  GET_PRODUCTS, FILTER_PRICE_RANGE
-} from "../constants/index"
+  GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT
+  } from "../constants/index"
 
 export const getProducts = () => {
   return async (dispatch) => {
@@ -80,10 +80,10 @@ export const updateProduct = (product) => {
             category: product.category,
             brand: product.brand,
             isActive: true };
-          const products = await axios.put(`${LOCALHOST_URL}/${product._id}`, objProduct);
+          const products = await axios.put(`http://localhost:5000/${product._id}`, objProduct);
           return dispatch({
               type: "UPDATE_PRODUCT",
-              payload: products.data.product,
+              payload: products.data.product
           })
       } catch (error) {
         console.log("Error al actualizar producto")   
@@ -160,3 +160,10 @@ export const removeItem = (itemId) => {
     }
   }
 };
+
+export const setLimit = (number) => {
+  return {
+    type: SET_LIMIT,
+    payload: number
+  }
+}
