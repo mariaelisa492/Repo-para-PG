@@ -2,25 +2,25 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import DataTable from "react-data-table-component";
-import "./Dashboard.css";
 import { useDispatch, useSelector, } from "react-redux";
 import { deleteProduct } from "../../redux/actions";
 import { MdDeleteForever } from 'react-icons/md';
 import { FaRegEdit } from 'react-icons/fa';
+import "./Dashboard.css";
 
 export default function Dashboard() {
     const [pending, setPending] = useState(true);
     useEffect(() => {
         const timeout = setTimeout(() => {
             setPending(false);
-        }, 2000);
+        }, 1000);
         return () => clearTimeout(timeout);
     }, []);
 
     const dispatch = useDispatch()
 
     const products = useSelector(state => state.products);
-    
+
     const [items, setItems] = useState(products);
 
     const columns = [
@@ -79,15 +79,12 @@ export default function Dashboard() {
                         title="My products"
                         striped
                         highlightOnHover
-                        // pointerOnHover
-                        paginationPerPage = {5}
-                        paginationRowsPerPageOptions = {[5,8]}
+                        paginationPerPage={5}
+                        paginationRowsPerPageOptions={[5, 8]}
                         pagination
                     />
                 </div>
-                {/* <div className="create"> */}
                 <NavLink className="create" to="/create" className="add-button">Create</NavLink>
-                {/* </div> */}
             </div>
         </>
     )

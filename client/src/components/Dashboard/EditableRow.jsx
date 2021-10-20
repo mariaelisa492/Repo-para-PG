@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useHistory, useParams } from "react-router";
+import { useParams } from "react-router";
 import { useEffect } from "react";
 import { getSingleProduct, updateProduct } from "../../redux/actions";
 import { categories } from '../Categories/categoriesExport'
@@ -15,96 +15,90 @@ for (let key in categories) {
 
 export default function EditableRow() {
 
-    const products = useSelector((state) => state.products)
+    const product = useSelector((state) => state.product)
 
-    const [productState, setProductState] = useState({
-        name: '',
-        description: '',
-        image: '',
-        price: '',
-        stock: '',
-        brand: '',
-        model: '',
-        category: ''
+    const [items, setItems] = useState({
+        name: "",
+        description: "",
+        image: "",
+        price: "",
+        stock: "",
+        brand: "",
+        model: "",
+        category: "",
     })
 
     const { id } = useParams();
     const dispatch = useDispatch()
-    const { name, description, image, price, stock, brand, model, category } = productState;
+    const { name, description, image, price, stock, brand, model, category } = items;
 
     useEffect(() => {
         dispatch(getSingleProduct(id))
-        console.log("dispachado el single user")
     }, [])
 
     useEffect(() => {
-        if (products) {
-            setProductState({...products})
-        }
-        console.log(products, "ESTE ES MI 2DO USEEFFECT")
-    }, [products]);
+        setItems(product)
+    }, [product])
 
     const handleInputChange = (e) => {
         let { name, value } = e.target;
-        setProductState({ ...productState, [name]: value })
+        setItems({ ...items, [name]: value })
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(updateProduct(productState, id));
+        dispatch(updateProduct(items, id));
+        alert("Product successfully updated!");
     }
-
-
-    /*  const products = useSelector(state => state.products) */
 
     return (
         <div className="update-body">
             <div>
                 <Link to="/admin">Back</Link>
             </div>
-        
+
             <form
                 onSubmit={handleSubmit}
             >
                 <div>
                     <h4>
-                    Name:
+                        Name:
                     </h4>
-                    <input value={name} onChange={handleInputChange} name={name} />
+                    <input value={name} onChange={handleInputChange} name="name" />
                 </div>
                 <div>
-                <h4>
-                    Description:
+                    <h4>
+                        Description:
                     </h4>
-                    <textarea value={description} rows="10" onChange={handleInputChange} name={brand} />
+                    <textarea value={description} rows="10" onChange={handleInputChange} name="description" />
                 </div>
                 <div>
-                <h4>
-                    Price:
+                    <h4>
+                        Price:
                     </h4>
-                    <input value={price} onChange={handleInputChange} name={price} />
+                    <input value={price} onChange={handleInputChange} name="price" />
                 </div>
                 <div>
-                <h4>
-                    Stock:
+                    <h4>
+                        Stock:
                     </h4>
-                    <input value={stock} onChange={handleInputChange} name={stock} />
+                    <input value={stock} onChange={handleInputChange} name="stock" />
                 </div>
                 <div>
-                <h4>
-                    Brand:
+                    <h4>
+                        Brand:
                     </h4>
-                    <input value={brand} onChange={handleInputChange} name={brand} />
+                    <input value={brand} onChange={handleInputChange} name="brand" />
                 </div>
                 <div>
-                <h4>
-                    Model:
+                    <h4>
+                        Model:
                     </h4>
-                    <input value={model} onChange={handleInputChange} name={model} />
+                    <input value={model} onChange={handleInputChange} name="model" />
                 </div>
                 <div>
-                <h4>
-                    Category:
+                    <h4>
+                        Category:
                     </h4>
                     <select
                         name='category'
@@ -124,6 +118,7 @@ export default function EditableRow() {
                     />
                 </div>
             </form>
+
         </div>
     )
 };

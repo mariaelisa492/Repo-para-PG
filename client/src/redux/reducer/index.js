@@ -10,6 +10,7 @@ import {
 const initialState = {
 	users: [],
 	sales: [],
+	product: {},
 	products: [],
 	filteredProducts: [],
 	cart: [],
@@ -35,7 +36,6 @@ export const rootReducer = (state = initialState, action) => {
 
 		case DELETE_PRODUCT:
 			let deletedProduct = state.products.filter(el => el._id !== action.payload._id)
-			// console.log(deletedProduct)
 			return {
 				...state,
 				products: [...deletedProduct]
@@ -44,13 +44,16 @@ export const rootReducer = (state = initialState, action) => {
 		case GET_SINGLE_PRODUCT:
 			return {
 				...state,
-				products: action.payload
+				product: action.payload
 			}
 
-		case UPDATE_PRODUCT:
-			return {
-				...state,
-			}
+			case UPDATE_PRODUCT:
+				let index = state.products.findIndex( product => product._id === action.payload._id);
+				state.products[index] = action.payload;
+				return {
+				  ...state,
+				  products: [...state.products]
+				};
 
 		// ---- ORDENAMIENTOS ---- //
 

@@ -54,8 +54,7 @@ export const deleteProduct = (id) => {
 export const getSingleProduct = (id) => {
   return async (dispatch) => {
     try {
-      const getSingle = await axios.get(`http://localhost:5000/products/${id}`);
-      console.log(getSingle, "action get single user")
+      const getSingle = await axios.get(`${LOCALHOST_URL}/${id}`);
       return dispatch({
         type: "GET_SINGLE_PRODUCT",
         payload: getSingle.data
@@ -67,17 +66,28 @@ export const getSingleProduct = (id) => {
   }
 }
 
-export const updateProduct = (products, id) => {
+export const updateProduct = (product) => {
   return async (dispatch) => {
     try {
-      const updateProd = await axios.put(`http://localhost:5000/products/${id}`, products);
+      const objProduct =
+      {
+        name: product.name,
+        description: product.description,
+        image: product.image,
+        price: product.price,
+        stock: product.stock,
+        model: product.model,
+        category: product.category,
+        brand: product.brand,
+        isActive: true
+      };
+      const products = await axios.put(`${LOCALHOST_URL}/products/${product._id}`, objProduct);
       return dispatch({
         type: "UPDATE_PRODUCT",
-        payload: updateProd
-      })  
-    }
-    catch (error) {
-      console.log("Error al actualizar un producto")
+        payload: products.data.product,
+      })
+    } catch (error) {
+      console.log("Error al actualizar producto")
     }
   }
 }
