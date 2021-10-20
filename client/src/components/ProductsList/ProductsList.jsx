@@ -77,11 +77,15 @@ export default function ProductsList({ filteredProducts }) {
     }
   }
   
+  var slicedFilteredProducts = filteredProducts.slice(limit, limit + 8)
+  var keyblablabla = 0
+  
   return (
     <>
       <div className="containerList">
         <div className="productList">
-          {filteredProducts.slice(limit, limit + 8).map((e) => {
+          {slicedFilteredProducts.map((e) => {
+            keyblablabla++
             return (
               <Product
                 img={e.image}
@@ -90,7 +94,7 @@ export default function ProductsList({ filteredProducts }) {
                 rating={e.rating}
                 _id={e._id}
                 isActive={e.isActive}
-                key={e.name}
+                key={keyblablabla}
               />
             );
           })}
