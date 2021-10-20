@@ -20,6 +20,7 @@ export default function Dashboard() {
     const dispatch = useDispatch()
 
     const products = useSelector(state => state.products);
+    
     const [items, setItems] = useState(products);
 
     const columns = [

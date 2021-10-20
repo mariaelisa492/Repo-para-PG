@@ -11,7 +11,7 @@ import {useDispatch} from 'react-redux'
 import { UserProfile } from './components/UserProfile/UserProfile';
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import { Categories } from './components/Categories/Categories';
-import EditableRow from './components/Dashboard/EditableRow';
+import EditableRow from "./components/Dashboard/EditableRow";
 
 function App() {
   const dispatch = useDispatch()

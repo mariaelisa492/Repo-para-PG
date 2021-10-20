@@ -55,6 +55,7 @@ export const getSingleProduct = (id) => {
   return async (dispatch) => {
     try {
       const getSingle = await axios.get(`http://localhost:5000/products/${id}`);
+      console.log(getSingle, "action get single user")
       return dispatch({
         type: "GET_SINGLE_PRODUCT",
         payload: getSingle.data

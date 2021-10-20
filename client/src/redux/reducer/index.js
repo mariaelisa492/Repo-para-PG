@@ -26,7 +26,7 @@ export const rootReducer = (state = initialState, action) => {
 				products: action.payload
 			};
 
-		case GET_BYNAME:
+		case GET_BYNAME: 
 			return {
 				...state,
 				filteredProducts: [...action.payload],
@@ -50,7 +50,6 @@ export const rootReducer = (state = initialState, action) => {
 		case UPDATE_PRODUCT:
 			return {
 				...state,
-				products: action.payload
 			}
 
 		// ---- ORDENAMIENTOS ---- //
