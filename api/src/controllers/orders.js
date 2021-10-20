@@ -4,15 +4,13 @@ const Order = require('../models/order');
 const createOrder = async (req, res) => {
     //creamos el objeto producto
     let { user, items, quantity, totalPrice, status } = req.body;
-    if (user && items && quantity && totalPrice && status) 
-         newOrder = new Order({
-            user: user,
-            items: items,
-            quantity: quantity,
-            totalprice: totalPrice,
-            status: status           
-        });
-    
+        let newOrder = new Order({
+             user: user,
+             items: items,
+             quantity: quantity,
+             totalprice: totalPrice,
+             status: status           
+         });   
    
     try {
         const user = await newOrder.save();
@@ -21,6 +19,7 @@ const createOrder = async (req, res) => {
             user
         });
     } catch (error) {
+        console.log('EEEEEEEEEEEERRRRRRRRROR', error)
         res.status(400).json({
             message: "Couldn't create please try again"
         });

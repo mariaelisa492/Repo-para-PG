@@ -63,6 +63,12 @@ export const setNewOrder = (order) => {
   }
 }
 
+export const getAllOrders = () => {
+
+
+  
+}
+
 
   // FILTROS Y ORDENAMIENTOS //
 export const getProductsByPriceAsc = () => {
