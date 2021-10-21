@@ -4,18 +4,27 @@ import {
 	FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
 	FILTER_PRICE_RANGE, DELETE_PRODUCT,
 	ADD_TO_CART, REMOVE_FROM_CART,
-	REMOVE_ITEM, LOAD_CURRENT, FILTER_CATEGORIES, SET_LIMIT
+
+	REMOVE_ITEM, LOAD_CURRENT, FILTER_CATEGORIES, SET_LIMIT,
+	GET_ORDERS
  } from "../constants/index"
+
+	ADJUST_QTY, LOAD_CURRENT, FILTER_CATEGORIES, GET_SINGLE_PRODUCT, UPDATE_PRODUCT, REMOVE_ITEM, SET_LIMIT
+} from "../constants/index"
+
+
 
 const initialState = {
 	users: [],
 	sales: [],
+	product: {},
 	products: [],
 	filteredProducts: [],
 	cart: [],
 	limit:0,
 	currentItem: null,
-	filteredTF: false
+	filteredTF: false,
+	orders: []
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -27,7 +36,7 @@ export const rootReducer = (state = initialState, action) => {
 				products: action.payload
 			};
 
-		case GET_BYNAME:
+		case GET_BYNAME: 
 			return {
 				...state,
 				filteredProducts: [...action.payload],
@@ -36,23 +45,45 @@ export const rootReducer = (state = initialState, action) => {
 
 		case DELETE_PRODUCT:
 			let deletedProduct = state.products.filter(el => el._id !== action.payload._id)
-			// console.log(deletedProduct)
 			return {
 				...state,
 				products: [...deletedProduct]
 			};
 
-							    	// ---- ORDENAMIENTOS ---- //
+
+		case GET_ORDERS:
+			return {
+				...state,
+				orders: [...action.payload]
+			}	
+							    	
+
+		case GET_SINGLE_PRODUCT:
+			return {
+				...state,
+				product: action.payload
+			}
+
+			case UPDATE_PRODUCT:
+				let index = state.products.findIndex( product => product._id === action.payload._id);
+				state.products[index] = action.payload;
+				return {
+				  ...state,
+				  products: [...state.products]
+				};
+
+		// ---- ORDENAMIENTOS ---- //
+
 
 		case ORDER_PRICE_ASC:
-				var sortedPriceAsc
-				if(state.filteredTF){
-					sortedPriceAsc = state.filteredProducts.sort((a, b) => (a.price > b.price) ? 1 : -1)
+			var sortedPriceAsc
+			if (state.filteredTF) {
+				sortedPriceAsc = state.filteredProducts.sort((a, b) => (a.price > b.price) ? 1 : -1)
 			}
-				else{
-					sortedPriceAsc = state.products.sort((a, b) => (a.price > b.price) ? 1 : -1)
-				}
-				// console.log(sortedPriceAsc)
+			else {
+				sortedPriceAsc = state.products.sort((a, b) => (a.price > b.price) ? 1 : -1)
+			}
+			// console.log(sortedPriceAsc)
 			return {
 				...state,
 				filteredProducts: [...sortedPriceAsc],
@@ -61,11 +92,11 @@ export const rootReducer = (state = initialState, action) => {
 
 		case ORDER_PRICE_DESC:
 			var sortedPriceDesc
-			if(state.filteredTF){
-				   sortedPriceDesc = state.filteredProducts.sort((a, b) => (a.price > b.price) ? -1 : 1)
+			if (state.filteredTF) {
+				sortedPriceDesc = state.filteredProducts.sort((a, b) => (a.price > b.price) ? -1 : 1)
 			}
-			else{
-				   sortedPriceDesc = state.products.sort((a, b) => (a.price > b.price) ? -1 : 1)
+			else {
+				sortedPriceDesc = state.products.sort((a, b) => (a.price > b.price) ? -1 : 1)
 			}
 			// console.log(sortedPriceDesc, 'Desc order')
 			return {
@@ -74,14 +105,14 @@ export const rootReducer = (state = initialState, action) => {
 				filteredTF: true
 			};
 
-						          // ---- FILTROS ---- //
+		// ---- FILTROS ---- //
 
 		case FILTER_PRICE_ONLY_LESSTHAN:
 			var filt1;
-			if(state.filteredTF){
+			if (state.filteredTF) {
 				filt1 = state.filteredProducts.filter((e) => e.price < action.payload)
 			}
-			else{
+			else {
 				filt1 = state.products.filter((e) => e.price < action.payload)
 			}
 			// console.log('lessThan', filt1)
@@ -93,10 +124,10 @@ export const rootReducer = (state = initialState, action) => {
 
 		case FILTER_PRICE_ONLY_MORETHAN:
 			var filt2;
-			if(state.filteredTF){
+			if (state.filteredTF) {
 				filt2 = state.filteredProducts.filter((e) => e.price > action.payload)
 			}
-			else{
+			else {
 				filt2 = state.products.filter((e) => e.price > action.payload)
 			}
 			// console.log('moreThan', filt2)
@@ -108,10 +139,10 @@ export const rootReducer = (state = initialState, action) => {
 
 		case FILTER_PRICE_RANGE:
 			var filt3;
-			if(state.filteredTF){
+			if (state.filteredTF) {
 				filt3 = state.filteredProducts.filter((e) => e.price > action.payload.price1 && e.price < action.payload.price2)
 			}
-			else{
+			else {
 				filt3 = state.products.filter((e) => e.price > action.payload.price1 && e.price < action.payload.price2)
 			}
 			// console.log('filterPriceRange', filt3)
@@ -120,14 +151,14 @@ export const rootReducer = (state = initialState, action) => {
 				filteredProducts: [...filt3],
 				filteredTF: true
 			};
-      
-   	case FILTER_CATEGORIES:
+
+		case FILTER_CATEGORIES:
 			var filt4;
 			console.log(action.payload, 'categories Filters redux')
-			if(state.filteredTF){
+			if (state.filteredTF) {
 				filt4 = state.filteredProducts.filter((e) => e.category === action.payload)
 			}
-			else{
+			else {
 				filt4 = state.products.filter((e) => e.category === action.payload)
 			}
 			return {

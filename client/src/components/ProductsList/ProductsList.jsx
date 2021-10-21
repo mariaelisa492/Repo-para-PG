@@ -79,14 +79,14 @@ export default function ProductsList({ filteredProducts }) {
 
   var paginationFilteredProducts = filteredProducts.slice(limit, limit + 8)
   
-  let keyblablabla = 0
-  console.log(paginationFilteredProducts, 'PAGINATIONFILTEREDPRODUCTSSSS')
-
+  var slicedFilteredProducts = filteredProducts.slice(limit, limit + 8)
+  var keyblablabla = 0
+  
   return (
     <>
       <div className="containerList">
         <div className="productList">
-          {paginationFilteredProducts.map((e) => {
+          {slicedFilteredProducts.map((e) => {
             keyblablabla++
             return (
               <Product

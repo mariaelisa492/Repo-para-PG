@@ -10,23 +10,27 @@ import {useDispatch} from 'react-redux'
 import { UserProfile } from './components/UserProfile/UserProfile';
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import { Categories } from './components/Categories/Categories';
+import { ShoppingCart } from './pages/ShoppingCart';
+import Footer from './components/Footer/Footer';
+import EditableRow from "./components/Dashboard/EditableRow";
 
 function App() {
   const dispatch = useDispatch()
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(getProducts())
-  },[dispatch]) 
+  }, [dispatch])
 
   return (
     <div className="App">
       <Switch>
       <Route exact path = "/profile" component={UserProfile}/>
       <Route exact path = "/detail/:id" component={Detail}/>
-      <Route exact path = "/cart" component={Cart}/>
+      <Route exact path = "/cart" component={ShoppingCart}/>
       <Route exact path = "/admin" component={Dashboard}/>
       <Route exact path = "/" component={Home}/>
       <Route exact path = '/categories' component={Categories}/>
+      <Route exact path="/admin/edit/:id" component={EditableRow} />
       </Switch>
     </div>
   );

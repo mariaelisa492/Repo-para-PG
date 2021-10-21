@@ -31,19 +31,19 @@ const productsAll = async (req, res) => {
         const productsAll = await Products.find();
         res.status(200).json(productsAll);
     } catch (error) {
-        res.status(400).json({ 
+        res.status(400).json({
             message: "Cannot get the products"
         });
     }
 };
 
-const getProduct= async (req, res) => { 
-    const {id} = req.params;
+const getProduct = async (req, res) => {
+    const { id } = req.params;
     try {
         const productId = await Products.findById(id);
         res.status(200).json(productId);
     } catch (error) {
-        res.status(404).json({ 
+        res.status(404).json({
             message: "Cannot get the product by Id"
         });
     }
@@ -51,26 +51,26 @@ const getProduct= async (req, res) => {
 
 const updateProduct = async (req, res) => {
     const { id } = req.params;
-    const { name, description, image, price, stock, sellerDocument, isActive } = req.body;
+    const { name, description, image, price, stock, brand, model, category } = req.body;
     try {
-        const updateProduct = { name, description, image, price, stock, sellerDocument, isActive, _id:id }
+        const updateProduct = { name, description, image, price, stock, brand, model, category, _id: id }
         await Products.findByIdAndUpdate(id, updateProduct, { new: true });
         res.status(200).json(updateProduct);
-    }catch (error) {
+    } catch (error) {
         res.status(400).json({
-        error: 'Your request could not be processed. Please try again.'
+            error: 'Your request could not be processed. Please try again.'
         })
     };
-}  
+}
 
-const getProductByName= async (req, res) => { 
-    const {name} = req.query;
+const getProductByName = async (req, res) => {
+    const { name } = req.query;
     console.log(name)
     try {
-        const products = await Products.find({'name': {'$regex': name,$options:'i'}})
+        const products = await Products.find({ 'name': { '$regex': name, $options: 'i' } })
         res.status(200).json(products);
     } catch (error) {
-        res.status(404).json({ 
+        res.status(404).json({
             message: "Cannot get the product by name"
         });
     }
@@ -79,15 +79,15 @@ const getProductByName= async (req, res) => {
 const deleteProduct = async (req, res) => {
     const { id } = req.params;
 
-    try{
-        const remove = await Products.findOneAndRemove({_id: id});
+    try {
+        const remove = await Products.findOneAndRemove({ _id: id });
         res.status(200).json({
             message: 'Successful',
             remove
         });
     }
 
-    catch(error){
+    catch (error) {
         console.log(error)
         res.status(400).json({
             message: 'Your request could not be processed. Please try again.'
@@ -96,20 +96,20 @@ const deleteProduct = async (req, res) => {
 };
 
 const createManyProducts = async (req, res) => {
-    try{
+    try {
         await Products.insertMany(req.body)
         res.status(200).json({
             message: 'Successful'
         });
     }
 
-    catch{
+    catch {
         console.log(error)
         res.status(400).json({
             message: 'Your request could not be processed. Please try again.'
         })
     }
-}   
+}
 
 module.exports = {
     createProduct,
