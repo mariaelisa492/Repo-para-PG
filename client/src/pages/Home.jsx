@@ -15,8 +15,8 @@ export const Home = () => {
   const [showMenu, setShowMenu] = useState(false);
   const products = useSelector((state) => state.products)
   const filteredTF = useSelector((state) => state.filteredTF)
-  console.log(filteredTF, 'FILTEREDTF')
-  console.log(products, 'products')
+  //console.log(filteredTF, 'FILTEREDTF')
+  //console.log(products, 'products')
 
   function showDropDownMenu() {
     setShowMenu(!showMenu);

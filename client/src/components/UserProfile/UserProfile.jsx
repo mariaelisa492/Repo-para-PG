@@ -11,15 +11,15 @@ export function UserProfile() {
     
     const dispatch = useDispatch()
     const { user, isAuthenticated, isLoading } = useAuth0()
-    console.log('uSEEEEEEEEEEEER')
+    //console.log('uSEEEEEEEEEEEER')
     const orders = useSelector(state => state.orders)
 
     const handleOrders = (e) => {
         e.preventDefault()
-        console.log('"""""""USER HANDLER', user.email)
+        //console.log('"""""""USER HANDLER', user.email)
+        console.log('!!!!!!!!!!!!!!!!!!!!!!!!!! SOY STATE ORDER', orders)
         dispatch(getMyOrders(user.email))
     }
-console.log('!!!!!!!!!!!!!!!!!!!!!!!!!! SOY STATE ORDER', orders)
     if (isLoading) {
         return (
             <p>LOADING...</p>

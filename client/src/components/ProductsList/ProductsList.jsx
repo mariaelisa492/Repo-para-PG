@@ -7,7 +7,7 @@ import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/
 
 
 export default function ProductsList({ filteredProducts }) {
-  console.log(filteredProducts, "ProductsList");
+  // console.log(filteredProducts, "ProductsList");
 
   const limit = useSelector((state)=> state.limit)
   const [lessThan, setLessThan] = useState(null)
