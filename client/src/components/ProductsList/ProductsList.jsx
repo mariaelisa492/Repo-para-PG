@@ -113,6 +113,9 @@ export default function ProductsList({ filteredProducts }) {
         </div>
           <hr/>
 
+        {/* Comento de manera temporal para poner los filtros y ordenamientos arriba,
+        // seguramente en un componente aparte
+
         <div className='formPrice'>
           <div>
             <label className='labels'>Order by Price </label>
@@ -134,6 +137,7 @@ export default function ProductsList({ filteredProducts }) {
               </form>
             </div>
           </div>
+            */}
         
       </div>
     </>
