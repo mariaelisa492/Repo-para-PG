@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Footer from "../components/Footer/Footer";
 import ProductsList from "../components/ProductsList/ProductsList";
@@ -7,8 +7,8 @@ import SlideShow from "../components/SlideShow/SlideShow";
 import SideBar from "../components/SideBar/SideBar";
 import DropDownMenu from "../components/DropDownMenu/DropDownMenu";
 import { categories } from "../components/Categories/categoriesExport";
+import Loader from "../components/Loader/Loader";
 import './home.css';
-
 
 export const Home = () => {
   const filteredProducts = useSelector((state) => state.filteredProducts);
@@ -17,6 +17,14 @@ export const Home = () => {
   const filteredTF = useSelector((state) => state.filteredTF)
   console.log(filteredTF, 'FILTEREDTF')
   console.log(products, 'products')
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  }, [])
 
   function showDropDownMenu() {
     setShowMenu(!showMenu);
@@ -43,7 +51,7 @@ export const Home = () => {
           </div>
 
           <div>
-            {
+            {(loading) ? <Loader /> :
               <ProductsList filteredProducts={filteredTF ? filteredProducts : products} />
             }
           </div>
