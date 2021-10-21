@@ -93,7 +93,7 @@ export const updateProduct = (product) => {
 }
 
 
-// ORDER ACTIONS
+// --------------------------- ORDER ACTIONS
 export const setNewOrder = (order) => {
   return async () => {
     try{
@@ -133,7 +133,7 @@ export const getMyOrders = (user) => {
   };
 };
 
-  // FILTROS Y ORDENAMIENTOS //
+// ------------------------ FILTROS Y ORDENAMIENTOS 
 export const getProductsByPriceAsc = () => {
   return {
     type: ORDER_PRICE_ASC
@@ -174,7 +174,7 @@ export const filterByCategory = (category) => {
   }
 }
 
-// CART
+// ----------------------------- CART
 export const addCart = (itemId) => {
   return {
     type: ADD_TO_CART,
