@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Footer from "../components/Footer/Footer";
 import ProductsList from "../components/ProductsList/ProductsList";
@@ -13,12 +13,12 @@ import './home.css';
 
 export const Home = () => {
   const filteredProducts = useSelector((state) => state.filteredProducts);
-  const [ showMenu, setShowMenu ] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const products = useSelector((state) => state.products)
   const filteredTF = useSelector((state) => state.filteredTF)
   console.log(filteredTF, 'FILTEREDTF')
   console.log(products, 'products')
-  
+
   function showDropDownMenu() {
     setShowMenu(!showMenu);
     console.log('drop down menu: ', showMenu);
@@ -29,12 +29,13 @@ export const Home = () => {
   // console.log(filteredProducts, "Estado modificable");
 
   return (
+
     <div className='pageContainer'>
     
       <div>
         <NavBar showDropDownMenu={showDropDownMenu} />
       </div>
-     
+
       <div className='mainView' >
         <DropDownMenu showMenu={showMenu} showDropDownMenu={showDropDownMenu} />
         <TopMenu categories={categories} />
@@ -51,9 +52,9 @@ export const Home = () => {
           </div>
         </div>
       </div>
-   
+
       <div>
-        <Footer/>
+        <Footer />
       </div>
 
     </div>
