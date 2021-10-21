@@ -5,6 +5,7 @@ import ProductsList from "../components/ProductsList/ProductsList";
 import NavBar from "../components/NavBar/NavBar";
 import SlideShow from "../components/SlideShow/SlideShow";
 import TopMenu from "../components/TopMenu/TopMenu";
+import FilterProducts from "../components/FilterProducts/FilterProducts";
 import DropDownMenu from "../components/DropDownMenu/DropDownMenu";
 import { categories } from "../components/Categories/categoriesExport";
 import './home.css';
@@ -28,7 +29,7 @@ export const Home = () => {
   // console.log(filteredProducts, "Estado modificable");
 
   return (
-    <div>
+    <div className='pageContainer'>
     
       <div>
         <NavBar showDropDownMenu={showDropDownMenu} />
@@ -42,6 +43,7 @@ export const Home = () => {
             <SlideShow />
           </div>
 
+          <FilterProducts />
           <div>
             {
               <ProductsList filteredProducts={filteredTF ? filteredProducts : products} />

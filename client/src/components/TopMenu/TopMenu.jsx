@@ -38,7 +38,11 @@ export default function({categories}) {
           {Object.keys(categories).map(c => {
             return (
               <div>
-                <div onMouseEnter={() => setActive(c)} className={'topCat ' + (c === active ? 'active' : '')}>{c}</div>
+                <div 
+                  onMouseEnter={() => setActive(c)} 
+                  className={'topCat ' + (c === active ? 'active' : '')}>
+                  {c}
+                </div>
                 <ul 
                   className={'subCat ' + (c === active ? 'subActive' : 'subInactive')}
                   onMouseLeave={() => setActive('')}
