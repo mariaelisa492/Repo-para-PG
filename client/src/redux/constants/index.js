@@ -7,6 +7,7 @@ export const GET_BYNAME = "GET_BYNAME"
 export const GET_ORDERS = "GET_ORDERS"
 export const GET_MY_ORDERS = "GET_MY_ORDERS"
 export const GET_SINGLE_PRODUCT = "GET_SINGLE_PRODUCT"
+export const EMPTY_CART = "EMPTY_CART"
 
 // ------------------ TYPES FOR DASHBOARD / ADMIN
 export const DELETE_PRODUCT = "DELETE_PRODUCT"

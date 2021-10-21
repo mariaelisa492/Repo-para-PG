@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom"
 import { useDispatch } from "react-redux";
 import './PayPal.css'
-import { setNewOrder } from "../../redux/actions";
+import { setNewOrder, emptyCart } from "../../redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
@@ -30,6 +30,7 @@ function CheckoutBut({totalPrice, items, totalItems}) {
   };
 
   const onApprove = (data, actions) => {
+    dispatch(emptyCart())
     return actions.order.capture();
   };
 

@@ -19,7 +19,7 @@ export function UserProfile() {
         console.log('"""""""USER HANDLER', user.email)
         dispatch(getMyOrders(user.email))
     }
-
+console.log('!!!!!!!!!!!!!!!!!!!!!!!!!! SOY STATE ORDER', orders)
     if (isLoading) {
         return (
             <p>LOADING...</p>

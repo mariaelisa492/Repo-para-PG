@@ -6,7 +6,7 @@ import {
   ADD_TO_CART, REMOVE_FROM_CART,
   REMOVE_ITEM, GET_ORDERS, FILTER_CATEGORIES,
   GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT,
-  GET_MY_ORDERS
+  GET_MY_ORDERS, EMPTY_CART
   } from "../constants/index"
 
 export const getProducts = () => {
@@ -192,6 +192,12 @@ export const removeCart = (itemId) => {
     }
   }
 };
+
+export const emptyCart = () => {
+  return {
+    type: EMPTY_CART
+  }
+}
 
 export const removeItem = (itemId) => {
   return {
