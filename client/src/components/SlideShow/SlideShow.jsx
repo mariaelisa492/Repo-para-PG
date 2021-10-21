@@ -5,6 +5,7 @@ import img2 from './images/002.jpg'
 import img3 from './images/003.jpg'
 import { ReactComponent as FlechaDerecha } from './images/iconmonstr-arrow-63.svg'
 import { ReactComponent as FlechaIzquierda } from './images/iconmonstr-arrow-64.svg'
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
 import { useRef } from 'react'
 import './SlideShow.css'
 
@@ -18,7 +19,7 @@ const SlideShow = () => {
     const siguiente = () => {
         if (slideshow.current.children.length > 0) {
             const primerElemento = slideshow.current.children[0]
-            slideshow.current.style.transition = `300ms ease-out all`
+            slideshow.current.style.transition = `400ms ease-out all`
 
             const tamañoSlide = slideshow.current.children[0].offsetWidth;
             slideshow.current.style.transform = `translateX(-${tamañoSlide}px)`
@@ -75,8 +76,8 @@ const SlideShow = () => {
                 </div>
 
                 <div className="controls">
-                    <button className="btn" onClick={anterior}><FlechaIzquierda /></button>
-                    <button className="btn2" onClick={siguiente}><FlechaDerecha /></button>
+                    <button className="btn" onClick={anterior}><FaAngleLeft /></button>
+                    <button className="btn2" onClick={siguiente}><FaAngleRight /></button>
                 </div>
 
 

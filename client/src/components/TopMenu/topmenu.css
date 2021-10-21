@@ -1,0 +1,105 @@
+.topMenuBar 
+{
+  background-color: white;
+  height: 40px;
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+}
+
+.mainCategories 
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: top;
+  color: #8f8f8f;
+  height: 40px;
+}
+
+.topCat 
+{
+  margin: 0px;
+  padding: 0px 10px;
+  cursor: pointer;
+  height: 40px;
+  font-size: 1em;
+  line-height: 40px;
+  border-bottom: 4px solid transparent;
+  transition: all 400ms;
+  text-align: center;
+  position: relative;
+  background-color: white;
+  z-index: 22;
+}
+
+.topCat:hover
+{
+  border-bottom: 4px solid orange;
+  font-weight: normal;
+  color: #4f4f4f;
+}
+
+.subCat 
+{
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #7f7f7f;
+  position: relative;
+  margin-top: 2px;
+  padding: 20px 0px;
+  transition: all 500ms;
+  z-index: 21;
+  overflow: hidden;
+}
+
+.subCat li
+{
+  padding: 10px 40px;
+  cursor: pointer;
+}
+
+.subCat li span
+{
+  border-bottom: 1px solid transparent;
+  transition: all 500ms;
+}
+
+.subCat li:hover span
+{
+  border-bottom: 1px solid orange;
+}
+
+.subActive
+{
+  top: 0;
+  opacity: 1;
+}
+
+.subInactive
+{
+  top: -400px;
+  opacity: 0;
+}
+
+.subCategories ul li
+{
+  text-align: center;
+  padding: 10px;
+}
+
+.subVisible
+{
+  display: flex;
+}
+
+.subHidden 
+{
+  display: none;
+}
+
+@media (max-width: 858px)
+{
+  .topMenu {
+    display: none;
+  }
+}

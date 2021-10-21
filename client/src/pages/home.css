@@ -8,6 +8,6 @@
 {
   .mainView
   {
-    display: flex;
+    grid-template-rows: 0px 1fr;
   } 
 }
