@@ -17,8 +17,8 @@ export function UserProfile() {
     const handleOrders = (e) => {
         e.preventDefault()
         //console.log('"""""""USER HANDLER', user.email)
-        console.log('!!!!!!!!!!!!!!!!!!!!!!!!!! SOY STATE ORDER', orders)
         dispatch(getMyOrders(user.email))
+        console.log('!!!!!!!!!!!!!!!!!!!!!!!!!! SOY STATE ORDER', orders)
     }
     if (isLoading) {
         return (

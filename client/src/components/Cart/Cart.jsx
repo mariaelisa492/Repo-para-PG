@@ -65,9 +65,6 @@ export default function Cart() {
                             </h4>
                         </div>
                         <div>
-                        <div>
-                            <CheckoutBut  totalPrice={totalPrice} items={items} user={user.email} totalItems={totalItems}/>
-                        </div>
                             <Link to="/">
                                 <h3>
                                 ¡Keep Shopping!
