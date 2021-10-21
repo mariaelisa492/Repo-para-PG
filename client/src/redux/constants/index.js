@@ -5,6 +5,8 @@ export const LOCALHOST_URL = "http://localhost:5000"
 export const GET_PRODUCTS = "GET_PRODUCTS"
 export const GET_BYNAME = "GET_BYNAME"
 export const GET_ORDERS = "GET_ORDERS"
+export const GET_MY_ORDERS = "GET_MY_ORDERS"
+
 
 // ----------------- TYPES FOR FILTER & SORT
 export const ORDER_PRICE_ASC = "ORDER_PRICE_ASC"

@@ -5,7 +5,7 @@ import {
 	FILTER_PRICE_RANGE, DELETE_PRODUCT,
 	ADD_TO_CART, REMOVE_FROM_CART,
 	REMOVE_ITEM, LOAD_CURRENT, FILTER_CATEGORIES, SET_LIMIT,
-	GET_ORDERS
+	GET_MY_ORDERS
  } from "../constants/index"
 
 const initialState = {
@@ -44,7 +44,7 @@ export const rootReducer = (state = initialState, action) => {
 				products: [...deletedProduct]
 			};
 
-		case GET_ORDERS:
+		case GET_MY_ORDERS:
 			return {
 				...state,
 				orders: [...action.payload]

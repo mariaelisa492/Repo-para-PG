@@ -5,7 +5,8 @@ import {
 	FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
   ADD_TO_CART, REMOVE_FROM_CART,
   REMOVE_ITEM, GET_ORDERS, FILTER_CATEGORIES,
-  GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT
+  GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT,
+  GET_MY_ORDERS
   } from "../constants/index"
 
 export const getProducts = () => {
@@ -77,7 +78,22 @@ export const getAllOrders = () => {
     } 
 }
 
+export const getMyOrders = (culo) => {
+  return async (dispatch) => {
+    try{
+      const myOrders = await axios.get(`${LOCALHOST_URL}/orders/userOrders`, {user:culo} )
+      console.log(myOrders, "CONSOLE LOG RE COPADO DE MY ORDERS")
+      return dispatch({
+        type: GET_MY_ORDERS,
+        payload: myOrders.data,
+      });
 
+    }catch (error){
+      console.log(error, 'getMyOrders ||Error||')
+
+    }
+  }
+}
   // FILTROS Y ORDENAMIENTOS //
 export const getProductsByPriceAsc = () => {
   return {

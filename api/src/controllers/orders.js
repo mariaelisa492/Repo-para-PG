@@ -39,7 +39,8 @@ const getAllOrders = async (req, res) => {
 };
 
 const getOrder = async (req, res) => { 
-    const {user} = req.params;
+    const {user} = req.body;
+    console.log(user)
     try {
         const orderUser = await Order.find(user);
         res.status(200).json(orderUser);
@@ -49,7 +50,6 @@ const getOrder = async (req, res) => {
         });
     }
 };
-
 
 
 
