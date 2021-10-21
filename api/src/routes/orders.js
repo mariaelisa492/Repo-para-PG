@@ -3,7 +3,7 @@ const router = Router();
 const orders = require('../controllers/orders')
 
 //obtener todas las ordenes
-router.get('/', orders.getAllOrders)
+router.get('/allOrders', orders.getAllOrders)
 
 //obtener todas las ordenes de un vendedor
 router.get('/userOrders', orders.getOrder)

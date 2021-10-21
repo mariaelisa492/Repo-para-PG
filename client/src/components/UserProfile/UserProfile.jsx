@@ -8,13 +8,15 @@ import { getMyOrders } from "../../redux/actions";
 import './UserProfile.css'
 
 export function UserProfile() {
+    
     const dispatch = useDispatch()
     const { user, isAuthenticated, isLoading } = useAuth0()
-
+    console.log('uSEEEEEEEEEEEER')
     const orders = useSelector(state => state.orders)
 
     const handleOrders = (e) => {
         e.preventDefault()
+        console.log('"""""""USER HANDLER', user.email)
         dispatch(getMyOrders(user.email))
     }
 

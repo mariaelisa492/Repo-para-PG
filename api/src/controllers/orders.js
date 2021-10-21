@@ -39,10 +39,10 @@ const getAllOrders = async (req, res) => {
 };
 
 const getOrder = async (req, res) => { 
-    const {user} = req.body;
-    console.log(user)
+    const { user } = req.query;
+    console.log('SOOOOOOOOOOOOOOOOOOY BODY', req.query)
     try {
-        const orderUser = await Order.find(user);
+        const orderUser = await Order.find({ 'user': { '$regex': user, $options: 'i' } });
         res.status(200).json(orderUser);
     } catch (error) {
         res.status(404).json({ 
@@ -50,7 +50,6 @@ const getOrder = async (req, res) => {
         });
     }
 };
-
 
 
 module.exports = {

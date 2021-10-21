@@ -46,6 +46,8 @@ export const rootReducer = (state = initialState, action) => {
 			};
 
 			case GET_MY_ORDERS:
+				console.log('!!!!!!!!!!!!!!! SOY REDUCEr', action.payload)
+				console.log('!!!!!!!!!!!!!!! SOY ORDERSATE', state.orders)
 			return {
 				...state,
 				orders: [...action.payload]

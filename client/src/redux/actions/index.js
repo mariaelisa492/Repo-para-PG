@@ -119,22 +119,19 @@ export const getAllOrders = () => {
     } 
 }
 
-export const getMyOrders = (culo) => {
+export const getMyOrders = (user) => {
   return async (dispatch) => {
-    try{
-      const myOrders = await axios.get(`${LOCALHOST_URL}/orders/userOrders`, {user:culo} )
-      console.log(myOrders, "CONSOLE LOG RE COPADO DE MY ORDERS")
+    try {
+      const myOrders = await axios.get(`${LOCALHOST_URL}/orders/userOrders/?user=${user}`);
       return dispatch({
         type: GET_MY_ORDERS,
         payload: myOrders.data,
       });
-
-    }catch (error){
-      console.log(error, 'getMyOrders ||Error||')
-
+    } catch (error) {
+      console.log(error, 'getMyOrders ||Error||');
     }
-  }
-}
+  };
+};
 
   // FILTROS Y ORDENAMIENTOS //
 export const getProductsByPriceAsc = () => {
@@ -171,7 +168,6 @@ export const filterProductsByPriceRange = (price1, price2) => {
 }
 
 export const filterByCategory = (category) => {
-
   return {
     type: FILTER_CATEGORIES,
     payload: category
