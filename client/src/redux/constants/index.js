@@ -5,6 +5,11 @@ export const LOCALHOST_URL = "http://localhost:5000"
 export const GET_PRODUCTS = "GET_PRODUCTS"
 export const GET_BYNAME = "GET_BYNAME"
 export const GET_ORDERS = "GET_ORDERS"
+export const GET_SINGLE_PRODUCT = "GET_SINGLE_PRODUCT"
+
+// ------------------ TYPES FOR DASHBOARD / ADMIN
+export const DELETE_PRODUCT = "DELETE_PRODUCT"
+export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
 
 // ----------------- TYPES FOR FILTER & SORT
 export const ORDER_PRICE_ASC = "ORDER_PRICE_ASC"
@@ -13,7 +18,6 @@ export const FILTER_PRICE_ONLY_LESSTHAN = "FILTER_PRICE_ONLY_LESSTHAN"
 export const FILTER_PRICE_ONLY_MORETHAN = "FILTER_PRICE_ONLY_MORETHAN"
 export const FILTER_PRICE_RANGE = "FILTER_PRICE_RANGE"
 export const FILTER_CATEGORIES = "FILTER_CATEGORIES"
-export const DELETE_PRODUCT = "DELETE_PRODUCT"
 export const SET_LIMIT = "SET_LIMIT"
 
 // ----------------- CART

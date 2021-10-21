@@ -46,6 +46,7 @@ export default function SideBar({categories}) {
     setActive(e.target.innerText);
   }
 
+  /*
   return (
     <div className='leftCol'>
       <div className={'sidebar' + (hidden ? ' hidden' : ' visible')}>
@@ -76,4 +77,10 @@ export default function SideBar({categories}) {
       </div>
     </div>
   )
+  */
+  return (
+    <div className='topMenu'>
+      <p>the top menu goes here</p>
+    </div>
+  );
 }
