@@ -95,9 +95,9 @@ export const updateProduct = (product) => {
 
 // --------------------------- ORDER ACTIONS
 export const setNewOrder = (order) => {
-  return async () => {
+  return  (dispatch) => {
     try{
-      await axios.post(`${LOCALHOST_URL}/orders/create`, order);
+      axios.post(`${LOCALHOST_URL}/orders/create`, order).then(setTimeout(()=>{dispatch(emptyCart())},2000))
     }
     catch (error) {
       console.log(error);

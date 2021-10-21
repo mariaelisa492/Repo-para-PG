@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom"
 import { useDispatch } from "react-redux";
 import './PayPal.css'
@@ -10,13 +10,10 @@ function CheckoutBut({totalPrice, items, totalItems}) {
   
 
   const {user} = useAuth0()
-    
-  
   const dispatch = useDispatch()
+  
 
   const createOrder = (data, actions) => {
-    
-    
     return actions.order.create({
       purchase_units: [
         {
@@ -54,6 +51,7 @@ function CheckoutBut({totalPrice, items, totalItems}) {
           status: "Processing"  
         }))         
         )}
+        
         />
       
     </div>
