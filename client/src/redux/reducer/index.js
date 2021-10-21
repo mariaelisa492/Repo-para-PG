@@ -8,7 +8,6 @@ import {
 	GET_MY_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT
  } from "../constants/index"
 
-
 const initialState = {
 	users: [],
 	sales: [],
@@ -45,13 +44,12 @@ export const rootReducer = (state = initialState, action) => {
 				products: [...deletedProduct]
 			};
 
-			case GET_MY_ORDERS:
-				console.log('!!!!!!!!!!!!!!! SOY REDUCEr', action.payload)
-				console.log('!!!!!!!!!!!!!!! SOY ORDERSATE', state.orders)
+		case GET_MY_ORDERS:
 			return {
 				...state,
 				orders: [...action.payload]
 			}	
+
 			case GET_SINGLE_PRODUCT:
 				return {
 					...state,
@@ -66,7 +64,22 @@ export const rootReducer = (state = initialState, action) => {
 						products: [...state.products]
 					};
 					
-		// ---- ORDENAMIENTOS ---- //
+		// ---- ORDENAMIENTOS ---- //	
+
+		case GET_SINGLE_PRODUCT:
+			return {
+				...state,
+				product: action.payload
+			}
+
+			case UPDATE_PRODUCT:
+				let index = state.products.findIndex( product => product._id === action.payload._id);
+				state.products[index] = action.payload;
+				return {
+				  ...state,
+				  products: [...state.products]
+				};
+
 		case ORDER_PRICE_ASC:
 			var sortedPriceAsc
 			if (state.filteredTF) {
