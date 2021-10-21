@@ -4,11 +4,9 @@ import {
 	FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
 	FILTER_PRICE_RANGE, DELETE_PRODUCT,
 	ADD_TO_CART, REMOVE_FROM_CART,
-	REMOVE_ITEM, LOAD_CURRENT, FILTER_CATEGORIES, SET_LIMIT,
-	GET_ORDERS, ADJUST_QTY, GET_SINGLE_PRODUCT,
-	UPDATE_PRODUCT
+	REMOVE_ITEM, EMPTY_CART, FILTER_CATEGORIES, SET_LIMIT,
+	GET_MY_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT
  } from "../constants/index"
-
 
 
 
@@ -28,34 +26,39 @@ const initialState = {
 export const rootReducer = (state = initialState, action) => {
 	switch (action.type) {
 
-		case GET_PRODUCTS:
+			case GET_PRODUCTS:
 			return {
 				...state,
 				products: action.payload
 			};
 
-		case GET_BYNAME: 
+			case GET_BYNAME: 
 			return {
 				...state,
 				filteredProducts: [...action.payload],
 				filteredTF: true
 			};
 
-		case DELETE_PRODUCT:
+			case DELETE_PRODUCT:
 			let deletedProduct = state.products.filter(el => el._id !== action.payload._id)
 			return {
 				...state,
 				products: [...deletedProduct]
 			};
 
-
-		case GET_ORDERS:
+		case GET_MY_ORDERS:
 			return {
 				...state,
 				orders: [...action.payload]
 			}	
-							    	
 
+			case GET_SINGLE_PRODUCT:
+				return {
+					...state,
+					product: action.payload
+				}
+								
+		// ---- ORDENAMIENTOS ---- //	
 		case GET_SINGLE_PRODUCT:
 			return {
 				...state,
@@ -69,9 +72,6 @@ export const rootReducer = (state = initialState, action) => {
 				  ...state,
 				  products: [...state.products]
 				};
-
-		// ---- ORDENAMIENTOS ---- //
-
 
 		case ORDER_PRICE_ASC:
 			var sortedPriceAsc
@@ -196,10 +196,10 @@ export const rootReducer = (state = initialState, action) => {
 			cart: state.cart.filter((item) => item._id !== action.payload.id)
 		}; 
       
-		case LOAD_CURRENT:
+		case EMPTY_CART:
 		return {
 			...state,
-			currentItem: action.payload
+			cart: []
 		};
 
 				// ---------------- PAGINATION

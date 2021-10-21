@@ -5,7 +5,8 @@ import {
   FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
   ADD_TO_CART, REMOVE_FROM_CART,
   REMOVE_ITEM, GET_ORDERS, FILTER_CATEGORIES,
-  GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT
+  GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT,
+  GET_MY_ORDERS, EMPTY_CART
   } from "../constants/index"
 
 export const getProducts = () => {
@@ -92,7 +93,7 @@ export const updateProduct = (product) => {
 }
 
 
-// ORDER ACTIONS
+// --------------------------- ORDER ACTIONS
 export const setNewOrder = (order) => {
   return async () => {
     try{
@@ -118,10 +119,21 @@ export const getAllOrders = () => {
     } 
 }
 
+export const getMyOrders = (user) => {
+  return async (dispatch) => {
+    try {
+      const myOrders = await axios.get(`${LOCALHOST_URL}/orders/userOrders/?user=${user}`);
+      return dispatch({
+        type: GET_MY_ORDERS,
+        payload: myOrders.data,
+      });
+    } catch (error) {
+      console.log(error, 'getMyOrders ||Error||');
+    }
+  };
+};
 
-
-// FILTROS Y ORDENAMIENTOS //
-
+// ------------------------ FILTROS Y ORDENAMIENTOS 
 export const getProductsByPriceAsc = () => {
   return {
     type: ORDER_PRICE_ASC
@@ -156,14 +168,13 @@ export const filterProductsByPriceRange = (price1, price2) => {
 }
 
 export const filterByCategory = (category) => {
-
   return {
     type: FILTER_CATEGORIES,
     payload: category
   }
 }
 
-// CART
+// ----------------------------- CART
 export const addCart = (itemId) => {
   return {
     type: ADD_TO_CART,
@@ -181,6 +192,12 @@ export const removeCart = (itemId) => {
     }
   }
 };
+
+export const emptyCart = () => {
+  return {
+    type: EMPTY_CART
+  }
+}
 
 export const removeItem = (itemId) => {
   return {

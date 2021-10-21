@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom"
 import { useDispatch } from "react-redux";
 import './PayPal.css'
-import { setNewOrder } from "../../redux/actions";
+import { setNewOrder, emptyCart } from "../../redux/actions";
+import { useAuth0 } from "@auth0/auth0-react";
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
-function CheckoutBut({totalPrice, items, user, totalItems}) {
+function CheckoutBut({totalPrice, items, totalItems}) {
   console.log(totalPrice)
   console.log('ITEEEEEEEEEMS', items)
 
+  const {user} = useAuth0()
     
   
   const dispatch = useDispatch()
@@ -28,11 +30,12 @@ function CheckoutBut({totalPrice, items, user, totalItems}) {
   };
 
   const onApprove = (data, actions) => {
+    dispatch(emptyCart())
     return actions.order.capture();
   };
 
   
-  
+    console.log('!!!!!!!!!!!!!!!!!', user.email)
   return (
     <div className="paypalButContainer">
      
@@ -40,7 +43,7 @@ function CheckoutBut({totalPrice, items, user, totalItems}) {
         createOrder={(data, actions) => createOrder(data, actions)}
         onApprove={(data, actions) => onApprove(data, actions).then(
           dispatch(setNewOrder({
-          user: user,
+          user: user.email,
           items: items.map(elem => (
             {
               name: elem.name,

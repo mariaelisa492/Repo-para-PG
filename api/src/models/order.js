@@ -3,7 +3,8 @@ const { Schema } = mongoose;
 
 const OrderSchema = new Schema({
     user: { 
-        type: String 
+        type: String,
+        required: true
     },
     orderDate: { 
         type: Date, 
