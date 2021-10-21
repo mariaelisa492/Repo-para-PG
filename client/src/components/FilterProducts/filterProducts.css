@@ -1,0 +1,101 @@
+.filterProducts 
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  padding: 20px 50px 10px 0px;
+}
+
+.filterSelector
+{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.filterTitle, .filterName
+{
+  color: #7f7f7f;
+  font-size: 1.1em;
+  padding: 5px 10px;
+}
+
+.filterName 
+{
+  width: 240px;
+  background-color: #eeeeee;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 4px;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.angleDown 
+{
+  color: orange;
+}
+
+.filterList 
+{
+  width: 240px;
+  position: absolute;
+  top: 45px;
+  z-index: 50;
+  padding: 10px 20px;
+  background-color: #eeeeee;
+  border-radius: 4px;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  transition: all 500ms;
+}
+
+.filterList li
+{
+  font-size: 1.1em;
+  margin: 20px auto;
+  color: #7f7f7f;
+  cursor: pointer;
+}
+
+.filterList li:hover
+{
+  color: dodgerblue;
+}
+
+.showList 
+{
+  opacity: 1;
+  height: auto;
+  padding: 10px 20px;
+}
+
+.hideList
+{
+  opacity: 0;
+  height: 0;
+  padding: 0px 20px;
+}
+
+.applyFilter 
+{
+  display: inline-block;
+  text-align: center;
+  padding: 10px;
+  background-color: orange;
+  color: white;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.fActive 
+{
+  display: inline;
+  color: orange;
+}
+
+.fInactive
+{
+  display: none;
+}

@@ -72,12 +72,12 @@
 
 .reactModalContent {
   background-color: #f6f6f6;
-  border-radius: 70px;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-  width: calc(100% - 10px);
-  max-width: 650px;
-  border-radius: 20px;
-  margin: 30px auto;
+  border-radius: 4.3em;
+  box-shadow: 0.25em 0.25em 0.25em rgba(0, 0, 0, 0.25);
+  width: calc(100% - 0.625em);
+  max-width: 38.75em;
+  border-radius: 1.25em;
+  margin: 1.87em auto;
   overflow: auto;
 }
 

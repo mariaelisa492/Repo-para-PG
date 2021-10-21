@@ -50,7 +50,7 @@ export default function Cart() {
                                 <div><strong>TOTAL: $ {totalPrice}</strong> </div>
                             </div>
                             <div>
-                                <CheckoutBut totalPrice={totalPrice} items={items} />
+                            <CheckoutBut  totalPrice={totalPrice} items={items} user={user.email} totalItems={totalItems}/>
                             </div>
                         </div>
                     </div>

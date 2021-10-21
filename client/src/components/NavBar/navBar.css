@@ -9,6 +9,8 @@
     background-color: #FF9F1C;
     height: 80px;
     width: 100%;
+    position: relative;
+    z-index: 30;
 }
 
 .logo img{
