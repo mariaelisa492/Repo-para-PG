@@ -4,21 +4,22 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { FaAngleRight } from 'react-icons/fa';
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
-import { getAllOrders } from "../../redux/actions";
+import { getMyOrders } from "../../redux/actions";
 import './UserProfile.css'
 
 export function UserProfile() {
+    
     const dispatch = useDispatch()
     const { user, isAuthenticated, isLoading } = useAuth0()
-
+    console.log('uSEEEEEEEEEEEER')
     const orders = useSelector(state => state.orders)
-    console.log('Order de usuario', orders.filter(e => e.user === user.email))
 
     const handleOrders = (e) => {
         e.preventDefault()
-        dispatch(getAllOrders())
+        console.log('"""""""USER HANDLER', user.email)
+        dispatch(getMyOrders(user.email))
     }
-
+console.log('!!!!!!!!!!!!!!!!!!!!!!!!!! SOY STATE ORDER', orders)
     if (isLoading) {
         return (
             <p>LOADING...</p>
