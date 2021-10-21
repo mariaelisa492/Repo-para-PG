@@ -4,7 +4,8 @@ import {
 	FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
 	FILTER_PRICE_RANGE, DELETE_PRODUCT,
 	ADD_TO_CART, REMOVE_FROM_CART,
-	REMOVE_ITEM, LOAD_CURRENT, FILTER_CATEGORIES, SET_LIMIT
+	REMOVE_ITEM, LOAD_CURRENT, FILTER_CATEGORIES, SET_LIMIT,
+	GET_ORDERS
  } from "../constants/index"
 
 const initialState = {
@@ -15,7 +16,8 @@ const initialState = {
 	cart: [],
 	limit:0,
 	currentItem: null,
-	filteredTF: false
+	filteredTF: false,
+	orders: []
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -42,6 +44,11 @@ export const rootReducer = (state = initialState, action) => {
 				products: [...deletedProduct]
 			};
 
+		case GET_ORDERS:
+			return {
+				...state,
+				orders: [...action.payload]
+			}	
 							    	// ---- ORDENAMIENTOS ---- //
 
 		case ORDER_PRICE_ASC:

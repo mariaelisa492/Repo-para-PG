@@ -29,7 +29,7 @@ const createOrder = async (req, res) => {
 
 const getAllOrders = async (req, res) => {
     try {
-        const ordersAll = await Order.findAll();
+        const ordersAll = await Order.find();
         res.status(200).json(ordersAll);
     } catch (error) {
         res.status(400).json({ 
@@ -38,7 +38,7 @@ const getAllOrders = async (req, res) => {
     }
 };
 
-const getOrder= async (req, res) => { 
+const getOrder = async (req, res) => { 
     const {user} = req.params;
     try {
         const orderUser = await Order.find(user);
