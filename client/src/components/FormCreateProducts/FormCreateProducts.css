@@ -19,38 +19,41 @@
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); */
   text-align: center;
   /* margin-bottom: 20px; */
-  padding: 10px;
+  padding: 1em;
   position: relative;
 }
 
 .labelCreateProducts {
-  margin: 12px auto 8px auto;
+  margin: 0.7em auto 0.5em auto;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 1.2em;
 }
 
 .inputCreateProducts {
-  margin: 0px auto;
-  padding: 2px;
-  border-radius: 9px;
-  width: calc(100vw - 30px);
-  padding: 10px 24px;
+  margin: 0em auto;
+  padding: 0.3em;
+  border-radius: 0.5em;
+  width: calc(100vw - 2.5em);
+  padding: 0.7em 1.7em;
   background: #e6e6e6;
   color: #696969;
   border: none;
   outline: none;
-  font-size: 0.9em;
-  max-width: 500px;
-  font-size: 17px;
+  font-size: 1rem;
+  max-width: 31.25rem;
+  max-height: 4.5em;
 }
 
-.inputCreate:focus {
-  border: 1px solid #313131;
-  border-radius: 9px;
+.inputCreateProducts:focus {
+  border: 0.0625em solid #646464;
+  border-radius: 0.5em;
+  font-size: 1rem;
+  margin: 0em auto;
+  padding: 0.6em;
 }
 
 .errorText{
-  font-size: 15px;
+  font-size: 0.9em;
   color: red;
 }
 
@@ -59,21 +62,21 @@
   color: #eee;
   background: #2EC4B6;
   border: none;
-  margin: 20px auto;
-  max-width: 250px;
-  font-size: 20px;
-  padding: 8px 10px;
+  margin: 1.25em auto;
+  max-width: 15.6em;
+  font-size: 1.25em;
+  padding: 0.4em 0.55em;
   font-weight: 600;
 }
 
 .btnCloseFormProducts{
-  size: 15px;
+  size: 0.9em;
   cursor: pointer;
   position: absolute;
-  width: 5px;
-  top: 12px;
-  right: 12px;
+  width: 0.3em;
+  top: 0.75em;
+  right: 0.75em;
   color: #eee;
   background-color: rgb(230, 32, 32);
-  border-radius: 5px;
+  border-radius: 0.5em;
 }
