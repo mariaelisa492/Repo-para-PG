@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from '@auth0/auth0-react'
 import { FaAngleRight } from 'react-icons/fa';
@@ -11,14 +11,21 @@ export function UserProfile() {
     
     const dispatch = useDispatch()
     const { user, isAuthenticated, isLoading } = useAuth0()
-    console.log('uSEEEEEEEEEEEER')
+   
     const orders = useSelector(state => state.orders)
+    const [toggle, setToggle] = useState(false)
+    
 
     const handleOrders = (e) => {
         e.preventDefault()
-        console.log('"""""""USER HANDLER', user.email)
         dispatch(getMyOrders(user.email))
+        setToggle(!toggle)
     }
+
+    const handleToggle = (e) => {
+        setToggle(!toggle)
+    }
+
 console.log('!!!!!!!!!!!!!!!!!!!!!!!!!! SOY STATE ORDER', orders)
     if (isLoading) {
         return (
@@ -28,12 +35,22 @@ console.log('!!!!!!!!!!!!!!!!!!!!!!!!!! SOY STATE ORDER', orders)
 
     if (isAuthenticated) {
         return (
-
-            <div>
+           <div>
                 <NavBar />
-                <div className='containerUserProfile'>
-
-                    <div className='userProfileContainer'>
+                
+            {toggle ? 
+            <div>
+                <h1 onClick={(e) => {handleToggle(e)}}>HOLA SOY ORDER</h1>
+                <div className="item-cart-cart">
+                    {orders.map((orders) => {
+                         return <h1>`${orders.user}`</h1>
+                    })}
+                </div>
+            </div> 
+            : 
+            
+            <div className='containerUserProfile'>
+            <div className='userProfileContainer'>
                         <div className='userImageContainer'>
                             <img src={user.picture} alt={user.name} className='image' />
                         </div>
@@ -74,10 +91,11 @@ console.log('!!!!!!!!!!!!!!!!!!!!!!!!!! SOY STATE ORDER', orders)
 
                         <div className='userName'>
                         <button onClick={(e) => {handleOrders(e)}}>X</button>
-
                         </div>
                     </div>
-                </div>
+          
+                </div> 
+            } 
                 <Footer />
             </div>
         )
