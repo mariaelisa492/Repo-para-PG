@@ -109,8 +109,8 @@ export default function EditableRow({ handleClosePopup, id }) {
                     </button>
                 </div>
 
-                <div className='containerformProducts'>
-                    <div>
+                <div>
+                    <div className='containerformProducts'>
                         <label className='labelCreateProducts'>
                             Name:
                         </label>
@@ -122,8 +122,8 @@ export default function EditableRow({ handleClosePopup, id }) {
                     )}
                 </div>
 
-                <div className='containerformProducts'>
-                    <div>
+                <div>
+                    <div className='containerformProducts'>
                         <label className='labelCreateProducts'>
                             Description:
                         </label>
@@ -148,8 +148,8 @@ export default function EditableRow({ handleClosePopup, id }) {
                     />
                 </div>
 
-                <div className='containerformProducts'>
-                    <div>
+                <div>
+                    <div className='containerformProducts'>
                         <label className='labelCreateProducts'>
                             Price:
                         </label>
@@ -160,8 +160,8 @@ export default function EditableRow({ handleClosePopup, id }) {
                         <p className='errorText'>{errorsProducts.price}</p>
                     )}
                 </div>
-                <div className='containerformProducts'>
-                    <div>
+                <div>
+                    <div className='containerformProducts'>
                         <label className='labelCreateProducts'>
                             Stock:
                         </label>
@@ -173,8 +173,8 @@ export default function EditableRow({ handleClosePopup, id }) {
                     )}
                 </div>
 
-                <div className='containerformProducts'>
-                    <div>
+                <div>
+                    <div className='containerformProducts'>
                         <label className='labelCreateProducts'>
                             Brand:
                         </label>
@@ -186,8 +186,8 @@ export default function EditableRow({ handleClosePopup, id }) {
                     )}
                 </div>
 
-                <div className='containerformProducts'>
-                    <div>
+                <div>
+                    <div className='containerformProducts'>
                         <label className='labelCreateProducts'>
                             Model:
                         </label>
@@ -199,8 +199,8 @@ export default function EditableRow({ handleClosePopup, id }) {
                     )}
                 </div>
 
-                <div className='containerformProducts'>
-                    <div>
+                <div>
+                    <div className='containerformProducts'>
                         <label className='labelCreateProducts'>
                             Category:
                         </label>
