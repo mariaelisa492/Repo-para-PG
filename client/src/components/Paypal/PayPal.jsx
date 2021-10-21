@@ -7,8 +7,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
 function CheckoutBut({totalPrice, items, totalItems}) {
-  console.log(totalPrice)
-  console.log('ITEEEEEEEEEMS', items)
+  
 
   const {user} = useAuth0()
     
@@ -30,7 +29,6 @@ function CheckoutBut({totalPrice, items, totalItems}) {
   };
 
   const onApprove = (data, actions) => {
-    dispatch(emptyCart())
     return actions.order.capture();
   };
 
