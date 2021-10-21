@@ -84,7 +84,7 @@ export const updateProduct = (product) => {
           const products = await axios.put(`${LOCALHOST_URL}/products/${product._id}`, objProduct);
           return dispatch({
               type: "UPDATE_PRODUCT",
-              payload: products.data.product
+              payload: products.data
           })
       } catch (error) {
         console.log("Error al actualizar producto")   

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import ReactModal from 'react-modal';
 import NavBar from "../NavBar/NavBar";
 import DataTable from "react-data-table-component";
-import FormCreateProducts from '../FormCreateProducts/FormCreateProducts'
+import FormCreateProducts from '../FormCreateProducts/FormCreateProducts';
+import FormUpdateProducts from '../FormUpdateProduct/EditableRow';
 import { useDispatch, useSelector, } from "react-redux";
 import { deleteProduct } from "../../redux/actions";
 import { MdDeleteForever } from 'react-icons/md';
@@ -11,6 +12,9 @@ import { NavLink } from "react-router-dom";
 import "./Dashboard.css";
 
 export default function Dashboard() {
+    
+    const [idToUpdate, setidToUpdate] = useState('')
+    
     const [pending, setPending] = useState(true);
 
     useEffect(() => {
@@ -49,7 +53,14 @@ export default function Dashboard() {
         },
         {
             name: "Actions",
-            cell: row => (<div className="actions"> <NavLink to={`admin/edit/${row._id}`} type="button"><FaRegEdit /></NavLink><button type="button" onClick={() => handleDeleteProduct(row)}><MdDeleteForever /></button></div>)
+            cell: row => (<div className="actions">
+                <button type="button" onClick={() => {
+                    handleOpenPopupUpdate()
+                    setidToUpdate(row._id)
+                    console.log(row._id)
+                }}><FaRegEdit /></button>
+                <button type="button" onClick={() => handleDeleteProduct(row)}><MdDeleteForever /></button>
+            </div>)
         },
 
         /*  {
@@ -68,16 +79,26 @@ export default function Dashboard() {
             dispatch(deleteProduct(row._id));
     }
 
-    // estado para mostrar popup
-    const [showPopup, setShowPopup] = useState(false);
+    // estado para mostrar popup Crear
+    const [showPopupCreate, setShowPopupCreate] = useState(false);
 
-    const handleOpenPopup = () => {
-        setShowPopup(true)
+    const handleOpenPopupCreate = () => {
+        setShowPopupCreate(true)
     }
-    const handleClosePopup = () => {
-        setShowPopup(false)
+    const handleClosePopupCreate = () => {
+        setShowPopupCreate(false)
     }
- 
+
+    // estado para mostrar popup Update
+    const [showPopupUpdate, setShowPopupUpdate] = useState(false);
+
+    const handleOpenPopupUpdate = () => {
+        setShowPopupUpdate(true)
+    }
+    const handleClosePopupUpdate = () => {
+        setShowPopupUpdate(false)
+    }
+
     return (
         <>
             <div>
@@ -98,12 +119,16 @@ export default function Dashboard() {
                     />
                 </div>
                 {/* <div className="create"> */}
-                    <button className='create add-button' onClick={handleOpenPopup}>Create</button>
+                <button className='create add-button' onClick={handleOpenPopupCreate}>Create</button>
                 {/* </div> */}
             </div>
 
-            <ReactModal isOpen={showPopup} className='reactModalContent' overlayClassName='reactModalOverlay'>
-                <FormCreateProducts handleClosePopup={handleClosePopup}/>
+            <ReactModal isOpen={showPopupCreate} className='reactModalContent' overlayClassName='reactModalOverlay'>
+                <FormCreateProducts handleClosePopup={handleClosePopupCreate} />
+            </ReactModal>
+
+            <ReactModal isOpen={showPopupUpdate} className='reactModalContent' overlayClassName='reactModalOverlay'>
+                <FormUpdateProducts handleClosePopup={handleClosePopupUpdate} id={idToUpdate}/>
             </ReactModal>
         </>
     )
