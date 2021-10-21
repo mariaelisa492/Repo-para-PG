@@ -1,32 +1,16 @@
 const { Router } = require('express');
 const router = Router();
+const orders = require('../controllers/orders')
 
 //obtener todas las ordenes
-router.get('/', async(req, res) =>{
-    try {
-        
-    } catch (error) {
-        
-    }
-});
+router.get('/', orders.getAllOrders)
 
 //obtener todas las ordenes de un vendedor
-router.get('/userOrders', async(req, res) =>{
-    try {
-        
-    } catch (error) {
-        
-    }
-});
+router.get('/userOrders', orders.getOrder)
 
 //creo una orden
-router.post('/create', async(req, res) =>{
-    try {
-        
-    } catch (error) {
-        
-    }
-});
+router.post('/create', orders.createOrder)
+ 
 
 //actualizo orden
 router.put('/:id', async(req, res) =>{

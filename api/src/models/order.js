@@ -3,19 +3,15 @@ const { Schema } = mongoose;
 
 const OrderSchema = new Schema({
     user: { 
-        type: Schema.Types.ObjectId, 
-        ref: "User" 
+        type: String 
     },
     orderDate: { 
         type: Date, 
         default: Date.now 
     },
-    products: { 
+    items: { 
         type: Array, 
         default: [] 
-    },
-    nameCustomer: {
-        type: String
     },
     quantity: {
         type: Number
