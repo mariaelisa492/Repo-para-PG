@@ -19,7 +19,7 @@ const SlideShow = () => {
     const siguiente = () => {
         if (slideshow.current.children.length > 0) {
             const primerElemento = slideshow.current.children[0]
-            slideshow.current.style.transition = `300ms ease-out all`
+            slideshow.current.style.transition = `400ms ease-out all`
 
             const tamañoSlide = slideshow.current.children[0].offsetWidth;
             slideshow.current.style.transform = `translateX(-${tamañoSlide}px)`
