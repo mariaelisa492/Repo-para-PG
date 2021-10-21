@@ -4,7 +4,7 @@ import {
   ORDER_PRICE_ASC, ORDER_PRICE_DESC,
   FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
   ADD_TO_CART, REMOVE_FROM_CART,
-  REMOVE_ITEM, LOAD_CURRENT, FILTER_CATEGORIES,
+  REMOVE_ITEM, GET_ORDERS, FILTER_CATEGORIES,
   GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT
   } from "../constants/index"
 
@@ -91,7 +91,37 @@ export const updateProduct = (product) => {
   }
 }
 
+
+// ORDER ACTIONS
+export const setNewOrder = (order) => {
+  return async () => {
+    try{
+      await axios.post(`${LOCALHOST_URL}/orders/create`, order);
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+export const getAllOrders = () => {
+    return async (dispatch) => {
+      try {
+        const orders = await axios.get(`${LOCALHOST_URL}/orders`);
+        return dispatch({
+          type: GET_ORDERS,
+          payload: orders.data,
+        });
+      } catch (error) {
+        console.log(error, 'getOrders ||Error||');
+      }
+    } 
+}
+
+
+
 // FILTROS Y ORDENAMIENTOS //
+
 export const getProductsByPriceAsc = () => {
   return {
     type: ORDER_PRICE_ASC
