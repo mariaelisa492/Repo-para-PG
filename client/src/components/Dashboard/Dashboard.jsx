@@ -3,25 +3,27 @@ import ReactModal from 'react-modal';
 import NavBar from "../NavBar/NavBar";
 import DataTable from "react-data-table-component";
 import FormCreateProducts from '../FormCreateProducts/FormCreateProducts'
-import "./Dashboard.css";
 import { useDispatch, useSelector, } from "react-redux";
 import { deleteProduct } from "../../redux/actions";
 import { MdDeleteForever } from 'react-icons/md';
 import { FaRegEdit } from 'react-icons/fa';
+import { NavLink } from "react-router-dom";
+import "./Dashboard.css";
 
 export default function Dashboard() {
     const [pending, setPending] = useState(true);
 
     useEffect(() => {
-		const timeout = setTimeout(() => {
-			setPending(false);
-		}, 2000);
-		return () => clearTimeout(timeout);
-	}, []);
+        const timeout = setTimeout(() => {
+            setPending(false);
+        }, 1000);
+        return () => clearTimeout(timeout);
+    }, []);
 
     const dispatch = useDispatch()
 
     const products = useSelector(state => state.products);
+
     const [items, setItems] = useState(products);
 
     const columns = [
@@ -47,9 +49,9 @@ export default function Dashboard() {
         },
         {
             name: "Actions",
-            cell: row => (<div className="actions"> <button type="button"><FaRegEdit /></button><button type="button" onClick={() => handleDeleteProduct(row)}><MdDeleteForever /></button></div>)
+            cell: row => (<div className="actions"> <NavLink to={`admin/edit/${row._id}`} type="button"><FaRegEdit /></NavLink><button type="button" onClick={() => handleDeleteProduct(row)}><MdDeleteForever /></button></div>)
         },
-        
+
         /*  {
              name: "",
              selector: "image",
@@ -57,13 +59,14 @@ export default function Dashboard() {
          } */
     ]
 
-    useEffect(()=>{
+    useEffect(() => {
         setItems(products)
     }, [products])
 
     const handleDeleteProduct = (row) => {
-        dispatch(deleteProduct(row._id));
-      }
+        if (window.confirm("Are you sure you want to remove this product??"))
+            dispatch(deleteProduct(row._id));
+    }
 
     // estado para mostrar popup
     const [showPopup, setShowPopup] = useState(false);
@@ -89,9 +92,8 @@ export default function Dashboard() {
                         title="My products"
                         striped
                         highlightOnHover
-                        // pointerOnHover
-                        paginationPerPage = {5}
-                        paginationRowsPerPageOptions = {[5,8]}
+                        paginationPerPage={5}
+                        paginationRowsPerPageOptions={[5, 8]}
                         pagination
                     />
                 </div>

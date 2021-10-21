@@ -135,4 +135,7 @@
   .leftCol {
     display: none;
   }
+  .topMenu {
+    display: none;
+  }
 }
