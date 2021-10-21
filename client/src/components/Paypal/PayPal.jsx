@@ -31,7 +31,7 @@ function CheckoutBut({totalPrice, items}) {
   return (
     <div className="paypalButContainer">
      
-      <PayPalButton style={{ color: "blue", shape: "pill", label: "pay", height: 40 }}
+      <PayPalButton style={{ color: "blue", shape: "pill", label: "pay", height: 40, with:20}}
         createOrder={(data, actions) => createOrder(data, actions)}
         onApprove={(data, actions) => onApprove(data, actions)}
         />
