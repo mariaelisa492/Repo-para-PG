@@ -39,15 +39,32 @@
 .subCategories 
 {
   width: 100%;
-  height: 0px;
   overflow: hidden;
-  background-color: red;
+  background-color: rgba(255, 255, 255, 0.9);
   z-index: 21;
-  color: green;
+  color: #7f7f7f;
   position: absolute;
   top: 36px;
   left: 0px;
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+}
+
+.subCategories ul li
+{
+  text-align: center;
+  padding: 10px;
+}
+
+.subVisible
+{
+  display: flex;
+}
+
+.subHidden 
+{
+  display: none;
 }
 
 @media (max-width: 858px)

@@ -48,7 +48,7 @@ export default function({categories}) {
 
   return (
     <div className='topMenuBar'>
-      <div className='subCategories'>
+      <div className={'subCategories ' + (showSub ? 'subVisible' : 'subHidden')}>
         <div>
           {submenu}
         </div>
