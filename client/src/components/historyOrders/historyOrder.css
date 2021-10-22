@@ -1,98 +1,58 @@
-.containerCart{
-    max-width: 1150px;
-    margin: 0 auto;
-    /* margin: 5px 10px 5px 10px; */
-    /* height: 600px; */
-    /* flex-direction: row; */
-}
-
-.items-cart{
-    width: 100%;
-    display: flex;
+.item-containerHistory{
+	display: flex;
     flex-direction: row;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.item-cart-cart{
-    width: 100%;
-}
-
-.containerCart > h1{
-    padding: 20px 0;
-}
-
-.cart-options{
-    display: flex;
-}
-
-.checkOut__total{
-    display: flex;
-    flex-direction: column;
-    width: 35%;
-    border: thin solid #e9e9e9;
-    background: #dcdcdc;
-    border-radius: 10px;
+    width:100%;
+    height: 200px;
+    align-items: center;
+    overflow: hidden;
+    border: thin solid #dcdcdc;
     justify-content: space-evenly;
-    padding: 0 10px 0 10px;
+    /* padding: 0 15px 0 15px; */
+    border-radius: 10px;
+    background-color: #fafafa;
+    justify-content: space-evenly;
 }
 
-.checkOut__total .titleCheck{
+
+.itemCartImgHistory {
+	width: 200px;
+	height: 100px;
+}
+
+.info-itemHistory{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    width: 245px;
 }
 
-.checkOut__total .totalPrice{
+.itemNameHistory,
+.itemPriceHistory {
+	margin-bottom: 20px;
+}
+
+.actions-itemsHistory{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-evenly;
+    height: 95px;
+    gap: 20px;
 }
 
-
-/* .checkOut__total:hover{
-    border: none;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
-    transform: scale(1.01);
-    
-} */
-
-.div_no_cartItem{
-    max-width: 1150px;
-    margin: 0 auto;
-    /* height: 0px; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #808080;
-    margin-bottom: 20px;
-}
-
-.div_no_cartItem .icon_cartEmpty{
-    font-size: 85px;
-}
-
-.div_no_cartItem h3{
-    text-decoration: underline
-}
 
 
 @media (max-width: 858px){
-    .containerCart{
-        margin: 5px 10px 5px 10px;
-        max-width: 800px;
-    }
-    .items-cart{
-        flex-direction: column-reverse;
-    }
-    .checkOut__total{
-        width: 90%;
+    .item-containerHistory{
+        display: flex;
+        flex-direction: column;
         margin: 0 auto;
+        height: 300px;
+        width: 80%;
     }
-}
-
-@media (min-width: 859px){
-    .containerCart{
-        margin: 5px 15px 5px 15px;
-        max-width: 1200px;
-        margin: 0 auto;
+    .actions-itemsHistory{
+        display: flex;
+        flex-direction: row;
+        gap: 51px;
     }
 }
