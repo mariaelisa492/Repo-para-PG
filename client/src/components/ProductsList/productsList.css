@@ -8,7 +8,7 @@
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin: 20px;
+    /*margin: 20px;*/
     gap:0.4rem
     /* display: grid;
     grid-template-columns: repeat(3, minmax(300px, 1fr));
@@ -17,11 +17,13 @@
     margin:20px */
 }
 
+/*
 @media (max-width:830px) {
     .productList{
         grid-template-columns: repeat(1, minmax(300px, 1fr));
     }
 }
+*/
 
 .button_pagination{
     display: flex;

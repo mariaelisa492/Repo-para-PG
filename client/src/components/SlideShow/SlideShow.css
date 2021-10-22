@@ -1,6 +1,8 @@
 .SlideGeneral
 {
   width: 100%;
+  max-width: 1700px;
+  margin: 0 auto;
   height: 40vh;
   overflow: hidden;
   display: flex;
