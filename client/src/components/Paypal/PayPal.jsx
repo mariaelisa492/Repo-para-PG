@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom"
 import { useDispatch } from "react-redux";
 import './PayPal.css'
@@ -7,17 +7,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
 function CheckoutBut({totalPrice, items, totalItems}) {
-  console.log(totalPrice)
-  console.log('ITEEEEEEEEEMS', items)
+  
 
   const {user} = useAuth0()
-    
-  
   const dispatch = useDispatch()
+  
 
   const createOrder = (data, actions) => {
-    
-    
     return actions.order.create({
       purchase_units: [
         {
@@ -30,7 +26,6 @@ function CheckoutBut({totalPrice, items, totalItems}) {
   };
 
   const onApprove = (data, actions) => {
-    dispatch(emptyCart())
     return actions.order.capture();
   };
 
@@ -56,6 +51,7 @@ function CheckoutBut({totalPrice, items, totalItems}) {
           status: "Processing"  
         }))         
         )}
+        
         />
       
     </div>

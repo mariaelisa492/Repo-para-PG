@@ -24,7 +24,7 @@ export const Home = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 3000);
   }, [])
 
   function showDropDownMenu() {
