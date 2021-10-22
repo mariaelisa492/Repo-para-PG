@@ -1,29 +1,28 @@
 {
   "files": {
-    "main.css": "/static/css/main.b44dac65.chunk.css",
-    "main.js": "/static/js/main.7d1bed6b.chunk.js",
-    "main.js.map": "/static/js/main.7d1bed6b.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.6131cf46.js",
-    "runtime-main.js.map": "/static/js/runtime-main.6131cf46.js.map",
-    "static/js/2.7193bde4.chunk.js": "/static/js/2.7193bde4.chunk.js",
-    "static/js/2.7193bde4.chunk.js.map": "/static/js/2.7193bde4.chunk.js.map",
-    "static/js/3.f81a6346.chunk.js": "/static/js/3.f81a6346.chunk.js",
-    "static/js/3.f81a6346.chunk.js.map": "/static/js/3.f81a6346.chunk.js.map",
+    "main.css": "/static/css/main.9165922b.chunk.css",
+    "main.js": "/static/js/main.cfff1bb6.chunk.js",
+    "main.js.map": "/static/js/main.cfff1bb6.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.f8062f4a.js",
+    "runtime-main.js.map": "/static/js/runtime-main.f8062f4a.js.map",
+    "static/js/2.ed53e358.chunk.js": "/static/js/2.ed53e358.chunk.js",
+    "static/js/2.ed53e358.chunk.js.map": "/static/js/2.ed53e358.chunk.js.map",
+    "static/js/3.93ab01ae.chunk.js": "/static/js/3.93ab01ae.chunk.js",
+    "static/js/3.93ab01ae.chunk.js.map": "/static/js/3.93ab01ae.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.b44dac65.chunk.css.map": "/static/css/main.b44dac65.chunk.css.map",
-    "static/js/2.7193bde4.chunk.js.LICENSE.txt": "/static/js/2.7193bde4.chunk.js.LICENSE.txt",
+    "static/css/main.9165922b.chunk.css.map": "/static/css/main.9165922b.chunk.css.map",
+    "static/js/2.ed53e358.chunk.js.LICENSE.txt": "/static/js/2.ed53e358.chunk.js.LICENSE.txt",
     "static/media/001.b1f89eba.jpg": "/static/media/001.b1f89eba.jpg",
     "static/media/002.50d71711.jpg": "/static/media/002.50d71711.jpg",
     "static/media/003.c48d8408.jpg": "/static/media/003.c48d8408.jpg",
     "static/media/iconmonstr-arrow-63.2d9e037d.svg": "/static/media/iconmonstr-arrow-63.2d9e037d.svg",
     "static/media/iconmonstr-arrow-64.89879f66.svg": "/static/media/iconmonstr-arrow-64.89879f66.svg",
-    "static/media/Loader.css": "/static/media/loader.f57ea3b1.gif",
-    "static/media/logo.aede512a.png": "/static/media/logo.aede512a.png"
+    "static/media/Loader.css": "/static/media/loader.f57ea3b1.gif"
   },
   "entrypoints": [
-    "static/js/runtime-main.6131cf46.js",
-    "static/js/2.7193bde4.chunk.js",
-    "static/css/main.b44dac65.chunk.css",
-    "static/js/main.7d1bed6b.chunk.js"
+    "static/js/runtime-main.f8062f4a.js",
+    "static/js/2.ed53e358.chunk.js",
+    "static/css/main.9165922b.chunk.css",
+    "static/js/main.cfff1bb6.chunk.js"
   ]
 }

@@ -30,7 +30,7 @@ function CheckoutBut({totalPrice, items, totalItems}) {
   };
 
   
-    console.log('!!!!!!!!!!!!!!!!!', user.email)
+    //console.log('!!!!!!!!!!!!!!!!!', user.email)
   return (
     <div className="paypalButContainer">
      
