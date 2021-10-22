@@ -1,7 +1,8 @@
 import React from "react";
 import { removeItem } from "../../redux/actions/index";
-import Addtocart from "../AddToCart/Addtocart";
 import { useDispatch } from "react-redux";
+import SetItem from "../setItemCart/SetItem";
+import {AiTwotoneDelete} from "react-icons/ai"
 import './itemCart.css'
 
 export default function ItemCart({ item }) {
@@ -15,18 +16,25 @@ export default function ItemCart({ item }) {
   };
 
   return (
-    <div className="item">
-      <div className="itemContainer">
+    <div className="item-container">
+      
+      <div>
         <img className="itemCartImg" src={image} alt={"imagen de producto"} />
-        <div className="itemDetails">
-          <p className="itemName">{name}</p>
-          <p className="itemPrice">${price}</p>
-        </div>
-          <div className="cartActions">
-              <Addtocart id={_id} qty={qty} />
-            <span>X</span>
-        </div>
       </div>
+    
+        <div className="info-item">
+          <h3 className="itemName">{name}</h3>
+          <h4 className="itemPrice">Price $ {price}</h4>
+        </div>
+        
+        <div className="actions-items">
+          <div>
+            <SetItem id={_id} qty={qty} />
+          </div>
+          <div>
+            <button className ="button-items-delete" onClick={(e) => { handleRemoveItem(e) }}><AiTwotoneDelete/><h6>Delete</h6></button>
+          </div>
+        </div>
     </div>
   );
 }

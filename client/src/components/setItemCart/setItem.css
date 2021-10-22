@@ -1,0 +1,39 @@
+.add-button-item {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.Remove-item {
+	color: #0070ba;
+	/* border: none; */
+	cursor: pointer;
+	background: transparent;
+	font-size: 25px;
+	padding: 0 6px 6px 0;
+}
+
+.Add-item {
+	color: #0070ba;
+	/* border: none; */
+	cursor: pointer;
+	background: transparent;
+	font-size: 25px;
+	padding: 0 6px 6px 6px;
+}
+
+.qty {
+	text-align: center;
+}
+@media (max-width: 858px) {
+	.add-button-item {
+		align-items: center;
+	}
+
+	.Remove-item {
+		padding: 10px 6px 6px 0;
+	}
+
+	.Add-item {
+		padding: 10px 6px 6px 6px;
+	}
+}

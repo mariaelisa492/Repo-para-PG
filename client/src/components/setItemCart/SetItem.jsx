@@ -1,6 +1,7 @@
-import './addtocart.css';
+import './setItem.css';
 import { useDispatch } from "react-redux"
 import { addCart, removeCart, removeItem } from '../../redux/actions';
+import {AiFillPlusCircle, AiFillMinusCircle} from "react-icons/ai"
 
 
 export default function({ id, qty }) {
@@ -9,8 +10,6 @@ export default function({ id, qty }) {
 
   const handleAddCart = (e) => {
     e.preventDefault()
-   // ES POR ID, NAME SOLO POR PRUEBA
-    console.log('NAMEEEEEEE', id)
     dispatch(addCart(id)) 
   }
 
@@ -24,14 +23,10 @@ export default function({ id, qty }) {
   }
 
   return(
-    <div className='cartBtns'>
-
-      <span className='lbl' onClick={(e) => {handleAddCart(e)}}>Add to cart</span>
-      <div className='btns'>
-        <span className='remove' onClick={(e) => {handleRemoveCart(e)}}>-</span>
-        <span className='quantity'>{qty}</span>
-        <span className='add'onClick={(e) => {handleAddCart(e)}}>+</span>
-      </div>
+    <div className='add-button-item'>
+        <button className='Remove-item' onClick={(e) => {handleRemoveCart(e)}}><AiFillMinusCircle/></button>
+        <span className='qty'>{qty}</span>
+        <button className='Add-item'onClick={(e) => {handleAddCart(e)}}><AiFillPlusCircle/></button>
     </div>
   );
 }

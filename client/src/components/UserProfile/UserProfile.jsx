@@ -1,16 +1,25 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from '@auth0/auth0-react'
 import { FaAngleRight } from 'react-icons/fa';
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
+import { getMyOrders } from "../../redux/actions";
 import './UserProfile.css'
 
 export function UserProfile() {
+    
+    const dispatch = useDispatch()
     const { user, isAuthenticated, isLoading } = useAuth0()
+    //console.log('uSEEEEEEEEEEEER')
+    const orders = useSelector(state => state.orders)
 
-    console.log(user, 'User')
-
-
+    const handleOrders = (e) => {
+        e.preventDefault()
+        //console.log('"""""""USER HANDLER', user.email)
+        dispatch(getMyOrders(user.email))
+        console.log('!!!!!!!!!!!!!!!!!!!!!!!!!! SOY STATE ORDER', orders)
+    }
     if (isLoading) {
         return (
             <p>LOADING...</p>
@@ -64,14 +73,7 @@ export function UserProfile() {
                         </div>
 
                         <div className='userName'>
-                            <div className='cardContainer'>
-                                <img src="https://pbs.twimg.com/profile_images/1417870168626274305/SQh0W_dC_400x400.jpg" className="imgCard" />
-                                <p className='userData'>Visa 5472</p>
-                            </div>
-                            <div className='cardContainer'>
-                                <img src="https://1000marcas.net/wp-content/uploads/2019/12/logo-Mastercard.png" className="imgCard" />
-                                <p className='userData'>Master Card 8910</p>
-                            </div>
+                        <button onClick={(e) => {handleOrders(e)}}>X</button>
 
                         </div>
                     </div>
