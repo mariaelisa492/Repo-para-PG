@@ -26,7 +26,7 @@ export default function({ id, qty }) {
   return(
     <div className='cartBtns'>
 
-      <span className='lbl' onClick={(e) => {handleAddCart(e)}}>Add to cart</span>
+      <span className='lbl' onClick={(e) => {handleAddCart(e)}}>Buy now!</span>
       <div className='btns'>
         <span className='remove' onClick={(e) => {handleRemoveCart(e)}}>-</span>
         <span className='quantity'>{qty}</span>
