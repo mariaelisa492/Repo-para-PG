@@ -20,8 +20,8 @@ export function Logout(){
 
     const userDB = useSelector((state)=> state.user)
 
-    console.log(user, 'UserAuth0')
-    console.log(userDB, 'UserDB')
+    // console.log(user, 'UserAuth0')
+    // console.log(userDB, 'UserDB')
 
     if(isAuthenticated )
     return(

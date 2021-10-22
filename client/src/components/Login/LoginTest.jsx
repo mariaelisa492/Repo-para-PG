@@ -9,6 +9,6 @@ export function LoginTest(){
     const {loginWithRedirect} = useAuth0()
 
     return(
-        <button className='loginBtn' onClick={ loginWithRedirect()}>Login</button>
+        <button className='loginBtn' onClick={ ()=> loginWithRedirect()}>Login</button>
     )
 }
