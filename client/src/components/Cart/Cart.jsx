@@ -70,7 +70,6 @@ export default function Cart() {
                                 ¡Keep Shopping!
                                 </h3>
                             </Link>
-
                         </div>
                     </div>
             }
