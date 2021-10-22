@@ -3,10 +3,9 @@ import { FaTimes, FaCheck, FaExclamation } from 'react-icons/fa';
 import './AlertPopups.css'
 
 export default function AlertPopup({ activeAlert, actionAlert, handleOpenAlert, handleSuccess }) {
-    const [successOrCanceled, setSuccessOrCanceled] = useState(null);
-    const [activeAnotherAlert, setActiveAnotherAlert] = useState(false);
+    /* const [successOrCanceled, setSuccessOrCanceled] = useState(null);
+    const [activeAnotherAlert, setActiveAnotherAlert] = useState(false); */
 
-    console.log(activeAlert, '|||||||||||||||||||||||||||||||||||||||')
     return (
         <div>
             {activeAlert &&
@@ -25,8 +24,9 @@ export default function AlertPopup({ activeAlert, actionAlert, handleOpenAlert, 
                             <div>
                                 <button
                                     onClick={() => {
-                                        setSuccessOrCanceled('caceled');
-                                        setActiveAnotherAlert(true);
+                                        // setSuccessOrCanceled('caceled');
+                                        // setActiveAnotherAlert(true);
+                                        // handleOpenAlert();
                                         handleOpenAlert();
                                     }}
                                     className='btnAlert canceledButton'
@@ -36,9 +36,11 @@ export default function AlertPopup({ activeAlert, actionAlert, handleOpenAlert, 
 
                                 <button
                                     onClick={() => {
-                                        setSuccessOrCanceled('success');
-                                        setActiveAnotherAlert(true);
+                                        // setSuccessOrCanceled('success');
+                                        // setActiveAnotherAlert(true);
+                                        // handleOpenAlert();
                                         handleOpenAlert();
+                                        handleSuccess();
                                     }}
                                     className='btnAlert successButton'
                                 >
@@ -52,7 +54,7 @@ export default function AlertPopup({ activeAlert, actionAlert, handleOpenAlert, 
                 </div>
             }
 
-            {activeAnotherAlert &&
+            {/* {activeAnotherAlert &&
                 <div className='wrapperDiv'>
                     <div className='windowAlert'>
                         <div>
@@ -86,7 +88,7 @@ export default function AlertPopup({ activeAlert, actionAlert, handleOpenAlert, 
 
                     <div className='backgroundAlert' onClick={() => setActiveAnotherAlert(false)}></div>
                 </div>
-            }
+            } */}
         </div>
     )
 }
