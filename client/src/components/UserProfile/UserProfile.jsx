@@ -5,6 +5,7 @@ import { FaAngleRight } from 'react-icons/fa';
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
 import { getMyOrders } from "../../redux/actions";
+import  HistoryOrders  from "../historyCartCard/HistoryCard"
 import './UserProfile.css'
 
 export function UserProfile() {
@@ -26,7 +27,7 @@ export function UserProfile() {
         setToggle(!toggle)
     }
 
-console.log('!!!!!!!!!!!!!!!!!!!!!!!!!! SOY STATE ORDER', orders)
+
     if (isLoading) {
         return (
             <p>LOADING...</p>
@@ -42,9 +43,7 @@ console.log('!!!!!!!!!!!!!!!!!!!!!!!!!! SOY STATE ORDER', orders)
             <div>
                 <h1 onClick={(e) => {handleToggle(e)}}>HOLA SOY ORDER</h1>
                 <div className="item-cart-cart">
-                    {orders.map((orders) => {
-                         return <h1>`${orders.user}`</h1>
-                    })}
+                    <HistoryOrders order={orders}/>
                 </div>
             </div> 
             : 
