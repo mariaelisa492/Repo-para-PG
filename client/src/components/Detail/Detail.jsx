@@ -1,14 +1,13 @@
 import './detail.css';
 import {useState, useEffect} from 'react'
-import { useSelector } from 'react-redux';
-import data from './data';
+import { useDispatch, useSelector } from 'react-redux';
 import AddToCart from '../AddToCart/Addtocart';
 import Rating from '../Rating/Rating';
 import ImageSlider from '../ImageSlider/ImageSlider';
-import DropDownMenu from '../DropDownMenu/DropDownMenu';
+import { getProductDetail } from '../../redux/actions';
 import { FaHeart } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
-
+import Loader from "../Loader/Loader";
 
 //>> temp solution to rating
 const styleRating = { 
@@ -21,15 +20,10 @@ const styleRating = {
 export default function() {
   
   const {id} = useParams();
-  
+  const dispatch = useDispatch();
   const [initialQty, setInitialQty] = useState(0)
-  
-  const products = useSelector(state => state.products)
-  const detailProduct = products.find(item => item._id === id)
-  
-  const {image, name, description, category, _id, stock, brand, model, price} = detailProduct
-  const summary = description.split('.')[0];
-  
+  const productDetail = useSelector(state => state.productDetail);
+  const {image, name, description, category, _id, stock, brand, model, price} = productDetail;
   const itemsCart = useSelector(state => state.cart)
   const item = itemsCart.find(item => item._id === _id)
 
@@ -42,11 +36,12 @@ export default function() {
 
   useEffect(() => {
     window.scrollTo(0,0)
-  }, [])
+    dispatch(getProductDetail(id))
+  }, [dispatch])
 	
   return (
     <div className='fullview'>
-
+      { JSON.stringify(productDetail) !== '{}' ?
       <div className='detail'>
 
         <div className='first'>
@@ -55,7 +50,7 @@ export default function() {
             <div className='topDescription'>
               <h3>{category} <b><FaHeart /></b></h3>
               <h1>{name}</h1>
-              <p>{summary}.</p>
+              <p>{description.split('.')[0]}.</p>
             </div>
 
             {/* put the image slider here */}
@@ -83,7 +78,7 @@ export default function() {
           <p>{description}</p>
         </div>
 
-      </div>
+      </div>:<Loader/>}
     </div>
   );
 }
