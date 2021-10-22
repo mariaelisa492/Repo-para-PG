@@ -6,7 +6,8 @@ import {
   ADD_TO_CART, REMOVE_FROM_CART,
   REMOVE_ITEM, GET_ORDERS, FILTER_CATEGORIES,
   GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT,
-  GET_MY_ORDERS, EMPTY_CART, GET_PRODUCT_DETAIL
+  GET_MY_ORDERS, EMPTY_CART, GET_PRODUCT_DETAIL, GET_USER
+
   } from "../constants/index"
 
 export const getProducts = () => {
@@ -221,6 +222,24 @@ export const removeItem = (itemId) => {
     }
   }
 };
+                        
+// ----------------------------- USERS
+
+export const searchUserInDb = (user) => {
+  return async (dispatch) => {
+    try {
+      const userFound = await axios.get(`${LOCALHOST_URL}/users/user`);
+      return dispatch({
+        type: GET_USER,
+        payload: userFound.data,
+      })
+    } catch (error) {
+      console.log(error, 'searchUserInDb ||Error||');
+    }
+  };
+}
+  
+//  ----------------------------- PAGINATION
 
 export const setLimit = (number) => {
   return {
