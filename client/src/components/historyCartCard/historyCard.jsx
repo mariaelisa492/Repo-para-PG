@@ -1,5 +1,5 @@
 import React from "react";
-import  HistoryOrders  from "../historyOrders/HistoryOrders"
+import  HistoryOrders  from "../historyOrders/historyOrders"
 import './historyC.css'
 
 

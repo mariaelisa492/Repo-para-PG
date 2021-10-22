@@ -5,7 +5,7 @@ import { FaAngleRight } from 'react-icons/fa';
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
 import { getMyOrders } from "../../redux/actions";
-import  HistoryOrders  from "../historyCartCard/HistoryCard"
+import  HistoryCard  from "../historyCartCard/historyCard"
 import './UserProfile.css'
 
 export function UserProfile() {
@@ -16,6 +16,7 @@ export function UserProfile() {
     const orders = useSelector(state => state.orders)
     const [toggle, setToggle] = useState(false)
     
+    console.log('!!!!!!!!!!!!!! SOY ORDERS', orders)
 
     const handleOrders = (e) => {
         e.preventDefault()
@@ -41,8 +42,8 @@ export function UserProfile() {
             {toggle ? 
             <div>
                 <h1 onClick={(e) => {handleToggle(e)}}>Back to profile</h1>
-                <div className="item-cart-cart">
-                    <HistoryOrders order={orders}/>
+                <div className="">
+                    <HistoryCard order={orders}/>
                 </div>
             </div> 
             : 
