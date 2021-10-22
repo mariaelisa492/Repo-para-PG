@@ -21,7 +21,6 @@ function HistoryCard({ order }) {
 
   return (
     <div className="">
-      
       <div className="">
         <h1>History</h1>
         <div className="">
