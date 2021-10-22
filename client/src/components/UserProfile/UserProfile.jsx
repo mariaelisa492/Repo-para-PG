@@ -1,25 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from '@auth0/auth0-react'
 import { FaAngleRight } from 'react-icons/fa';
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
 import { getMyOrders } from "../../redux/actions";
+import  HistoryCard  from "../historyCartCard/historyCard"
 import './UserProfile.css'
 
 export function UserProfile() {
     
     const dispatch = useDispatch()
     const { user, isAuthenticated, isLoading } = useAuth0()
-    console.log('uSEEEEEEEEEEEER')
+
     const orders = useSelector(state => state.orders)
+    const [toggle, setToggle] = useState(false)
+    
+    console.log('!!!!!!!!!!!!!! SOY ORDERS', orders)
 
     const handleOrders = (e) => {
         e.preventDefault()
-        console.log('"""""""USER HANDLER', user.email)
         dispatch(getMyOrders(user.email))
+        setToggle(!toggle)
     }
-console.log('!!!!!!!!!!!!!!!!!!!!!!!!!! SOY STATE ORDER', orders)
+
+    const handleToggle = (e) => {
+        setToggle(!toggle)
+    }
+
     if (isLoading) {
         return (
             <p>LOADING...</p>
@@ -28,12 +36,20 @@ console.log('!!!!!!!!!!!!!!!!!!!!!!!!!! SOY STATE ORDER', orders)
 
     if (isAuthenticated) {
         return (
-
-            <div>
+           <div>
                 <NavBar />
-                <div className='containerUserProfile'>
-
-                    <div className='userProfileContainer'>
+                
+            {toggle ? 
+            <div>
+                <h1 onClick={(e) => {handleToggle(e)}}>Back to profile</h1>
+                <div className="">
+                    <HistoryCard order={orders}/>
+                </div>
+            </div> 
+            : 
+            
+            <div className='containerUserProfile'>
+            <div className='userProfileContainer'>
                         <div className='userImageContainer'>
                             <img src={user.picture} alt={user.name} className='image' />
                         </div>
@@ -74,10 +90,11 @@ console.log('!!!!!!!!!!!!!!!!!!!!!!!!!! SOY STATE ORDER', orders)
 
                         <div className='userName'>
                         <button onClick={(e) => {handleOrders(e)}}>X</button>
-
                         </div>
                     </div>
-                </div>
+          
+                </div> 
+            } 
                 <Footer />
             </div>
         )

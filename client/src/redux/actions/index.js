@@ -6,7 +6,7 @@ import {
   ADD_TO_CART, REMOVE_FROM_CART,
   REMOVE_ITEM, GET_ORDERS, FILTER_CATEGORIES,
   GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT,
-  GET_MY_ORDERS, EMPTY_CART
+  GET_MY_ORDERS, EMPTY_CART, GET_PRODUCT_DETAIL
   } from "../constants/index"
 
 export const getProducts = () => {
@@ -67,6 +67,20 @@ export const getSingleProduct = (id) => {
   }
 }
 
+export const getProductDetail = (id) => {
+  return async (dispatch) => {
+      try {
+          const product = await axios.get(`${LOCALHOST_URL}/products/${id}`);
+          return dispatch({
+              type: GET_PRODUCT_DETAIL,
+              payload: product.data
+          })
+      } catch (error) {
+          console.log(error)
+      }
+  }
+}
+
 export const updateProduct = (product) => {
   return async (dispatch) => {
       try {
@@ -95,9 +109,9 @@ export const updateProduct = (product) => {
 
 // --------------------------- ORDER ACTIONS
 export const setNewOrder = (order) => {
-  return async () => {
+  return  (dispatch) => {
     try{
-      await axios.post(`${LOCALHOST_URL}/orders/create`, order);
+      axios.post(`${LOCALHOST_URL}/orders/create`, order).then(setTimeout(()=>{dispatch(emptyCart())},2000))
     }
     catch (error) {
       console.log(error);

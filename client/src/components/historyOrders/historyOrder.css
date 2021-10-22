@@ -1,4 +1,4 @@
-.item-container{
+.item-containerHistory{
 	display: flex;
     flex-direction: row;
     width:100%;
@@ -13,18 +13,13 @@
     justify-content: space-evenly;
 }
 
-.item-container:hover{
-    border: none;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
-    transform: scale(1.01);
-}
 
-.itemCartImg {
+.itemCartImgHistory {
 	width: 200px;
 	height: 100px;
 }
 
-.info-item{
+.info-itemHistory{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,12 +27,12 @@
     width: 245px;
 }
 
-.itemName,
-.itemPrice {
+.itemNameHistory,
+.itemPriceHistory {
 	margin-bottom: 20px;
 }
 
-.actions-items{
+.actions-itemsHistory{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -45,31 +40,17 @@
     gap: 20px;
 }
 
-.button-items-delete{
-    background: transparent;
-    font-size: 22px;
-    cursor: pointer;
-}
 
-.button-items-delete h6{
-    background: transparent;
-    font-size: 10px;
-}
-
-.button-items-delete:hover{
-    transform: scale(1.01);
-    color:#CA2A11;
-}
 
 @media (max-width: 858px){
-    .item-container{
+    .item-containerHistory{
         display: flex;
         flex-direction: column;
         margin: 0 auto;
         height: 300px;
         width: 80%;
     }
-    .actions-items{
+    .actions-itemsHistory{
         display: flex;
         flex-direction: row;
         gap: 51px;

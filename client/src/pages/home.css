@@ -1,13 +1,5 @@
 .mainView
 {
-  display: grid;
-  grid-template-rows: 40px 1fr;
-}
-
-@media (max-width: 858px)
-{
-  .mainView
-  {
-    grid-template-rows: 0px 1fr;
-  } 
+  display: flex;
+  flex-direction: column;
 }

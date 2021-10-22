@@ -12,7 +12,7 @@ export default function Cart() {
     const [totalItems, setTotalItems] = useState(0)
     const [totalPrice, setTotalPrice] = useState(0)
 
-    console.log('EMAILLLLLLLLLLLLLL', user.email)
+    //console.log('EMAILLLLLLLLLLLLLL', user.email)
     
     const items = useSelector(state => state.cart)
 
@@ -29,7 +29,7 @@ export default function Cart() {
         setTotalPrice(priceCart)
     }, [items, totalItems, totalPrice])
 
-    console.log('ITEMS CARTTTTTTTTDECARTTTTTTT', items)
+    //console.log('ITEMS CARTTTTTTTTDECARTTTTTTT', items)
 
 
     return (
@@ -65,15 +65,11 @@ export default function Cart() {
                             </h4>
                         </div>
                         <div>
-                        <div>
-                            <CheckoutBut  totalPrice={totalPrice} items={items} user={user.email} totalItems={totalItems}/>
-                        </div>
                             <Link to="/">
                                 <h3>
                                 ¡Keep Shopping!
                                 </h3>
                             </Link>
-
                         </div>
                     </div>
             }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./navBar.css";
 import { BsFillCartFill, BsFillPersonFill } from "react-icons/bs"
-import logo from "../../images/logo.png"
+import logo from "../../images/waveMusic.png"
 import { Search } from "../Search/SearchBar";
 import {GiHamburgerMenu} from "react-icons/gi"
 import { LoginTest } from "../Login/LoginTest";

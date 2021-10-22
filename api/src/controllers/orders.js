@@ -8,7 +8,7 @@ const createOrder = async (req, res) => {
              user: user,
              items: items,
              quantity: quantity,
-             totalprice: totalPrice,
+             totalPrice: totalPrice,
              status: status           
          });   
    
