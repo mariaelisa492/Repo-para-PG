@@ -1,12 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { FaTimes } from 'react-icons/fa'
+import { FaTimes } from 'react-icons/fa';
 //import { useParams } from "react-router";
 import { useEffect } from "react";
 import { getSingleProduct, updateProduct } from "../../redux/actions";
 import { categories } from '../Categories/categoriesExport';
 import { saveImages } from '../FormCreateProducts/utils/saveImages';
 import { validationFunction } from '../FormCreateProducts/utils/validationFunction';
+import AlertPopup from '../AlertPopups/AlertPopups'
 
 let AllCategories = []
 
@@ -36,9 +37,7 @@ export default function EditableRow({ handleClosePopup, id }) {
     const { name, description, image, price, stock, brand, model, category } = items;
 
     useEffect(() => {
-        console.log(id)
         dispatch(getSingleProduct(id))
-        console.log("dispachado el single user")
     }, [])
 
     useEffect(() => {
@@ -55,29 +54,44 @@ export default function EditableRow({ handleClosePopup, id }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        let auxInput = items;
-        const urlImage = await saveImages(auxInput.image);
-        auxInput.image = urlImage;
+        await handeOpenAlertUpgrade()
 
-        dispatch(updateProduct({ ...auxInput, _id: id }));
-        alert("Product updated successfully")
+        if (successForm) {
+            let auxInput = items;
+            const urlImage = await saveImages(auxInput.image);
+            auxInput.image = urlImage;
 
-        setItems({
-            name: '',
-            description: '',
-            image: '',
-            price: '',
-            stock: '',
-            brand: '',
-            model: '',
-            category: ''
-        });
-        handleClosePopup();
+            dispatch(updateProduct({ ...auxInput, _id: id }));
+
+            setItems({
+                name: '',
+                description: '',
+                image: '',
+                price: '',
+                stock: '',
+                brand: '',
+                model: '',
+                category: ''
+            });
+            handleClosePopup();
+            handleUpgradeSuccesForm()
+        }
+        
     }
 
     const resetFileInput = () => {
         refFileInput.current.value = "";
     };
+
+    const [activeAlertUpgrade, setactiveAlertUpgrade] = useState(false);
+    const handeOpenAlertUpgrade = () => {
+        setactiveAlertUpgrade(!activeAlertUpgrade)
+    }
+
+    const [successForm, setsuccessForm] = useState(false);
+    const handleUpgradeSuccesForm = () => {
+        setsuccessForm(!successForm)
+    }
 
     return (
         <div className='backgroundCreateProducts containerformProducts'>
@@ -229,6 +243,13 @@ export default function EditableRow({ handleClosePopup, id }) {
                     />
                 </div>
             </form>
+
+            <AlertPopup
+                activeAlert={activeAlertUpgrade}
+                actionAlert='upgrade'
+                handleOpenAlert={handeOpenAlertUpgrade}
+                handleSuccess={handleUpgradeSuccesForm}
+            />
         </div>
     )
 };
