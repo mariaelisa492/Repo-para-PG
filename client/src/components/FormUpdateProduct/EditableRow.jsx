@@ -51,12 +51,26 @@ export default function EditableRow({ handleClosePopup, id }) {
         setErrorsProducts(validationFunction({ ...items, [name]: value }));
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        await handeOpenAlertUpgrade()
+        handeOpenAlertUpgrade()
+    }
 
+    const resetFileInput = () => {
+        refFileInput.current.value = "";
+    };
+
+    const [activeAlertUpgrade, setactiveAlertUpgrade] = useState(false);
+    const handeOpenAlertUpgrade = () => {
+        setactiveAlertUpgrade(!activeAlertUpgrade)
+    }
+
+    const [successForm, setsuccessForm] = useState(false);
+    const handleUpgradeSuccesForm = async () => {
         if (successForm) {
+            handleClosePopup();
+            
             let auxInput = items;
             const urlImage = await saveImages(auxInput.image);
             auxInput.image = urlImage;
@@ -73,24 +87,11 @@ export default function EditableRow({ handleClosePopup, id }) {
                 model: '',
                 category: ''
             });
-            handleClosePopup();
+            
             handleUpgradeSuccesForm()
         }
-        
-    }
 
-    const resetFileInput = () => {
-        refFileInput.current.value = "";
-    };
-
-    const [activeAlertUpgrade, setactiveAlertUpgrade] = useState(false);
-    const handeOpenAlertUpgrade = () => {
-        setactiveAlertUpgrade(!activeAlertUpgrade)
-    }
-
-    const [successForm, setsuccessForm] = useState(false);
-    const handleUpgradeSuccesForm = () => {
-        setsuccessForm(!successForm)
+        setsuccessForm(!successForm)    
     }
 
     return (
