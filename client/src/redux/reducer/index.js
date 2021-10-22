@@ -5,7 +5,7 @@ import {
 	FILTER_PRICE_RANGE, DELETE_PRODUCT,
 	ADD_TO_CART, REMOVE_FROM_CART,
 	REMOVE_ITEM, EMPTY_CART, FILTER_CATEGORIES, SET_LIMIT,
-	GET_MY_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT
+	GET_MY_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT, GET_USER
  } from "../constants/index"
 
 
@@ -210,7 +210,7 @@ export const rootReducer = (state = initialState, action) => {
 				...state,
 				user: action.payload
 			}
-			
+
 				// ---------------- PAGINATION
 	
 		case SET_LIMIT:

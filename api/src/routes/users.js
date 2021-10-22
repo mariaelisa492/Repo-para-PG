@@ -42,4 +42,6 @@ router.put('/:id', async(req, res) =>{
     }
 });
 
+router.get('/user')
+
 module.exports = router;

@@ -208,12 +208,12 @@ export const removeItem = (itemId) => {
   }
 };
                         
-                                    // USERS //
+// ----------------------------- USERS
 
 export const searchUserInDb = (user) => {
   return async (dispatch) => {
     try {
-      const userFound = await axios.get(`${LOCALHOST_URL}/users/${user}`);
+      const userFound = await axios.get(`${LOCALHOST_URL}/users/user`);
       return dispatch({
         type: GET_USER,
         payload: userFound.data,

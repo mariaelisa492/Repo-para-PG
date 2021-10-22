@@ -32,9 +32,12 @@ const UserSchema = new Schema({
     birthDate: {
         type: String
     },
+    address: {
+        type: String
+    },
     role: {
         type: String,
-        default: 'ROLE_SELLER',
+        default: 'ROLE_USER',
         enum: ['ROLE_USER', 'ROLE_ADMIN']
     },
     isActive: {

@@ -3,13 +3,13 @@ const User = require('../models/user');
 
 const createUser = async (req, res) => {
     //creamos el objeto producto
-    let { email, username} = req.body;
+    let { email, username } = req.body;
     if (email && username) {
          newUser = new User({
             email: email,
             username: username
-        })}
-    
+        })
+    }
     try {
         let user = await newUser.save();
         res.status(200).json({
