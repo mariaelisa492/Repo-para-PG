@@ -26,20 +26,13 @@ export default function({categories}) {
 
   return (
     <div className='topMenuBar'>
-      {/*
-      <div className={'subCategories ' + (showSub ? 'subVisible' : 'subHidden')}>
-        <div>
-          {submenu}
-        </div>
-      </div>
-      */}
 
       <div className='mainCategories'>
           {Object.keys(categories).map(c => {
             return (
               <div>
                 <div 
-                  onMouseEnter={() => setActive(c)} 
+                  onClick={toggle} 
                   className={'topCat ' + (c === active ? 'active' : '')}>
                   {c}
                 </div>
