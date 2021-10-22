@@ -13,9 +13,6 @@ import { useParams } from 'react-router-dom';
 //>> temp solution to rating
 const styleRating = { 
   color: 'orange',
-  position: 'absolute',
-  top: '200px',
-  right: '20px',
   width: '150px',
   fontSize: '28px',
 };
@@ -53,21 +50,30 @@ export default function() {
       <div className='detail'>
 
         <div className='first'>
-          <h3>{category} <b><FaHeart /></b></h3>
-          <h1>{name}</h1>
-          <p>{summary}.</p>
 
-          {/* put the image slider here */}
-          <ImageSlider images={[image]} />
+          <div className='leftView'>
+            <div className='topDescription'>
+              <h3>{category} <b><FaHeart /></b></h3>
+              <h1>{name}</h1>
+              <p>{summary}.</p>
+            </div>
 
-          <div className='price'>
-            <span>$ {price}</span>
+            {/* put the image slider here */}
+            <div className='imageSlider'>
+              <ImageSlider images={[image]} />
+            </div>
           </div>
 
-          <AddToCart id={id} qty={item ? item.qty : initialQty}/>
+          <div className='rightView'>
 
-          <div style={styleRating}>
-            <Rating rating={9} />
+            <div style={styleRating}>
+              <Rating rating={9} />
+            </div>
+            <div className='price'>
+              <span>$ {price}</span>
+            </div>
+
+            <AddToCart id={id} qty={item ? item.qty : initialQty}/>
           </div>
 
         </div>
