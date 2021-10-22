@@ -5,11 +5,9 @@ import data from './data';
 import AddToCart from '../AddToCart/Addtocart';
 import Rating from '../Rating/Rating';
 import ImageSlider from '../ImageSlider/ImageSlider';
-import SideBar from '../SideBar/SideBar';
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
 import { FaHeart } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
-import { categories } from '../Categories/categoriesExport';
 
 
 //>> temp solution to rating
@@ -51,8 +49,6 @@ export default function() {
 	
   return (
     <div className='fullview'>
-
-      <SideBar categories={categories} />
 
       <div className='detail'>
 

@@ -12,7 +12,7 @@ export function UserProfile() {
     
     const dispatch = useDispatch()
     const { user, isAuthenticated, isLoading } = useAuth0()
-   
+
     const orders = useSelector(state => state.orders)
     const [toggle, setToggle] = useState(false)
     
@@ -27,7 +27,6 @@ export function UserProfile() {
         setToggle(!toggle)
     }
 
-
     if (isLoading) {
         return (
             <p>LOADING...</p>
@@ -41,7 +40,7 @@ export function UserProfile() {
                 
             {toggle ? 
             <div>
-                <h1 onClick={(e) => {handleToggle(e)}}>HOLA SOY ORDER</h1>
+                <h1 onClick={(e) => {handleToggle(e)}}>Back to profile</h1>
                 <div className="item-cart-cart">
                     <HistoryOrders order={orders}/>
                 </div>
