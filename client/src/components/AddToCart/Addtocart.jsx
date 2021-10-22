@@ -1,7 +1,7 @@
 import './addtocart.css';
 import { useDispatch } from "react-redux"
 import { addCart, removeCart, removeItem } from '../../redux/actions';
-
+import { Link } from "react-router-dom";
 
 export default function({ id, qty }) {
 
@@ -25,8 +25,7 @@ export default function({ id, qty }) {
 
   return(
     <div className='cartBtns'>
-
-      <span className='lbl' onClick={(e) => {handleAddCart(e)}}>Buy now!</span>
+      <Link to={qty !== 0 && `/cart`}><span className='lbl'>Buy now!</span></Link>
       <div className='btns'>
         <span className='remove' onClick={(e) => {handleRemoveCart(e)}}>-</span>
         <span className='quantity'>{qty}</span>

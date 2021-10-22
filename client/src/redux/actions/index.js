@@ -6,7 +6,7 @@ import {
   ADD_TO_CART, REMOVE_FROM_CART,
   REMOVE_ITEM, GET_ORDERS, FILTER_CATEGORIES,
   GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT,
-  GET_MY_ORDERS, EMPTY_CART
+  GET_MY_ORDERS, EMPTY_CART, GET_PRODUCT_DETAIL
   } from "../constants/index"
 
 export const getProducts = () => {
@@ -64,6 +64,20 @@ export const getSingleProduct = (id) => {
     catch (error) {
       console.log("Error al obtener un unico producto")
     }
+  }
+}
+
+export const getProductDetail = (id) => {
+  return async (dispatch) => {
+      try {
+          const product = await axios.get(`${LOCALHOST_URL}/products/${id}`);
+          return dispatch({
+              type: GET_PRODUCT_DETAIL,
+              payload: product.data
+          })
+      } catch (error) {
+          console.log(error)
+      }
   }
 }
 
