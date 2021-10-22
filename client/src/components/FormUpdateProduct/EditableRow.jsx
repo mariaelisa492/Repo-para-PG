@@ -54,7 +54,9 @@ export default function EditableRow({ handleClosePopup, id }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        handeOpenAlertUpgrade()
+        handeOpenAlertUpgrade();
+
+        // handleClosePopup()
     }
 
     const resetFileInput = () => {
@@ -67,10 +69,12 @@ export default function EditableRow({ handleClosePopup, id }) {
     }
 
     const [successForm, setsuccessForm] = useState(false);
-    const handleUpgradeSuccesForm = async () => {
+    const handleUpgradeSuccesForm = () => {
+        setsuccessForm(!successForm)
+    }
+
+    useEffect(async () => {
         if (successForm) {
-            handleClosePopup();
-            
             let auxInput = items;
             const urlImage = await saveImages(auxInput.image);
             auxInput.image = urlImage;
@@ -87,12 +91,12 @@ export default function EditableRow({ handleClosePopup, id }) {
                 model: '',
                 category: ''
             });
-            
+
+            handleClosePopup();
+
             handleUpgradeSuccesForm()
         }
-
-        setsuccessForm(!successForm)    
-    }
+    }, [successForm])
 
     return (
         <div className='backgroundCreateProducts containerformProducts'>
