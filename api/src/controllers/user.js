@@ -3,11 +3,12 @@ const User = require('../models/user');
 
 const createUser = async (req, res) => {
     //creamos el objeto producto
-    let { email, username } = req.body;
-    if (email && username) {
+    let { email, username} = req.body;
+    console.log(req.body)
+    if (email && username ) {
          newUser = new User({
             email: email,
-            username: username
+            username: username,          
         })
     }
     try {
@@ -41,7 +42,46 @@ const findUser = async (req,res) =>{
         }
     }
 }
+
+const findAllUser = async (req, res) => {
+    try{
+        const allUsers = await User.find();
+        res.status(200).json(allUsers);
+    }catch(error){
+        console.log(error)
+        res.status(400).json({
+            message: "Cannot get users"
+        })
+    }
+}
+
+const updateUser = async (req, res) => {
+    const { id } = req.params;
+    console.log(id, "el IDDDDDDDDD");
+    const { firstName, lastName, gender, nacionality, birthDate, address} = req.body
+    if (firstName || lastName  || gender || nacionality || birthDate || 
+        address){
+            // let oldUser = await User.find(id)
+    try{
+        const updateUser = { firstName , lastName, gender, nacionality, birthDate, address, _id: id }
+        await User.findByIdAndUpdate(id, updateUser, {new: true});
+        res.status(200).json(updateUser);
+    }catch (error){
+        console.log(error)
+        res.status(400).json({
+            error: 'Your reques could not be processed. try again'
+        })
+
+    }
+
+ }
+}
+
+
+
 module.exports = {
     createUser,
-    findUser
+    findUser, 
+    findAllUser,
+    updateUser
 }
