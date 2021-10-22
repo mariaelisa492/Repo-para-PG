@@ -80,7 +80,7 @@
   border-radius: 1.25em;
   margin: 1.87em auto;
   overflow: auto;
-  z-index: 102;
+  z-index: 102; 
 }
 
 .reactModalContent::-webkit-scrollbar {
