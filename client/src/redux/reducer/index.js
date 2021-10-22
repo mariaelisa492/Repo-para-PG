@@ -5,8 +5,10 @@ import {
 	FILTER_PRICE_RANGE, DELETE_PRODUCT,
 	ADD_TO_CART, REMOVE_FROM_CART,
 	REMOVE_ITEM, EMPTY_CART, FILTER_CATEGORIES, SET_LIMIT,
-	GET_MY_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT, GET_USER
- } from "../constants/index"
+	GET_MY_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT, GET_PRODUCT_DETAIL, GET_USER
+ 
+} from "../constants/index"
+
 
 
 
@@ -17,30 +19,31 @@ const initialState = {
 	products: [],
 	filteredProducts: [],
 	cart: [],
-	limit:0,
+	limit: 0,
 	currentItem: null,
 	filteredTF: false,
 	user: {},
 	orders: []
+	productDetail: {},
 };
 
 export const rootReducer = (state = initialState, action) => {
 	switch (action.type) {
 
-			case GET_PRODUCTS:
+		case GET_PRODUCTS:
 			return {
 				...state,
 				products: action.payload
 			};
 
-			case GET_BYNAME: 
+		case GET_BYNAME:
 			return {
 				...state,
 				filteredProducts: [...action.payload],
 				filteredTF: true
 			};
 
-			case DELETE_PRODUCT:
+		case DELETE_PRODUCT:
 			let deletedProduct = state.products.filter(el => el._id !== action.payload._id)
 			return {
 				...state,
@@ -51,14 +54,14 @@ export const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				orders: [...action.payload]
-			}	
+			}
 
-			case GET_SINGLE_PRODUCT:
-				return {
-					...state,
-					product: action.payload
-				}
-								
+		case GET_SINGLE_PRODUCT:
+			return {
+				...state,
+				product: action.payload
+			}
+
 		// ---- ORDENAMIENTOS ---- //	
 		case GET_SINGLE_PRODUCT:
 			return {
@@ -66,13 +69,13 @@ export const rootReducer = (state = initialState, action) => {
 				product: action.payload
 			}
 
-			case UPDATE_PRODUCT:
-				let index = state.products.findIndex( product => product._id === action.payload._id);
-				state.products[index] = action.payload;
-				return {
-				  ...state,
-				  products: [...state.products]
-				};
+		case UPDATE_PRODUCT:
+			let index = state.products.findIndex(product => product._id === action.payload._id);
+			state.products[index] = action.payload;
+			return {
+				...state,
+				products: [...state.products]
+			};
 
 		case ORDER_PRICE_ASC:
 			var sortedPriceAsc
@@ -165,43 +168,44 @@ export const rootReducer = (state = initialState, action) => {
 				filteredProducts: [...filt4],
 				filteredTF: true
 			}
-      
-		                      // ---- Cart ---- //
-      
-		case ADD_TO_CART: 
-		// modificar name por id
-		const item = state.products.find(item => item._id === action.payload.id)
-		const inCart = state.cart.find(item => item._id === action.payload.id ? true : false)
-		return {
-			...state,
-			cart: inCart ? 
-			state.cart.map( item => item._id === action.payload.id ? 
-				{...item, qty: item.qty + 1} 
-				: item 
-			) 
-			: [...state.cart, {...item, qty: 1}]
-		};
-      
-		case REMOVE_FROM_CART: 
-		return {
-			...state,
-			cart: state.cart.map( item => item._id === action.payload.id ? 
-				{...item, qty: item.qty - 1} 
-				: item 
-			) 
-		};
-      
-		case REMOVE_ITEM: 
-		return {
-			...state,
-			cart: state.cart.filter((item) => item._id !== action.payload.id)
-		}; 
-      
+
+		// ---- Cart ---- //
+
+		case ADD_TO_CART:
+			// modificar name por id
+			const item = state.products.find(item => item._id === action.payload.id)
+			const inCart = state.cart.find(item => item._id === action.payload.id ? true : false)
+			return {
+				...state,
+				cart: inCart ?
+					state.cart.map(item => item._id === action.payload.id ?
+						{ ...item, qty: item.qty + 1 }
+						: item
+					)
+					: [...state.cart, { ...item, qty: 1 }]
+			};
+
+		case REMOVE_FROM_CART:
+			return {
+				...state,
+				cart: state.cart.map(item => item._id === action.payload.id ?
+					{ ...item, qty: item.qty - 1 }
+					: item
+				)
+			};
+
+		case REMOVE_ITEM:
+			return {
+				...state,
+				cart: state.cart.filter((item) => item._id !== action.payload.id)
+			};
+
 		case EMPTY_CART:
-		return {
-			...state,
-			cart: []
-		};
+			return {
+				...state,
+				cart: []
+			};
+
 
 		//	--------------------------- USERS
 		case GET_USER:
@@ -213,12 +217,19 @@ export const rootReducer = (state = initialState, action) => {
 
 				// ---------------- PAGINATION
 	
+
 		case SET_LIMIT:
 			return {
 				...state,
 				limit: action.payload
 			}
-			
+
+		case GET_PRODUCT_DETAIL:
+			return {
+				...state,
+				productDetail: action.payload
+			};
+
 		default:
 			return state;
 	}
