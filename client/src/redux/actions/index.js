@@ -6,7 +6,8 @@ import {
   ADD_TO_CART, REMOVE_FROM_CART,
   REMOVE_ITEM, GET_ORDERS, FILTER_CATEGORIES,
   GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT,
-  GET_MY_ORDERS, EMPTY_CART, GET_PRODUCT_DETAIL
+  GET_MY_ORDERS, EMPTY_CART, GET_PRODUCT_DETAIL,
+  ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV
   } from "../constants/index"
 
 export const getProducts = () => {
@@ -228,3 +229,24 @@ export const setLimit = (number) => {
     payload: number
   }
 }
+
+
+
+
+
+
+//add favorite
+
+export function addProductFav (payload){
+  return {
+      type: ADD_PRODUCT_FAV,
+      payload
+  };
+};
+
+export function removeProductFav (id){
+  return{
+      type: REMOVE_PRODUCT_FAV,
+      payload: id
+  };
+};
