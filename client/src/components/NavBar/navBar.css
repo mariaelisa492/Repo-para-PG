@@ -90,11 +90,11 @@
   align-items: center;
   color: white;
 }
-.showSearch 
+.showSearch
 {
   display: flex;
 }
-.hideSearch 
+.hideSearch
 {
   display: none;
 }

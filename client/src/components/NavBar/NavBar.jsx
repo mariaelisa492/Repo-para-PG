@@ -8,6 +8,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from "react-router-dom";
 import { FaBars, FaUser, FaSearch } from 'react-icons/fa';
 import { GrCart } from 'react-icons/gr';
+import Modal from "../Modal/Modal";
 
 
 export default function NavBar({ showDropDownMenu }) {
@@ -21,13 +22,10 @@ export default function NavBar({ showDropDownMenu }) {
     login: false,
   });
 
-  const pleaseLogin = e => {
-    e.preventDefault();
-    alert("Please login or register");
-  };
-
   const showBar = () => setPopup({ ...popup, search: true });
   const hideBar = () => setPopup({ ...popup, search: false });
+  const showDialog = () => setPopup({ ...popup, login: true });
+  const hideDialog = () => setPopup({ ...popup, login: false });
 
   return (
     <nav className="navBar">
@@ -45,13 +43,13 @@ export default function NavBar({ showDropDownMenu }) {
             ? <NavLink to='/profile' activeClassName='activeLink'  >
                 <FaUser className='menuIcon' />
               </NavLink>
-              : <FaUser className='menuIcon' onClick={e => pleaseLogin(e)} />}
+              : <FaUser className='menuIcon' onClick={showDialog} />}
 
           {isAuthenticated
             ? <NavLink to="/cart" activeClassName='activeLink' >
                 <GrCart className='menuIcon' />
               </NavLink>
-            : <GrCart className='menuIcon' onClick={e => pleaseLogin(e)} />}
+            : <GrCart className='menuIcon' onClick={showDialog} />}
 
           {isAuthenticated ? <Logout/> : <LoginTest/>}
         </div>
@@ -73,19 +71,24 @@ export default function NavBar({ showDropDownMenu }) {
             ? <NavLink to='/profile' activeClassName='activeLink'  >
                 <FaUser className='menuIcon' />
               </NavLink>
-              : <FaUser className='menuIcon' onClick={e => pleaseLogin(e)} />}
+              : <FaUser className='menuIcon' onClick={showDialog} />}
 
           {isAuthenticated
             ? <NavLink to="/cart" activeClassName='activeLink' >
                 <GrCart className='menuIcon' />
               </NavLink>
-            : <GrCart className='menuIcon' onClick={e => pleaseLogin(e)} />}
+            : <GrCart className='menuIcon' onClick={showDialog} />}
 
           {isAuthenticated ? <Logout/> : <LoginTest/>}
 
           <FaBars className='noLink' onClick={showDropDownMenu}/>
         </div>
       </div>
+
+      <Modal 
+        show={popup.login}
+        hideFunc={hideDialog}
+        message="You need to be logged in to perform this action!" />
     </nav>
   );
 }
