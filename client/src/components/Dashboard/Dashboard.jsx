@@ -8,9 +8,9 @@ import { useDispatch, useSelector, } from "react-redux";
 import { deleteProduct } from "../../redux/actions";
 import { MdDeleteForever } from 'react-icons/md';
 import { FaRegEdit } from 'react-icons/fa';
-import { NavLink } from "react-router-dom";
 import "./Dashboard.css";
-import AlertPopup from '../AlertPopups/AlertPopups'
+import AlertPopup from '../AlertPopups/AlertPopups';
+import Modal from "../Modal/Modal";
 
 export default function Dashboard() {
 
@@ -94,6 +94,8 @@ export default function Dashboard() {
     }
     const handleClosePopupCreate = () => {
         setShowPopupCreate(false)
+        showPopup(true);
+        setTimeout(() => showPopup(false), 1000);
     }
 
     // estado para mostrar popup Update
@@ -126,6 +128,10 @@ export default function Dashboard() {
             handleDeleteSuccess();
         }
     }, [successDelete])
+
+    //Popup de creado
+    const [successCreated, setsuccessCreated] = useState(false)
+    const showPopup = (boolean) => setsuccessCreated(boolean)
 
     return (
         <>
@@ -164,6 +170,12 @@ export default function Dashboard() {
                 actionAlert='delete'
                 handleOpenAlert={handeOpenAlertDelete}
                 handleSuccess={handleDeleteSuccess}
+            />
+
+            <Modal
+                show={successCreated}
+                hideFunc={() => showPopup(false)}
+                message='Product created with success!'
             />
         </>
     )
