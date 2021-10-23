@@ -6,52 +6,44 @@ import './historyC.css'
 
 function HistoryCard({ order }) {
 
-    const [userOrders, setUserOrders] = useState(order[0].items)
-    const [currentOrder, setCurrentOrder] = useState(0)
-    console.log('SOOOOOOOOOOOOOY USER ORDER', userOrders)
-
-
-
+    const [index, setIndex] = useState({
+      current: 0
+    })
+   
      const handleNext = (e) => {
        e.preventDefault()  
-       if(currentOrder === order.length  ){
-         console.log('!!!!!!!!!!!!! SOY LA PRIMER i de NEXT', currentOrder)
-        setUserOrders(order[currentOrder].items)
-      } else {
-          setCurrentOrder(currentOrder + 1)
-          console.log('!!!!!!!!!!!!! SOY LASEGUNDA i de NEXT', currentOrder)
-          setUserOrders(order[currentOrder + 1].items)  
+        if(index.current < order.length - 1) {
+          setIndex({...index, current: index.current + 1})
         }
     };
 
     const handlePrev = (e) => {
       e.preventDefault()
-      if(currentOrder === 0){
-        console.log('!!!!!!!!!!!!! SOY LA PRIMER i de PREV', currentOrder)
-        setCurrentOrder(0)
-        setUserOrders(order[currentOrder].items);
-      } else {
-        setCurrentOrder(currentOrder - 1)
-          console.log('!!!!!!!!!!!!! SOY LA SEGUNDA i de PREV', currentOrder)
-           setUserOrders(order[currentOrder].items);  
+      if(index.current > 0) {
+        setIndex({...index, current: index.current - 1})
       }
-    }
+    };
 
   return (
 
-    <div className="">
-      <div className="">
-        <h1>Date: </h1>
-        <div className="">
-           {userOrders.map(e => {
+    <div className="containerHistory">
+      <div className="infoContainer">
+        <div className="dataHistory">
+        <h1>Order Date: {order[index.current].orderDate.split("T")[0]}</h1>
+        <p>Total Price: {order[index.current].totalPrice}</p>
+        </div>
+        <div className="cardsContainer">
+           {order[index.current].items.map(e => {
              return < HistoryOrders brand={e.brand} image={e.img} name={e.name} price={e.price} qty={e.qty} />
             })}       
-        </div> 
+        </div>
+        </div>
+        <div className="paginadoOrder">
         <Paginado
                 prev={handlePrev}
                 next={handleNext}
         /> 
-    </div>
+          </div> 
     </div>
   );
 }

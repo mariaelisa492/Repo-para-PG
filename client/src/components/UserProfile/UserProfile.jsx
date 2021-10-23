@@ -1,9 +1,10 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from '@auth0/auth0-react'
 import { FaAngleRight } from 'react-icons/fa';
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
+import Loader from "../Loader/Loader";
 import { getMyOrders } from "../../redux/actions";
 import  HistoryCard  from "../historyCartCard/historyCard"
 import './UserProfile.css'
@@ -16,8 +17,22 @@ export function UserProfile() {
     const orders = useSelector(state => state.orders)
     const [toggle, setToggle] = useState(false)
     
-    console.log('!!!!!!!!!!!!!! SOY ORDERS', orders)
+    useEffect(() => {
+        if(user?.email){
+            dispatch(getMyOrders(user.email))
+        }
+    }, [user])
 
+    if (isLoading) {
+        return (
+            <Loader/>
+        )
+    }
+      
+
+
+    console.log('!!!!!!!!!!!!!! SOY ORDERS', orders)
+    
     const handleOrders = (e) => {
         e.preventDefault()
         dispatch(getMyOrders(user.email))
@@ -28,11 +43,8 @@ export function UserProfile() {
         setToggle(!toggle)
     }
 
-    if (isLoading) {
-        return (
-            <p>LOADING...</p>
-        )
-    }
+
+
 
     if (isAuthenticated) {
         return (
@@ -40,14 +52,13 @@ export function UserProfile() {
                 <NavBar />
                 
             {toggle ? 
-            <div>
-                <h1 onClick={(e) => {handleToggle(e)}}>Back to profile</h1>
+            <div className="historyContainer">
+                <h1 className="soyH1" onClick={(e) => {handleToggle(e)}}>Back to profile</h1>
                 <div className="">
                     <HistoryCard order={orders}/>
                 </div>
             </div> 
             : 
-            
             <div className='containerUserProfile'>
             <div className='userProfileContainer'>
                         <div className='userImageContainer'>

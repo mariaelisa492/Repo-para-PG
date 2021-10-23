@@ -2,39 +2,30 @@
     align-items: center;
     display: flex;
     justify-content:space-evenly;
-    margin-left: 20%;
-    margin-right: 20%;
+   
 }
 .prev {
   transition:all 0.35s cubic-bezier(0.37, 0.26, 0.35, 1);
-  border:4px solid rgb(163, 158, 158);
   padding:15px;
   background:transparent;
-  font-family:'Rubik', Sans-serif;
   text-transform:uppercase;
   font-weight:1000;
   cursor:pointer;
 }
-.prev:hover {
-  background:#004c56;
-}
+
 .prev{
   color:rgb(141, 137, 137);
 }
 
 .next {
   transition:all 0.35s cubic-bezier(0.37, 0.26, 0.35, 1);
-  border:4px solid rgb(163, 158, 158);
   padding:15px;
   background:transparent;
-  font-family:'Rubik', Sans-serif;
   text-transform:uppercase;
   font-weight:1000;
   cursor:pointer;
 }
-.next:hover {
-  background:#004c56;
-}
+
 .next{
   color:rgb(141, 137, 137);
 }

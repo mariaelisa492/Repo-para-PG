@@ -1,4 +1,5 @@
 import React from 'react'
+import './orderPag.css'
 
 export default function Paginado({prev, next}) {
     return (
