@@ -247,7 +247,12 @@ export default function Create({ handleClosePopup }) {
         </div>
 
         <div>
-          {Object.keys(errorsProducts).length === 0 && <input type='submit' value='Create' className='btnCreate' />}
+          <input
+            type='submit'
+            value='Update'
+            className={Object.keys(errorsProducts).length === 0 ? 'btnCreate' : 'greyBtnCreate'}
+            diabled={Object.keys(errorsProducts).length === 0}
+          />
         </div>
       </form>
     </div>
