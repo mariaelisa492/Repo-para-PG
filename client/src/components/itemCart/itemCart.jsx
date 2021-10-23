@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import SetItem from "../setItemCart/SetItem";
 import {AiTwotoneDelete} from "react-icons/ai"
 import './itemCart.css'
+import { Link } from "react-router-dom";
+
 
 export default function ItemCart({ item }) {
   console.log("ITEMS DEL CARRITOOOOOO", item);
@@ -23,8 +25,8 @@ export default function ItemCart({ item }) {
       </div>
     
         <div className="info-item">
-          <h3 className="itemName">{name}</h3>
-          <h4 className="itemPrice">Price $ {price}</h4>
+          <Link to={'detail/' + _id}><h3 className="itemName">{name}</h3></Link>
+          <h4 style={{color:'#838996'}}>Price $ {price}</h4>              
         </div>
         
         <div className="actions-items">
