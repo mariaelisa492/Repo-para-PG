@@ -23,7 +23,7 @@ const initialState = {
 	currentItem: null,
 	filteredTF: false,
 	user: {},
-	orders: []
+	orders: [],
 	productDetail: {},
 };
 
