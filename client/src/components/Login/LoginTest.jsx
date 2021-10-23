@@ -10,5 +10,5 @@ export function LoginTest(){
 
     return(
         <span className='loginBtn' onClick={ ()=> loginWithRedirect()}>Login</span>
-    )
+    );
 }
