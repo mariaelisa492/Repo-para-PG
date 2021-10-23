@@ -6,8 +6,9 @@ import {
 	ADD_TO_CART, REMOVE_FROM_CART,
 	REMOVE_ITEM, EMPTY_CART, FILTER_CATEGORIES, SET_LIMIT,
 	GET_MY_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT, GET_PRODUCT_DETAIL,
-	ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV
+	ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, GET_USER
 } from "../constants/index"
+
 
 
 
@@ -21,6 +22,7 @@ const initialState = {
 	limit: 0,
 	currentItem: null,
 	filteredTF: false,
+	user: {},
 	orders: [],
 	productDetail: {},
 	productsFavs:[],
@@ -205,7 +207,17 @@ export const rootReducer = (state = initialState, action) => {
 				cart: []
 			};
 
-		// ---------------- PAGINATION
+
+		//	--------------------------- USERS
+		case GET_USER:
+
+			return{
+				...state,
+				user: action.payload
+			}
+
+				// ---------------- PAGINATION
+	
 
 		case SET_LIMIT:
 			return {

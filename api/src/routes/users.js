@@ -16,13 +16,8 @@ router.post('/login', async(req, res) =>{
 });
 
 //todos los usuarios
-router.get('/', async(req, res) =>{
-    try {
-        
-    } catch (error) {
-        
-    }
-});
+router.get('/', users.findAllUser)
+  
 
 //obtener usuario
 router.get('/:id', async(req, res) =>{
@@ -34,12 +29,9 @@ router.get('/:id', async(req, res) =>{
 });
 
 //actualizar usuario
-router.put('/:id', async(req, res) =>{
-    try {
-        
-    } catch (error) {
-        
-    }
-});
+router.put('/:id', users.updateUser)
+    
+
+router.get('/user')
 
 module.exports = router;
