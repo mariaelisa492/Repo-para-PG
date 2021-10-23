@@ -133,7 +133,7 @@ export default function EditableRow({ handleClosePopup, id }) {
                         <label className='labelCreateProducts'>
                             Name:
                         </label>
-                        <input value={name} onChange={handleInputChange} name="name" className='inputCreateProducts' required/>
+                        <input value={name} onChange={handleInputChange} name="name" className='inputCreateProducts' required />
                     </div>
 
                     {errorsProducts.name && (
@@ -146,7 +146,7 @@ export default function EditableRow({ handleClosePopup, id }) {
                         <label className='labelCreateProducts'>
                             Description:
                         </label>
-                        <textarea value={description} rows="10" onChange={handleInputChange} name="description" className='inputCreateProducts' required/>
+                        <textarea value={description} rows="10" onChange={handleInputChange} name="description" className='inputCreateProducts' required />
                     </div>
 
                     {errorsProducts.description && (
@@ -164,7 +164,7 @@ export default function EditableRow({ handleClosePopup, id }) {
                         placeholder='Image of Product'
                         className='inputCreateProducts'
                         ref={refFileInput}
-                        //required
+                    //required
                     />
                 </div>
 
@@ -173,7 +173,7 @@ export default function EditableRow({ handleClosePopup, id }) {
                         <label className='labelCreateProducts'>
                             Price:
                         </label>
-                        <input value={price} onChange={handleInputChange} name="price" className='inputCreateProducts' required/>
+                        <input value={price} onChange={handleInputChange} name="price" className='inputCreateProducts' required />
                     </div>
 
                     {errorsProducts.price && (
@@ -185,7 +185,7 @@ export default function EditableRow({ handleClosePopup, id }) {
                         <label className='labelCreateProducts'>
                             Stock:
                         </label>
-                        <input value={stock} onChange={handleInputChange} name="stock" className='inputCreateProducts' required/>
+                        <input value={stock} onChange={handleInputChange} name="stock" className='inputCreateProducts' required />
                     </div>
 
                     {errorsProducts.stock && (
@@ -198,7 +198,7 @@ export default function EditableRow({ handleClosePopup, id }) {
                         <label className='labelCreateProducts'>
                             Brand:
                         </label>
-                        <input value={brand} onChange={handleInputChange} name="brand" className='inputCreateProducts' required/>
+                        <input value={brand} onChange={handleInputChange} name="brand" className='inputCreateProducts' required />
                     </div>
 
                     {errorsProducts.brand && (
@@ -211,7 +211,7 @@ export default function EditableRow({ handleClosePopup, id }) {
                         <label className='labelCreateProducts'>
                             Model:
                         </label>
-                        <input value={model} onChange={handleInputChange} name="model" className='inputCreateProducts' required/>
+                        <input value={model} onChange={handleInputChange} name="model" className='inputCreateProducts' required />
                     </div>
 
                     {errorsProducts.model && (
