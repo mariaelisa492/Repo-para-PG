@@ -1,0 +1,23 @@
+.dataHistory {
+    color: rgb(117, 113, 136);
+    font-size: 20px;
+}
+.containerHistory{
+    display: flex;
+    flex-direction: column;
+}
+
+.cardsContainer {
+    color: rgb(46, 44, 54);
+    font-size: 13px;
+}
+
+.infoContainer{
+    display: flex;
+    flex-direction: column;  
+}
+
+.paginadoOrder{
+    color: rgb(46, 44, 54);
+    font-size: 15px; 
+}

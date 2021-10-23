@@ -1,0 +1,31 @@
+.pos{
+    align-items: center;
+    display: flex;
+    justify-content:space-evenly;
+   
+}
+.prev {
+  transition:all 0.35s cubic-bezier(0.37, 0.26, 0.35, 1);
+  padding:15px;
+  background:transparent;
+  text-transform:uppercase;
+  font-weight:1000;
+  cursor:pointer;
+}
+
+.prev{
+  color:rgb(141, 137, 137);
+}
+
+.next {
+  transition:all 0.35s cubic-bezier(0.37, 0.26, 0.35, 1);
+  padding:15px;
+  background:transparent;
+  text-transform:uppercase;
+  font-weight:1000;
+  cursor:pointer;
+}
+
+.next{
+  color:rgb(141, 137, 137);
+}

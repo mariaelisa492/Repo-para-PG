@@ -1,3 +1,23 @@
+.historyContainer{
+    display: flex;
+    position: relative;
+    align-content: center;
+    flex-direction: column;
+    color: rgb(18, 18, 20);
+    min-height: 100vh;
+    font-size: 10px;
+}
+.historyFooter{
+    flex: 0 0 auto;
+    position: absolute;
+}
+
+.soyH1{
+    cursor: pointer;
+    width: max-content;
+    height: max-content;
+}
+
 .containerUserProfile{
     height: 170vh;
     
