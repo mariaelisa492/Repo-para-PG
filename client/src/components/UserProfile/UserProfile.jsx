@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from '@auth0/auth0-react'
+import { LOCALHOST_URL } from "../../redux/constants";
+import axios from 'axios'
 import { FaAngleRight } from 'react-icons/fa';
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
 import Loader from "../Loader/Loader";
-import { getMyOrders } from "../../redux/actions";
+import { getMyOrders} from "../../redux/actions";
 import  HistoryCard  from "../historyCartCard/historyCard"
 import './UserProfile.css'
 
@@ -13,6 +15,7 @@ export function UserProfile() {
     
     const dispatch = useDispatch()
     const { user, isAuthenticated, isLoading } = useAuth0()
+
 
     const orders = useSelector(state => state.orders)
     const [toggle, setToggle] = useState(false)
@@ -22,14 +25,18 @@ export function UserProfile() {
             dispatch(getMyOrders(user.email))
         }
     }, [user])
+    
+  
+
+        axios.get(`${LOCALHOST_URL}/users/user?email=${user?.email}`)
+    
+     
 
     if (isLoading) {
         return (
             <Loader/>
-        )
-    }
-      
-
+            )
+        }
 
     console.log('!!!!!!!!!!!!!! SOY ORDERS', orders)
     
@@ -80,22 +87,11 @@ export function UserProfile() {
                             <h2>Personal Information</h2>
                         </div>
 
-                        <div className='userName'>
-                            <p>First name: {user.given_name}</p>
-                            <p>Last name: {user.family_name}</p>
-                            <p>Phone: 1154710880</p>
-                            <p>ID: 36395664</p>
-                        </div>
-
                         <div className='userInfo'>
-                            <h2>Shipping Adresses</h2>
+                            <h2>Shipping Address</h2>
                         </div>
 
-                        <div className='userName'>
-                            <p className='userData'>Dean Funes 152, Bernal, 1876, Argentina<FaAngleRight /></p>
-                            <p className='userData'>Alvear 654, Quilmes, 1878, Argentina <FaAngleRight /></p>
-                        </div>
-
+                
                         <div className='userInfo'>
                             <h2>Orders Hisotry</h2>
                         </div>

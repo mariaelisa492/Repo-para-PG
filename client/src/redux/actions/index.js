@@ -225,7 +225,7 @@ export const removeItem = (itemId) => {
                         
 // ----------------------------- USERS
 
-export const searchUserInDb = (user) => {
+/* export const searchUserInDb = (user) => {
   return async (dispatch) => {
     try {
       const userFound = await axios.get(`${LOCALHOST_URL}/users/user`);
@@ -237,7 +237,7 @@ export const searchUserInDb = (user) => {
       console.log(error, 'searchUserInDb ||Error||');
     }
   };
-}
+} */
   
 //  ----------------------------- PAGINATION
 
