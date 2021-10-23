@@ -1,5 +1,5 @@
 import './detail.css';
-import {useState, useEffect} from 'react'
+import {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import AddToCart from '../AddToCart/Addtocart';
 import Rating from '../Rating/Rating';
@@ -21,18 +21,8 @@ export default function() {
   
   const {id} = useParams();
   const dispatch = useDispatch();
-  const [initialQty, setInitialQty] = useState(0)
   const productDetail = useSelector(state => state.productDetail);
   const {image, name, description, category, _id, stock, brand, model, price} = productDetail;
-  const itemsCart = useSelector(state => state.cart)
-  const item = itemsCart.find(item => item._id === _id)
-
-  useEffect(() => {
-    if (item) {
-      return setInitialQty(item.qty)
-    }
-  }, [AddToCart])
-  
 
   useEffect(() => {
     window.scrollTo(0,0)
@@ -68,7 +58,8 @@ export default function() {
               <span>$ {price}</span>
             </div>
 
-            <AddToCart id={id} qty={item ? item.qty : initialQty}/>
+            <AddToCart id={id} stock={stock}/>
+            <span>Stock: {stock} units</span>
           </div>
 
         </div>
