@@ -4,8 +4,6 @@ import "./historyOrder.css"
 
 function HistoryOrders({ image, name, price, qty, brand  }) {
 
-    console.log('ITEMS CARTTTTTTTTDECARTTTTTTT', image, name, price, qty)
-
     return (
         <div className="item-containerHistory">
           
