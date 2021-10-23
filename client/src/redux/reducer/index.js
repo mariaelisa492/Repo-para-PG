@@ -1,7 +1,7 @@
 import {
 	GET_PRODUCTS, GET_BYNAME,
 	ORDER_PRICE_ASC, ORDER_PRICE_DESC,
-	FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
+	FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN, NO_FILTER,
 	FILTER_PRICE_RANGE, DELETE_PRODUCT,
 	ADD_TO_CART, REMOVE_FROM_CART,
 	REMOVE_ITEM, EMPTY_CART, FILTER_CATEGORIES, SET_LIMIT,
@@ -21,6 +21,8 @@ const initialState = {
 	cart: [],
 	limit: 0,
 	currentItem: null,
+  category: null,
+  priceRange: false,
 	filteredTF: false,
 	user: {},
 	orders: [],
@@ -142,33 +144,58 @@ export const rootReducer = (state = initialState, action) => {
 
 		case FILTER_PRICE_RANGE:
 			var filt3;
+      // Si filtramos de nuevo sobre el filtrado anterior, no habra coincidencias
+      // Recarguemos esto primero.  SOLUCION PROVISORIA, llamado a una ruta con 
+      // filtrado seria lo ideal.
+      var temp;
+      if (state.category) {
+        temp = state.products.filter(p => p.category === state.category);
+      } else {
+        temp = [ ...state.products ];
+      }
+
 			if (state.filteredTF) {
-				filt3 = state.filteredProducts.filter((e) => e.price > action.payload.price1 && e.price < action.payload.price2)
+				filt3 = temp.filter((e) => e.price > action.payload.price1 && e.price < action.payload.price2)
 			}
 			else {
-				filt3 = state.products.filter((e) => e.price > action.payload.price1 && e.price < action.payload.price2)
+				filt3 = temp.filter((e) => e.price > action.payload.price1 && e.price < action.payload.price2)
 			}
 			// console.log('filterPriceRange', filt3)
 			return {
 				...state,
-				filteredProducts: [...filt3],
-				filteredTF: true
+				filteredProducts: [ ...filt3 ],
+				filteredTF: true,
+        priceRange: true
 			};
 
 		case FILTER_CATEGORIES:
 			var filt4;
 			console.log(action.payload, 'categories Filters redux')
+      /*
 			if (state.filteredTF) {
 				filt4 = state.filteredProducts.filter((e) => e.category === action.payload)
 			}
 			else {
 				filt4 = state.products.filter((e) => e.category === action.payload)
 			}
+      */
+      // Arreglo provisorio, lo ideal seria una llamada al servidor
+      filt4 = state.products.filter((e) => e.category === action.payload)
 			return {
 				...state,
 				filteredProducts: [...filt4],
-				filteredTF: true
+				filteredTF: true,
+        category: action.payload,
+        priceRange: false,
 			}
+
+    case NO_FILTER:
+      return {
+        ...state,
+        filteredProducts: [ ...state.products ],
+        filteredTF: false,
+        priceRange: false,
+      }
 
 		// ---- Cart ---- //
 
