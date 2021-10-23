@@ -57,6 +57,7 @@ export function UserProfile() {
                 <div className="">
                     <HistoryCard order={orders}/>
                 </div>
+               
             </div> 
             : 
             <div className='containerUserProfile'>
@@ -96,7 +97,7 @@ export function UserProfile() {
                         </div>
 
                         <div className='userInfo'>
-                            <h2>Cards</h2>
+                            <h2>Orders Hisotry</h2>
                         </div>
 
                         <div className='userName'>

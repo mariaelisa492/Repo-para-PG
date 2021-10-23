@@ -32,18 +32,18 @@ function HistoryCard({ order }) {
         <h1>Order Date: {order[index.current].orderDate.split("T")[0]}</h1>
         <p>Total Price: {order[index.current].totalPrice}</p>
         </div>
-        <div className="cardsContainer">
-           {order[index.current].items.map(e => {
-             return < HistoryOrders brand={e.brand} image={e.img} name={e.name} price={e.price} qty={e.qty} />
-            })}       
-        </div>
-        </div>
         <div className="paginadoOrder">
         <Paginado
                 prev={handlePrev}
                 next={handleNext}
         /> 
           </div> 
+        <div className="cardsContainer">
+           {order[index.current].items.map(e => {
+             return < HistoryOrders brand={e.brand} image={e.img} name={e.name} price={e.price} qty={e.qty} />
+            })}       
+        </div>
+        </div>
     </div>
   );
 }
