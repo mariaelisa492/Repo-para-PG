@@ -2,14 +2,13 @@
     align-items: center;
     display: flex;
     justify-content:space-evenly;
-   
+    font-size: 110%;
 }
 .prev {
   transition:all 0.35s cubic-bezier(0.37, 0.26, 0.35, 1);
   padding:15px;
   background:transparent;
-  text-transform:uppercase;
-  font-weight:1000;
+  font-weight:700;
   cursor:pointer;
 }
 
@@ -19,10 +18,9 @@
 
 .next {
   transition:all 0.35s cubic-bezier(0.37, 0.26, 0.35, 1);
-  padding:15px;
+  padding:1px;
   background:transparent;
-  text-transform:uppercase;
-  font-weight:1000;
+  font-weight:700;
   cursor:pointer;
 }
 

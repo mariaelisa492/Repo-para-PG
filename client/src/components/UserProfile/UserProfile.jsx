@@ -7,6 +7,8 @@ import Footer from '../Footer/Footer'
 import Loader from "../Loader/Loader";
 import { getMyOrders } from "../../redux/actions";
 import  HistoryCard  from "../historyCartCard/historyCard"
+import { FiChevronLeft } from "react-icons/fi";
+import { FiArchive } from "react-icons/fi";
 import './UserProfile.css'
 
 export function UserProfile() {
@@ -53,7 +55,7 @@ export function UserProfile() {
                 
             {toggle ? 
             <div className="historyContainer">
-                <h1 className="soyH1" onClick={(e) => {handleToggle(e)}}>Back to profile</h1>
+                <div className="soyH1" onClick={(e) => {handleToggle(e)}}>{" <- Let's back"} </div>
                 <div className="">
                     <HistoryCard order={orders}/>
                 </div>
@@ -97,11 +99,11 @@ export function UserProfile() {
                         </div>
 
                         <div className='userInfo'>
-                            <h2>Orders Hisotry</h2>
+                            <h2>Your Orders</h2>
                         </div>
 
-                        <div className='userName'>
-                        <button onClick={(e) => {handleOrders(e)}}>X</button>
+                        <div className='userNameOrder'>
+                        <button onClick={(e) => {handleOrders(e)}}><FiArchive/></button>
                         </div>
                     </div>
           
