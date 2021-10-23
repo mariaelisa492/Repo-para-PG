@@ -244,9 +244,10 @@ export default function EditableRow({ handleClosePopup, id }) {
                 </div>
                 <div>
                     <input
-                        type="submit"
-                        value="Update"
-                        className='btnCreate'
+                        type='submit'
+                        value='Update'
+                        className={Object.keys(errorsProducts).length === 0 ? 'btnCreate' : 'greyBtnCreate'}
+                        diabled={Object.keys(errorsProducts).length === 0}
                     />
                 </div>
             </form>
