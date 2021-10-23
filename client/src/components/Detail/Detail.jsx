@@ -11,7 +11,7 @@ import Loader from "../Loader/Loader";
 
 //>> temp solution to rating
 const styleRating = { 
-  color: 'orange',
+  color: '#f4ca16',
   width: '150px',
   fontSize: '28px',
 };
@@ -59,10 +59,12 @@ export default function() {
             </div>
 
             <AddToCart id={id} stock={stock}/>
-            <span>Stock: {stock} units</span>
+            
           </div>
+          <h6 className="stock_title">Stock: {stock} units</h6>
 
         </div>
+        {/* <p className="stock_title">Stock: {stock} units</p> */}
 
         <div className='second'>
           <p>Brand: <strong>{brand}</strong> Model: <strong>{model}</strong></p>

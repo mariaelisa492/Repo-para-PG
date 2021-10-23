@@ -24,6 +24,7 @@
   flex-direction: row;
   position: relative;
   justify-content: space-evenly;
+  background-color: white;
 }
 
 .second 
@@ -31,6 +32,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  background-color: white;
 }
 
 .first h1, .first h3 
@@ -55,7 +57,7 @@
 
 .first b 
 {
-  color: lightskyblue;
+  color:  #0070ba;
   font-size: 20px;
   display: inline-block;
   padding: 0px 20px;
@@ -102,6 +104,13 @@
   justify-content: flex-start;
   align-items: center;
   padding: 20px 40px 0px 20px;
+}
+
+.stock_title{
+    position: absolute;
+    bottom: 0;
+    right: 53px;
+    font-size: 13px;
 }
 
 .price 

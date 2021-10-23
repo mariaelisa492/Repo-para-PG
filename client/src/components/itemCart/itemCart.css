@@ -32,10 +32,10 @@
     width: 245px;
 }
 
-.itemName,
-.itemPrice {
-	margin-bottom: 20px;
-}
+.itemName{
+    color: black;
+    margin-bottom: 20px;
+};
 
 .actions-items{
     display: flex;
@@ -47,7 +47,7 @@
 
 .button-items-delete{
     background: transparent;
-    font-size: 22px;
+    font-size: 26px;
     cursor: pointer;
 }
 
