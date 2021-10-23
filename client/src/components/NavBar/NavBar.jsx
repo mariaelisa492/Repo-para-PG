@@ -13,6 +13,7 @@ import { GrCart } from 'react-icons/gr';
 
 
 export default function NavBar({ showDropDownMenu }) {
+
   const [showLinks, setShowLinks] = useState(false)
   const {isAuthenticated} = useAuth0()
 
