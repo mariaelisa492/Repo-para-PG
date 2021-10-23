@@ -1,89 +1,72 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import { editUser } from "../../redux/actions/index"
 import { Link } from 'react-router-dom';
-import './CreateUserForm.css'
+import './EditUserForm.css'
+import { useDispatch } from 'react-redux';
+
 // email: 
 // username: 
 // password: 
 // firstName:
 // lastName: 
 // gender: 
-// nacionality:
+// nationality:
 // birthDate: 
 // isActive:
 
 
-function CreateUserForm() {
-    const [email, setEmail] = useState("");
-    const [username, setUserName] = useState("");
-    const [password, setPassword] = useState("");
+function EditUserForm({_id}) {
+
     const [firstname, setFirstName] = useState("");
     const [lastname, setLastName] = useState("");
     const [gender, setGender] = useState("");
-    const [nacionality, setNacionality] = useState("");
+    const [nationality, setNationality] = useState("");
     const [birthdate, setBirthDate] = useState("");
+    const [address, setAddress] = useState("");
 
+    const dispatch = useDispatch()
 
-   function enviar(e,email, username, password, firstname, lastname, gender,nacionality, birthdate){
+   function handleSubmit(e, firstName, lastName, gender,nationality, birthdate, address){
         e.preventDefault()
-        console.log('hola')
         let data = {
-            email,
-            username,
-            password,
-            firstname,
-            lastname,
+            firstName,
+            lastName,
             gender,
-            nacionality,
-            birthdate
+            nationality,
+            birthdate,
+            address,
+            _id
         }
-         axios.post('http://localhost:5000/users/signup', data)
-        .then(()=>console.log(data))
+        dispatch(editUser(data))
+        .then()
     }
-
-
-
-
-
-
 
     return (
         <div className='CreateFormContainer'>
-            <form onSubmit={(e) => enviar(e,email, username, password, firstname, lastname, gender, nacionality, birthdate)} className="form">
-             <div className="Title">Create your account</div>
-             <div className="inputContainter">
-                {/* <label className='containers'>Email</label> */}
-                <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="styleForm" required />
-              </div>
-            <div className="inputContainter">
-                {/* <label className='containers'>UserName</label> */}
-                <input type="text" placeholder="UserName" value={username} onChange={(e) => setUserName(e.target.value)} className="styleForm" required />
-            </div>
-            <div className="inputContainter">
-                {/* <label className='containers'>Password</label> */}
-                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="styleForm" required />
-            </div>
+            <form onSubmit={(e) => handleSubmit(e, firstname, lastname, gender, nationality, birthdate)} className="form">
+             <div className="Title">Edit your personal infromation</div>
             <div className="inputContainter">
                 {/* <label className='containers'>Firstname</label> */}
-                <input type="text" placeholder="Firstname" value={firstname} onChange={(e) => setFirstName(e.target.value)} className="styleForm" required />
+                <input type="text" placeholder="Firstname" value={firstname} onChange={(e) => setFirstName(e.target.value)} className="styleForm"  />
             </div>
             <div className="inputContainter">
                 {/* <label className='containers'>Lastname</label> */}
-                <input type="text" placeholder="Lastname" value={lastname} onChange={(e) => setLastName(e.target.value)} className="styleForm" required />
+                <input type="text" placeholder="Lastname" value={lastname} onChange={(e) => setLastName(e.target.value)} className="styleForm"  />
             </div>
+                    
             <div className="inputContainter">
-                {/* <label className='containers'>Gender</label> */}
-                <select name="gender" value={gender} onChange={(e) => setGender(e.target.value)} className="select" required >
-                    <option value="">Gender</option>
+                <p>Gender</p>
+                <select name="gender" value={gender} onChange={(e) => setGender(e.target.value)} className="select" >
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                     <option value="Other">Other</option>
                  </select>
             </div>
+
             <div className="inputContainter">
-                {/* <label className='containers'>Nacionality</label> */}
-                <select name="pais" onChange={(e) => setNacionality(e.target.value)} className="select" required>
-                    <option value={nacionality}>Select your country</option>
+                {/* <label className='containers'>nationality</label> */}
+                <select name="pais" onChange={(e) => setNationality(e.target.value)} className="select" >
+                    <option value={nationality}>Select your country</option>
                     <option value="Argentina">Argentina</option>
                     <option value="Afganistán">Afganistán</option>
                     <option value="Albania">Albania</option>
@@ -286,14 +269,19 @@ function CreateUserForm() {
             </div>
             <div className="inputContainter">
                 {/* <label className='containers'>Birdthdate</label> */}
-                <input type="date" placeholder="Birdthdate" value={birthdate} onChange={(e) => setBirthDate(e.target.value)} className="styleForm" required />
+                <input type="date" placeholder="Birdthdate" value={birthdate} onChange={(e) => setBirthDate(e.target.value)} className="styleForm"  />
             </div>
             <div className="inputContainter">
-                <button type="submit" className="butt">Create</button>
+                {/* <label className='containers'>Birdthdate</label> */}
+                <input type="text" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} className="styleForm"  />
+            </div>
+            
+            <div className="inputContainter">
+                <button type="submit" className="butt">Confirm Changes</button>
                 <br></br>
                 <br></br>
               
-            <Link to='/home'>
+            <Link to='/profile'>
                 <button className="butt">Back</button>            
             </Link>
             </div>
@@ -304,6 +292,6 @@ function CreateUserForm() {
 
 }
 
-export default CreateUserForm;
+export default EditUserForm;
 
 

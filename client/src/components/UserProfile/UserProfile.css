@@ -23,6 +23,8 @@
     
 }
 
+
+
 .userProfileContainer{
     display: flex;
     flex-direction: column;
@@ -63,6 +65,19 @@
     padding: 20px;
 }
 
+.userBtnTopRight{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 14%;
+    background-color: hsla(0, 6%, 75%, 0.521);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.userBtnTopRight:hover{
+    background-color: hsla(0, 6%, 75%, 0.7);
+}
 
 .userData{
     margin: 10px;

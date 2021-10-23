@@ -7,7 +7,8 @@ import {
   REMOVE_ITEM, GET_ORDERS, FILTER_CATEGORIES,
   GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT,
   GET_MY_ORDERS, EMPTY_CART, GET_PRODUCT_DETAIL,
-  ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, GET_USER
+  ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, SET_USER,
+  EDIT_USER
   } from "../constants/index"
 
 export const getProducts = () => {
@@ -225,20 +226,36 @@ export const removeItem = (itemId) => {
                         
 // ----------------------------- USERS
 
-/* export const searchUserInDb = (user) => {
+export const searchUserInDb = (email) => {
   return async (dispatch) => {
     try {
-      const userFound = await axios.get(`${LOCALHOST_URL}/users/user`);
+      const userFound = await axios.get(`${LOCALHOST_URL}/users/user/${email}`);
       return dispatch({
-        type: GET_USER,
+        type: SET_USER,
         payload: userFound.data,
       })
     } catch (error) {
       console.log(error, 'searchUserInDb ||Error||');
     }
   };
-} */
-  
+}
+
+export const editUser = (user) => {
+  return async (dispatch) => {
+    try {
+      console.log(user, 'user en editUser');
+      const userEdited = await axios.put(`${LOCALHOST_URL}/users/${user.idd._id}`, user);
+      console.log(userEdited, 'userEdited en editUser');
+      return dispatch({
+        type: EDIT_USER,
+        payload: userEdited.data,
+      })
+    }
+    catch (error) {
+      console.log(error, 'editUser ||Error||');
+    }
+  }
+}
 //  ----------------------------- PAGINATION
 
 export const setLimit = (number) => {

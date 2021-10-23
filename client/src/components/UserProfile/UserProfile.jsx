@@ -3,20 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from '@auth0/auth0-react'
 import { LOCALHOST_URL } from "../../redux/constants";
 import axios from 'axios'
-import { FaAngleRight } from 'react-icons/fa';
+import { FaRegEdit } from 'react-icons/fa';
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
 import Loader from "../Loader/Loader";
-import { getMyOrders} from "../../redux/actions";
+import { getMyOrders, searchUserInDb} from "../../redux/actions";
 import  HistoryCard  from "../historyCartCard/historyCard"
 import './UserProfile.css'
+import EditUserForm from "../EditUserForm/EditUserForm";
 
 export function UserProfile() {
     
     const dispatch = useDispatch()
     const { user, isAuthenticated, isLoading } = useAuth0()
-
-
+    const userProfile = useSelector(state => state.user)
     const orders = useSelector(state => state.orders)
     const [toggle, setToggle] = useState(false)
     
@@ -26,10 +26,12 @@ export function UserProfile() {
         }
     }, [user])
     
-  
+    useEffect(() => {
+        if(user?.email){
+            dispatch(searchUserInDb(user.email))
+        }
+    }, [user])
 
-        axios.get(`${LOCALHOST_URL}/users/user?email=${user?.email}`)
-    
      
 
     if (isLoading) {
@@ -38,7 +40,7 @@ export function UserProfile() {
             )
         }
 
-    console.log('!!!!!!!!!!!!!! SOY ORDERS', orders)
+   // console.log('!!!!!!!!!!!!!! SOY ORDERS', orders)
     
     const handleOrders = (e) => {
         e.preventDefault()
@@ -50,9 +52,7 @@ export function UserProfile() {
         setToggle(!toggle)
     }
 
-
-
-
+   // console.log(userProfile.user[0]._id, 'userProfile.user[0]._id')
     if (isAuthenticated) {
         return (
            <div>
@@ -86,6 +86,18 @@ export function UserProfile() {
                         <div className='userInfo'>
                             <h2>Personal Information</h2>
                         </div>
+                       {userProfile.user ? 
+                        <div className='userName'>
+                            <button className='userBtnTopRight'><FaRegEdit className='editIcon'/>Edit</button>
+                            <p>First Name: {userProfile.user[0].firstName}</p>
+                            <p>Last Name: {userProfile.user[0].lastName}</p>
+                            <p>Gender: {userProfile.user[0].gender}</p>
+                            <p>Nationality: {userProfile.user[0].nationality}</p>
+                            <p>Birthdate: {userProfile.user[0].birthDate}</p>
+                            <p>Address: {userProfile.user[0].address}</p>
+                         </div>
+                        : null}
+
 
                         <div className='userInfo'>
                             <h2>Shipping Address</h2>
@@ -100,10 +112,13 @@ export function UserProfile() {
                         <button onClick={(e) => {handleOrders(e)}}>X</button>
                         </div>
                     </div>
+                    <div>
+                        <EditUserForm _id = {userProfile.user? userProfile.user[0]._id : null}/>
+                    </div>
           
                 </div> 
             } 
-                <Footer />
+               
             </div>
         )
     }
