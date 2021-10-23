@@ -80,3 +80,15 @@
   background-color: rgb(230, 32, 32);
   border-radius: 0.5em;
 }
+
+.greyBtnCreate{
+  cursor: pointer;
+  color: #eee;
+  background: #4b4b4b;
+  border: none;
+  margin: 1.25em auto;
+  max-width: 15.6em;
+  font-size: 1.25em;
+  padding: 0.4em 0.55em;
+  font-weight: 600;
+}

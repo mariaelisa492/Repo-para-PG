@@ -87,6 +87,7 @@ export default function Create({ handleClosePopup }) {
                 value={inputProducts.name}
                 placeholder='Name of Product'
                 className='inputCreateProducts'
+                required
               />
             </div>
           </div>
@@ -106,6 +107,7 @@ export default function Create({ handleClosePopup }) {
                 value={inputProducts.description}
                 placeholder='Description of Product'
                 className='inputCreateProducts'
+                required
               />
             </div>
           </div>
@@ -127,6 +129,7 @@ export default function Create({ handleClosePopup }) {
                 placeholder='Image of Product'
                 className='inputCreateProducts'
                 ref={refFileInput}
+                required
               />
             </div>
           </div>
@@ -147,6 +150,7 @@ export default function Create({ handleClosePopup }) {
                 value={inputProducts.price}
                 placeholder='Price of Product'
                 className='inputCreateProducts'
+                required
               />
             </div>
           </div>
@@ -167,6 +171,7 @@ export default function Create({ handleClosePopup }) {
                 value={inputProducts.stock}
                 placeholder='Stock of Product'
                 className='inputCreateProducts'
+                required
               />
             </div>
           </div>
@@ -187,6 +192,7 @@ export default function Create({ handleClosePopup }) {
                 value={inputProducts.brand}
                 placeholder='Brand of Product'
                 className='inputCreateProducts'
+                required
               />
             </div>
           </div>
@@ -207,6 +213,7 @@ export default function Create({ handleClosePopup }) {
                 value={inputProducts.model}
                 placeholder='Model of Product'
                 className='inputCreateProducts'
+                required
               />
             </div>
           </div>
@@ -225,6 +232,7 @@ export default function Create({ handleClosePopup }) {
               onChange={e => handleInputChange(e.target.name, e.target.value)}
               className='inputCreateProducts'
               value={inputProducts.category}
+              required
             >
               <option value=''>Select Category</option>
               {AllCategories.map(category =>
@@ -239,7 +247,12 @@ export default function Create({ handleClosePopup }) {
         </div>
 
         <div>
-          <input type='submit' value='Create' className='btnCreate' />
+          <input
+            type='submit'
+            value='Update'
+            className={Object.keys(errorsProducts).length === 0 ? 'btnCreate' : 'greyBtnCreate'}
+            diabled={Object.keys(errorsProducts).length === 0}
+          />
         </div>
       </form>
     </div>

@@ -8,7 +8,7 @@
 	/* border: none; */
 	cursor: pointer;
 	background: transparent;
-	font-size: 25px;
+	font-size: 32px;
 	padding: 0 6px 6px 0;
 }
 
@@ -17,12 +17,14 @@
 	/* border: none; */
 	cursor: pointer;
 	background: transparent;
-	font-size: 25px;
+	font-size: 32px;
 	padding: 0 6px 6px 6px;
 }
 
 .qty {
 	text-align: center;
+	font-size: 20px;
+	font-weight: 30px;
 }
 @media (max-width: 858px) {
 	.add-button-item {

@@ -60,6 +60,7 @@
   display: flex;
   justify-content: center;
   align-content: center;
+  z-index: 101;
 }
 
 .ReactModal__Overlay--after-open {
@@ -79,6 +80,7 @@
   border-radius: 1.25em;
   margin: 1.87em auto;
   overflow: auto;
+  z-index: 102; 
 }
 
 .reactModalContent::-webkit-scrollbar {

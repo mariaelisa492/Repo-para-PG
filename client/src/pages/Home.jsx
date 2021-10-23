@@ -45,7 +45,7 @@ export const Home = () => {
       </div>
 
       <div className='mainView' >
-        <DropDownMenu showMenu={showMenu} showDropDownMenu={showDropDownMenu} />
+        <DropDownMenu categories={categories} showMenu={showMenu} showDropDownMenu={showDropDownMenu} />
         <TopMenu categories={categories} />
         <div className='slideAndProducts'>
           <div>

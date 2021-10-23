@@ -5,8 +5,8 @@ import {
 	FILTER_PRICE_RANGE, DELETE_PRODUCT,
 	ADD_TO_CART, REMOVE_FROM_CART,
 	REMOVE_ITEM, EMPTY_CART, FILTER_CATEGORIES, SET_LIMIT,
-	GET_MY_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT, GET_PRODUCT_DETAIL, GET_USER
- 
+	GET_MY_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT, GET_PRODUCT_DETAIL,
+	ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, GET_USER
 } from "../constants/index"
 
 
@@ -25,6 +25,7 @@ const initialState = {
 	user: {},
 	orders: [],
 	productDetail: {},
+	productsFavs:[],
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -229,7 +230,17 @@ export const rootReducer = (state = initialState, action) => {
 				...state,
 				productDetail: action.payload
 			};
-
+		case ADD_PRODUCT_FAV:
+			let searchFav = state.productsFavs.filter(product=>product.name === action.payload.name)
+			return{
+				...state,
+				productsFavs:searchFav.length > 0 ? state.productsFavs : [action.payload, ...state.productsFavs]
+			};
+		case REMOVE_PRODUCT_FAV:
+			return{
+				...state,
+				productsFavs: state.productsFavs.filter((e)=>e._id !== action.payload.id)
+			}
 		default:
 			return state;
 	}
