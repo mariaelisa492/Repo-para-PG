@@ -25,6 +25,6 @@ export function Logout(){
 
     if(isAuthenticated )
     return(
-        <button className='logoutBtn' onClick={() => logout({returnTo:window.location.origin})}>Logout</button>
+        <span className='logoutBtn' onClick={() => logout({returnTo:window.location.origin})}>Logout</span>
     )
 }

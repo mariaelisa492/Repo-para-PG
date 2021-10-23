@@ -18,60 +18,37 @@
     margin: 15px 5px;
 }
 
-/*
-.navBar ul{
-    float: right;
-    margin-right: 20px
+.landscape
+{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.navBar ul li{
-    display: inline-block;
-    line-height: 80px;
-    margin: 0 5px;
+.landscape .activeLink,
+.landscape .inactiveLink {
+  border: 1px solid blue;
+  font-size: 28px;
+  margin: auto 16px;
+  cursor: pointer;
+  padding: 0px;
+  color: red;
 }
-
-.navBar ul li a{
-    color: black;
-    font-size: 17px;
-    padding: 7px 13px;
-    border-radius: 3px;
-}
-
-/* .navBar a:hover{
-    background-color: #FFE3C2;
-    transition: .5s;
-}
-*/
 
 .mobileOptions {
+  display: flex;
   flex-direction: row;
   align-items: center;
   display: none;
 }
 
-.loginOptions {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.mobileOptions *  {
+.mobileOptions * {
   font-size: 28px;
   margin: auto 16px;
   cursor: pointer;
+  border: 1px solid red;
 }
 
-.activeLink {
-  margin: 0px;
-  padding: 0px;
-  display: flex;
-  align-items: baseline;
-}
-.activeLink * {
-  font-size: 28px;
-  color: black;
-  margin: 0 16px;
-}
 
 /*
 .checkbtn{
@@ -94,12 +71,11 @@
         /* it should be 'position: fixed' */ 
         /*position: absolute;*/
         /* width: 100%; */
-        z-index: 100;
+        /*z-index: 100;*/
     }
     .checkbtn{
         display: block;
         margin: 0 28px 0 8px;
-
     }
     /*
     .logo img{
@@ -108,6 +84,10 @@
         margin: 10px 10px 0px 20px;
     }
     */
+    .landscape
+    {
+      display: none;
+    }
     .loginOptions {
       display: flex;
       flex-direction: column;
