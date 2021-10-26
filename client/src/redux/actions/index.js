@@ -2,7 +2,7 @@ import axios from "axios";
 import {
   LOCALHOST_URL, GET_BYNAME,
   ORDER_PRICE_ASC, ORDER_PRICE_DESC,
-  FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
+  FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN, NO_FILTER,
   ADD_TO_CART, REMOVE_FROM_CART,
   REMOVE_ITEM, GET_ORDERS, FILTER_CATEGORIES,
   GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT,
@@ -187,6 +187,12 @@ export const filterByCategory = (category) => {
   return {
     type: FILTER_CATEGORIES,
     payload: category
+  }
+}
+
+export const reset_filter = () => {
+  return {
+    type: NO_FILTER,
   }
 }
 
