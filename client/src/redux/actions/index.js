@@ -244,7 +244,7 @@ export const editUser = (user) => {
   return async (dispatch) => {
     try {
       console.log(user, 'user en editUser');
-      const userEdited = await axios.put(`${LOCALHOST_URL}/users/${user.idd._id}`, user);
+      const userEdited = await axios.put(`${LOCALHOST_URL}/users/${user._id}`, user);
       console.log(userEdited, 'userEdited en editUser');
       return dispatch({
         type: EDIT_USER,

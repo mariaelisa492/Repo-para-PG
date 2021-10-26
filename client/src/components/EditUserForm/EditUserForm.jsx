@@ -21,42 +21,43 @@ function EditUserForm({_id}) {
     const [lastname, setLastName] = useState("");
     const [gender, setGender] = useState("");
     const [nationality, setNationality] = useState("");
-    const [birthdate, setBirthDate] = useState("");
+    const [birthDate, setBirthDate] = useState("");
     const [address, setAddress] = useState("");
 
     const dispatch = useDispatch()
 
-   function handleSubmit(e, firstName, lastName, gender,nationality, birthdate, address){
+   function handleSubmit(e, firstName, lastName, gender,nationality, birthDate, address){
         e.preventDefault()
         let data = {
             firstName,
             lastName,
             gender,
             nationality,
-            birthdate,
-            address,
+            birthDate: birthDate.toString(),
+            address: address.toString(),
             _id
         }
+        console.log(data)
         dispatch(editUser(data))
-        .then()
     }
 
     return (
         <div className='CreateFormContainer'>
-            <form onSubmit={(e) => handleSubmit(e, firstname, lastname, gender, nationality, birthdate)} className="form">
+            <form onSubmit={(e) => handleSubmit(e, firstname, lastname, gender, nationality, birthDate, address)} className="form">
              <div className="Title">Edit your personal infromation</div>
             <div className="inputContainter">
                 {/* <label className='containers'>Firstname</label> */}
-                <input type="text" placeholder="Firstname" value={firstname} onChange={(e) => setFirstName(e.target.value)} className="styleForm"  />
+                <input type="text" placeholder="Firstname" value={firstname} onChange={(e) => setFirstName(e.target.value)} className="styleForm" required />
             </div>
             <div className="inputContainter">
                 {/* <label className='containers'>Lastname</label> */}
-                <input type="text" placeholder="Lastname" value={lastname} onChange={(e) => setLastName(e.target.value)} className="styleForm"  />
+                <input type="text" placeholder="Lastname" value={lastname} onChange={(e) => setLastName(e.target.value)} className="styleForm" required />
             </div>
                     
             <div className="inputContainter">
                 <p>Gender</p>
-                <select name="gender" value={gender} onChange={(e) => setGender(e.target.value)} className="select" >
+                <select name="gender" value={gender} onChange={(e) => setGender(e.target.value)} className="select" required >
+                    <option value=""></option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                     <option value="Other">Other</option>
@@ -269,11 +270,11 @@ function EditUserForm({_id}) {
             </div>
             <div className="inputContainter">
                 {/* <label className='containers'>Birdthdate</label> */}
-                <input type="date" placeholder="Birdthdate" value={birthdate} onChange={(e) => setBirthDate(e.target.value)} className="styleForm"  />
+                <input type="date" placeholder="Birdthdate" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} className="styleForm" required />
             </div>
             <div className="inputContainter">
                 {/* <label className='containers'>Birdthdate</label> */}
-                <input type="text" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} className="styleForm"  />
+                <input type="text" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} className="styleForm" required />
             </div>
             
             <div className="inputContainter">
