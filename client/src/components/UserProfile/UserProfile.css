@@ -112,13 +112,35 @@
    
 }
 
+.userBtnTopRight{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    height: 10%;
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: #0070ba;
+    color: #1f1f1f;
+    border-radius: 4px;
+
+}
+
 .btnOrders{
    background-color: #0070ba;
    color: #1f1f1f;
    border-radius: 4px;
 }
 
-
+.btnOrders:hover{
+    background-color: #0465a5;
+    cursor: pointer;
+}
+.userBtnTopRight:hover{
+    cursor: pointer;
+    background-color: #0465a5;
+}
 
 @media (max-width: 858px){   
     .userName{
