@@ -24,25 +24,25 @@ export default function InfoComponent() {
 
                     <div>
                         <h2>Ubication</h2>
-                        <p>742 Evergreen Terrace</p>
+                        <p className='textAbout'>742 Evergreen Terrace</p>
                     </div>
                 </div>
 
                 <div className='containerAbout informationDiv'>
-                    <div><FiMail /></div>
+                    <div className='iconAbout'><FiMail /></div>
 
                     <div>
                         <h2>Email</h2>
-                        <p>wavemusic@proto.com</p>
+                        <p className='textAbout'>wavemusic@proto.com</p>
                     </div>
                 </div>
 
                 <div className='containerAbout informationDiv'>
-                    <div><BsTelephoneFill /></div>
+                    <div className='iconAbout'><BsTelephoneFill /></div>
 
                     <div>
                         <h2>Telephone</h2>
-                        <p>764-84377</p>
+                        <p className='textAbout'>764-84377</p>
                     </div>
                 </div>
             </div>

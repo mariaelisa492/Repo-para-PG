@@ -30,7 +30,7 @@ function App() {
       <Route exact path = "/admin" component={Dashboard}/>
       <Route exact path = "/" component={Home}/>
       <Route exact path = '/categories' component={Categories}/>
-      <Route exact path = '/info' component={InfoCommerce}/>
+      <Route exact path = '/about' component={InfoCommerce}/>
       </Switch>
     </div>
   );

@@ -33,6 +33,10 @@
 }
 
 .iconAbout {
-  font-size: 20px;
+  font-size: 1.875em;
   display: inline-block;
+}
+
+.textAbout {
+  margin-top: 0.5em;
 }
