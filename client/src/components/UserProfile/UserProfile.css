@@ -31,6 +31,8 @@
     
 }
 
+
+
 .userProfileContainer{
     display: flex;
     flex-direction: column;
@@ -103,10 +105,25 @@
     justify-content: center;
 }
 
+
+.userNameOrder{
+        width: 30%;
+    font-size: 30px;
+   
+}
+
+.btnOrders{
+   background-color: #0070ba;
+   color: #1f1f1f;
+   border-radius: 4px;
+}
+
+
+
 @media (max-width: 858px){   
     .userName{
-        width: 90%;
-        margin-bottom: 30px;
+        width: 80%;
+        margin-bottom: 20px;
     }
     
 }
