@@ -7,7 +7,7 @@ import { filterByCategory } from '../../redux/actions';
 
 export default function SideBar({categories}) {
 
-  console.log(categories, 'sidebarCategories')
+  //console.log(categories, 'sidebarCategories')
 //export default function SideBar({ categories }) {
 
   const [ hidden, setHidden ] = useState(true);

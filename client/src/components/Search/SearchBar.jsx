@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {getProductsByName} from '../../redux/actions'
 import { BsSearch } from "react-icons/bs";
+import { FaSearch } from 'react-icons/fa';
 import "./searchBar.css";
 
-export const Search = () => {
+export const Search = ({ hideFunc }) => {
 
     const dispatch = useDispatch()
 
@@ -18,6 +19,7 @@ export const Search = () => {
         e.preventDefault()
         dispatch(getProductsByName(inputValue))
         setInputValue("");
+        if (typeof hideFunc === 'function') hideFunc();
 }
 
     return (
@@ -32,7 +34,7 @@ export const Search = () => {
                         onChange={handleInputChange}
                     />
                     <button className='search-button' type='submit'>   
-                        <span><BsSearch/></span>
+                        <span><FaSearch /></span>
                     </button>             
                 </form>
             </div>

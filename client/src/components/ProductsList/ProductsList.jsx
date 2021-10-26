@@ -7,7 +7,7 @@ import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/
 
 
 export default function ProductsList({ filteredProducts }) {
-  console.log(filteredProducts, "ProductsList");
+  // console.log(filteredProducts, "ProductsList");
 
   const limit = useSelector((state)=> state.limit)
   const [lessThan, setLessThan] = useState(null)
@@ -111,6 +111,9 @@ export default function ProductsList({ filteredProducts }) {
         </div>
           <hr/>
 
+        {/* Comento de manera temporal para poner los filtros y ordenamientos arriba,
+        // seguramente en un componente aparte
+
         <div className='formPrice'>
           <div>
             <label className='labels'>Order by Price </label>
@@ -132,6 +135,7 @@ export default function ProductsList({ filteredProducts }) {
               </form>
             </div>
           </div>
+            */}
         
       </div>
     </>

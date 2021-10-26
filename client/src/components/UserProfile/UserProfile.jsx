@@ -1,30 +1,69 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from '@auth0/auth0-react'
 import { FaAngleRight } from 'react-icons/fa';
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
+import Loader from "../Loader/Loader";
+import { getMyOrders } from "../../redux/actions";
+import  HistoryCard  from "../historyCartCard/historyCard"
+import { FiChevronLeft } from "react-icons/fi";
+import { FiArchive } from "react-icons/fi";
 import './UserProfile.css'
 
 export function UserProfile() {
+    
+    const dispatch = useDispatch()
     const { user, isAuthenticated, isLoading } = useAuth0()
 
-    console.log(user)
-
+    const orders = useSelector(state => state.orders)
+    const [toggle, setToggle] = useState(false)
+    
+    useEffect(() => {
+        if(user?.email){
+            dispatch(getMyOrders(user.email))
+        }
+    }, [user])
 
     if (isLoading) {
         return (
-            <p>LOADING...</p>
+            <Loader/>
         )
     }
+      
+
+
+    console.log('!!!!!!!!!!!!!! SOY ORDERS', orders)
+    
+    const handleOrders = (e) => {
+        e.preventDefault()
+        dispatch(getMyOrders(user.email))
+        setToggle(!toggle)
+    }
+
+    const handleToggle = (e) => {
+        setToggle(!toggle)
+    }
+
+
+
 
     if (isAuthenticated) {
         return (
-
-            <div>
+           <div>
                 <NavBar />
-                <div className='containerUserProfile'>
-
-                    <div className='userProfileContainer'>
+                
+            {toggle ? 
+            <div className="historyContainer">
+                <div className="soyH1" onClick={(e) => {handleToggle(e)}}>{" <- Go back"} </div>
+                <div className="">
+                    <HistoryCard order={orders}/>
+                </div>
+               
+            </div> 
+            : 
+            <div className='containerUserProfile'>
+            <div className='userProfileContainer'>
                         <div className='userImageContainer'>
                             <img src={user.picture} alt={user.name} className='image' />
                         </div>
@@ -60,22 +99,16 @@ export function UserProfile() {
                         </div>
 
                         <div className='userInfo'>
-                            <h2>Cards</h2>
+                            <h2>Your Orders</h2>
                         </div>
 
-                        <div className='userName'>
-                            <div className='cardContainer'>
-                                <img src="https://pbs.twimg.com/profile_images/1417870168626274305/SQh0W_dC_400x400.jpg" className="imgCard" />
-                                <p className='userData'>Visa 5472</p>
-                            </div>
-                            <div className='cardContainer'>
-                                <img src="https://1000marcas.net/wp-content/uploads/2019/12/logo-Mastercard.png" className="imgCard" />
-                                <p className='userData'>Master Card 8910</p>
-                            </div>
-
+                        <div className='userNameOrder'>
+                        <button onClick={(e) => {handleOrders(e)}}><FiArchive/></button>
                         </div>
                     </div>
-                </div>
+          
+                </div> 
+            } 
                 <Footer />
             </div>
         )

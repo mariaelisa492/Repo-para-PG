@@ -1,50 +1,41 @@
-.setItemsBtn
-{
-  position: relative;
+.add-button-item {
+	display: flex;
+	justify-content: space-evenly;
 }
 
-.lbl 
-{
-  display: block;
-  background-color: #19b9ac;
-  color: white;
-  width: 150px;
-  font-size: 20px;
-  height: 36px;
-  line-height: 36px;
-  text-align: center;
-  cursor: pointer;
+.Remove-item {
+	color: #0070ba;
+	/* border: none; */
+	cursor: pointer;
+	background: transparent;
+	font-size: 32px;
+	padding: 0 6px 6px 0;
 }
 
-.btns 
-{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 5px;
+.Add-item {
+	color: #0070ba;
+	/* border: none; */
+	cursor: pointer;
+	background: transparent;
+	font-size: 32px;
+	padding: 0 6px 6px 6px;
 }
 
-.qty 
-{
-  display: block;
-  width: 40px;
-  border: 1px solid #d0d0d0;
-  font-size: 18px;
-  height: 36px;
-  line-height: 36px;
-  text-align: center;
+.qty {
+	text-align: center;
+	font-size: 20px;
+	font-weight: 30px;
 }
+@media (max-width: 858px) {
+	.add-button-item {
+		align-items: center;
+	}
 
-.Add, .Remove 
-{
-  display: block;
-  width: 50px;
-  background-color: #19b9ac;
-  color: white;
-  font-size: 24px;
-  height: 36px;
-  line-height: 36px;
-  text-align: center;
-  cursor: pointer;
+	.Remove-item {
+		padding: 10px 6px 6px 0;
+	}
+
+	.Add-item {
+		padding: 10px 6px 6px 6px;
+	}
 }
-

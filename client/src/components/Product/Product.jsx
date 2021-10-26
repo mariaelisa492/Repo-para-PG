@@ -1,10 +1,16 @@
 import React from "react";
 import './product.css';
-import { NavLink } from "react-router-dom"; 
+import { Link, NavLink } from "react-router-dom"; 
 import Rating from '../Rating/Rating';
-import { BsFillEyeFill, BsFillCartFill } from 'react-icons/bs';
+import { BsFillEyeFill} from 'react-icons/bs';
+import {AiTwotoneHeart} from 'react-icons/ai'
+import { addProductFav } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 
 export default function Product({ _id, img, name, price, rating, isActive }) {
+    const dispatch = useDispatch();
+
+    const objFav = {_id, name, img, price}
 
     console.log(isActive)
 
@@ -23,12 +29,13 @@ export default function Product({ _id, img, name, price, rating, isActive }) {
                         <p><Rating rating={9}/></p>
                         <div className="product-bottom-details">
                             <div className="product-price"><small>$ {price + 200 }</small>$ {price}</div>
-                            <NavLink className="link-product" to={'detail/' + _id}>
+                            
                             <div className="product-links">
+                            <NavLink className="link-product" to={'detail/' + _id}>
                                 <a href=""><BsFillEyeFill/></a>
-                                <a href=""><BsFillCartFill/></a>
+                                </NavLink>
+                                <a className='buttonfav' onClick={()=>dispatch(addProductFav(objFav))}><AiTwotoneHeart/></a>
                             </div>
-                            </NavLink>
                         </div>
                     </div>
                 </div>

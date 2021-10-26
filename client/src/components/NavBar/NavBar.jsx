@@ -1,56 +1,94 @@
-import React, { useState } from "react";
 import "./navBar.css";
-import { BsFillCartFill, BsFillPersonFill } from "react-icons/bs"
-import logo from "../../images/logo.png"
+import { useState } from 'react';
+import logo from "../../images/waveMusic.png"
 import { Search } from "../Search/SearchBar";
-import {GiHamburgerMenu} from "react-icons/gi"
 import { LoginTest } from "../Login/LoginTest";
 import { Logout } from "../Login/LogoutTest";
-import {useAuth0} from "@auth0/auth0-react"
-import { NavLink } from "react-router-dom"; // a Link no se le pueden dar estilos...
-import { FaBars, FaUser, FaUserCheck, FaShoppingCart } from 'react-icons/fa';
+import { useAuth0 } from "@auth0/auth0-react";
+import { NavLink } from "react-router-dom";
+import { FaBars, FaUser, FaSearch } from 'react-icons/fa';
 import { GrCart } from 'react-icons/gr';
+import Modal from "../Modal/Modal";
 
 
 export default function NavBar({ showDropDownMenu }) {
-  const [showLinks, setShowLinks] = useState(false)
-  const {isAuthenticated} = useAuth0()
+  // Este componente es demasiado grande!  Pero con el tiempo que tenemos
+  // prefiero no tocarlo por ahora, veremos la semana proxima si se puede
+  // limpiar y refactorear un poco.
 
-  function toggleLoginOptions() {
-    setShowLinks(!showLinks);
-  }
+  const {isAuthenticated} = useAuth0()
+  const [ popup, setPopup ] = useState({
+    search: false,
+    login: false,
+  });
+
+  const showBar = () => setPopup({ ...popup, search: true });
+  const hideBar = () => setPopup({ ...popup, search: false });
+  const showDialog = () => setPopup({ ...popup, login: true });
+  const hideDialog = () => setPopup({ ...popup, login: false });
 
   return (
     <nav className="navBar">
-      <label className="logo">
-        <NavLink to="/" className="active"><img src={logo} alt="logo"/></NavLink>
-      </label>
-      <div>
-        <Search />
-      </div>
-      
-      <div className='mobileOptions'>
-          <FaUser onClick={toggleLoginOptions} />
+      <div className='landscape'>
+        <label className="logo">
+          <NavLink to="/" className="active"><img src={logo} alt="logo"/></NavLink>
+        </label>
 
-          <GrCart />
+        <div className='searchBar'>
+          <Search />
+        </div>
 
-          <FaBars onClick={showDropDownMenu}/>
-      </div>
+        <div className='userActions'>
+          {isAuthenticated
+            ? <NavLink to='/profile' activeClassName='activeLink'  >
+                <FaUser className='menuIcon' />
+              </NavLink>
+              : <FaUser className='menuIcon' onClick={showDialog} />}
 
-      <div className={'loginOptions ' + (showLinks ? 'visible' : 'hidden')}>
-        {isAuthenticated
-          ? <NavLink to='/profile' className='activeLink' activeStyle={{color: 'black'}}>
-              <FaUser />
-            </NavLink>
-          :null}
-        {isAuthenticated
-          ? <NavLink to="/cart" className='activeLink' activeStyle={{color: 'black'}}>
-              <GrCart />
-            </NavLink>
-          :null}
-        {isAuthenticated ? <Logout/> : <LoginTest/>}
+          {isAuthenticated
+            ? <NavLink to="/cart" activeClassName='activeLink' >
+                <GrCart className='menuIcon' />
+              </NavLink>
+            : <GrCart className='menuIcon' onClick={showDialog} />}
+
+          {isAuthenticated ? <Logout/> : <LoginTest/>}
+        </div>
       </div>
 
+      <div className='portrait'>
+        <label className="logo">
+          <NavLink to="/" className="active"><img src={logo} alt="logo"/></NavLink>
+        </label>
+
+        <div className={'popupSearchBar ' + (popup.search ? 'showSearch' : 'hideSearch')}>
+          <Search hideFunc={hideBar}/>
+          <p className='closeSearch' onClick={hideBar}>close</p>
+        </div>
+
+        <div className='mobileOptions'>
+          <FaSearch className='noLink' onClick={showBar}/>
+          {isAuthenticated
+            ? <NavLink to='/profile' activeClassName='activeLink'  >
+                <FaUser className='menuIcon' />
+              </NavLink>
+              : <FaUser className='menuIcon' onClick={showDialog} />}
+
+          {isAuthenticated
+            ? <NavLink to="/cart" activeClassName='activeLink' >
+                <GrCart className='menuIcon' />
+              </NavLink>
+            : <GrCart className='menuIcon' onClick={showDialog} />}
+
+          {isAuthenticated ? <Logout/> : <LoginTest/>}
+
+          <FaBars className='noLink' onClick={showDropDownMenu}/>
+        </div>
+      </div>
+
+      <Modal 
+        show={popup.login}
+        hideFunc={hideDialog}
+        message="You need to be logged in to perform this action!" />
     </nav>
   );
 }

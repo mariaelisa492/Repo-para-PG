@@ -1,0 +1,18 @@
+.page-shopping{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.nav_page_cart{
+    flex: 0 0 auto;
+}
+
+
+.cart_page_container{
+    flex: 1 0 auto;
+}
+
+.footer_cart_page{
+    flex: 0 0 auto;
+}

@@ -7,153 +7,123 @@
     display: flex;
     justify-content: space-between;
     background-color: #FF9F1C;
+    background-image: linear-gradient(to left, #fdaa48, #f2ab15);
     height: 80px;
     width: 100%;
+    position: relative;
+    z-index: 30;
 }
 
 .logo img{
-    width:30px;
     height:50px; 
-    margin: 10px 0px 0px 40px;
+    margin: 15px 5px;
 }
 
-/*
-.navBar ul{
-    float: right;
-    margin-right: 20px
-}
-
-.navBar ul li{
-    display: inline-block;
-    line-height: 80px;
-    margin: 0 5px;
-}
-
-.navBar ul li a{
-    color: black;
-    font-size: 17px;
-    padding: 7px 13px;
-    border-radius: 3px;
-}
-
-/* .navBar a:hover{
-    background-color: #FFE3C2;
-    transition: .5s;
-}
-*/
-
-.mobileOptions {
+.landscape
+{
+  width: 100%;
+  display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+}
+
+.searchBar
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.userActions 
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.landscape .activeLink {
+  color: black;
+}
+
+.menuIcon
+{
+  color: black;
+  margin: auto 16px;
+  cursor: pointer;
+  padding: 0px;
+  font-size: 1.8em;
+}
+
+.portrait
+{
   display: none;
 }
 
-.loginOptions {
+.mobileOptions {
   display: flex;
   flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
   align-items: center;
 }
 
-.mobileOptions *  {
-  font-size: 28px;
+.mobileOptions .noLink {
+  font-size: 1.8em;
   margin: auto 16px;
   cursor: pointer;
 }
 
-.activeLink {
-  margin: 0px;
-  padding: 0px;
+.popupSearchBar 
+{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  padding-top: 40px;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: center;
+  color: white;
 }
-.activeLink * {
-  font-size: 28px;
-  color: black;
-  margin: 0 16px;
+.showSearch
+{
+  display: flex;
 }
-
-/*
-.checkbtn{
-    font-size:30px;
-    color: black;
-    float: right;
-    line-height: 80px;
-    margin-right: 40px;
-    cursor: pointer;
-    display: none;
+.hideSearch
+{
+  display: none;
 }
-
-#check{
-    display: none;
+.closeSearch 
+{
+  display: block;
+  font-size: 1.1em;
+  color: rgba(255, 255, 255, 0.5);
+  width: 150px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  text-align: center;
+  line-height: 40px;
+  margin: 40px;
+  cursor: pointer;
 }
-*/
 
 @media (max-width: 858px){
-    .navBar{
-        /* it should be 'position: fixed' */ 
-        /*position: absolute;*/
-        /* width: 100%; */
-        z-index: 100;
+    .landscape
+    {
+      display: none;
     }
-    .checkbtn{
-        display: block;
-        margin: 0 28px 0 8px;
-
-    }
-    .logo img{
-        width:30px;
-        height:50px; 
-        margin: 10px 10px 0px 20px;
-    }
-    .loginOptions {
+    .portrait 
+    {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: right;
-      position: absolute;
-      left: 200px;
-      top: 80px;
-      background-color: white;
+      flex-direction: row;
       width: 100%;
-      height: 80px;
-      z-index: 99;
+      justify-content: space-between;
     }
-    .visible {
-      opacity: 1;
-    }
-    .hidden {
-      opacity: 0;
-    }
-    .mobileOptions {
-      display: flex;
-    }
-    /* Why?!
-    .items-nav{
-        position: absolute;
-        width: 100%;
-        height: 80vh;
-        top:80px;
-        right: -100%;
-        text-align: center;
-        transition: all .5s;
-    }
-    .navBar ul li{
-        display: block;
-        margin:50px 0;
-        line-height: 30px;
-    }
-    .navBar ul li a{
-        font-size: 20px;
-    }
-    a:hover,a.active{
-        background: none;
-        color: white
-    }
-    #check:checked ~ ul{
-        left: 0;
-        background-color:gray;
-    }
-    */
 }
-
 

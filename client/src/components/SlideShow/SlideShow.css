@@ -1,93 +1,104 @@
-.SlideGeneral{
-    width: 97vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.SlideGeneral
+{
+  width: 100%;
+  max-width: 1700px;
+  margin: 0 auto;
+  height: 40vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.containerS {
-position: relative;
-overflow: hidden;
-height: 60vh;
-object-fit: cover;
-width: 60vw ;
-text-align: center;
-align-self: center;
+.containerS 
+{
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  /*object-fit: cover;*/
+  text-align: center;
+  align-self: center;
 }
 
-.slideContainer{
+.slideContainer
+{
 /* max-width: 1000px; */
-margin: 50px auto;
-display: flex;
-flex-wrap: nowrap; 
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-wrap: nowrap; 
 }
 
-
-
-
-
-.slide{
-min-width: 100%;
-overflow: hidden;
-transition: .3 ease all;
-z-index: 10;
-position: relative;
+.slide
+{
+  min-width: 100%;
+  overflow: hidden;
+  transition: .3 ease all;
+  z-index: 10;
+  position: relative;
 }
 
-.slide img{
-    width: 100%;
-    vertical-align: top;
+.slide img
+{
+  width: 100%;
+  vertical-align: middle;
 }
 
-
-.controls{
-position: absolute;
-align-items: center;
-top: 0;
-width: 100%;
-height: 100%;
-z-index: 20;
+.controls
+{
+  display: flex;
+  flex-direction: row;
+  background-color: transparent;
+  background-image: linear-gradient(to right, #0000007f, transparent, #0000007f);
+  position: absolute;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+  width: 100%;
+  height: 40vh;
+  z-index: 20;
 }
 
-
-.btn{
-height: 50px;
-width: 50px;
-background: none;
-border: none;
-cursor: pointer;
-outline: none;
-align-items: center;
-position: absolute;
-transition: .3 ease all;
-left: 0;
-top: 50%
-}
-.btn:hover{
-transition: .3 ease all;
-background: rgba(200, 200, 200, 5);
-border-radius: 5px;
-
+.btn, .btn2
+{
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 50px;
+  background: none;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 500ms;
 }
 
-.btn2{
-height: 50px;
-width: 50px;
-background: none;
-border: none;
-cursor: pointer;
-outline: none;
-text-align: center;
-position: absolute;
-transition: .3 ease all;
-right: 0;
-top: 50%    
-}
-.btn2:hover{
-transition: .3 ease all;
-background: rgba(200, 200, 200, 5);
-border-radius: 5px;
-
+.btn *, .btn2 *
+{
+  margin: 0px;
+  padding: 0px;
+  width: 50px;
+  height: 40px;
+  background-color: transparent;
+  color: orange;
 }
 
+.btn2
+{
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
 
+.btn
+{
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.btn:hover, .btn2:hover
+{
+  background: rgba(255, 255, 255, 0.6);
+}
