@@ -10,6 +10,7 @@ import {useDispatch} from 'react-redux'
 import { UserProfile } from './components/UserProfile/UserProfile';
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import { Categories } from './components/Categories/Categories';
+import InfoCommerce from './pages/InfoCommerce';
 
 function App() {
   const dispatch = useDispatch()
@@ -27,6 +28,7 @@ function App() {
       <Route exact path = "/admin" component={Dashboard}/>
       <Route exact path = "/" component={Home}/>
       <Route exact path = '/categories' component={Categories}/>
+      <Route exact path = '/info' component={InfoCommerce}/>
       </Switch>
     </div>
   );
