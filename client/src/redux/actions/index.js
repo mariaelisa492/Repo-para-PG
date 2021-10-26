@@ -256,16 +256,29 @@ export const setLimit = (number) => {
 
 //add favorite
 
-export function addProductFav (payload){
-  return {
-      type: ADD_PRODUCT_FAV,
-      payload
-  };
-};
+/* export default function addToWishList(payload){
+  return async function(dispatch){
+      try {
+          const response = await axios.post(`${LOCALHOST_URL}`, payload) 
+      } catch (error) {
+          console.log('Error al agregar a favoritos')
+      }
+  }
+}
 
-export function removeProductFav (id){
-  return{
-      type: REMOVE_PRODUCT_FAV,
-      payload: id
-  };
-};
+export default function deleteWishItem(itemId, usuarioId){
+  console.log('action', itemId, usuarioId);
+  return async function(dispatch){
+      await axios.delete(`${LOCALHOST_URL}?itemid=${itemId}&usuarioid=${usuarioId}`)
+  }
+}
+
+export default function getWishlist(id){
+  return  async function(dispatch){
+      const response = await axios.get(`${LOCALHOST_URL}/user/wishlist/${id}`)
+      dispatch({
+          type: GET_WISHLIST,
+          payload: response.data
+      })
+  }
+} */

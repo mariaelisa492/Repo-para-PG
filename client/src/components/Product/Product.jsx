@@ -34,7 +34,7 @@ export default function Product({ _id, img, name, price, rating, isActive }) {
                             <NavLink className="link-product" to={'detail/' + _id}>
                                 <a href=""><BsFillEyeFill/></a>
                                 </NavLink>
-                                <a className='buttonfav' onClick={()=>dispatch(addProductFav(objFav))}><AiTwotoneHeart/></a>
+                                {/* <a className='buttonfav' onClick={()=>dispatch(addProductFav(objFav))}><AiTwotoneHeart/></a> */}
                             </div>
                         </div>
                     </div>

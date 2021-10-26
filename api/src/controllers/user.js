@@ -76,8 +76,43 @@ const updateUser = async (req, res) => {
 
  }
 }
+// -------------- WISH LIST
+const addToWishList = async (req, res) => {
+    const { producId } = req.body
 
-
+    try {
+      const user = await User.findById(req.body.idUser)
+      user.wishList = [...user.wishList, producId]
+  
+      await user.save()
+  
+      res.status(200).json({message: 'Producto guardado en favoritos'})
+    } catch (error) {
+      console.log("No se pudo guardar el producto en favoritos");
+    }
+};
+  
+  const getWishList = async(req, res) => {
+    
+    const { id } = req.params
+    
+    const user = await User.findById(id).populate("wishList",
+    { name: 1 }
+    )
+    res.json(user.wishList)
+  };
+  
+  const deleteWishItem = async (req, res) => {
+    const {itemid, usuarioid} = req.query
+    const user = await User.findById(usuarioid)
+   
+    user.wishList = user.wishList.filter(i => JSON.stringify(i) != JSON.stringify(itemid))
+  
+    await user.save()
+  
+    res.status(200).json({msg: 'Item borrado'})
+  
+  }
 
 module.exports = {
     createUser,
