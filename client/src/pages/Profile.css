@@ -1,0 +1,12 @@
+.nav_page_user{
+       flex: 0 0 auto;   
+}
+
+
+.user_page_container{
+    flex: 1 0 auto;
+}
+
+.footer_page_user{
+    flex: 0 0 auto;
+}
