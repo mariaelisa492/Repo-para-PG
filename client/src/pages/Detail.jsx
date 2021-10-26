@@ -16,8 +16,8 @@ export const Detail = (props) => {
   }
 
 
-  const id = useParams();
-  console.log("Product id: ", id);
+  // // const id = useParams();
+  // console.log("Product id: ", id);
 
   return (
     <div>
@@ -28,7 +28,7 @@ export const Detail = (props) => {
         <NavBar showDropDownMenu={showDropDownMenu} />
       </div>
 
-      <ProductDetail id={id} showMenu={showMenu} showDropDownMenu={showDropDownMenu} />
+      <ProductDetail showMenu={showMenu} showDropDownMenu={showDropDownMenu} />
 
       <div>
         <Footer/>

@@ -2,11 +2,12 @@ import axios from "axios";
 import {
   LOCALHOST_URL, GET_BYNAME,
   ORDER_PRICE_ASC, ORDER_PRICE_DESC,
-  FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
+  FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN, NO_FILTER,
   ADD_TO_CART, REMOVE_FROM_CART,
   REMOVE_ITEM, GET_ORDERS, FILTER_CATEGORIES,
   GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT,
-  GET_MY_ORDERS, EMPTY_CART
+  GET_MY_ORDERS, EMPTY_CART, GET_PRODUCT_DETAIL,
+  ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, GET_USER
   } from "../constants/index"
 
 export const getProducts = () => {
@@ -64,6 +65,20 @@ export const getSingleProduct = (id) => {
     catch (error) {
       console.log("Error al obtener un unico producto")
     }
+  }
+}
+
+export const getProductDetail = (id) => {
+  return async (dispatch) => {
+      try {
+          const product = await axios.get(`${LOCALHOST_URL}/products/${id}`);
+          return dispatch({
+              type: GET_PRODUCT_DETAIL,
+              payload: product.data
+          })
+      } catch (error) {
+          console.log(error)
+      }
   }
 }
 
@@ -174,6 +189,12 @@ export const filterByCategory = (category) => {
   }
 }
 
+export const reset_filter = () => {
+  return {
+    type: NO_FILTER,
+  }
+}
+
 // ----------------------------- CART
 export const addCart = (itemId) => {
   return {
@@ -207,6 +228,24 @@ export const removeItem = (itemId) => {
     }
   }
 };
+                        
+// ----------------------------- USERS
+
+export const searchUserInDb = (user) => {
+  return async (dispatch) => {
+    try {
+      const userFound = await axios.get(`${LOCALHOST_URL}/users/user`);
+      return dispatch({
+        type: GET_USER,
+        payload: userFound.data,
+      })
+    } catch (error) {
+      console.log(error, 'searchUserInDb ||Error||');
+    }
+  };
+}
+  
+//  ----------------------------- PAGINATION
 
 export const setLimit = (number) => {
   return {
@@ -214,3 +253,19 @@ export const setLimit = (number) => {
     payload: number
   }
 }
+
+//add favorite
+
+export function addProductFav (payload){
+  return {
+      type: ADD_PRODUCT_FAV,
+      payload
+  };
+};
+
+export function removeProductFav (id){
+  return{
+      type: REMOVE_PRODUCT_FAV,
+      payload: id
+  };
+};

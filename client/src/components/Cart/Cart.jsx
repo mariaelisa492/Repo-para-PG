@@ -47,7 +47,7 @@ export default function Cart() {
                             <h2 className='titleCheck'>CheckOut</h2>
                             <div className='totalPrice'>
                                 <div>Total Items: {totalItems}</div>
-                                <div><strong>TOTAL: $ {totalPrice}</strong> </div>
+                                <div>TOTAL: $ {totalPrice}</div>
                             </div>
                             <div>
                             <CheckoutBut  totalPrice={totalPrice} items={items} user={user.email} totalItems={totalItems}/>
@@ -70,7 +70,6 @@ export default function Cart() {
                                 ¡Keep Shopping!
                                 </h3>
                             </Link>
-
                         </div>
                     </div>
             }

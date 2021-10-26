@@ -8,13 +8,14 @@ import { useDispatch, useSelector, } from "react-redux";
 import { deleteProduct } from "../../redux/actions";
 import { MdDeleteForever } from 'react-icons/md';
 import { FaRegEdit } from 'react-icons/fa';
-import { NavLink } from "react-router-dom";
 import "./Dashboard.css";
+import AlertPopup from '../AlertPopups/AlertPopups';
+import Modal from "../Modal/Modal";
 
 export default function Dashboard() {
-    
+
     const [idToUpdate, setidToUpdate] = useState('')
-    
+
     const [pending, setPending] = useState(true);
 
     useEffect(() => {
@@ -59,7 +60,14 @@ export default function Dashboard() {
                     setidToUpdate(row._id)
                     console.log(row._id)
                 }}><FaRegEdit /></button>
-                <button type="button" onClick={() => handleDeleteProduct(row)}><MdDeleteForever /></button>
+
+                <button type="button" onClick={() => {
+                    handleDeleteProduct(row._id);
+                    handeOpenAlertDelete();
+                }}
+                >
+                    <MdDeleteForever />
+                </button>
             </div>)
         },
 
@@ -74,9 +82,8 @@ export default function Dashboard() {
         setItems(products)
     }, [products])
 
-    const handleDeleteProduct = (row) => {
-        if (window.confirm("Are you sure you want to remove this product??"))
-            dispatch(deleteProduct(row._id));
+    const handleDeleteProduct = (id) => {
+        setidDelete(id);
     }
 
     // estado para mostrar popup Crear
@@ -87,6 +94,8 @@ export default function Dashboard() {
     }
     const handleClosePopupCreate = () => {
         setShowPopupCreate(false)
+        showPopup(true);
+        setTimeout(() => showPopup(false), 1000);
     }
 
     // estado para mostrar popup Update
@@ -98,6 +107,31 @@ export default function Dashboard() {
     const handleClosePopupUpdate = () => {
         setShowPopupUpdate(false)
     }
+
+    // todo para borrar
+    const [idDelete, setidDelete] = useState(null)
+
+    const [activeAlertDelete, setactiveAlertDelete] = useState(false);
+    const handeOpenAlertDelete = () => {
+        setactiveAlertDelete(!activeAlertDelete)
+    }
+
+    const [successDelete, setsuccessDelete] = useState(false);
+    const handleDeleteSuccess = () => {
+        setsuccessDelete(!successDelete)
+    }
+
+    useEffect(() => {
+        if (successDelete) {
+            dispatch(deleteProduct(idDelete));
+
+            handleDeleteSuccess();
+        }
+    }, [successDelete])
+
+    //Popup de creado
+    const [successCreated, setsuccessCreated] = useState(false)
+    const showPopup = (boolean) => setsuccessCreated(boolean)
 
     return (
         <>
@@ -128,8 +162,21 @@ export default function Dashboard() {
             </ReactModal>
 
             <ReactModal isOpen={showPopupUpdate} className='reactModalContent' overlayClassName='reactModalOverlay'>
-                <FormUpdateProducts handleClosePopup={handleClosePopupUpdate} id={idToUpdate}/>
+                <FormUpdateProducts handleClosePopup={handleClosePopupUpdate} id={idToUpdate} />
             </ReactModal>
+
+            <AlertPopup
+                activeAlert={activeAlertDelete}
+                actionAlert='delete'
+                handleOpenAlert={handeOpenAlertDelete}
+                handleSuccess={handleDeleteSuccess}
+            />
+
+            <Modal
+                show={successCreated}
+                hideFunc={() => showPopup(false)}
+                message='Product created with success!'
+            />
         </>
     )
 };

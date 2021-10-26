@@ -32,7 +32,7 @@
     justify-content: center;
     height: 300px;
     padding: 50px;
-    background: #f0f0f0;
+    background: white;
 }
 
 .product-tumb img {
@@ -43,6 +43,7 @@
 .product-details {
     padding: 30px;
     height: 250px;
+    background-color: #dcdcdc;
 }
 
 .product-catagory {
@@ -50,7 +51,7 @@
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
-    color: #ccc;
+    color: #838996;
     margin-bottom: 18px;
 }
 
@@ -74,7 +75,7 @@
     font-size: 15px;
     line-height: 22px;
     margin-bottom: 18px;
-    color: #ffdb58
+    color: #f4ca16
 }
 
 .product-bottom-details {
@@ -104,6 +105,7 @@
 
 .product-links {
     text-align: right;
+    cursor: pointer;
 }
 
 .product-links a {

@@ -1,18 +1,17 @@
 import './detail.css';
-import {useState, useEffect} from 'react'
-import { useSelector } from 'react-redux';
-import data from './data';
+import {useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import AddToCart from '../AddToCart/Addtocart';
 import Rating from '../Rating/Rating';
 import ImageSlider from '../ImageSlider/ImageSlider';
-import DropDownMenu from '../DropDownMenu/DropDownMenu';
+import { getProductDetail } from '../../redux/actions';
 import { FaHeart } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
-
+import Loader from "../Loader/Loader";
 
 //>> temp solution to rating
 const styleRating = { 
-  color: 'orange',
+  color: '#f4ca16',
   width: '150px',
   fontSize: '28px',
 };
@@ -21,32 +20,18 @@ const styleRating = {
 export default function() {
   
   const {id} = useParams();
-  
-  const [initialQty, setInitialQty] = useState(0)
-  
-  const products = useSelector(state => state.products)
-  const detailProduct = products.find(item => item._id === id)
-  
-  const {image, name, description, category, _id, stock, brand, model, price} = detailProduct
-  const summary = description.split('.')[0];
-  
-  const itemsCart = useSelector(state => state.cart)
-  const item = itemsCart.find(item => item._id === _id)
-
-  useEffect(() => {
-    if (item) {
-      return setInitialQty(item.qty)
-    }
-  }, [AddToCart])
-  
+  const dispatch = useDispatch();
+  const productDetail = useSelector(state => state.productDetail);
+  const {image, name, description, category, _id, stock, brand, model, price} = productDetail;
 
   useEffect(() => {
     window.scrollTo(0,0)
-  }, [])
+    dispatch(getProductDetail(id))
+  }, [dispatch])
 	
   return (
     <div className='fullview'>
-
+      { JSON.stringify(productDetail) !== '{}' ?
       <div className='detail'>
 
         <div className='first'>
@@ -55,7 +40,7 @@ export default function() {
             <div className='topDescription'>
               <h3>{category} <b><FaHeart /></b></h3>
               <h1>{name}</h1>
-              <p>{summary}.</p>
+              <p>{description.split('.')[0]}.</p>
             </div>
 
             {/* put the image slider here */}
@@ -73,17 +58,20 @@ export default function() {
               <span>$ {price}</span>
             </div>
 
-            <AddToCart id={id} qty={item ? item.qty : initialQty}/>
+            <AddToCart id={id} stock={stock}/>
+            
           </div>
+          <h6 className="stock_title">Stock: {stock} units</h6>
 
         </div>
+        {/* <p className="stock_title">Stock: {stock} units</p> */}
 
         <div className='second'>
           <p>Brand: <strong>{brand}</strong> Model: <strong>{model}</strong></p>
           <p>{description}</p>
         </div>
 
-      </div>
+      </div>:<Loader/>}
     </div>
   );
 }

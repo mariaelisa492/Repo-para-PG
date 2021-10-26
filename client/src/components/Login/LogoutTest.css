@@ -1,12 +1,17 @@
 .logoutBtn{
     color: black;
-    font-size: 17px;
-    padding: 7px 13px;
-    border-radius: 3px;
+    font-size: 1.2em;
+    height: 40px;
+    line-height: 40px;
     cursor: pointer;
     background: none;
+    margin: 0px 10px 0px 0px;
+    padding: 0px 20px;
+    border-radius: 4px;
 }
+
 .logoutBtn:hover{
     background-color: #FFE3C2;
     transition: .5s;
 }
+
