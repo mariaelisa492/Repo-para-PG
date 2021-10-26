@@ -7,9 +7,9 @@ import {Home} from './pages/Home'
 import {Detail} from './pages/Detail';
 import {getProducts} from './redux/actions/index'
 import {useDispatch} from 'react-redux'
-import { UserProfile } from './components/UserProfile/UserProfile';
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import { Categories } from './components/Categories/Categories';
+import { Profile } from './pages/Profile';
 import { ShoppingCart } from './pages/ShoppingCart';
 import Footer from './components/Footer/Footer';
 import InfoCommerce from './pages/InfoCommerce';
@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <Switch>
-      <Route exact path = "/profile" component={UserProfile}/>
+      <Route exact path = "/profile" component={Profile}/>
       <Route exact path = "/detail/:id" component={Detail}/>
       <Route exact path = "/cart" component={ShoppingCart}/>
       <Route exact path = "/admin" component={Dashboard}/>
