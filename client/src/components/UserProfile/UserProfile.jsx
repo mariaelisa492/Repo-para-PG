@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from '@auth0/auth0-react'
-import { LOCALHOST_URL } from "../../redux/constants";
-import axios from 'axios'
+import ReactModal from "react-modal";
 import { FaRegEdit } from 'react-icons/fa';
 import NavBar from '../NavBar/NavBar'
-import Footer from '../Footer/Footer'
 import Loader from "../Loader/Loader";
 import { getMyOrders, searchUserInDb} from "../../redux/actions";
 import  HistoryCard  from "../historyCartCard/historyCard"
@@ -19,7 +17,12 @@ export function UserProfile() {
     const userProfile = useSelector(state => state.user)
     const orders = useSelector(state => state.orders)
     const [toggle, setToggle] = useState(false)
-    
+    const [showPopupEditUser , setShowPopupEditUser] = useState(false)
+
+    function toggleModal() {
+        setShowPopupEditUser(!showPopupEditUser)
+    }
+
     useEffect(() => {
         if(user?.email){
             dispatch(getMyOrders(user.email))
@@ -31,7 +34,6 @@ export function UserProfile() {
             dispatch(searchUserInDb(user.email))
         }
     }, [user])
-
      
 
     if (isLoading) {
@@ -88,7 +90,7 @@ export function UserProfile() {
                         </div>
                        {userProfile.user ? 
                         <div className='userName'>
-                            <button className='userBtnTopRight'><FaRegEdit className='editIcon'/>Edit</button>
+                            <button className='userBtnTopRight' onClick={toggleModal}><FaRegEdit className='editIcon'/>Edit</button>
                             <p>First Name: {userProfile.user[0].firstName}</p>
                             <p>Last Name: {userProfile.user[0].lastName}</p>
                             <p>Gender: {userProfile.user[0].gender}</p>
@@ -97,12 +99,6 @@ export function UserProfile() {
                             <p>Address: {userProfile.user[0].address}</p>
                          </div>
                         : null}
-
-
-                        <div className='userInfo'>
-                            <h2>Shipping Address</h2>
-                        </div>
-
                 
                         <div className='userInfo'>
                             <h2>Orders Hisotry</h2>
@@ -112,9 +108,10 @@ export function UserProfile() {
                         <button onClick={(e) => {handleOrders(e)}}>X</button>
                         </div>
                     </div>
-                    <div>
-                        <EditUserForm _id = {userProfile.user? userProfile.user[0]._id : null}/>
-                    </div>
+
+                    <ReactModal isOpen={showPopupEditUser} className='reactModalContent' overlayClassName='reactModalOverlay'>
+                        <EditUserForm _id = {userProfile.user? userProfile.user[0]._id : null} handleClosePopUp={toggleModal}/>
+                    </ReactModal>
           
                 </div> 
             } 
