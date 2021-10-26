@@ -61,20 +61,17 @@
 	display: inline-block;
 	height: 40px;
 	width: 40px;
-	background-color: rgba(255,255,255,0.2);
 	margin:0 10px 10px 0;
 	text-align: center;
 	line-height: 40px;
-	border-radius: 50%;
 	color: #ffffff;
 	transition: all 0.5s ease;
-	color: blue;
 }
 
-
-.footer-col .social-links img{
-    width: 100%;
-    border-radius: 50%;
+.footer-col .linkedin-icon {
+	background-color: white;
+	color: black;
+	border-radius: 50%;
 }
 
 
