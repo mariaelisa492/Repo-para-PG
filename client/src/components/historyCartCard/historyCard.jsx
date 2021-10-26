@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import  HistoryOrders  from "../historyOrders/historyOrders"
 import Paginado from "../OrderPaginate/OrderPag"
+import { VscArchive } from "react-icons/vsc";
 import './historyC.css'
 
 
 function HistoryCard({ order }) {
+
+  useEffect(() => {
+    window.scrollTo(0,0)  
+  }, [])
 
     const [index, setIndex] = useState({
       current: 0
@@ -27,10 +32,11 @@ function HistoryCard({ order }) {
   return (
 
     <div className="containerHistory">
+      {order[0]?.items ? 
       <div className="infoContainer">
         <div className="dataHistory">
-        <h1>Order Date: {order[index.current].orderDate.split("T")[0]}</h1>
-        <p>Total Price: {order[index.current].totalPrice}</p>
+        <h3 className="historyText">Order Date: {order[index.current].orderDate.split("T")[0]}</h3>
+        <p className="historyText">Total Price: {order[index.current].totalPrice}</p>
         </div>
         <div className="paginadoOrder">
         <Paginado
@@ -44,7 +50,24 @@ function HistoryCard({ order }) {
             })}       
         </div>
         </div>
-    </div>
+     : 
+     <div className="ordersEmpty">                  
+                        <div>
+                            <h4>
+                            Your order history is empty
+                            </h4>
+                        </div>
+                        <div className="icon_ordersEmpty">
+                            <VscArchive/>
+                        </div>
+                        <div>
+                          <h3>
+                            ¡Buy something and come back! { ' :) ' }
+                          </h3>  
+                        </div>
+                    </div>
+    }
+      </div>
   );
 }
 

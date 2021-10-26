@@ -1,23 +1,65 @@
-.dataHistory {
+
+.dataHistory
+{
     color: rgb(117, 113, 136);
-    font-size: 20px;
+    justify-content: center;
+    align-content: center;
+    margin-top: 1%;
 }
-.containerHistory{
+
+.historyText
+{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 30px;
+    margin-right: 3%;
+}
+.containerHistory
+{
     display: flex;
     flex-direction: column;
 }
 
-.cardsContainer {
+.cardsContainer 
+{
     color: rgb(46, 44, 54);
     font-size: 13px;
 }
 
-.infoContainer{
+.infoContainer
+{
     display: flex;
     flex-direction: column;  
 }
 
-.paginadoOrder{
+.paginadoOrder
+{
     color: rgb(46, 44, 54);
     font-size: 15px; 
 }
+
+.ordersEmpty
+{
+    max-width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: #808080;
+    margin-top: 8%;
+}
+
+.ordersEmpty h4
+{
+    font-size: 60px;
+}
+.ordersEmpty h3
+{
+    font-size: 30px;
+}
+.ordersEmpty .icon_ordersEmpty
+{
+    font-size: 145px;
+}
+

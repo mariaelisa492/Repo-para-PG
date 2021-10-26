@@ -26,6 +26,7 @@ export const FILTER_PRICE_ONLY_MORETHAN = "FILTER_PRICE_ONLY_MORETHAN"
 export const FILTER_PRICE_RANGE = "FILTER_PRICE_RANGE"
 export const FILTER_CATEGORIES = "FILTER_CATEGORIES"
 export const SET_LIMIT = "SET_LIMIT"
+export const NO_FILTER = "NO_FILTER"
 
 // ----------------- CART
 export const ADD_TO_CART = "ADD_TO_CART"
