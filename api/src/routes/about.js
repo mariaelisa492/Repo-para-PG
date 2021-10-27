@@ -6,9 +6,9 @@ const { getAbout, createAbout, updateAbout } = require("../controllers/about");
 router.post('/create', createAbout);
 
 // get about
-router.get('/about', getAbout);
+router.get('/', getAbout);
 
 // update about
-router.put('/update', updateAbout);
+router.put('/update/:id', updateAbout);
 
 module.exports = router;

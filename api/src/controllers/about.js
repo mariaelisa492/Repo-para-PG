@@ -12,17 +12,21 @@ const createAbout = async (req, res) => {
       stateOrProvince,
       logo,
     });
-  }
-
-  try {
-    const about = await newabout.save();
-    res.status(200).json({
-      message: "Added Succefully",
-      about
-    });
-  } catch (error) {
+    try {
+      const about = await newabout.save();
+      res.status(200).json({
+        message: "Added Succefully",
+        about,
+      });
+    } catch (error) {
+      res.status(400).json({
+        message: "Couldn't create please try again",
+        error
+      });
+    }
+  } else {
     res.status(400).json({
-      message: "Couldn't create please try again",
+      message: "Please enter all the fields",
     });
   }
 };
@@ -66,7 +70,7 @@ const updateAbout = async (req, res) => {
 };
 
 module.exports = {
-    createAbout,
-    getAbout,
-    updateAbout
+  createAbout,
+  getAbout,
+  updateAbout,
 };

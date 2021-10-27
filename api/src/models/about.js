@@ -3,28 +3,22 @@ const { Schema } = mongoose;
 
 const AboutSchema = new Schema({
     email: { 
-        type: String, 
-        required: true,
+        type: String
     },
     telephone: { 
-        type: String, 
-        required: true,
+        type: String
     },
     address: { 
-        type: String, 
-        required: true,
+        type: String
     },
     city: { 
-        type: String, 
-        required: true,
+        type: String
     },
     stateOrProvince: { 
-        type: String, 
-        required: true,
+        type: String
     },
     logo: {
-        type: String, 
-        required: true,
+        type: String
     }
 });
 
