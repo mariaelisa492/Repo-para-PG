@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { RiFacebookCircleFill } from "react-icons/ri";
 import { AiFillGithub } from "react-icons/ai";
 import { AiFillTwitterCircle } from "react-icons/ai";
-import { TiSocialLinkedinCircular } from "react-icons/ti";
+import { TiSocialLinkedin } from "react-icons/ti";
 import "./Footer.css"
 
 function Footer() {
@@ -34,9 +34,9 @@ function Footer() {
                     <div className="footer-col">
                         <h4>follow us</h4>
                         <div className="social-links">
-                            <a href="https://www.facebook.com/" target="_blank"><RiFacebookCircleFill size={42} /></a>
+                            <a href="https://www.facebook.com/Wave-Music-107797495029344/" target="_blank"><RiFacebookCircleFill size={42} /></a>
                             <a href="https://www.twitter.com/" target="_blank"><AiFillTwitterCircle size={42} /></a>
-                            <a href="https://www.linkedin.com/" target="_blank"><TiSocialLinkedinCircular size={40} className="linkedin-icon" /></a>
+                            <a href="https://www.linkedin.com/" target="_blank"><TiSocialLinkedin size={38} className="linkedin-icon" /></a>
                             <a href="https://www.github.com/" target="_blank"><AiFillGithub size={42} /></a>
                         </div>
                     </div>
