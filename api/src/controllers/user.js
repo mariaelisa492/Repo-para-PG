@@ -78,45 +78,46 @@ const updateUser = async (req, res) => {
 }
 // -------------- WISH LIST
 const addToWishList = async (req, res) => {
-    const { producId } = req.body
+    const { email, ObjectId } = req.body
 
     try {
-      const user = await User.findById(req.body.idUser)
-      user.wishList = [...user.wishList, producId]
+      const user = await User.find({ 'email': { '$regex': email, $options: 'i' } });
+      console.log('!!!!!!!!!! SOY USER', user)
+      user.wishList = [...user.wishList, ObjectId]
   
       await user.save()
   
       res.status(200).json({message: 'Producto guardado en favoritos'})
     } catch (error) {
-      console.log("No se pudo guardar el producto en favoritos");
+      console.log("No se pudo guardar el producto en favoritos", error);
     }
 };
   
-  const getWishList = async(req, res) => {
+const getWishList = async(req, res) => {
     
-    const { id } = req.params
+    const { email } = req.params
     
-    const user = await User.findById(id).populate("wishList",
-    { name: 1 }
-    )
+    const user = await User.find({ 'email': { '$regex': email, $options: 'i' } })
     res.json(user.wishList)
-  };
+};
   
   const deleteWishItem = async (req, res) => {
-    const {itemid, usuarioid} = req.query
-    const user = await User.findById(usuarioid)
+    const {productId, email} = req.query
+    const user = await User.find({ 'email': { '$regex': email, $options: 'i' } });
    
-    user.wishList = user.wishList.filter(i => JSON.stringify(i) != JSON.stringify(itemid))
+    user.wishList = user.wishList.filter(i => JSON.stringify(i) != JSON.stringify(productId))
   
     await user.save()
   
     res.status(200).json({msg: 'Item borrado'})
-  
   }
 
 module.exports = {
     createUser,
     findUser, 
     findAllUser,
-    updateUser
+    updateUser,
+    addToWishList,
+    getWishList,
+    deleteWishItem
 }

@@ -50,7 +50,7 @@ const UserSchema = new Schema({
           type: Schema.ObjectId,
           ref: "Product",
         },
-      ]
+    ]
 });
 
 const Users = mongoose.model("User", UserSchema);

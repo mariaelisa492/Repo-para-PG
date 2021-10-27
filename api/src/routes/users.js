@@ -35,8 +35,8 @@ router.put('/:id', users.updateUser)
 router.get('/user')
 
 // Wish List
-/* router.post("/addToWishList", addToWishList);
-router.get("/wishlist/:id", getWishList);
-router.delete('/wishlist/delete', deleteWishItem) */
+router.post("/addToWishList", users.addToWishList);
+router.get("/wishlist/:id", users.getWishList);
+router.delete('/wishlist/delete', users.deleteWishItem)
 
 module.exports = router;

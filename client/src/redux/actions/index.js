@@ -7,7 +7,7 @@ import {
   REMOVE_ITEM, GET_ORDERS, FILTER_CATEGORIES,
   GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT,
   GET_MY_ORDERS, EMPTY_CART, GET_PRODUCT_DETAIL,
-  ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, GET_USER
+  GET_WISHLIST, GET_USER
   } from "../constants/index"
 
 export const getProducts = () => {
@@ -256,29 +256,29 @@ export const setLimit = (number) => {
 
 //add favorite
 
-/* export default function addToWishList(payload){
-  return async function(dispatch){
+export const addToWishList = (wish) => {
+  return async function(){
       try {
-          const response = await axios.post(`${LOCALHOST_URL}`, payload) 
+          const response = await axios.post(`${LOCALHOST_URL}/users/addToWishList`, wish) 
       } catch (error) {
           console.log('Error al agregar a favoritos')
       }
   }
 }
 
-export default function deleteWishItem(itemId, usuarioId){
-  console.log('action', itemId, usuarioId);
-  return async function(dispatch){
-      await axios.delete(`${LOCALHOST_URL}?itemid=${itemId}&usuarioid=${usuarioId}`)
+export const deleteWishItem = (itemId, email) => {
+  
+  return async function(){
+      await axios.delete(`${LOCALHOST_URL}/wishlist/delete?itemid=${itemId}&usuarioid=${usuarioId}`)
   }
 }
 
-export default function getWishlist(id){
+export const getWishlist = (email) =>{
   return  async function(dispatch){
-      const response = await axios.get(`${LOCALHOST_URL}/user/wishlist/${id}`)
+      const response = await axios.get(`${LOCALHOST_URL}/users/wishlist/${email}`)
       dispatch({
           type: GET_WISHLIST,
           payload: response.data
       })
   }
-} */
+} 
