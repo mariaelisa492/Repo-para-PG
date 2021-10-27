@@ -34,7 +34,7 @@
     align-self: flex-start;
     margin-left: 10vw;
     height:7vh;
-    background-color: #ffaa33;
+    background-image: linear-gradient(to left, #fdaa48, #f2ab15);
     color: #0f0f0f;
     font-size: 13px;
     font-weight: bold;

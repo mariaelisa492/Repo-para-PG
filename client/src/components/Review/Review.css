@@ -22,7 +22,7 @@
     .review-user{
         display: flex;
         flex-direction: row;
-        background-color: orange;
+        background-image: linear-gradient(to left, #fdaa48, #f2ab15);
         width: 100%;
 
     }
