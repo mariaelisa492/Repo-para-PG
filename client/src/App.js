@@ -13,6 +13,7 @@ import { Profile } from './pages/Profile';
 import { ShoppingCart } from './pages/ShoppingCart';
 import Footer from './components/Footer/Footer';
 import AdminSales from './components/AdminSales/AdminSales';
+import InfoCommerce from './pages/InfoCommerce';
 
 function App() {
   const dispatch = useDispatch()
@@ -31,6 +32,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path='/categories' component={Categories} />
         <Route exact path="/admin/sales" component={AdminSales} />
+        <Route exact path = '/about' component={InfoCommerce}/>
       </Switch>
     </div>
   );
