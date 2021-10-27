@@ -3,16 +3,14 @@ import { useSelector } from 'react-redux';
 import ItemCart from '../itemCart/itemCart';
 import CheckoutBut from '../Paypal/PayPal';
 import {BsFillCartXFill} from "react-icons/bs"
-import {Link} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 import "./cart.css"
 import { useAuth0 } from '@auth0/auth0-react'
 
 export default function Cart() {
-    const { user } = useAuth0()
     const [totalItems, setTotalItems] = useState(0)
     const [totalPrice, setTotalPrice] = useState(0)
 
-    //console.log('EMAILLLLLLLLLLLLLL', user.email)
     
     const items = useSelector(state => state.cart)
 
@@ -27,9 +25,9 @@ export default function Cart() {
 
         setTotalItems(itemCarts)
         setTotalPrice(priceCart)
+        localStorage.setItem('items', JSON.stringify(items));
     }, [items, totalItems, totalPrice])
 
-    //console.log('ITEMS CARTTTTTTTTDECARTTTTTTT', items)
 
 
     return (
@@ -50,7 +48,7 @@ export default function Cart() {
                                 <div>TOTAL: $ {totalPrice}</div>
                             </div>
                             <div>
-                            <CheckoutBut  totalPrice={totalPrice} items={items} user={user.email} totalItems={totalItems}/>
+                            <CheckoutBut  totalPrice={totalPrice} items={items} totalItems={totalItems}/>
                             </div>
                         </div>
                     </div>
@@ -65,11 +63,11 @@ export default function Cart() {
                             </h4>
                         </div>
                         <div>
-                            <Link to="/">
-                                <h3>
+                            <NavLink className="keepShopping" to="/">
+                               
                                 ¡Keep Shopping!
-                                </h3>
-                            </Link>
+                                
+                            </NavLink>
                         </div>
                     </div>
             }
