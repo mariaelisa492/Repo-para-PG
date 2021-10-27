@@ -32,7 +32,7 @@ router.get('/:id', async(req, res) =>{
 router.put('/:id', users.updateUser)
     
 
-router.get('/user')
+router.get('/user/:email', users.findUser)
 
 // Wish List
 router.post("/addToWishList", users.addToWishList);

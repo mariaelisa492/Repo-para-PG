@@ -25,10 +25,11 @@ const createUser = async (req, res) => {
 };
 
 const findUser = async (req,res) =>{
-    let email = req.body
+    let {email} = req.params
+    console.log(email)
     if(email){
         try {
-            let user = await User.find({email: email})
+            let user = await User.find({email: email});
             res.status(200).json({
                 message:'User found!',
                 user
@@ -58,14 +59,15 @@ const findAllUser = async (req, res) => {
 const updateUser = async (req, res) => {
     const { id } = req.params;
     console.log(id, "el IDDDDDDDDD");
-    const { firstName, lastName, gender, nacionality, birthDate, address} = req.body
-    if (firstName || lastName  || gender || nacionality || birthDate || 
+    const { firstName, lastName, gender, nationality, birthDate, address} = req.body
+    if (firstName || lastName  || gender || nationality || birthDate || 
         address){
             // let oldUser = await User.find(id)
     try{
-        const updateUser = { firstName , lastName, gender, nacionality, birthDate, address, _id: id }
-        await User.findByIdAndUpdate(id, updateUser, {new: true});
-        res.status(200).json(updateUser);
+        const updateUser = { firstName , lastName, gender, nationality, birthDate, address}
+        await User.findByIdAndUpdate(id, updateUser, {new: true})
+        .then(u => res.status(200).json(u)
+       )
     }catch (error){
         console.log(error)
         res.status(400).json({
