@@ -263,6 +263,34 @@ export const editUser = (user) => {
     }
   }
 }
+
+export const makeAdmin = (id) => {
+  return async (dispatch) => {
+    try {
+      const userEdited = await axios.put(`${LOCALHOST_URL}/users/makeAdmin/${id}`);
+      return dispatch({
+        type: EDIT_USER,
+        payload: userEdited.data,
+      })
+    }
+    catch (error) {
+      console.log(error, 'makeAdmin ||Error||');
+    }
+  }
+}
+
+export const deleteUser = (id) => {
+  return async () => {
+    try {
+      const userDeleted = await axios.delete(`${LOCALHOST_URL}/users/${id}`);
+      return userDeleted
+    }
+    catch (error) {
+      console.log(error, 'deleteUser ||Error||');
+    }
+  }
+}
+
 //  ----------------------------- PAGINATION
 
 export const setLimit = (number) => {

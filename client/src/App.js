@@ -11,6 +11,7 @@ import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import { Categories } from './components/Categories/Categories';
 import { Profile } from './pages/Profile';
 import { ShoppingCart } from './pages/ShoppingCart';
+import { Users } from './components/Users/Users';
 import Footer from './components/Footer/Footer';
 import InfoCommerce from './pages/InfoCommerce';
 
@@ -28,6 +29,7 @@ function App() {
       <Route exact path = "/detail/:id" component={Detail}/>
       <Route exact path = "/cart" component={ShoppingCart}/>
       <Route exact path = "/admin" component={Dashboard}/>
+      <Route exact path = "/admin/users" component={Users}/>
       <Route exact path = "/" component={Home}/>
       <Route exact path = '/categories' component={Categories}/>
       <Route exact path = '/about' component={InfoCommerce}/>
