@@ -15,8 +15,10 @@ import EditUserForm from "../EditUserForm/EditUserForm";
 export default function UserProfile() {
 
     const dispatch = useDispatch()
+
     const { user, isAuthenticated, isLoading } = useAuth0()
     const userProfile = useSelector(state => state.user)
+
     const orders = useSelector(state => state.orders)
     const [toggle, setToggle] = useState(false)
     const [showPopupEditUser, setShowPopupEditUser] = useState(false)
@@ -43,8 +45,6 @@ export default function UserProfile() {
             <Loader />
         )
     }
-
-    // console.log('!!!!!!!!!!!!!! SOY ORDERS', orders)
 
     const handleOrders = (e) => {
         e.preventDefault()
