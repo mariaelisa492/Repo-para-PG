@@ -33,7 +33,7 @@ export default function InfoComponent() {
 
                     <div>
                         <h2>Email</h2>
-                        <p className='textAbout'>wavemusic@proto.com</p>
+                        <p className='textAbout'>wavemusicnotify@gmail.com</p>
                     </div>
                 </div>
 
