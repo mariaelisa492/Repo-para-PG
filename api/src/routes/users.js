@@ -32,6 +32,6 @@ router.get('/:id', async(req, res) =>{
 router.put('/:id', users.updateUser)
     
 
-router.get('/user')
+router.delete('/:id', users.deleteUser)
 
 module.exports = router;

@@ -78,10 +78,28 @@ const updateUser = async (req, res) => {
 }
 
 
+const deleteUser = async (req, res) => {
+    const { id } = req.params;
+    try{
+        await User.findByIdAndDelete(id);
+        res.status(200).json({
+            message: 'User deleted'
+        })
+    }
+    catch (error){
+        res.status(400).json({
+            error: 'Your request could not be processed. try again'
+        })
+    }
+}
+
+
+
 
 module.exports = {
     createUser,
     findUser, 
     findAllUser,
-    updateUser
+    updateUser,
+    deleteUser
 }
