@@ -1,6 +1,7 @@
 import "./navBar.css";
 import { useState } from 'react';
-import logo from "../../images/waveMusic.png"
+import logo from "../../images/waveMusic.png";
+import logoSmall from "../../images/waveMusicLogoSmall.png";
 import { Search } from "../Search/SearchBar";
 import { LoginTest } from "../Login/LoginTest";
 import { Logout } from "../Login/LogoutTest";
@@ -57,7 +58,7 @@ export default function NavBar({ showDropDownMenu }) {
 
       <div className='portrait'>
         <label className="logo">
-          <NavLink to="/" className="active"><img src={logo} alt="logo"/></NavLink>
+          <NavLink to="/" className="active"><img src={logoSmall} alt="logo"/></NavLink>
         </label>
 
         <div className={'popupSearchBar ' + (popup.search ? 'showSearch' : 'hideSearch')}>
