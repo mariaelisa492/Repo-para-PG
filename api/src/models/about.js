@@ -19,6 +19,9 @@ const AboutSchema = new Schema({
     },
     logo: {
         type: String
+    },
+    logoSmall: {
+        type: String
     }
 });
 

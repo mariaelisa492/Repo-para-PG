@@ -1,9 +1,9 @@
 const About = require("../models/about");
 
 const createAbout = async (req, res) => {
-  const { email, telephone, address, city, stateOrProvince, logo } = req.body;
+  const { email, telephone, address, city, stateOrProvince, logo, logoSmall } = req.body;
 
-  if (email && telephone && address && city && stateOrProvince && logo) {
+  if (email && telephone && address && city && stateOrProvince && logo && logoSmall) {
     const newabout = new About({
       email,
       telephone,
@@ -11,6 +11,7 @@ const createAbout = async (req, res) => {
       city,
       stateOrProvince,
       logo,
+      logoSmall
     });
     try {
       const about = await newabout.save();
@@ -44,9 +45,9 @@ const getAbout = async (req, res) => {
 
 const updateAbout = async (req, res) => {
   const { id } = req.params;
-  const { email, telephone, address, city, stateOrProvince, logo } = req.body;
+  const { email, telephone, address, city, stateOrProvince, logo, logoSmall } = req.body;
 
-  if (email || telephone || address || city || stateOrProvince || logo) {
+  if (email || telephone || address || city || stateOrProvince || logo || logoSmall) {
     try {
       const aboutToUpdate = {
         email,
@@ -55,6 +56,7 @@ const updateAbout = async (req, res) => {
         city,
         stateOrProvince,
         logo,
+        logoSmall
       };
 
       const about = await About.findOneAndUpdate(id, aboutToUpdate, {
