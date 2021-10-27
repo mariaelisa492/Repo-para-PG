@@ -6,7 +6,6 @@ import Loader from "../Loader/Loader";
 import { getMyOrders } from "../../redux/actions";
 import HistoryCard from "../historyCartCard/historyCard"
 import { FiArchive } from "react-icons/fi";
-import jwt from 'jsonwebtoken'
 import './UserProfile.css'
 
 export default function UserProfile() {
@@ -14,21 +13,7 @@ export default function UserProfile() {
     const dispatch = useDispatch()
     const { user, isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0()
     
-    const getToken = getAccessTokenSilently().then((token) => JSON.parse(token)).then((res) => jwt.verify(res))
-    console.log('SOY GETOKENNNNNNNNNNN', getToken)
 
-  /*   const key = JSON.parse(sessionStorage.getItem("token"))?.token
-    if(key){
-      var decoded = jwt.verify(key, 'secret')
-      var userId = (decoded.id)
-    }
-    */
-    /* if(toK){
-        var decoded = jwt.verify(toK, 'secret')
-        var userId = (decoded.id)
-    }
-     */
-  
     const orders = useSelector(state => state.orders)
     const [toggle, setToggle] = useState(false)
 
@@ -43,7 +28,6 @@ export default function UserProfile() {
             <Loader />
         )
     }
-      
     
     const handleOrders = (e) => {
         e.preventDefault()
