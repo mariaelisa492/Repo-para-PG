@@ -18,7 +18,7 @@ async function sendMail(req, res) {
 
   try {
     let info = await transporter.sendMail({
-      from: '"Wave Music" <wavemusicnotify@gmail.com>',
+      from: `"Wave Music" <${user}>`,
       to,
       subject,
       text,
