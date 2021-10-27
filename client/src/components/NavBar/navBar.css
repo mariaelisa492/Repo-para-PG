@@ -135,3 +135,10 @@
   }
 }
 
+@media (max-width: 410px){
+  .menuIcon
+  {
+    margin: auto 8px;
+    font-size: 1.5em;
+  }
+}

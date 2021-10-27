@@ -15,3 +15,8 @@
     transition: .5s;
 }
 
+@media (max-width: 858px){
+  .logoutBtn {
+    padding: 0px;
+  }
+}
