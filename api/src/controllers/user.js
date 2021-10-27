@@ -78,12 +78,12 @@ const updateUser = async (req, res) => {
 }
 // -------------- WISH LIST
 const addToWishList = async (req, res) => {
-    const { email, ObjectId } = req.body
+    const { email, productId } = req.body
 
     try {
-      const user = await User.find({ 'email': { '$regex': email, $options: 'i' } });
+      const user = await User.findOne({ 'email': { '$regex': email, $options: 'i' } });
       console.log('!!!!!!!!!! SOY USER', user)
-      user.wishList = [...user.wishList, ObjectId]
+      user.wishList = [...user.wishList, productId]
   
       await user.save()
   
@@ -94,16 +94,19 @@ const addToWishList = async (req, res) => {
 };
   
 const getWishList = async(req, res) => {
-    
-    const { email } = req.params
-    
-    const user = await User.find({ 'email': { '$regex': email, $options: 'i' } })
+    const { email } = req.body
+    console.log('EEEEEEEEEMAIL', email)
+    const user = await User.findOne({ 'email': { '$regex': email, $options: 'i' } })
+   
     res.json(user.wishList)
 };
   
   const deleteWishItem = async (req, res) => {
     const {productId, email} = req.query
-    const user = await User.find({ 'email': { '$regex': email, $options: 'i' } });
+    console.log('EEEEEEEEEMAIL', email)
+
+    const user = await User.findOne({ 'email': { '$regex': email, $options: 'i' } });
+    console.log('EEEEEEEEEMAIL', user)
    
     user.wishList = user.wishList.filter(i => JSON.stringify(i) != JSON.stringify(productId))
   
