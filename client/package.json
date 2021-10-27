@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.8.0",
+    "@mapbox/mapbox-sdk": "^0.13.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -12,6 +13,7 @@
     "axios": "^0.22.0",
     "cloudinary": "^1.27.1",
     "fetch": "^1.1.0",
+    "mapbox-gl": "^2.5.1",
     "react": "^17.0.2",
     "react-data-table-component": "^7.4.4",
     "react-dom": "^17.0.2",

@@ -32,6 +32,10 @@ router.get('/:id', async(req, res) =>{
 router.put('/:id', users.updateUser)
     
 
+
 router.delete('/:id', users.deleteUser)
+
+router.get('/user/:email', users.findUser)
+
 
 module.exports = router;
