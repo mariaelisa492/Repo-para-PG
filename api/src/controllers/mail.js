@@ -22,7 +22,7 @@ async function sendMail(req, res) {
       to,
       subject,
       text,
-      html,
+      html: '<img src="https://res.cloudinary.com/dbu76tbs6/image/upload/v1635314355/samples/ecommerce/thankyousmall_zt76ka.png" alt="thanks!" />',
     })
 
     console.log("Message sent: %s", info.messageId)
