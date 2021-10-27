@@ -8,6 +8,7 @@ export const GET_ORDERS = "GET_ORDERS"
 export const GET_MY_ORDERS = "GET_MY_ORDERS"
 export const GET_SINGLE_PRODUCT = "GET_SINGLE_PRODUCT"
 export const EMPTY_CART = "EMPTY_CART"
+export const GET_WISHLIST = "GET_WISHLIST"
 
 // ------------------ TYPES FOR DASHBOARD / ADMIN
 export const DELETE_PRODUCT = "DELETE_PRODUCT"
@@ -15,7 +16,8 @@ export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
 
 // ------------------ USERS
 export const CREATE_USER = 'CREATE_USER'
-export const GET_USER = 'GET_USER'
+export const SET_USER = 'SET_USER'
+export const EDIT_USER= 'EDIT_USER'
 
 // ----------------- TYPES FOR FILTER & SORT
 export const ORDER_PRICE_ASC = "ORDER_PRICE_ASC"

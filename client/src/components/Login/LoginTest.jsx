@@ -5,7 +5,6 @@ import './LoginTest.css'
 
 export function LoginTest(){
 
-    
     const {loginWithRedirect} = useAuth0()
 
     return(

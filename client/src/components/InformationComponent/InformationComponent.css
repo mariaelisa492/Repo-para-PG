@@ -1,0 +1,42 @@
+.containerAbout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+  color: #363636;
+}
+
+.containerContainerAbout {
+  flex-direction: row;
+  margin: 1.5em;
+}
+
+.titleAboutUS {
+  margin: 0.5em auto;
+  font-size: 2em;
+  font-family: "Cantarell", sans-serif;
+}
+
+.divMap {
+  position: relative;
+  height: 25em;
+  width: calc(100% - 1em);
+  max-width: 56.25em;
+  margin: 0.5em auto;
+}
+
+.informationDiv {
+  width: 18.75em;
+  margin: 0.5em;
+}
+
+.iconAbout {
+  font-size: 1.875em;
+  display: inline-block;
+}
+
+.textAbout {
+  margin-top: 0.5em;
+}

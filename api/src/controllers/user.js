@@ -25,10 +25,11 @@ const createUser = async (req, res) => {
 };
 
 const findUser = async (req,res) =>{
-    let email = req.body
+    let {email} = req.params
+    console.log(email)
     if(email){
         try {
-            let user = await User.find({email: email})
+            let user = await User.find({email: email});
             res.status(200).json({
                 message:'User found!',
                 user
@@ -55,21 +56,41 @@ const findAllUser = async (req, res) => {
     }
 }
 
+const makeAdmin = async (req, res) => {
+    const {id} = req.params
+    if(id){
+        try {
+            const user = await User.findByIdAndUpdate(id, {role:'ROLE_ADMIN'}, {new: true})
+            res.status(200).json({
+                message: 'User is now admin',
+                user
+            })
+        }
+        catch (error){
+            res.status(404).json({
+                message: 'User not Found',
+                error
+            })
+        }
+    }
+}
+
 const updateUser = async (req, res) => {
     const { id } = req.params;
     console.log(id, "el IDDDDDDDDD");
-    const { firstName, lastName, gender, nacionality, birthDate, address} = req.body
-    if (firstName || lastName  || gender || nacionality || birthDate || 
+    const { firstName, lastName, gender, nationality, birthDate, address} = req.body
+    if (firstName || lastName  || gender || nationality || birthDate || 
         address){
             // let oldUser = await User.find(id)
     try{
-        const updateUser = { firstName , lastName, gender, nacionality, birthDate, address, _id: id }
-        await User.findByIdAndUpdate(id, updateUser, {new: true});
-        res.status(200).json(updateUser);
+        const updateUser = { firstName , lastName, gender, nationality, birthDate, address}
+        await User.findByIdAndUpdate(id, updateUser, {new: true})
+        .then(u => res.status(200).json(u)
+       )
     }catch (error){
         console.log(error)
         res.status(400).json({
-            error: 'Your reques could not be processed. try again'
+            error: 'Your request could not be processed. try again'
         })
 
     }
@@ -77,11 +98,77 @@ const updateUser = async (req, res) => {
  }
 }
 
+const deleteUser = async (req, res) => {
+    const { id } = req.params;
+    try{
+        await User.findByIdAndDelete(id)
+        .then(u => res.status(200).json(
+            {
+            message: 'User deleted',
+            deletedUser: u
+            }
+        )
+    )
+    }catch (error){
+        console.log(error)
+        res.status(400).json({
+            error: "The user couldn't be deleted. Try again"
+        })
+
+    }
+}
+
+
+// -------------- WISH LIST
+
+const addToWishList = async (req, res) => {
+    const { email, productId } = req.body
+
+    try {
+      const user = await User.findOne({ 'email': { '$regex': email, $options: 'i' } });
+      console.log('!!!!!!!!!! SOY USER', user)
+      user.wishList = [...user.wishList, productId]
+  
+      await user.save()
+  
+      res.status(200).json({message: 'Producto guardado en favoritos'})
+    } catch (error) {
+      console.log("No se pudo guardar el producto en favoritos", error);
+    }
+};
+  
+const getWishList = async(req, res) => {
+    const { email } = req.body
+    console.log('EEEEEEEEEMAIL', email)
+    const user = await User.findOne({ 'email': { '$regex': email, $options: 'i' } })
+   
+    res.json(user.wishList)
+};
+  
+  const deleteWishItem = async (req, res) => {
+    const {productId, email} = req.query
+    console.log('EEEEEEEEEMAIL', email)
+
+
+    const user = await User.findOne({ 'email': { '$regex': email, $options: 'i' } });
+    console.log('EEEEEEEEEMAIL', user)
+   
+    user.wishList = user.wishList.filter(i => JSON.stringify(i) != JSON.stringify(productId))
+  
+    await user.save()
+  
+    res.status(200).json({msg: 'Item borrado'})
+  }
 
 
 module.exports = {
     createUser,
     findUser, 
     findAllUser,
-    updateUser
+    updateUser,
+    deleteUser,
+    makeAdmin,
+    addToWishList,
+    getWishList,
+    deleteWishItem
 }

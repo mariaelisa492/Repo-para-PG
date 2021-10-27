@@ -20,9 +20,9 @@ const UserSchema = new Schema({
         type: String
     },
     gender: {
-        enum: ['Male', 'Female', 'Other']
+        type: String
     },
-    nacionality: {
+    nationality: {
         type: String
     },
     birthDate: {
@@ -44,7 +44,13 @@ const UserSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
-    }
+    },
+    wishList: [
+        {
+          type: Schema.ObjectId,
+          ref: "Product",
+        },
+    ]
 });
 
 const Users = mongoose.model("User", UserSchema);

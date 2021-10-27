@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import AddToCart from '../AddToCart/Addtocart';
 import Rating from '../Rating/Rating';
 import ImageSlider from '../ImageSlider/ImageSlider';
-import { getProductDetail } from '../../redux/actions';
+import { getProductDetail, addToWishList } from '../../redux/actions';
 import { FaHeart } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import Loader from "../Loader/Loader";
 import ReviewCard from '../Review/ReviewCard';
+import { useAuth0 } from '@auth0/auth0-react'
 
 //>> temp solution to rating
 const styleRating = {
@@ -22,8 +23,11 @@ export default function () {
 
   const { id } = useParams();
   const dispatch = useDispatch();
+  const { user } = useAuth0()
   const productDetail = useSelector(state => state.productDetail);
   const { image, name, description, category, _id, stock, brand, model, price, reviews } = productDetail;
+
+
 
   useEffect(() => {
     window.scrollTo(0, 0)
