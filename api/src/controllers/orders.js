@@ -51,9 +51,46 @@ const getOrder = async (req, res) => {
     }
 };
 
+const updateOrder = async (req, res) => {
+    const {  status } = req.body;
+    const { id } = req.params;
+    try {
+        const order = await Order.findByIdAndUpdate(id, {
+            status: status
+        });
+        res.status(200).json({
+            message: "Order updated successfully",
+            order
+        });
+    } catch (error) {
+        res.status(400).json({
+            message: "Couldn't update the order"
+        });
+    }
+};
+
+const deleteOrder = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const order = await Order.findByIdAndDelete(id);
+        res.status(200).json({
+            message: "Order deleted successfully",
+            order
+        });
+    } catch (error) {
+        res.status(400).json({
+            message: "Couldn't delete the order"
+        });
+    }
+};
+
+
+
 
 module.exports = {
     createOrder,
     getAllOrders,
-    getOrder
+    getOrder,
+    updateOrder,
+    deleteOrder
 }

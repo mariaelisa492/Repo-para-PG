@@ -56,6 +56,25 @@ const findAllUser = async (req, res) => {
     }
 }
 
+const makeAdmin = async (req, res) => {
+    const {id} = req.params
+    if(id){
+        try {
+            const user = await User.findByIdAndUpdate(id, {role:'ROLE_ADMIN'}, {new: true})
+            res.status(200).json({
+                message: 'User is now admin',
+                user
+            })
+        }
+        catch (error){
+            res.status(404).json({
+                message: 'User not Found',
+                error
+            })
+        }
+    }
+}
+
 const updateUser = async (req, res) => {
     const { id } = req.params;
     console.log(id, "el IDDDDDDDDD");
@@ -71,7 +90,7 @@ const updateUser = async (req, res) => {
     }catch (error){
         console.log(error)
         res.status(400).json({
-            error: 'Your reques could not be processed. try again'
+            error: 'Your request could not be processed. try again'
         })
 
     }
@@ -79,11 +98,77 @@ const updateUser = async (req, res) => {
  }
 }
 
+const deleteUser = async (req, res) => {
+    const { id } = req.params;
+    try{
+        await User.findByIdAndDelete(id)
+        .then(u => res.status(200).json(
+            {
+            message: 'User deleted',
+            deletedUser: u
+            }
+        )
+    )
+    }catch (error){
+        console.log(error)
+        res.status(400).json({
+            error: "The user couldn't be deleted. Try again"
+        })
+
+    }
+}
+
+
+// -------------- WISH LIST
+
+const addToWishList = async (req, res) => {
+    const { email, productId } = req.body
+
+    try {
+      const user = await User.findOne({ 'email': { '$regex': email, $options: 'i' } });
+      console.log('!!!!!!!!!! SOY USER', user)
+      user.wishList = [...user.wishList, productId]
+  
+      await user.save()
+  
+      res.status(200).json({message: 'Producto guardado en favoritos'})
+    } catch (error) {
+      console.log("No se pudo guardar el producto en favoritos", error);
+    }
+};
+  
+const getWishList = async(req, res) => {
+    const { email } = req.body
+    console.log('EEEEEEEEEMAIL', email)
+    const user = await User.findOne({ 'email': { '$regex': email, $options: 'i' } })
+   
+    res.json(user.wishList)
+};
+  
+  const deleteWishItem = async (req, res) => {
+    const {productId, email} = req.query
+    console.log('EEEEEEEEEMAIL', email)
+
+
+    const user = await User.findOne({ 'email': { '$regex': email, $options: 'i' } });
+    console.log('EEEEEEEEEMAIL', user)
+   
+    user.wishList = user.wishList.filter(i => JSON.stringify(i) != JSON.stringify(productId))
+  
+    await user.save()
+  
+    res.status(200).json({msg: 'Item borrado'})
+  }
 
 
 module.exports = {
     createUser,
     findUser, 
     findAllUser,
-    updateUser
+    updateUser,
+    deleteUser,
+    makeAdmin,
+    addToWishList,
+    getWishList,
+    deleteWishItem
 }

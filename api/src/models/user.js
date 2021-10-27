@@ -44,7 +44,13 @@ const UserSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
-    }
+    },
+    wishList: [
+        {
+          type: Schema.ObjectId,
+          ref: "Product",
+        },
+    ]
 });
 
 const Users = mongoose.model("User", UserSchema);

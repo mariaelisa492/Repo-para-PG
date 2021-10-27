@@ -6,6 +6,13 @@
     /* flex-direction: row; */
 }
 
+.keepShopping{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #0070ba ;
+}
+
 .items-cart{
     width: 100%;
     display: flex;

@@ -28,10 +28,24 @@ router.get('/:id', async(req, res) =>{
     }
 });
 
-//actualizar usuario
+// actualizar usuario
 router.put('/:id', users.updateUser)
     
-
+// encontrar usuario
 router.get('/user/:email', users.findUser)
+
+// eliminar usuario
+router.delete('/:id', users.deleteUser)
+
+// hacer admin a un usuario
+router.put('/makeAdmin/:id', users.makeAdmin)
+
+
+// Wish List
+router.post("/addToWishList", users.addToWishList);
+router.get("/wishlist/:id", users.getWishList);
+router.delete('/wishlist/delete', users.deleteWishItem)
+
+
 
 module.exports = router;

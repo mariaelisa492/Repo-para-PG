@@ -14,6 +14,7 @@ import Modal from "../Modal/Modal";
 import { Link, NavLink } from "react-router-dom";
 import Footer from "../Footer/Footer";
 
+
 export default function Dashboard() {
 
     const [idToUpdate, setidToUpdate] = useState('')
@@ -143,6 +144,7 @@ export default function Dashboard() {
             <div>
                 <NavLink to="/admin/sales">Sales</NavLink>
             </div>
+            <NavLink to="/admin/users">Users</NavLink>
             <div className="add-button-div">
                 <div className="table">
                     <DataTable
