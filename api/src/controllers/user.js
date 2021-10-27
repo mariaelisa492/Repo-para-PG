@@ -119,6 +119,46 @@ const deleteUser = async (req, res) => {
 }
 
 
+// -------------- WISH LIST
+
+const addToWishList = async (req, res) => {
+    const { email, productId } = req.body
+
+    try {
+      const user = await User.findOne({ 'email': { '$regex': email, $options: 'i' } });
+      console.log('!!!!!!!!!! SOY USER', user)
+      user.wishList = [...user.wishList, productId]
+  
+      await user.save()
+  
+      res.status(200).json({message: 'Producto guardado en favoritos'})
+    } catch (error) {
+      console.log("No se pudo guardar el producto en favoritos", error);
+    }
+};
+  
+const getWishList = async(req, res) => {
+    const { email } = req.body
+    console.log('EEEEEEEEEMAIL', email)
+    const user = await User.findOne({ 'email': { '$regex': email, $options: 'i' } })
+   
+    res.json(user.wishList)
+};
+  
+  const deleteWishItem = async (req, res) => {
+    const {productId, email} = req.query
+    console.log('EEEEEEEEEMAIL', email)
+
+
+    const user = await User.findOne({ 'email': { '$regex': email, $options: 'i' } });
+    console.log('EEEEEEEEEMAIL', user)
+   
+    user.wishList = user.wishList.filter(i => JSON.stringify(i) != JSON.stringify(productId))
+  
+    await user.save()
+  
+    res.status(200).json({msg: 'Item borrado'})
+  }
 
 
 module.exports = {
@@ -127,5 +167,8 @@ module.exports = {
     findAllUser,
     updateUser,
     deleteUser,
-    makeAdmin
+    makeAdmin,
+    addToWishList,
+    getWishList,
+    deleteWishItem
 }

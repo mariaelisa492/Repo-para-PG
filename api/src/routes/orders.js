@@ -13,21 +13,9 @@ router.post('/create', orders.createOrder)
  
 
 //actualizo orden
-router.put('/:id', async(req, res) =>{
-    try {
-        
-    } catch (error) {
-        
-    }
-});
+router.put('/:id', orders.updateOrder)
 
 //actualizo orden
-router.delete('/:id', async(req, res) =>{
-    try {
-        
-    } catch (error) {
-        
-    }
-});
+router.delete('/:id', orders.deleteOrder)
 
 module.exports = router;

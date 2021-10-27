@@ -35,8 +35,9 @@ function HistoryCard({ order }) {
       {order[0]?.items ? 
       <div className="infoContainer">
         <div className="dataHistory">
-        <h3 className="historyText">Order Date: {order[index.current].orderDate.split("T")[0]}</h3>
-        <p className="historyText">Total Price: {order[index.current].totalPrice}</p>
+        <h3 className="orderDate">Order Date: {order[index.current].orderDate.split("T")[0]}</h3>
+        <p className="orderTotalPrice">Total Price: {order[index.current].totalPrice}</p>
+        <span className="orderStatus">Order Status: </span><span className="statusOrder"> "{order[index.current].status}"</span>
         </div>
         <div className="paginadoOrder">
         <Paginado
