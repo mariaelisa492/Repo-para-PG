@@ -11,6 +11,8 @@ import { FaRegEdit } from 'react-icons/fa';
 import "./Dashboard.css";
 import AlertPopup from '../AlertPopups/AlertPopups';
 import Modal from "../Modal/Modal";
+import { Link, NavLink } from "react-router-dom";
+import Footer from "../Footer/Footer";
 
 export default function Dashboard() {
 
@@ -138,6 +140,9 @@ export default function Dashboard() {
             <div>
                 <NavBar />
             </div>
+            <div>
+                <NavLink to="/admin/sales">Sales</NavLink>
+            </div>
             <div className="add-button-div">
                 <div className="table">
                     <DataTable
@@ -156,6 +161,7 @@ export default function Dashboard() {
                 <button className='create add-button' onClick={handleOpenPopupCreate}>Create</button>
                 {/* </div> */}
             </div>
+           
 
             <ReactModal isOpen={showPopupCreate} className='reactModalContent' overlayClassName='reactModalOverlay'>
                 <FormCreateProducts handleClosePopup={handleClosePopupCreate} />
@@ -177,6 +183,9 @@ export default function Dashboard() {
                 hideFunc={() => showPopup(false)}
                 message='Product created with success!'
             />
+            <div>
+                <Footer />
+            </div>
         </>
     )
 };
