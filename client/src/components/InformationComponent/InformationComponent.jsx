@@ -23,7 +23,7 @@ export default function InfoComponent() {
                     <div className='iconAbout'><FaMapMarkedAlt /></div>
 
                     <div>
-                        <h2>Ubication</h2>
+                        <h2>Adress</h2>
                         <p className='textAbout'>742 Evergreen Terrace</p>
                     </div>
                 </div>
