@@ -11,6 +11,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import "./Dashboard.css";
 import AlertPopup from '../AlertPopups/AlertPopups';
 import Modal from "../Modal/Modal";
+import {NavLink} from 'react-router-dom';
 
 export default function Dashboard() {
 
@@ -138,6 +139,7 @@ export default function Dashboard() {
             <div>
                 <NavBar />
             </div>
+            <NavLink to="/admin/users">Users</NavLink>
             <div className="add-button-div">
                 <div className="table">
                     <DataTable

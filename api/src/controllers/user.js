@@ -56,6 +56,25 @@ const findAllUser = async (req, res) => {
     }
 }
 
+const makeAdmin = async (req, res) => {
+    const {id} = req.params
+    if(id){
+        try {
+            const user = await User.findByIdAndUpdate(id, {role:'ROLE_ADMIN'}, {new: true})
+            res.status(200).json({
+                message: 'User is now admin',
+                user
+            })
+        }
+        catch (error){
+            res.status(404).json({
+                message: 'User not Found',
+                error
+            })
+        }
+    }
+}
+
 const updateUser = async (req, res) => {
     const { id } = req.params;
     console.log(id, "el IDDDDDDDDD");
@@ -71,7 +90,7 @@ const updateUser = async (req, res) => {
     }catch (error){
         console.log(error)
         res.status(400).json({
-            error: 'Your reques could not be processed. try again'
+            error: 'Your request could not be processed. try again'
         })
 
     }
@@ -107,5 +126,6 @@ module.exports = {
     findUser, 
     findAllUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    makeAdmin
 }

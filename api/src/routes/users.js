@@ -36,5 +36,7 @@ router.get('/user/:email', users.findUser)
 
 router.delete('/:id', users.deleteUser)
 
+router.put('/makeAdmin/:id', users.makeAdmin)
+
 
 module.exports = router;
