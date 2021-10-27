@@ -17,7 +17,7 @@ const initialState = {
 	product: {},
 	products: [],
 	filteredProducts: [],
-	cart: localStorage.items.length > 0 ? JSON.parse(localStorage.getItem('items')) : [],
+	cart: localStorage.items?.length > 0 ? JSON.parse(localStorage.getItem('items')) : [],
 	limit: 0,
 	currentItem: null,
     category: null,
