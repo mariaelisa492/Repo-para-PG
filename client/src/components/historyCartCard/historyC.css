@@ -5,26 +5,65 @@
     justify-content: center;
     align-content: center;
     margin-top: 1%;
+    width: 100%;
 }
 
-.historyText
-{
+.orderDate{
     display: flex;
     justify-content: flex-end;
-    font-size: 30px;
+    font-size: 20px;
     margin-right: 3%;
+    color: #0f0f0f;
 }
+
+.orderTotalPrice{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 20px;
+    margin-right: 3%;
+    color: #0f0f0f;
+}
+
+.orderStatus{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 20px;
+    margin-right: 3%;
+    color: #0f0f0f;
+}
+
+.statusOrder{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 20px;
+    margin-right: 3%;
+    color: #0070ba;
+}
+
+
+
 .containerHistory
 {
     display: flex;
     flex-direction: column;
+    margin-bottom: 4vh;
 }
 
 .cardsContainer 
 {
     color: rgb(46, 44, 54);
+    width: 80%;
+    margin:auto;
     font-size: 13px;
 }
+
+.cardsContainer:hover{
+   size: 90%;
+    
+}
+
 
 .infoContainer
 {
@@ -34,8 +73,8 @@
 
 .paginadoOrder
 {
-    color: rgb(46, 44, 54);
-    font-size: 15px; 
+    color: #0f0f0f;
+    font-size: 20px; 
 }
 
 .ordersEmpty

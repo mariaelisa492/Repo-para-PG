@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import ItemCart from '../itemCart/itemCart';
 import CheckoutBut from '../Paypal/PayPal';
 import {BsFillCartXFill} from "react-icons/bs"
-import {Link} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 import "./cart.css"
 import { useAuth0 } from '@auth0/auth0-react'
 
@@ -63,11 +63,11 @@ export default function Cart() {
                             </h4>
                         </div>
                         <div>
-                            <Link to="/">
-                                <h3>
+                            <NavLink className="keepShopping" to="/">
+                               
                                 ¡Keep Shopping!
-                                </h3>
-                            </Link>
+                                
+                            </NavLink>
                         </div>
                     </div>
             }
