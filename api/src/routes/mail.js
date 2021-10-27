@@ -7,7 +7,7 @@ router.post('/confirm', sendMail)
 
 router.post('/promo', sendPromo)
 
-router.post('/newletter', sendNewsletter)
+router.post('/newsletter', sendNewsletter)
 
 
 module.exports = router

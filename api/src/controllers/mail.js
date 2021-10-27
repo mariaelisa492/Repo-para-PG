@@ -1,35 +1,37 @@
 const nodemailer = require('nodemailer')
-const process = require('process')
-require('dotenv').config()
+const { user, pass, host } = require('./env')
 
 
-const { user, pass } = process.env
-
-
-const sendMail = async (req, res) => {
+async function sendMail(req, res) {
 
   const { to, subject, text, html } = req.body
 
   let transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
+    host: host,
     port: 587,
     secure: false,
     auth: {
-      user,
-      pass
+      user: user,
+      pass: pass
     },
   })
 
-  let info = await transporter.sendMail({
-    from: '"Wave Music" <wavemusicnotify@gmail.com>',
-    to,
-    subject,
-    text,
-    html,
-  })
+  try {
+    let info = await transporter.sendMail({
+      from: '"Wave Music" <wavemusicnotify@gmail.com>',
+      to,
+      subject,
+      text,
+      html,
+    })
 
-  console.log("Message sent: %s", info.messageId)
+    console.log("Message sent: %s", info.messageId)
 
+    res.json({message: "Susccess"})
+  } catch (err) {
+    console.error(err)
+    res.json({message: "Fail"})
+  }
 }
 
 
