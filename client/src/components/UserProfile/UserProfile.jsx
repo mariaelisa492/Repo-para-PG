@@ -55,7 +55,7 @@ export function UserProfile() {
                 
             {toggle ? 
             <div className="historyContainer">
-                <div className="soyH1" onClick={(e) => {handleToggle(e)}}>{" <- Go back"} </div>
+                <div className="soyH1" onClick={(e) => {handleToggle(e)}}>{"back"} </div>
                 <div className="">
                     <HistoryCard order={orders}/>
                 </div>
