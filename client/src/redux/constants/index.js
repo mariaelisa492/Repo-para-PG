@@ -15,7 +15,8 @@ export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
 
 // ------------------ USERS
 export const CREATE_USER = 'CREATE_USER'
-export const GET_USER = 'GET_USER'
+export const SET_USER = 'SET_USER'
+export const EDIT_USER= 'EDIT_USER'
 
 // ----------------- TYPES FOR FILTER & SORT
 export const ORDER_PRICE_ASC = "ORDER_PRICE_ASC"
