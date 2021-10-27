@@ -262,6 +262,19 @@ export const editUser = (user) => {
     }
   }
 }
+
+export const deleteUser = (id) => {
+  return async () => {
+    try {
+      const userDeleted = await axios.delete(`${LOCALHOST_URL}/users/${id}`);
+      return userDeleted
+    }
+    catch (error) {
+      console.log(error, 'deleteUser ||Error||');
+    }
+  }
+}
+
 //  ----------------------------- PAGINATION
 
 export const setLimit = (number) => {

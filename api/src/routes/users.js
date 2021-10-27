@@ -34,4 +34,7 @@ router.put('/:id', users.updateUser)
 
 router.get('/user/:email', users.findUser)
 
+router.delete('/:id', users.deleteUser)
+
+
 module.exports = router;
