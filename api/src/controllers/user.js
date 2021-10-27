@@ -78,6 +78,26 @@ const updateUser = async (req, res) => {
 
  }
 }
+
+const deleteUser = async (req, res) => {
+    const { id } = req.params;
+    try{
+        await User.findByIdAndDelete(id);
+        res.status(200).json({
+            message: 'User deleted'
+        })
+    }
+    catch (error){
+        res.status(400).json({
+            error: 'Your request could not be processed. try again'
+        })
+    }
+}
+
+
+
+
+
 // -------------- WISH LIST
 const addToWishList = async (req, res) => {
     const { email, productId } = req.body
@@ -107,6 +127,7 @@ const getWishList = async(req, res) => {
     const {productId, email} = req.query
     console.log('EEEEEEEEEMAIL', email)
 
+
     const user = await User.findOne({ 'email': { '$regex': email, $options: 'i' } });
     console.log('EEEEEEEEEMAIL', user)
    
@@ -117,12 +138,15 @@ const getWishList = async(req, res) => {
     res.status(200).json({msg: 'Item borrado'})
   }
 
+
 module.exports = {
     createUser,
     findUser, 
     findAllUser,
     updateUser,
+    deleteUser
     addToWishList,
     getWishList,
     deleteWishItem
+
 }

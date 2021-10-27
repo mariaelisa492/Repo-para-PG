@@ -32,11 +32,16 @@ router.get('/:id', async(req, res) =>{
 router.put('/:id', users.updateUser)
     
 
+
+router.delete('/:id', users.deleteUser)
+
 router.get('/user/:email', users.findUser)
+
 
 // Wish List
 router.post("/addToWishList", users.addToWishList);
 router.get("/wishlist/:id", users.getWishList);
 router.delete('/wishlist/delete', users.deleteWishItem)
+
 
 module.exports = router;
