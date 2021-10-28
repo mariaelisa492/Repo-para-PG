@@ -32,7 +32,7 @@ export default function () {
   const { image, name, description, category, _id, stock, brand, model, price, reviews } = productDetail;
 
 
-  const totalRating = reviews?.map(review => review.rating).reduce((a, b) => a + b, 0)/ reviews.length;
+  const totalRating = reviews?.map(review => review.rating).reduce((a, b) => a + b, 0)/ reviews?.length;
   const ratingDefault = totalRating > 0 ? totalRating : 5;
   
   // console.log(totalRating, "EL TOTAL RATING");
