@@ -97,8 +97,6 @@ export default function Dashboard() {
     }
     const handleClosePopupCreate = () => {
         setShowPopupCreate(false)
-        showPopup(true);
-        setTimeout(() => showPopup(false), 1000);
     }
 
     // estado para mostrar popup Update
@@ -166,7 +164,7 @@ export default function Dashboard() {
            
 
             <ReactModal isOpen={showPopupCreate} className='reactModalContent' overlayClassName='reactModalOverlay'>
-                <FormCreateProducts handleClosePopup={handleClosePopupCreate} />
+                <FormCreateProducts handleClosePopup={handleClosePopupCreate} showPopup={showPopup} />
             </ReactModal>
 
             <ReactModal isOpen={showPopupUpdate} className='reactModalContent' overlayClassName='reactModalOverlay'>

@@ -21,7 +21,7 @@ export default function AlertPopup({ activeAlert, actionAlert, handleOpenAlert, 
                                 <p className='pAlert'>You won't be able to revert this!</p>
                             </div>
 
-                            <div>
+                            <div className='divBtnAlert'>
                                 <button
                                     onClick={() => {
                                         // setSuccessOrCanceled('caceled');

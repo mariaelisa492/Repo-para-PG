@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  text-align: center;
 }
 
 /* .backgroundCreateProducts {
@@ -70,15 +71,16 @@
 }
 
 .btnCloseFormProducts{
-  size: 0.9em;
+  font-size: 1.2em;
   cursor: pointer;
   position: absolute;
-  width: 0.3em;
+  width: 2em;
   top: 0.75em;
   right: 0.75em;
   color: #eee;
   background-color: rgb(230, 32, 32);
   border-radius: 0.5em;
+  padding: 0.5em;
 }
 
 .greyBtnCreate{
