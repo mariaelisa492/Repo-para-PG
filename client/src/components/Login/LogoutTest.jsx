@@ -15,17 +15,21 @@ export function Logout(){
 
      useEffect(() => {
        createUser()
-       localStorage.removeItem('items')
-      }, [])
+    }, [])
     
-
+    
     const userDB = useSelector((state)=> state.user)
+    
+    const hadleChangeLogout = ()=>{
+        localStorage.removeItem('items');
+        logout({returnTo:window.location.origin})
+    }
 
     // console.log(user, 'UserAuth0')
     // console.log(userDB, 'UserDB')
 
     if(isAuthenticated )
     return(
-        <span className='logoutBtn' onClick={() => logout({returnTo:window.location.origin})}>Logout</span>
+        <span className='logoutBtn' onClick={hadleChangeLogout}>Logout</span>
     );
 }
