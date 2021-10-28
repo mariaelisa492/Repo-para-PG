@@ -1,9 +1,11 @@
-*{
+*
+{
     text-decoration: none;
     list-style: none;
 } 
 
-.navBar{
+.navBar
+{
     display: flex;
     justify-content: space-between;
     background-color: #FF9F1C;
@@ -14,7 +16,13 @@
     z-index: 30;
 }
 
-.logo img{
+.logoSmall 
+{
+  border: 1px solid red;
+}
+
+.logo img
+{
     height:50px; 
     margin: 15px 5px;
 }
@@ -114,16 +122,23 @@
 }
 
 @media (max-width: 858px){
-    .landscape
-    {
-      display: none;
-    }
-    .portrait 
-    {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      justify-content: space-between;
-    }
+  .landscape
+  {
+    display: none;
+  }
+  .portrait 
+  {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+  }
 }
 
+@media (max-width: 410px){
+  .menuIcon
+  {
+    margin: auto 8px;
+    font-size: 1.5em;
+  }
+}
