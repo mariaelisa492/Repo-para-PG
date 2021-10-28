@@ -8,8 +8,8 @@ import {
   GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT,
   GET_MY_ORDERS, EMPTY_CART, GET_PRODUCT_DETAIL,
   GET_WISHLIST, GET_USER, ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, 
-  SET_USER, EDIT_USER
-
+  SET_USER, EDIT_USER,
+  GET_ABOUT, UPDATE_ABOUT,
   } from "../constants/index"
 
 export const getProducts = () => {
@@ -329,3 +329,32 @@ export const getWishlist = (email) =>{
       })
   }
 } 
+
+// ----------------------------- ABOUT
+export const getAbout = () => {
+  return async (dispatch) => {
+    try {
+      const about = await axios.get(`${LOCALHOST_URL}/about`);
+      return dispatch({
+        type: GET_ABOUT,
+        payload: about.data,
+      })
+    } catch (error) {
+      console.log(error, 'getAbout ||Error||');
+    }
+  };
+}
+
+export const updateAbout = (id) => {
+  return async (dispatch) => {
+    try {
+      const about = await axios.put(`${LOCALHOST_URL}/about/update/${id}`);
+      return dispatch({
+        type: UPDATE_ABOUT,
+        payload: about.data,
+      })
+    } catch (error) {
+      console.log(error, 'updateAbout ||Error||');
+    }
+  };
+}

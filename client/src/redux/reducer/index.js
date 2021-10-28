@@ -6,7 +6,8 @@ import {
 	ADD_TO_CART, REMOVE_FROM_CART,
 	REMOVE_ITEM, EMPTY_CART, FILTER_CATEGORIES, SET_LIMIT,
 	GET_MY_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT, GET_PRODUCT_DETAIL,
-	GET_WISHLIST, SET_USER, EDIT_USER
+	GET_WISHLIST, SET_USER, EDIT_USER, 
+	UPDATE_ABOUT, GET_ABOUT
 } from "../constants/index"
 
 
@@ -27,6 +28,7 @@ const initialState = {
 	orders: [],
 	productDetail: {},
 	wishList:[],
+	about: {},
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -263,6 +265,17 @@ export const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				wishList: action.payload
+			}
+		// --------- About
+		case GET_ABOUT:
+			return {
+				...state,
+				about: action.payload
+			}
+		case UPDATE_ABOUT:
+			return {
+				...state,
+				about: action.payload
 			}
 		default:
 			return state;
