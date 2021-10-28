@@ -7,7 +7,7 @@ import { LoginTest } from "../Login/LoginTest";
 import { Logout } from "../Login/LogoutTest";
 import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from "react-router-dom";
-import { FaBars, FaUser, FaSearch } from 'react-icons/fa';
+import { FaBars, FaUser, FaSearch, FaArrowRight } from 'react-icons/fa';
 import { GrCart } from 'react-icons/gr';
 import Modal from "../Modal/Modal";
 
@@ -17,16 +17,18 @@ export default function NavBar({ showDropDownMenu }) {
   // prefiero no tocarlo por ahora, veremos la semana proxima si se puede
   // limpiar y refactorear un poco.
 
-  const {isAuthenticated} = useAuth0()
+  const { user, isAuthenticated, logout } = useAuth0()
   const [ popup, setPopup ] = useState({
     search: false,
     login: false,
+    profile: false,
   });
 
   const showBar = () => setPopup({ ...popup, search: true });
   const hideBar = () => setPopup({ ...popup, search: false });
   const showDialog = () => setPopup({ ...popup, login: true });
   const hideDialog = () => setPopup({ ...popup, login: false });
+  const toggleUserOptions = () => setPopup({ ...popup, profile: !popup.profile });
 
   return (
     <nav className="navBar">
@@ -41,18 +43,19 @@ export default function NavBar({ showDropDownMenu }) {
 
         <div className='userActions'>
           {isAuthenticated
-            ? <NavLink to='/profile' activeClassName='activeLink'  >
-                <FaUser className='menuIcon' />
-              </NavLink>
-              : <FaUser className='menuIcon' onClick={showDialog} />}
-
-          {isAuthenticated
             ? <NavLink to="/cart" activeClassName='activeLink' >
                 <GrCart className='menuIcon' />
               </NavLink>
             : <GrCart className='menuIcon' onClick={showDialog} />}
 
-          {isAuthenticated ? <Logout/> : <LoginTest/>}
+          {isAuthenticated &&
+            <div className='profilePic' onClick={toggleUserOptions}>
+              {/*<FaUser className='menuIcon' />*/}
+              <img src={user.picture} alt={user.name} className='userCircle' />
+            </div>
+          }
+
+          {!isAuthenticated && <LoginTest/>}
         </div>
       </div>
 
@@ -68,19 +71,21 @@ export default function NavBar({ showDropDownMenu }) {
 
         <div className='mobileOptions'>
           <FaSearch className='noLink' onClick={showBar}/>
-          {isAuthenticated
-            ? <NavLink to='/profile' activeClassName='activeLink'  >
-                <FaUser className='menuIcon' />
-              </NavLink>
-              : <FaUser className='menuIcon' onClick={showDialog} />}
 
           {isAuthenticated
-            ? <NavLink to="/cart" activeClassName='activeLink' >
+            ? <NavLink to="/cart" activeClassName='activeLink' className='profilePic' >
                 <GrCart className='menuIcon' />
               </NavLink>
             : <GrCart className='menuIcon' onClick={showDialog} />}
 
-          {isAuthenticated ? <Logout/> : <LoginTest/>}
+          {isAuthenticated &&
+            <div className='profilePic' onClick={toggleUserOptions}>
+              {/*<FaUser className='menuIcon' />*/}
+              <img src={user.picture} alt={user.name} className='userCircle' />
+            </div>
+          }
+
+          {!isAuthenticated && <LoginTest/>}
 
           <FaBars className='noLink' onClick={showDropDownMenu}/>
         </div>
@@ -90,6 +95,20 @@ export default function NavBar({ showDropDownMenu }) {
         show={popup.login}
         hideFunc={hideDialog}
         message="You need to be logged in to perform this action!" />
+
+      <div className={'profileOptions' + (popup.profile ? ' showProfOpt' : ' hideProfOpt')}>
+        <ul>
+          <li>Account</li>
+          <li>
+            <NavLink to='/profile' activeClassName='profileActive' className='profileLink'>
+              Your profile
+            </NavLink>
+          </li>
+          <li className='logoutOption' onClick={() => logout({returnTo: window.location.origin})}>
+            Logout <FaArrowRight className='exitIcon'/>
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 }
