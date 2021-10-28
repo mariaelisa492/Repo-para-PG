@@ -5,7 +5,7 @@ import ReactModal from "react-modal";
 import { FaRegEdit } from 'react-icons/fa';
 import NavBar from '../NavBar/NavBar'
 import Loader from "../Loader/Loader";
-import { getMyOrders, searchUserInDb } from "../../redux/actions";
+import { getMyOrders, getWishlist, searchUserInDb } from "../../redux/actions";
 import HistoryCard from "../historyCartCard/historyCard"
 import { FiChevronLeft } from "react-icons/fi";
 import { FiArchive } from "react-icons/fi";
@@ -20,7 +20,13 @@ export default function UserProfile() {
     const userProfile = useSelector(state => state.user)
 
     const orders = useSelector(state => state.orders)
+    const wishes = useSelector(state => state.wishList)
+    
+
     const [toggle, setToggle] = useState(false)
+    const [toggleOrder, setToggleOrder] = useState(false)
+    
+
     const [showPopupEditUser, setShowPopupEditUser] = useState(false)
 
     function toggleModal() {
@@ -28,8 +34,10 @@ export default function UserProfile() {
     }
 
     useEffect(() => {
+        setToggle(false)
         if (user?.email) {
             dispatch(getMyOrders(user.email))
+            dispatch(getWishlist(user.email))
         }
     }, [user])
 
@@ -46,9 +54,15 @@ export default function UserProfile() {
         )
     }
 
+// --- HandlersToggle
     const handleOrders = (e) => {
         e.preventDefault()
-        dispatch(getMyOrders(user.email))
+        setToggleOrder(!toggleOrder)
+        setToggle(!toggle)   
+    }
+
+    const handleWish = (e) => {
+        setToggleOrder(false)
         setToggle(!toggle)
     }
 
@@ -63,10 +77,18 @@ export default function UserProfile() {
 
 
                 {toggle ?
+                toggleOrder ?
                     <div className="historyContainer">
                         <div className="soyH1" onClick={(e) => { handleToggle(e) }}>{"back"} </div>
                         <div className="">
                             <HistoryCard order={orders} />
+                        </div>
+                    </div>
+                    :
+                    <div className="favContainer">
+                        <div className="soyH1" onClick={(e) => { handleToggle(e) }}>{"back"} </div>
+                        <div className="">
+                            <h1>{wishes}</h1>
                         </div>
                     </div>
                     :
@@ -108,6 +130,7 @@ export default function UserProfile() {
 
                             <div className='userNameOrder'>
                                 <button className="btnOrders" onClick={(e) => { handleOrders(e) }}><FiArchive /></button>
+                                <button className="btnWish" onClick={(e) => { handleWish(e) }}>Wishes</button>
                             </div>
                         </div>
 
