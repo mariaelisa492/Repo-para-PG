@@ -25,15 +25,22 @@ export default function () {
   const dispatch = useDispatch();
   const { user } = useAuth0()
   const productDetail = useSelector(state => state.productDetail);
-  const { image, name, description, category, _id, stock, brand, model, price, reviews } = productDetail;
+  const { image, name, description, category, stock, brand, model, price, reviews } = productDetail;
 
-
-
+  
   useEffect(() => {
     window.scrollTo(0, 0)
     dispatch(getProductDetail(id))
   }, [dispatch])
-
+  
+  const handleWish = (e) => {
+    e.preventDefault()
+    dispatch(addToWishList({
+      email: user.email,
+      productId: id
+    }))
+  }
+  
   return (
     <div className='fullview'>
       {JSON.stringify(productDetail) !== '{}' ?
@@ -44,7 +51,7 @@ export default function () {
 
               <div className='leftView'>
                 <div className='topDescription'>
-                  <h3>{category} <b><FaHeart /></b></h3>
+                  <h3>{category} <b onClick={e => handleWish(e)}><FaHeart /></b></h3>
                   <h1>{name}</h1>
                   <p>{description.split('.')[0]}.</p>
                 </div>
