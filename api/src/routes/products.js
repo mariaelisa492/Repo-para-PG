@@ -25,4 +25,6 @@ router.post('/create-many', products.createManyProducts);
 
 router.post('/review', products.createProductReview);
 
+router.post('/questions/:id', products.createProductQuestion);
+
 module.exports = router;

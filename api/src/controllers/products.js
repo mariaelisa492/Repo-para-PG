@@ -131,6 +131,26 @@ const createProductReview = async (req, res) => {
     }
 }
 
+const createProductQuestion = async (req, res) => {
+    const { id } = req.params;
+    const  question  = req.body;
+    try {
+        console.log(question, 'question in api')
+        const product = await Products.findById(id);
+        product.questions.push(question);
+        await product.save();
+        res.status(200).json({
+            message: 'Successful',
+            product
+        });
+    } catch (error) {
+        res.status(400).json({
+            message: 'Something went wrong while trying to post a question. Try again later.'
+        })
+    }
+}
+
+
   
 
 
@@ -142,5 +162,6 @@ module.exports = {
     getProductByName,
     deleteProduct,
     createManyProducts,
-    createProductReview
+    createProductReview,
+    createProductQuestion,
 }
