@@ -7,8 +7,12 @@ import {AiTwotoneHeart} from 'react-icons/ai'
 import { addProductFav } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
-export default function Product({ _id, img, name, price, rating, isActive }) {
+export default function Product({ _id, img, name, price, reviews, isActive }) {
     const dispatch = useDispatch();
+
+    const totalRating = reviews?.map(review => review.rating).reduce((a, b) => a + b, 0)/ reviews?.length;
+    const ratingDefault = totalRating > 0 ? totalRating : 5;
+
 
     const objFav = {_id, name, img, price}
 
@@ -26,7 +30,7 @@ export default function Product({ _id, img, name, price, rating, isActive }) {
                         <NavLink className="link-product" to={'detail/' + _id}>
                         <h4><a href="">{name}</a></h4>
                         </NavLink>
-                        <p><Rating rating={9}/></p>
+                        <p><Rating rating={ratingDefault}/></p>
                         <div className="product-bottom-details">
                             <div className="product-price"><small>$ {price + 200 }</small>$ {price}</div>
                             
