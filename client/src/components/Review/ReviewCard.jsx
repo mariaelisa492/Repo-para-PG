@@ -16,8 +16,7 @@ function ReviewCard({ reviews }) {
     return (
 
         <div className="containerReviews">
-            <button className="reviewBtn"> make a review</button>
-
+           
             <div className="infoReviewsContainer">
 
                 <div className="cardsReviewsContainer">
