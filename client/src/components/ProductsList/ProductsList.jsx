@@ -94,6 +94,7 @@ export default function ProductsList({ filteredProducts }) {
                 reviews={e.reviews}
                 _id={e._id}
                 isActive={e.isActive}
+                stock={e.stock}
                 key={keyblablabla}
               />
             );
