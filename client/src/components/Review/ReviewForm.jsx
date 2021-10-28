@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { Redirect } from "react-router";
 import { FaStar } from "react-icons/fa";
 import { useAuth0 } from '@auth0/auth0-react';
 import { useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios'
 import { LOCALHOST_URL } from "../../redux/constants";
-import { getReviews } from "../../redux/actions/index";
+import "./ReviewForm.css";
+
 
 const colors = {
     orange: "#FFBA5A",
@@ -15,13 +16,12 @@ const colors = {
 
 
 
-export function Review() {
-    const { user, isAuthenticated } = useAuth0();
-    const {id} = useParams();
-    const dispatch = useDispatch()
+export function ReviewForm({ handleClosePopUp }) {
+    const { user } = useAuth0();
+    const { id } = useParams();
 
-    const stars = Array(5).fill(0)
-    const reviews = useSelector(state => state.reviews)
+
+    const stars = Array(10).fill(0)
     const [rating, setRating] = useState(0);
     const [hoverValue, setHoverValue] = useState(undefined);
     const [review, setReview] = useState("");
@@ -38,54 +38,66 @@ export function Review() {
         setHoverValue(undefined);
     };
 
-    useEffect(() => {
-        if (user?.email) {
-            dispatch(getReviews(id))
-        }
-    }, [user])
+    const handleChange = e => {
+        setReview(e.target.value);
+    };
 
 
-    function sendReview(e, review, rating, user, id) {
+
+    function handleSubmit(e, review, rating, user, id) {
         e.preventDefault();
-       let data = {
-            review: review,
-            rating: rating,
-            user: user,
-            id: id
+        let data = {
+            review,
+            rating,
+            user,
+            productrv: id
         }
-        axios.post(`${LOCALHOST_URL}/review`, data)
-        .then(console.log(data))
+        axios.post(`${LOCALHOST_URL}/products/review?id=${id}`, data)
+            .then(console.log(data, "LA DATAAAAA"))
+            .then(window.location.reload())
     }
 
-     
 
 
 
-if(isAuthenticated) {
+
+    
         return (
+
             <div className="review">
-                <h2>Rating</h2>
-                <div className="stars">
-                    {stars.map((star, i) => {
-                        return <FaStar
-                            key={i}
-                            size={24}
-                            style={{ marginRight: 10, cursor: "pointer" }}
-                            color={(hoverValue || rating) > i ? colors.orange : colors.grey}
-                            onClick={() => handleCllick(i + 1)}
-                            onMouseOver={() => handleMouseOver(i + 1)}
-                            onMouseLeave={handleMouseLeave}
-                        />
-                    })}
+                <div className="title-rating">
+                    <h2>Rating</h2>
                 </div>
-                <h2 className="reviewUser">{user.email}</h2>
-                <textarea
-                    value={review}
-                    onChange={e => setReview(e.target.value)}
-                    placeholder="what's your feedback" />
-                <button onSubmit={sendReview} >Submit</button>
+                <form onSubmit={(e) => handleSubmit(e, review, rating, user.nickname, id)} className="form">
+                    <div className="stars">
+                        {stars.map((star, i) => {
+                            return <FaStar
+                                key={i}
+                                size={24}
+                                style={{ marginRight: 10, cursor: "pointer" }}
+                                color={(hoverValue || rating) > i ? colors.orange : colors.grey}
+                                onClick={() => handleCllick(i + 1)}
+                                onMouseOver={() => handleMouseOver(i + 1)}
+                                onMouseLeave={handleMouseLeave}
+                            />
+                        })}
+                    </div>
+                    <h2 className="reviewUser">{user.nickname}</h2>
+                    <textarea
+                        resize="none"
+                        className="reviewText"
+                        value={review}
+                        onChange={e => handleChange(e)}
+                        placeholder="what's your feedback" />
+                    <div className="butons-container">
+                        <button type="submit" className="reviewSendBtn" maxlength="200" >Send</button>
+                        <button className="reviewBackBtn" onClick={handleClosePopUp}>Back</button>
+                    </div>
+                </form>
+
             </div>
 
+
         )
-    }
-} 
+  
+}

@@ -24,7 +24,7 @@ function Review({ review, rating, user }) {
                     </h3>
                 </div>
                 <div className="ratingReview">
-                    <h3 className="reviewText">Review: "{review}" </h3>
+                    <h3 className="reviewText"> "{review}" </h3>
                 </div>
             </div>
 
