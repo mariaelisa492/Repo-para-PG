@@ -3,11 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from '@auth0/auth0-react'
 import ReactModal from "react-modal";
 import { FaRegEdit } from 'react-icons/fa';
-import NavBar from '../NavBar/NavBar'
 import Loader from "../Loader/Loader";
 import { getMyOrders, getWishlist, searchUserInDb } from "../../redux/actions";
 import HistoryCard from "../historyCartCard/historyCard"
-import { FiChevronLeft } from "react-icons/fi";
 import { FiArchive } from "react-icons/fi";
 import './UserProfile.css'
 import EditUserForm from "../EditUserForm/EditUserForm";

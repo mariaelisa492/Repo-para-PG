@@ -81,11 +81,12 @@
   text-align: left;
 }
 
-/* .topDescription 
+ .topDescription b
 {
-  border: 1px solid blue;
+  
+  color: #6b6969ed;
 }
-
+/*
 .imageSlider
 {
   border: 1px solid red;

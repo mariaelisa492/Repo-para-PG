@@ -313,7 +313,6 @@ export const addToWishList = (wish) => {
 }
 
 export const deleteWishItem = (itemId, email) => {
-  
   return async function(){
       await axios.delete(`${LOCALHOST_URL}/wishlist/delete?productId=${itemId}&email=${email}`)
   }

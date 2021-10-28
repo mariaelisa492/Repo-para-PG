@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import AddToCart from '../AddToCart/Addtocart';
 import Rating from '../Rating/Rating';
 import ImageSlider from '../ImageSlider/ImageSlider';
-import { getProductDetail, addToWishList } from '../../redux/actions';
-import { FaHeart } from 'react-icons/fa';
+import { getProductDetail, addToWishList, deleteWishItem } from '../../redux/actions';
+import { FaHeart, FaWizardsOfTheCoast } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import Loader from "../Loader/Loader";
 import ReviewCard from '../Review/ReviewCard';
@@ -13,6 +13,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { ReviewForm } from '../Review/ReviewForm';
 import ReactModal from "react-modal";
 import Modal from "../Modal/Modal";
+import { getWishlist } from '../../redux/actions';
 
 //>> temp solution to rating
 const styleRating = {
@@ -28,6 +29,7 @@ export default function () {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0()
   const productDetail = useSelector(state => state.productDetail);
+  const wish = useSelector(state => state.wishList)
 
   const { image, name, description, category, _id, stock, brand, model, price, reviews } = productDetail;
 
@@ -43,22 +45,27 @@ export default function () {
     setShowPopupReview(!showPopupReview);
   }
 
-
-
-
-
   
   useEffect(() => {
     window.scrollTo(0, 0)
+    dispatch(getWishlist(user.email))
     dispatch(getProductDetail(id))
   }, [dispatch])
   
+  const wishess = wish.includes(id)
   const handleWish = (e) => {
     e.preventDefault()
-    dispatch(addToWishList({
-      email: user.email,
-      productId: id
-    }))
+  
+    if(!wishess){
+      dispatch(addToWishList({
+        email: user.email,
+        productId: id
+      }))
+      console.log('!!!!!!!! ADDDDDDDDD WISH', wish )
+    } else {
+      dispatch(deleteWishItem( id,user.email))
+      console.log('!!!!!!!! deLETE WISH', wish )
+    }
   }
   
   return (
