@@ -15,6 +15,7 @@ export function Logout(){
 
      useEffect(() => {
        createUser()
+       localStorage.removeItem('items')
       }, [])
     
 
