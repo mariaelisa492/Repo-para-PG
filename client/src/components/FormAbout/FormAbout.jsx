@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaTimes } from 'react-icons/fa'
 import { saveImages } from '../FormCreateProducts/utils/saveImages';
 import { validationFunction } from './utils/validationFunction';
-import { updateAbout } from './utils/updateAbout';
+import { updateAbout } from '../../redux/actions/index';
 import AlertPopup from '../AlertPopups/AlertPopups'
 
-export default function About({ handleClosePopup, showPopup }) {
+export default function About({ handleClosePopup }) {
     const dispatch = useDispatch();
     const refFileInput = useRef();
     const refFileInputSmall = useRef();
@@ -14,19 +14,12 @@ export default function About({ handleClosePopup, showPopup }) {
     const about = useSelector(state => state.about)
 
     //estados de intput y errores
-    const [inputAbout, setInputAbout] = useState({
-        email: '',
-        telephone: '',
-        address: '',
-        city: '',
-        stateOrProvince: '',
-        logo: '',
-        logoSmall: ''
-    })
+    const [inputAbout, setInputAbout] = useState(about)
     const [errorsAbout, setErrorsAbout] = useState({});
 
     useEffect(() => {
         setInputAbout({ about })
+        console.log(about)
     }, [about])
 
     //Funcion para obtener los valores
@@ -120,7 +113,6 @@ export default function About({ handleClosePopup, showPopup }) {
                                 name='email'
                                 onChange={e => handleInputChange(e.target.name, e.target.value)}
                                 value={inputAbout.email}
-                                placeholder='Email'
                                 className='inputCreateProducts'
                                 required
                             />
@@ -141,7 +133,6 @@ export default function About({ handleClosePopup, showPopup }) {
                                 name='telephone'
                                 onChange={e => handleInputChange(e.target.name, e.target.value)}
                                 value={inputAbout.telephone}
-                                placeholder='Telephone'
                                 className='inputCreateProducts'
                                 required
                             />
@@ -163,7 +154,6 @@ export default function About({ handleClosePopup, showPopup }) {
                                 name='address'
                                 onChange={e => handleInputChange(e.target.name, e.target.value)}
                                 value={inputAbout.address}
-                                placeholder='Address'
                                 className='inputCreateProducts'
                                 required
                             />
@@ -185,7 +175,6 @@ export default function About({ handleClosePopup, showPopup }) {
                                 name='city'
                                 onChange={e => handleInputChange(e.target.name, e.target.value)}
                                 value={inputAbout.city}
-                                placeholder='City'
                                 className='inputCreateProducts'
                                 required
                             />
@@ -207,7 +196,6 @@ export default function About({ handleClosePopup, showPopup }) {
                                 name='stateOrProvince'
                                 onChange={e => handleInputChange(e.target.name, e.target.value)}
                                 value={inputAbout.stateOrProvince}
-                                placeholder='State or Province'
                                 className='inputCreateProducts'
                                 required
                             />
@@ -228,7 +216,6 @@ export default function About({ handleClosePopup, showPopup }) {
                                 type='file'
                                 name='logo'
                                 onChange={e => handleInputChange(e.target.name, e.target.files[0])}
-                                placeholder='Logo'
                                 className='inputCreateProducts'
                                 ref={refFileInput}
                                 required
@@ -249,7 +236,6 @@ export default function About({ handleClosePopup, showPopup }) {
                                 type='file'
                                 name='logoSmall'
                                 onChange={e => handleInputChange(e.target.name, e.target.files[0])}
-                                placeholder='Logo small'
                                 className='inputCreateProducts'
                                 ref={refFileInputSmall}
                                 required
@@ -265,7 +251,7 @@ export default function About({ handleClosePopup, showPopup }) {
                 <div>
                     <input
                         type='submit'
-                        value='Create'
+                        value='Update'
                         className={Object.keys(errorsAbout).length === 0 ? 'btnCreate' : 'greyBtnCreate'}
                         diabled={Object.keys(errorsAbout).length === 0}
                     />

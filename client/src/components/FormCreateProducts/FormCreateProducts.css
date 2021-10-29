@@ -60,14 +60,15 @@
 
 .btnCreate {
   cursor: pointer;
-  color: #eee;
-  background: #2EC4B6;
+  color: white;
+  background: #0070ba;
   border: none;
   margin: 1.25em auto;
   max-width: 15.6em;
   font-size: 1.25em;
   padding: 0.4em 0.55em;
   font-weight: 600;
+  border-radius: 1em;
 }
 
 .btnCloseFormProducts{
@@ -75,11 +76,11 @@
   cursor: pointer;
   position: absolute;
   width: 2em;
-  top: 0.75em;
-  right: 0.75em;
+  top: 0.4em;
+  right: 0.4em;
   color: #eee;
   background-color: rgb(230, 32, 32);
-  border-radius: 0.5em;
+  border-radius: 1em;
   padding: 0.5em;
 }
 
