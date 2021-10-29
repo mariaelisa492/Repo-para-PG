@@ -142,8 +142,8 @@ const getWishList = async(req, res) => {
     console.log('EEEEEEEEEMAIL', req.query)
     
     const user = await User.findOne({ 'email': { '$regex': email, $options: 'i' } })
-   console.log('SOOOOOOOOOOOOOOOOY LOS WISHEs', user.wishList)
-    res.json(user.wishList)
+   console.log('SOOOOOOOOOOOOOOOOY LOS WISHEs', user?.wishList)
+    res.json(user?.wishList)
 };
   
   const deleteWishItem = async (req, res) => {
