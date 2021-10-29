@@ -335,7 +335,7 @@ export const getQuestionsByProduct = (productId) => {
   console.log(productId, 'productId en getQuestionsByProduct');
   return async (dispatch) => {
     try {
-      const questions = await axios.get(`${LOCALHOST_URL}/products/questions/${productId}`);
+      const questions = await axios.get(`${LOCALHOST_URL}/products/questions/p/${productId}`);
       return dispatch({
         type: GET_QUESTIONS_BY_PRODUCT,
         payload: questions.data,

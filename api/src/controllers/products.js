@@ -164,9 +164,26 @@ const getProductQuestions = async (req, res) => {
     }
 }
 
+const getAllUnansweredQuestions = async (req, res) => {
+    try {
+        const questions = []
+        const products = await Products.find({ 'questions.answer': 'No answer yet' })
+        products.forEach(product => {
+            product.questions.forEach(question => {
+                if (question.answer === 'No answer yet') {
+                    questions.push({question, questionFromProduct: product._id})
+                }
+            })
+        })
+        res.status(200).json(questions);
+    } catch (error) {
+        res.status(400).json({
+            message: 'Something went wrong while trying to get the questions. Try again laterrrrrrrr.'
+            , error
+        })
+    }
+}
 
-
-  
 
 
 module.exports = {
@@ -180,4 +197,5 @@ module.exports = {
     createProductReview,
     createProductQuestion,
     getProductQuestions,
+    getAllUnansweredQuestions
 }

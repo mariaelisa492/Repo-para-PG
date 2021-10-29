@@ -29,6 +29,9 @@ router.post('/review', products.createProductReview);
 router.post('/questions/:id', products.createProductQuestion);
 
 // obtener preguntas por producto
-router.get('/questions/:id', products.getProductQuestions);
+router.get('/questions/p/:id', products.getProductQuestions);
+
+// obtener preguntas no respondidas
+router.get('/questions/allUnanswered', products.getAllUnansweredQuestions);    
 
 module.exports = router;
