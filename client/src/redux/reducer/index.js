@@ -6,10 +6,8 @@ import {
 	ADD_TO_CART, REMOVE_FROM_CART,
 	REMOVE_ITEM, EMPTY_CART, FILTER_CATEGORIES, SET_LIMIT,
 	GET_MY_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT, GET_PRODUCT_DETAIL,
-	GET_WISHLIST, SET_USER, EDIT_USER, 
-	UPDATE_ABOUT, GET_ABOUT
+	ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, SET_USER, EDIT_USER, UPDATE_ORDER, DELETE_ORDER, GET_WISHLIST, UPDATE_ABOUT, GET_ABOUT
 } from "../constants/index"
-
 
 
 const initialState = {
@@ -21,10 +19,11 @@ const initialState = {
 	cart: localStorage.items?.length > 0 ? JSON.parse(localStorage.getItem('items')) : [],
 	limit: 0,
 	currentItem: null,
-    category: null,
-    priceRange: false,
+	category: null,
+	priceRange: false,
 	filteredTF: false,
 	user: {},
+	order: {},
 	orders: [],
 	productDetail: {},
 	wishList:[],
@@ -61,6 +60,22 @@ export const rootReducer = (state = initialState, action) => {
 				orders: [...action.payload]
 			}
 
+		case UPDATE_ORDER:
+			const indice = state.orders.findIndex(order => order._id === action.payload._id);
+			state.orders[indice] = action.payload;
+			console.log(action.payload, "payload de mi UPDATE_ORDER")
+			return {
+				...state,
+				orders: [...state.orders]
+			};
+
+		case DELETE_ORDER:
+			let deletedOrder = state.orders.filter(el => el._id !== action.payload._id)
+			return {
+				...state,
+				orders: [...deletedOrder]
+			}
+
 		case GET_SINGLE_PRODUCT:
 			return {
 				...state,
@@ -75,7 +90,7 @@ export const rootReducer = (state = initialState, action) => {
 			}
 
 		case UPDATE_PRODUCT:
-			let index = state.products.findIndex(product => product._id === action.payload._id);
+			const index = state.products.findIndex(product => product._id === action.payload._id);
 			state.products[index] = action.payload;
 			return {
 				...state,
@@ -152,8 +167,9 @@ export const rootReducer = (state = initialState, action) => {
 			if (state.category) {
 				temp = state.products.filter(p => p.category === state.category);
 			} else {
-				temp = [ ...state.products ];
+				temp = [...state.products];
 			}
+
 			if (state.filteredTF) {
 				filt3 = temp.filter((e) => e.price > action.payload.price1 && e.price < action.payload.price2)
 			}
@@ -163,7 +179,7 @@ export const rootReducer = (state = initialState, action) => {
 			// console.log('filterPriceRange', filt3)
 			return {
 				...state,
-				filteredProducts: [ ...filt3 ],
+				filteredProducts: [...filt3],
 				filteredTF: true,
         		priceRange: true
 			};
@@ -185,17 +201,17 @@ export const rootReducer = (state = initialState, action) => {
 				...state,
 				filteredProducts: [...filt4],
 				filteredTF: true,
-        		category: action.payload,
-        		priceRange: false,
+				category: action.payload,
+				priceRange: false,
 			}
 
-    	case NO_FILTER:
-		return {
-			...state,
-			filteredProducts: [ ...state.products ],
-			filteredTF: false,
-			priceRange: false,
-		}
+		case NO_FILTER:
+			return {
+				...state,
+				filteredProducts: [...state.products],
+				filteredTF: false,
+				priceRange: false,
+			}
 
 		// ---- Cart ---- //
 		case ADD_TO_CART:
@@ -235,14 +251,14 @@ export const rootReducer = (state = initialState, action) => {
 		//	--------------------------- USERS
 		case SET_USER:
 
-			return{
+			return {
 				...state,
 				user: action.payload
 			}
 
 		case EDIT_USER:
 
-			return{
+			return {
 				...state,
 				user: action.payload
 			}
