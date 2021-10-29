@@ -18,8 +18,7 @@ export default function About({ handleClosePopup }) {
     const [errorsAbout, setErrorsAbout] = useState({});
 
     useEffect(() => {
-        setInputAbout({ about })
-        console.log(about)
+        setInputAbout(about)
     }, [about])
 
     //Funcion para obtener los valores
@@ -61,7 +60,7 @@ export default function About({ handleClosePopup }) {
             auxInput.logo = urlLogo;
             auxInput.logoSmall = urlLogoSmall;
 
-            dispatch(updateAbout(auxInput._id));
+            dispatch(updateAbout(auxInput));
             setInputAbout({
                 email: '',
                 telephone: '',
@@ -218,7 +217,6 @@ export default function About({ handleClosePopup }) {
                                 onChange={e => handleInputChange(e.target.name, e.target.files[0])}
                                 className='inputCreateProducts'
                                 ref={refFileInput}
-                                required
                             />
                         </div>
                     </div>
@@ -238,7 +236,6 @@ export default function About({ handleClosePopup }) {
                                 onChange={e => handleInputChange(e.target.name, e.target.files[0])}
                                 className='inputCreateProducts'
                                 ref={refFileInputSmall}
-                                required
                             />
                         </div>
                     </div>

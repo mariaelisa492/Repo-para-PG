@@ -1,5 +1,5 @@
 import "./navBar.css";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import logo from "../../images/waveMusic.png";
 import logoSmall from "../../images/waveMusicLogoSmall.png";
 import { Search } from "../Search/SearchBar";
@@ -10,6 +10,8 @@ import { NavLink } from "react-router-dom";
 import { FaBars, FaUser, FaSearch, FaArrowRight } from 'react-icons/fa';
 import { GrCart } from 'react-icons/gr';
 import Modal from "../Modal/Modal";
+import { useDispatch, useSelector } from "react-redux";
+import { getAbout } from '../../redux/actions/index';
 
 
 export default function NavBar({ showDropDownMenu }) {
@@ -35,11 +37,25 @@ export default function NavBar({ showDropDownMenu }) {
     logout({returnTo:window.location.origin})
 }
 
+const dispatch = useDispatch()
+
+const about = useSelector(state => state.about);
+
+const [inputAbout, setInputAbout] = useState(about);
+
+useEffect(() => {
+    dispatch(getAbout());
+}, [])
+
+useEffect(() => {
+    setInputAbout(about)
+}, [about])
+
   return (
     <nav className="navBar">
       <div className='landscape'>
         <label className="logo">
-          <NavLink to="/" className="active"><img src={logo} alt="logo"/></NavLink>
+          <NavLink to="/" className="active"><img src={inputAbout.logo} alt="logo"/></NavLink>
         </label>
 
         <div className='searchBar'>
@@ -64,7 +80,7 @@ export default function NavBar({ showDropDownMenu }) {
 
       <div className='portrait'>
         <label className="logo">
-          <NavLink to="/" className="active"><img src={logoSmall} alt="logo"/></NavLink>
+          <NavLink to="/" className="active"><img src={inputAbout.logoSmall} alt="logo"/></NavLink>
         </label>
 
         <div className={'popupSearchBar ' + (popup.search ? 'showSearch' : 'hideSearch')}>
