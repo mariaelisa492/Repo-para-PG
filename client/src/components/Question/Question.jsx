@@ -10,6 +10,6 @@ export function Question({user, question, answer}) {
             <div className="answerC">
                 <p>{answer}</p>
             </div>
-        </div>
+        </div>  
     )
 }
