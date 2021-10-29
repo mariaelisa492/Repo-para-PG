@@ -8,7 +8,10 @@ import { addCart } from '../../redux/actions';
 import { useDispatch } from "react-redux";
 import Swal from 'sweetalert2'
 
-export default function Product({ _id, img, name, price, rating, isActive, stock }) {
+export default function Product({ _id, img, name, price, reviews, isActive, stock }) {
+
+    const totalRating = reviews?.map(review => review.rating).reduce((a, b) => a + b, 0)/ reviews?.length;
+    const ratingDefault = totalRating > 0 ? totalRating : 5;
 
     const [count, setCount] = useState(0);
 
@@ -52,7 +55,7 @@ export default function Product({ _id, img, name, price, rating, isActive, stock
                     <NavLink className="link-product" to={'detail/' + _id}>
                         <h4><a href="">{name}</a></h4>
                     </NavLink>
-                    <p><Rating rating={9} /></p>
+                    <p><Rating rating={ratingDefault} /></p>
                     <div className="product-bottom-details">
                         <div className="product-price"><small>$ {price + 200}</small>$ {price}</div>
                         <div className="product-links">

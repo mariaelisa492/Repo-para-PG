@@ -3,14 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from '@auth0/auth0-react'
 import ReactModal from "react-modal";
 import { FaRegEdit } from 'react-icons/fa';
-import NavBar from '../NavBar/NavBar'
 import Loader from "../Loader/Loader";
 import { getMyOrders, getWishlist, searchUserInDb } from "../../redux/actions";
 import HistoryCard from "../historyCartCard/historyCard"
-import { FiChevronLeft } from "react-icons/fi";
 import { FiArchive } from "react-icons/fi";
 import './UserProfile.css'
 import EditUserForm from "../EditUserForm/EditUserForm";
+import WishListProfile from "../wishListProfile/WishListProfile";
 
 export default function UserProfile() {
 
@@ -75,7 +74,6 @@ export default function UserProfile() {
         return (
             <div>
 
-
                 {toggle ?
                 toggleOrder ?
                     <div className="historyContainer">
@@ -88,7 +86,7 @@ export default function UserProfile() {
                     <div className="favContainer">
                         <div className="soyH1" onClick={(e) => { handleToggle(e) }}>{"back"} </div>
                         <div className="">
-                            <h1>{wishes}</h1>
+                            <WishListProfile wishes={wishes}/>
                         </div>
                     </div>
                     :
@@ -115,12 +113,12 @@ export default function UserProfile() {
                             {userProfile.user ?
                                 <div className='userName'>
                                     <button className='userBtnTopRight' onClick={toggleModal}><FaRegEdit className='editIcon' />Edit</button>
-                                    <p>First Name: {userProfile.user[0].firstName}</p>
-                                    <p>Last Name: {userProfile.user[0].lastName}</p>
-                                    <p>Gender: {userProfile.user[0].gender}</p>
-                                    <p>Nationality: {userProfile.user[0].nationality}</p>
-                                    <p>Birthdate: {userProfile.user[0].birthDate}</p>
-                                    <p>Address: {userProfile.user[0].address}</p>
+                                    <p>First Name: {userProfile.user[0]?.firstName}</p>
+                                    <p>Last Name: {userProfile.user[0]?.lastName}</p>
+                                    <p>Gender: {userProfile.user[0]?.gender}</p>
+                                    <p>Nationality: {userProfile.user[0]?.nationality}</p>
+                                    <p>Birthdate: {userProfile.user[0]?.birthDate}</p>
+                                    <p>Address: {userProfile.user[0]?.address}</p>
                                 </div>
                                 : null}
 
@@ -135,7 +133,7 @@ export default function UserProfile() {
                         </div>
 
                         <ReactModal isOpen={showPopupEditUser} className='reactModalContent' overlayClassName='reactModalOverlay'>
-                            <EditUserForm _id={userProfile.user ? userProfile.user[0]._id : null} handleClosePopUp={toggleModal} />
+                            <EditUserForm _id={userProfile.user ? userProfile.user[0]?._id : null} handleClosePopUp={toggleModal} />
                         </ReactModal>
 
                     </div>

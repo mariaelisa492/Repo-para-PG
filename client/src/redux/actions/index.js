@@ -7,10 +7,10 @@ import {
   REMOVE_ITEM, GET_ORDERS, FILTER_CATEGORIES,
   GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT,
   GET_MY_ORDERS, EMPTY_CART, GET_PRODUCT_DETAIL,
-  GET_WISHLIST, GET_USER, ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV,
-  SET_USER, EDIT_USER
-
-} from "../constants/index"
+  GET_WISHLIST, GET_USER, ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, 
+  SET_USER, EDIT_USER,
+  GET_ABOUT, UPDATE_ABOUT,
+  } from "../constants/index"
 
 export const getProducts = () => {
   return async (dispatch) => {
@@ -338,20 +338,17 @@ export const setLimit = (number) => {
 
 //add favorite
 
-export const addToWishList = (wish) => {
-  return async function () {
-    try {
-      const response = await axios.post(`${LOCALHOST_URL}/users/addToWishList`, wish)
-    } catch (error) {
-      console.log('Error al agregar a favoritos')
-    }
-  }
-}
-
-export const deleteWishItem = (itemId, email) => {
-
-  return async function () {
-    await axios.delete(`${LOCALHOST_URL}/wishlist/delete?productId=${itemId}&email=${email}`)
+export const toggleWishList = (wish) => {
+  return async function(dispatch){
+      try {
+        const response = await axios.post(`${LOCALHOST_URL}/users/toggleWish`, wish) 
+        dispatch({
+          type: GET_WISHLIST,
+          payload: response.data
+        })
+      } catch (error) {
+          console.log('Error al toggle')
+      }
   }
 }
 
@@ -364,4 +361,33 @@ export const getWishlist = (email) =>{
           payload: wishes.data
       })
   }
+} 
+
+// ----------------------------- ABOUT
+export const getAbout = () => {
+  return async (dispatch) => {
+    try {
+      const about = await axios.get(`${LOCALHOST_URL}/about`);
+      return dispatch({
+        type: GET_ABOUT,
+        payload: about.data,
+      })
+    } catch (error) {
+      console.log(error, 'getAbout ||Error||');
+    }
+  };
+}
+
+export const updateAbout = (id) => {
+  return async (dispatch) => {
+    try {
+      const about = await axios.put(`${LOCALHOST_URL}/about/update/${id}`);
+      return dispatch({
+        type: UPDATE_ABOUT,
+        payload: about.data,
+      })
+    } catch (error) {
+      console.log(error, 'updateAbout ||Error||');
+    }
+  };
 }

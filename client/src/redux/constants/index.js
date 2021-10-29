@@ -46,3 +46,7 @@ export const GET_ORDERS = "GET_ORDERS"
 export const GET_MY_ORDERS = "GET_MY_ORDERS"
 export const UPDATE_ORDER = "UPDATE_ORDER"
 export const DELETE_ORDER = "DELETE_ORDER"
+
+//---------------ABOUT
+export const GET_ABOUT = "GET_ABOUT"
+export const UPDATE_ABOUT = "UPDATE_ABOUT"
