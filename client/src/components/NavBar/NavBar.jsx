@@ -30,6 +30,11 @@ export default function NavBar({ showDropDownMenu }) {
   const hideDialog = () => setPopup({ ...popup, login: false });
   const toggleUserOptions = () => setPopup({ ...popup, profile: !popup.profile });
 
+  const hadleChangeLogout = ()=>{
+    localStorage.removeItem('items');
+    logout({returnTo:window.location.origin})
+}
+
   return (
     <nav className="navBar">
       <div className='landscape'>
@@ -42,12 +47,10 @@ export default function NavBar({ showDropDownMenu }) {
         </div>
 
         <div className='userActions'>
-          {isAuthenticated
-            ? <NavLink to="/cart" activeClassName='activeLink' >
+              <NavLink to="/cart" activeClassName='activeLink' >
                 <GrCart className='menuIcon' />
               </NavLink>
-            : <GrCart className='menuIcon' onClick={showDialog} />}
-
+          
           {isAuthenticated &&
             <div className='profilePic' onClick={toggleUserOptions}>
               {/*<FaUser className='menuIcon' />*/}
@@ -104,7 +107,7 @@ export default function NavBar({ showDropDownMenu }) {
               Your profile
             </NavLink>
           </li>
-          <li className='logoutOption' onClick={() => logout({returnTo: window.location.origin})}>
+          <li className='logoutOption' onClick={hadleChangeLogout}>
             Logout <FaArrowRight className='exitIcon'/>
           </li>
         </ul>
