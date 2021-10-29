@@ -33,6 +33,7 @@
     height: 300px;
     padding: 50px;
     background: white;
+    border-radius: 12px;
 }
 
 .product-tumb img {
@@ -44,6 +45,8 @@
     padding: 30px;
     height: 250px;
     background-color: #dcdcdc;
+    border-bottom-left-radius:12px;
+    border-bottom-right-radius:12px
 }
 
 .product-catagory {
