@@ -1,3 +1,4 @@
+const { LEGAL_TCP_SOCKET_OPTIONS } = require('mongodb');
 const User = require('../models/user');
 
 
@@ -120,6 +121,31 @@ const deleteUser = async (req, res) => {
 
 
 // -------------- WISH LIST
+
+const toggleWishList = async (req, res) => {
+    const {email, productId} = req.body
+    console.log('!!!!!!!!!!!!! EMAIL', email)
+    try {
+        const user = await User.findOne({ 'email': { '$regex': email, $options: 'i' } });
+
+        let wish = [...user.wishList]
+
+        if(wish.includes(productId)){
+            wish = wish.filter(id => id !== productId)
+        } else {
+            wish.push(productId)
+        }
+
+        user.wishList = wish
+        await user.save()
+        return res.json(wish)
+    } catch (e) {
+        console.log('WISHLIST ROUTE Error', e)
+        return res.json({Error: e})
+    }
+}
+
+
 const addToWishList = async (req, res) => {
     const { email, productId } = req.body
     try {
@@ -176,5 +202,6 @@ module.exports = {
     makeAdmin,
     addToWishList,
     getWishList,
-    deleteWishItem
+    deleteWishItem,
+    toggleWishList
 }

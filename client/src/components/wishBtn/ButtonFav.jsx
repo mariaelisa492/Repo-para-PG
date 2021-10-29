@@ -21,12 +21,10 @@ export default function({ id, user }) {
         email: user,
         productId: id
       }))
-
       dispatch(getWishlist(user))
       console.log('!!!!!!!! ADDDDDDDDD WISH', wish )
     } else {
       dispatch(deleteWishItem( id ,user))
-
       dispatch(getWishlist(user))
       console.log('!!!!!!!! deLETE WISH', wish )
     }
