@@ -30,7 +30,7 @@ export default function ItemCart({ item }) {
 
   Toast.fire({
       icon: 'warning',
-      title: 'The product was removed to the cart!'
+      title: 'The product was removed from the cart!'
   })
   };
 
