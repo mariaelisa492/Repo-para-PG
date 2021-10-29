@@ -7,10 +7,10 @@ import {
   REMOVE_ITEM, GET_ORDERS, FILTER_CATEGORIES,
   GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT,
   GET_MY_ORDERS, EMPTY_CART, GET_PRODUCT_DETAIL,
-  GET_WISHLIST, GET_USER, ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, 
+  GET_WISHLIST, GET_USER, ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV,
   SET_USER, EDIT_USER
 
-  } from "../constants/index"
+} from "../constants/index"
 
 export const getProducts = () => {
   return async (dispatch) => {
@@ -47,9 +47,11 @@ export const deleteProduct = (id) => {
       return dispatch({
         type: "DELETE_PRODUCT",
         payload: deleteProd.data.remove,
-      })
+      }
+      )
     }
     catch (error) {
+
       console.log("Error al eliminar productos");
     }
   }
@@ -72,49 +74,50 @@ export const getSingleProduct = (id) => {
 
 export const getProductDetail = (id) => {
   return async (dispatch) => {
-      try {
-          const product = await axios.get(`${LOCALHOST_URL}/products/${id}`);
-          return dispatch({
-              type: GET_PRODUCT_DETAIL,
-              payload: product.data
-          })
-      } catch (error) {
-          console.log(error)
-      }
+    try {
+      const product = await axios.get(`${LOCALHOST_URL}/products/${id}`);
+      return dispatch({
+        type: GET_PRODUCT_DETAIL,
+        payload: product.data
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 
 export const updateProduct = (product) => {
   return async (dispatch) => {
-      try {
-          const objProduct = 
-          { 
-            name:product.name, 
-            description: product.description, 
-            image: product.image, 
-            price: product.price, 
-            stock: product.stock, 
-            model: product.model,
-            category: product.category,
-            brand: product.brand,
-            isActive: true };
-          const products = await axios.put(`${LOCALHOST_URL}/products/${product._id}`, objProduct);
-          return dispatch({
-              type: "UPDATE_PRODUCT",
-              payload: products.data
-          })
-      } catch (error) {
-        console.log("Error al actualizar producto")   
-      }
+    try {
+      const objProduct =
+      {
+        name: product.name,
+        description: product.description,
+        image: product.image,
+        price: product.price,
+        stock: product.stock,
+        model: product.model,
+        category: product.category,
+        brand: product.brand,
+        isActive: true
+      };
+      const products = await axios.put(`${LOCALHOST_URL}/products/${product._id}`, objProduct);
+      return dispatch({
+        type: "UPDATE_PRODUCT",
+        payload: products.data
+      })
+    } catch (error) {
+      console.log("Error al actualizar producto")
+    }
   }
 }
 
 
 // --------------------------- ORDER ACTIONS
 export const setNewOrder = (order) => {
-  return  (dispatch) => {
-    try{
-      axios.post(`${LOCALHOST_URL}/orders/create`, order).then(setTimeout(()=>{dispatch(emptyCart())},2000))
+  return (dispatch) => {
+    try {
+      axios.post(`${LOCALHOST_URL}/orders/create`, order).then(setTimeout(() => { dispatch(emptyCart()) }, 2000))
     }
     catch (error) {
       console.log(error);
@@ -123,17 +126,17 @@ export const setNewOrder = (order) => {
 }
 
 export const getAllOrders = () => {
-    return async (dispatch) => {
-      try {
-        const orders = await axios.get(`${LOCALHOST_URL}/orders`);
-        return dispatch({
-          type: GET_ORDERS,
-          payload: orders.data,
-        });
-      } catch (error) {
-        console.log(error, 'getOrders ||Error||');
-      }
-    } 
+  return async (dispatch) => {
+    try {
+      const orders = await axios.get(`${LOCALHOST_URL}/orders`);
+      return dispatch({
+        type: GET_ORDERS,
+        payload: orders.data,
+      });
+    } catch (error) {
+      console.log(error, 'getOrders ||Error||');
+    }
+  }
 }
 
 export const getMyOrders = (user) => {
@@ -148,6 +151,39 @@ export const getMyOrders = (user) => {
       console.log(error, 'getMyOrders ||Error||');
     }
   };
+};
+
+export const updateOrders = (order) => {
+  return async (dispatch) => {
+    try {
+      const objOrder =
+      {
+        status: order.status,
+      };
+      const orders = await axios.put(`${LOCALHOST_URL}/orders/${order._id}`, objOrder);
+      return dispatch({
+        type: "UPDATE_ORDER",
+        payload: orders.data.order
+      })
+    } catch (error) {
+      console.log("Error al actualizar la orden")
+    }
+  }
+};
+
+export const deleteOrder = (id) => {
+  return async (dispatch) => {
+    try {
+      const deleteOrd = await axios.delete(`${LOCALHOST_URL}/orders/${id}`);
+      return dispatch({
+        type: "DELETE_ORDER",
+        payload: deleteOrd.data.remove
+      })
+    }
+    catch (error) {
+      console.log("Error al eliminar la orden");
+    }
+  }
 };
 
 // ------------------------ FILTROS Y ORDENAMIENTOS 
@@ -230,7 +266,7 @@ export const removeItem = (itemId) => {
     }
   }
 };
-                        
+
 // ----------------------------- USERS
 
 export const searchUserInDb = (email) => {
@@ -303,28 +339,28 @@ export const setLimit = (number) => {
 //add favorite
 
 export const addToWishList = (wish) => {
-  return async function(){
-      try {
-          const response = await axios.post(`${LOCALHOST_URL}/users/addToWishList`, wish) 
-      } catch (error) {
-          console.log('Error al agregar a favoritos')
-      }
+  return async function () {
+    try {
+      const response = await axios.post(`${LOCALHOST_URL}/users/addToWishList`, wish)
+    } catch (error) {
+      console.log('Error al agregar a favoritos')
+    }
   }
 }
 
 export const deleteWishItem = (itemId, email) => {
-  
-  return async function(){
-      await axios.delete(`${LOCALHOST_URL}/wishlist/delete?productId=${itemId}&email=${email}`)
+
+  return async function () {
+    await axios.delete(`${LOCALHOST_URL}/wishlist/delete?productId=${itemId}&email=${email}`)
   }
 }
 
-export const getWishlist = (email) =>{
-  return  async function(dispatch){
-      const response = await axios.get(`${LOCALHOST_URL}/users/wishlist/${email}`)
-      dispatch({
-          type: GET_WISHLIST,
-          payload: response.data
-      })
+export const getWishlist = (email) => {
+  return async function (dispatch) {
+    const response = await axios.get(`${LOCALHOST_URL}/users/wishlist/${email}`)
+    dispatch({
+      type: GET_WISHLIST,
+      payload: response.data
+    })
   }
-} 
+}
