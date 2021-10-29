@@ -25,6 +25,10 @@ router.post('/create-many', products.createManyProducts);
 
 router.post('/review', products.createProductReview);
 
+// crear pregunta
 router.post('/questions/:id', products.createProductQuestion);
+
+// obtener preguntas por producto
+router.get('/questions/:id', products.getProductQuestions);
 
 module.exports = router;

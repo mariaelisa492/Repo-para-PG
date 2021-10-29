@@ -8,7 +8,7 @@ import {
   GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT,
   GET_MY_ORDERS, EMPTY_CART, GET_PRODUCT_DETAIL,
   GET_WISHLIST, GET_USER, ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, 
-  SET_USER, EDIT_USER
+  SET_USER, EDIT_USER, GET_QUESTIONS_BY_PRODUCT,
 
   } from "../constants/index"
 
@@ -328,3 +328,33 @@ export const getWishlist = (email) =>{
       })
   }
 } 
+
+// ----------------------------- QUESTIONS
+
+export const getQuestionsByProduct = (productId) => {
+  console.log(productId, 'productId en getQuestionsByProduct');
+  return async (dispatch) => {
+    try {
+      const questions = await axios.get(`${LOCALHOST_URL}/products/questions/${productId}`);
+      return dispatch({
+        type: GET_QUESTIONS_BY_PRODUCT,
+        payload: questions.data,
+      })
+    } catch (error) {
+      console.log(error, 'getQuestionsByProduct ||Error||');
+    }
+  };
+}
+
+export const addQuestion = ({productId, question}) => {
+  console.log(productId, 'productId en addQuestion');
+  console.log(question, 'question en addQuestion');
+     axios.post(`${LOCALHOST_URL}/products/questions/${productId}`, question)
+     .then(res => console.log(res, 'res en addQuestion'))
+     .catch( err => console.log(err, 'err en addQuestion'))
+}
+
+
+
+
+

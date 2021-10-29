@@ -131,6 +131,8 @@ const createProductReview = async (req, res) => {
     }
 }
 
+// ---------------------------- Questions 
+
 const createProductQuestion = async (req, res) => {
     const { id } = req.params;
     const  question  = req.body;
@@ -150,6 +152,19 @@ const createProductQuestion = async (req, res) => {
     }
 }
 
+const getProductQuestions = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const product = await Products.findById(id);
+        res.status(200).json(product.questions);
+    } catch (error) {
+        res.status(400).json({
+            message: 'Something went wrong while trying to get the questions. Try again later.'
+        })
+    }
+}
+
+
 
   
 
@@ -164,4 +179,5 @@ module.exports = {
     createManyProducts,
     createProductReview,
     createProductQuestion,
+    getProductQuestions,
 }
