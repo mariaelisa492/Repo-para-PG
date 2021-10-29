@@ -61,7 +61,7 @@ export default function About({ handleClosePopup }) {
             auxInput.logo = urlLogo;
             auxInput.logoSmall = urlLogoSmall;
 
-            dispatch(updateAbout(auxInput));
+            dispatch(updateAbout(auxInput._id));
             setInputAbout({
                 email: '',
                 telephone: '',
