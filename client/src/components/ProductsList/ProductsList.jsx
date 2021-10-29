@@ -91,7 +91,7 @@ export default function ProductsList({ filteredProducts }) {
                 img={e.image}
                 name={e.name}
                 price={e.price}
-                rating={e.rating}
+                reviews={e.reviews}
                 _id={e._id}
                 isActive={e.isActive}
                 stock={e.stock}
