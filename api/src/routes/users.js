@@ -43,10 +43,6 @@ router.put('/makeAdmin/:id', users.makeAdmin)
 
 // Wish List
 router.post("/toggleWish", users.toggleWishList)
-router.post("/addToWishList", users.addToWishList);
 router.get("/wishlist/all", users.getWishList);
-router.delete('/wishlist/delete', users.deleteWishItem)
-
-
 
 module.exports = router;

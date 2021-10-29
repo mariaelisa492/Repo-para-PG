@@ -1,7 +1,7 @@
 import './button.css';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { addToWishList, deleteWishItem, getWishlist } from '../../redux/actions';
+import { toggleWishList } from '../../redux/actions';
 import { FaHeart } from 'react-icons/fa';
 
 
@@ -9,30 +9,27 @@ export default function({ id, user }) {
 
   const dispatch = useDispatch()
   
-  /* const [wish, setWish] = useState() */
-
   const wish = useSelector(state => state.wishList)
+  const [state, setState] = useState({wish: wish.includes(id)})
+
+  useEffect(() => {
+    setState({wish: wish.includes(id)})
+    console.log('!!!!!! Soy Effect', wish)
+  }, [wish])
+  
+
 
   const handleWish = (e) => {
     e.preventDefault()
-
-    if(!wish.includes(id)){
-      dispatch(addToWishList({
-        email: user,
-        productId: id
-      }))
-      dispatch(getWishlist(user))
-      console.log('!!!!!!!! ADDDDDDDDD WISH', wish )
-    } else {
-      dispatch(deleteWishItem( id ,user))
-      dispatch(getWishlist(user))
-      console.log('!!!!!!!! deLETE WISH', wish )
-    }
+    dispatch(toggleWishList({
+      email: user, 
+      productId: id
+    }))
   }
  
   return(
     <div className='fav-button-item'>
-      <b className={wish.includes(id)? "wishListTrue" : "wishListFalse"} onClick={e => handleWish(e)}><FaHeart /></b>
+      <b className={state.wish? "wishListTrue" : "wishListFalse"} onClick={e => handleWish(e)}><FaHeart /></b>
     </div>
   );
 }
