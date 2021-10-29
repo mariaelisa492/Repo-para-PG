@@ -355,12 +355,13 @@ export const deleteWishItem = (itemId, email) => {
   }
 }
 
-export const getWishlist = (email) => {
-  return async function (dispatch) {
-    const response = await axios.get(`${LOCALHOST_URL}/users/wishlist/${email}`)
-    dispatch({
-      type: GET_WISHLIST,
-      payload: response.data
-    })
+export const getWishlist = (email) =>{
+  console.log('ACTIONS EMAAAAAAAAAAIL', email)
+  return  async function(dispatch){
+      const wishes = await axios.get(`${LOCALHOST_URL}/users/wishlist/all?email=${email}`)
+      dispatch({
+          type: GET_WISHLIST,
+          payload: wishes.data
+      })
   }
 }

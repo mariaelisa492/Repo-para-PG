@@ -23,7 +23,7 @@ export default function InfoComponent() {
                     <div className='iconAbout'><FaMapMarkedAlt /></div>
 
                     <div>
-                        <h2>Ubication</h2>
+                        <h2>Adress</h2>
                         <p className='textAbout'>742 Evergreen Terrace</p>
                     </div>
                 </div>
@@ -33,7 +33,7 @@ export default function InfoComponent() {
 
                     <div>
                         <h2>Email</h2>
-                        <p className='textAbout'>wavemusic@proto.com</p>
+                        <p className='textAbout'>wavemusicnotify@gmail.com</p>
                     </div>
                 </div>
 

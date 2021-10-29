@@ -138,6 +138,16 @@
    border-radius: 4px;
 }
 
+.btnWish{
+    color: #413e3e;
+    border-radius: 4px;
+}
+
+.btnWish:hover{
+    cursor: pointer;
+    color: #1f1f1f;
+}
+
 .btnOrders:hover{
     background-color: #0465a5;
     cursor: pointer;

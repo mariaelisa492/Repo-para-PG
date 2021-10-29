@@ -13,7 +13,7 @@ for (let key in categories) {
   AllCategories = [...AllCategories, ...categories[key]]
 }
 
-export default function Create({ handleClosePopup }) {
+export default function Create({ handleClosePopup, showPopup }) {
   const dispatch = useDispatch();
   const refFileInput = useRef();
 
@@ -59,6 +59,8 @@ export default function Create({ handleClosePopup }) {
       category: ''
     });
     handleClosePopup();
+    showPopup(true);
+    setTimeout(() => showPopup(false), 1000);
   }
 
   const resetFileInput = () => {
@@ -74,7 +76,7 @@ export default function Create({ handleClosePopup }) {
         }}
         className='formCreateProducts containerformProducts'
       >
-        <button onClick={handleClosePopup} className='btnCloseFormProducts'><FaTimes /></button>
+        <button onClick={handleClosePopup} className='btnCloseFormProducts containerformProducts'><FaTimes /></button>
 
         <div>
           <div>

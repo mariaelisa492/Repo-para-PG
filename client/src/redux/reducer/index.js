@@ -6,7 +6,7 @@ import {
 	ADD_TO_CART, REMOVE_FROM_CART,
 	REMOVE_ITEM, EMPTY_CART, FILTER_CATEGORIES, SET_LIMIT,
 	GET_MY_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT, GET_PRODUCT_DETAIL,
-	ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, SET_USER, EDIT_USER, UPDATE_ORDER, DELETE_ORDER
+	ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, SET_USER, EDIT_USER, UPDATE_ORDER, DELETE_ORDER, GET_WISHLIST
 } from "../constants/index"
 
 
@@ -26,10 +26,11 @@ const initialState = {
 	order: {},
 	orders: [],
 	productDetail: {},
-	productsFavs: [],
+	wishList:[],
 };
 
 export const rootReducer = (state = initialState, action) => {
+
 	switch (action.type) {
 
 		case GET_PRODUCTS:
@@ -126,7 +127,6 @@ export const rootReducer = (state = initialState, action) => {
 			};
 
 		// ---- FILTROS ---- //
-
 		case FILTER_PRICE_ONLY_LESSTHAN:
 			var filt1;
 			if (state.filteredTF) {
@@ -159,9 +159,9 @@ export const rootReducer = (state = initialState, action) => {
 
 		case FILTER_PRICE_RANGE:
 			var filt3;
-			// Si filtramos de nuevo sobre el filtrado anterior, no habra coincidencias
-			// Recarguemos esto primero.  SOLUCION PROVISORIA, llamado a una ruta con 
-			// filtrado seria lo ideal.
+      // Si filtramos de nuevo sobre el filtrado anterior, no habra coincidencias
+      // Recarguemos esto primero.  SOLUCION PROVISORIA, llamado a una ruta con 
+      // filtrado seria lo ideal.
 			var temp;
 			if (state.category) {
 				temp = state.products.filter(p => p.category === state.category);
@@ -180,22 +180,22 @@ export const rootReducer = (state = initialState, action) => {
 				...state,
 				filteredProducts: [...filt3],
 				filteredTF: true,
-				priceRange: true
+        		priceRange: true
 			};
 
 		case FILTER_CATEGORIES:
 			var filt4;
 			console.log(action.payload, 'categories Filters redux')
-			/*
-				  if (state.filteredTF) {
-					  filt4 = state.filteredProducts.filter((e) => e.category === action.payload)
-				  }
-				  else {
-					  filt4 = state.products.filter((e) => e.category === action.payload)
-				  }
-			*/
-			// Arreglo provisorio, lo ideal seria una llamada al servidor
-			filt4 = state.products.filter((e) => e.category === action.payload)
+      	/*
+			if (state.filteredTF) {
+				filt4 = state.filteredProducts.filter((e) => e.category === action.payload)
+			}
+			else {
+				filt4 = state.products.filter((e) => e.category === action.payload)
+			}
+      	*/
+      	// Arreglo provisorio, lo ideal seria una llamada al servidor
+      		filt4 = state.products.filter((e) => e.category === action.payload)
 			return {
 				...state,
 				filteredProducts: [...filt4],
@@ -213,9 +213,7 @@ export const rootReducer = (state = initialState, action) => {
 			}
 
 		// ---- Cart ---- //
-
 		case ADD_TO_CART:
-			// modificar name por id
 			const item = state.products.find(item => item._id === action.payload.id)
 			const inCart = state.cart.find(item => item._id === action.payload.id ? true : false)
 			return {
@@ -249,9 +247,7 @@ export const rootReducer = (state = initialState, action) => {
 				cart: []
 			};
 
-
 		//	--------------------------- USERS
-
 		case SET_USER:
 
 			return {
@@ -266,8 +262,6 @@ export const rootReducer = (state = initialState, action) => {
 				user: action.payload
 			}
 		// ---------------- PAGINATION
-
-
 		case SET_LIMIT:
 			return {
 				...state,
@@ -279,16 +273,13 @@ export const rootReducer = (state = initialState, action) => {
 				...state,
 				productDetail: action.payload
 			};
-		case ADD_PRODUCT_FAV:
-			let searchFav = state.productsFavs.filter(product => product.name === action.payload.name)
+		// -------- WishList
+		case GET_WISHLIST:
+			const wishh = action.payload
+			console.log('SOOOOOOOOOOY WISHHHH', wishh)
 			return {
 				...state,
-				productsFavs: searchFav.length > 0 ? state.productsFavs : [action.payload, ...state.productsFavs]
-			};
-		case REMOVE_PRODUCT_FAV:
-			return {
-				...state,
-				productsFavs: state.productsFavs.filter((e) => e._id !== action.payload.id)
+				wishList: action.payload
 			}
 		default:
 			return state;

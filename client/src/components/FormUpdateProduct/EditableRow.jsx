@@ -254,7 +254,7 @@ export default function EditableRow({ handleClosePopup, id }) {
 
             <AlertPopup
                 activeAlert={activeAlertUpgrade}
-                actionAlert='upgrade'
+                actionAlert='update'
                 handleOpenAlert={handeOpenAlertUpgrade}
                 handleSuccess={handleUpgradeSuccesForm}
             />

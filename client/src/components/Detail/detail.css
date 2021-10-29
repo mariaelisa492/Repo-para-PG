@@ -165,7 +165,17 @@
   .rightView 
   {
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     padding: 20px;
+  }
+}
+
+@media (max-width: 600px)
+{
+  .detail 
+  {
+    margin: 20px auto;
+    width: 90%;
   }
 }

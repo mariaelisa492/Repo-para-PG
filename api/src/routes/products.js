@@ -23,4 +23,6 @@ router.delete('/:id', products.deleteProduct);
 //crear muchos productos
 router.post('/create-many', products.createManyProducts);
 
+router.post('/review', products.createProductReview);
+
 module.exports = router;
