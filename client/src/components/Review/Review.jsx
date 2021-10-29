@@ -13,9 +13,7 @@ function Review({ review, rating, user }) {
         
         <div className="reviewContainer">
             <div className="info-review">
-                <div className="review-user">
-                    <h3 className="reviewUser"> User: {user} </h3>
-                </div>
+              
                 <div className="ratingReview">
                     <h3 className="ratingProduct">Rating: <FaStar
                         size={18}
@@ -24,7 +22,8 @@ function Review({ review, rating, user }) {
                     </h3>
                 </div>
                 <div className="ratingReview">
-                    <h3 className="reviewText"> "{review}" </h3>
+                    <p className="reviewTextUser"> {user} said...   </p>
+                    <p className="reviewText2">  "{review}" </p>
                 </div>
             </div>
 
