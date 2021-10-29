@@ -1,0 +1,11 @@
+.containerWishList {
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+.wishesContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+

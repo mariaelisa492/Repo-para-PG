@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import AddToCart from '../AddToCart/Addtocart';
 import Rating from '../Rating/Rating';
 import ImageSlider from '../ImageSlider/ImageSlider';
-import { getProductDetail, addToWishList } from '../../redux/actions';
-import { FaHeart } from 'react-icons/fa';
+import ButtonFav from '../wishBtn/ButtonFav';
+import { getProductDetail, addToWishList, deleteWishItem } from '../../redux/actions';
+import { FaHeart, FaWizardsOfTheCoast } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import Loader from "../Loader/Loader";
 import ReviewCard from '../Review/ReviewCard';
@@ -13,6 +14,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { ReviewForm } from '../Review/ReviewForm';
 import ReactModal from "react-modal";
 import Modal from "../Modal/Modal";
+import { getWishlist } from '../../redux/actions';
 
 //>> temp solution to rating
 const styleRating = {
@@ -48,23 +50,14 @@ export default function () {
     setShowPopupReview(!showPopupReview);
   }
 
-
-
-
-
   
   useEffect(() => {
     window.scrollTo(0, 0)
+    dispatch(getWishlist(user?.email))
     dispatch(getProductDetail(id))
-  }, [dispatch])
+  }, [dispatch, ButtonFav])
   
-  const handleWish = (e) => {
-    e.preventDefault()
-    dispatch(addToWishList({
-      email: user.email,
-      productId: id
-    }))
-  }
+ 
   
   return (
     <div className='fullview'>
@@ -76,7 +69,7 @@ export default function () {
 
               <div className='leftView'>
                 <div className='topDescription'>
-                  <h3>{category} <b onClick={e => handleWish(e)}><FaHeart /></b></h3>
+                  <h3>{category} <b> <ButtonFav id={id} user={user?.email}/> </b> </h3>
                   <h1>{name}</h1>
                   <p>{description.split('.')[0]}.</p>
                 </div>
