@@ -9,6 +9,7 @@ import HistoryCard from "../historyCartCard/historyCard"
 import { FiArchive } from "react-icons/fi";
 import './UserProfile.css'
 import EditUserForm from "../EditUserForm/EditUserForm";
+import WishListProfile from "../wishListProfile/WishListProfile";
 
 export default function UserProfile() {
 
@@ -73,7 +74,6 @@ export default function UserProfile() {
         return (
             <div>
 
-
                 {toggle ?
                 toggleOrder ?
                     <div className="historyContainer">
@@ -86,7 +86,7 @@ export default function UserProfile() {
                     <div className="favContainer">
                         <div className="soyH1" onClick={(e) => { handleToggle(e) }}>{"back"} </div>
                         <div className="">
-                            <h1>{wishes}</h1>
+                            <WishListProfile wishes={wishes}/>
                         </div>
                     </div>
                     :

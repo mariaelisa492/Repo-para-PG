@@ -314,7 +314,11 @@ export const addToWishList = (wish) => {
 
 export const deleteWishItem = (itemId, email) => {
   return async function(){
-      await axios.delete(`${LOCALHOST_URL}/wishlist/delete?productId=${itemId}&email=${email}`)
+    try{
+      await axios.delete(`${LOCALHOST_URL}/users/wishlist/delete?productId=${itemId}&email=${email}`)
+    } catch {
+      console.log('Error al quitar a favoritos')
+    }
   }
 }
 

@@ -120,10 +120,8 @@ const deleteUser = async (req, res) => {
 
 
 // -------------- WISH LIST
-
 const addToWishList = async (req, res) => {
     const { email, productId } = req.body
-
     try {
       const user = await User.findOne({ 'email': { '$regex': email, $options: 'i' } });
       console.log('!!!!!!!!!! SOY USER', user)
@@ -139,17 +137,21 @@ const addToWishList = async (req, res) => {
   
 const getWishList = async(req, res) => {
     const { email } = req.query
+    try {
     console.log('EEEEEEEEEMAIL', req.query)
     
     const user = await User.findOne({ 'email': { '$regex': email, $options: 'i' } })
-   console.log('SOOOOOOOOOOOOOOOOY LOS WISHEs', user.wishList)
+    console.log('SOOOOOOOOOOOOOOOOY LOS WISHEs', user.wishList)
     res.json(user.wishList)
+    } catch (error) {
+        console.log('Error en acceder a la lista de deseos', error)
+    }
 };
   
   const deleteWishItem = async (req, res) => {
-    const {productId, email} = req.query
+      const {productId, email} = req.query
+   try {
     console.log('EEEEEEEEEMAIL', email)
-
 
     const user = await User.findOne({ 'email': { '$regex': email, $options: 'i' } });
     console.log('EEEEEEEEEMAIL', user)
@@ -158,7 +160,10 @@ const getWishList = async(req, res) => {
   
     await user.save()
   
-    res.status(200).json({msg: 'Item borrado'})
+    res.status(200).json({msg: 'Item borrado'}) 
+   } catch (e) {
+    console.log("No se pudo quitar el producto de favoritos", error); 
+   }
   }
 
 

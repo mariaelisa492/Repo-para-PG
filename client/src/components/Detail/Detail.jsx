@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import AddToCart from '../AddToCart/Addtocart';
 import Rating from '../Rating/Rating';
 import ImageSlider from '../ImageSlider/ImageSlider';
+import ButtonFav from '../wishBtn/ButtonFav';
 import { getProductDetail, addToWishList, deleteWishItem } from '../../redux/actions';
 import { FaHeart, FaWizardsOfTheCoast } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
@@ -29,7 +30,6 @@ export default function () {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0()
   const productDetail = useSelector(state => state.productDetail);
-  const wish = useSelector(state => state.wishList)
 
   const { image, name, description, category, _id, stock, brand, model, price, reviews } = productDetail;
 
@@ -48,25 +48,11 @@ export default function () {
   
   useEffect(() => {
     window.scrollTo(0, 0)
-    dispatch(getWishlist(user.email))
+    dispatch(getWishlist(user?.email))
     dispatch(getProductDetail(id))
-  }, [dispatch])
+  }, [dispatch, ButtonFav])
   
-  const wishess = wish.includes(id)
-  const handleWish = (e) => {
-    e.preventDefault()
-  
-    if(!wishess){
-      dispatch(addToWishList({
-        email: user.email,
-        productId: id
-      }))
-      console.log('!!!!!!!! ADDDDDDDDD WISH', wish )
-    } else {
-      dispatch(deleteWishItem( id,user.email))
-      console.log('!!!!!!!! deLETE WISH', wish )
-    }
-  }
+ 
   
   return (
     <div className='fullview'>
@@ -78,7 +64,7 @@ export default function () {
 
               <div className='leftView'>
                 <div className='topDescription'>
-                  <h3>{category} <b onClick={e => handleWish(e)}><FaHeart /></b></h3>
+                  <h3>{category} <b> <ButtonFav id={id} user={user?.email}/> </b> </h3>
                   <h1>{name}</h1>
                   <p>{description.split('.')[0]}.</p>
                 </div>

@@ -81,11 +81,13 @@
   text-align: left;
 }
 
- .topDescription b
-{
-  
-  color: #6b6969ed;
+/* .topDescription .wishListTrue{
+  color: none
 }
+ .topDescription .wishListFalse
+{
+  color: #6b6969ed;
+} */
 /*
 .imageSlider
 {
