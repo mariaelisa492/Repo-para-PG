@@ -1,5 +1,5 @@
 import "./navBar.css";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import logo from "../../images/waveMusic.png";
 import logoSmall from "../../images/waveMusicLogoSmall.png";
 import { Search } from "../Search/SearchBar";
@@ -10,6 +10,8 @@ import { NavLink } from "react-router-dom";
 import { FaBars, FaUser, FaSearch, FaArrowRight } from 'react-icons/fa';
 import { GrCart } from 'react-icons/gr';
 import Modal from "../Modal/Modal";
+import axios from "axios";
+import { LOCALHOST_URL } from "../../redux/constants";
 
 
 export default function NavBar({ showDropDownMenu }) {
@@ -21,8 +23,19 @@ export default function NavBar({ showDropDownMenu }) {
   const [ popup, setPopup ] = useState({
     search: false,
     login: false,
-    profile: false,
+    profile: false, 
   });
+
+
+    function createUser() {
+      axios.post(`${LOCALHOST_URL}/users/signup`, { email: user.email, username: user.nickname })
+      console.log("ACA DEBERIA APARECER EL CREATE USER")
+  }
+
+    setTimeout(() => {
+    isAuthenticated ? createUser() : console.log("NO ESTA AUTENTICADO")
+    }, 5000)
+   
 
   const showBar = () => setPopup({ ...popup, search: true });
   const hideBar = () => setPopup({ ...popup, search: false });

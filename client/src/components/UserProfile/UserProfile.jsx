@@ -113,12 +113,12 @@ export default function UserProfile() {
                             {userProfile.user ?
                                 <div className='userName'>
                                     <button className='userBtnTopRight' onClick={toggleModal}><FaRegEdit className='editIcon' />Edit</button>
-                                    <p>First Name: {userProfile.user[0].firstName}</p>
-                                    <p>Last Name: {userProfile.user[0].lastName}</p>
-                                    <p>Gender: {userProfile.user[0].gender}</p>
-                                    <p>Nationality: {userProfile.user[0].nationality}</p>
-                                    <p>Birthdate: {userProfile.user[0].birthDate}</p>
-                                    <p>Address: {userProfile.user[0].address}</p>
+                                    <p>First Name: {userProfile.user[0]?.firstName}</p>
+                                    <p>Last Name: {userProfile.user[0]?.lastName}</p>
+                                    <p>Gender: {userProfile.user[0]?.gender}</p>
+                                    <p>Nationality: {userProfile.user[0]?.nationality}</p>
+                                    <p>Birthdate: {userProfile.user[0]?.birthDate}</p>
+                                    <p>Address: {userProfile.user[0]?.address}</p>
                                 </div>
                                 : null}
 
@@ -133,7 +133,7 @@ export default function UserProfile() {
                         </div>
 
                         <ReactModal isOpen={showPopupEditUser} className='reactModalContent' overlayClassName='reactModalOverlay'>
-                            <EditUserForm _id={userProfile.user ? userProfile.user[0]._id : null} handleClosePopUp={toggleModal} />
+                            <EditUserForm _id={userProfile.user ? userProfile.user[0]?._id : null} handleClosePopUp={toggleModal} />
                         </ReactModal>
 
                     </div>
