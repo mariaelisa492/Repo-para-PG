@@ -302,20 +302,17 @@ export const setLimit = (number) => {
 
 //add favorite
 
-export const addToWishList = (wish) => {
-  return async function(){
+export const toggleWishList = (wish) => {
+  return async function(dispatch){
       try {
-          const response = await axios.post(`${LOCALHOST_URL}/users/addToWishList`, wish) 
+        const response = await axios.post(`${LOCALHOST_URL}/users/toggleWish`, wish) 
+        dispatch({
+          type: GET_WISHLIST,
+          payload: response.data
+        })
       } catch (error) {
-          console.log('Error al agregar a favoritos')
+          console.log('Error al toggle')
       }
-  }
-}
-
-export const deleteWishItem = (itemId, email) => {
-  
-  return async function(){
-      await axios.delete(`${LOCALHOST_URL}/wishlist/delete?productId=${itemId}&email=${email}`)
   }
 }
 

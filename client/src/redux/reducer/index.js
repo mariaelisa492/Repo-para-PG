@@ -260,11 +260,9 @@ export const rootReducer = (state = initialState, action) => {
 			};
 		// -------- WishList
 		case GET_WISHLIST:
-			const wishh = action.payload
-			console.log('SOOOOOOOOOOY WISHHHH', wishh)
 			return {
 				...state,
-				wishList: action.payload
+				wishList: [...action.payload]
 			}
 		// --------- About
 		case GET_ABOUT:
