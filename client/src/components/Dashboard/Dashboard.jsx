@@ -147,13 +147,6 @@ export default function Dashboard() {
     
     return (
         <>
-            <div>
-                <NavBar />
-            </div>
-            <div>
-                <NavLink to="/admin/sales">Sales</NavLink>
-            </div>
-            <NavLink to="/admin/users">Users</NavLink>
             <div className="add-button-div">
                 <div className="table">
                     <DataTable
@@ -201,10 +194,6 @@ export default function Dashboard() {
             <ReactModal isOpen={showPopupUpdateAbout} className='reactModalContent' overlayClassName='reactModalOverlay'>
                 <FormAbout handleClosePopup={handleClosePopupUpdateAbout} />
             </ReactModal>
-
-            <div>
-                <Footer />
-            </div>
         </>
     )
 };

@@ -107,9 +107,6 @@ const AdminSales = () => {
 
     return (
         <>
-            <div>
-                <NavBar />
-            </div>
             <NavLink to="/admin">My products</NavLink>
             <DataTable
                 columns={columns}
@@ -121,10 +118,6 @@ const AdminSales = () => {
                 paginationRowsPerPageOptions={[5, 8]}
                 pagination
             />
-            <div>
-                <Footer />
-            </div>
-
         </>
     )
 }

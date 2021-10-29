@@ -15,6 +15,7 @@ import { Users } from './components/Users/Users';
 import Footer from './components/Footer/Footer';
 import AdminSales from './components/AdminSales/AdminSales';
 import InfoCommerce from './pages/InfoCommerce';
+import DashStyles from './components/DashStyles/DashStyles';
 
 function App() {
   const dispatch = useDispatch()
@@ -29,12 +30,12 @@ function App() {
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/detail/:id" component={Detail} />
         <Route exact path="/cart" component={ShoppingCart} />
-        <Route exact path="/admin" component={Dashboard} />
         <Route exact path="/" component={Home} />
         <Route exact path='/categories' component={Categories} />
         <Route exact path="/admin/sales" component={AdminSales} />
-        <Route exact path = "/admin/users" component={Users}/>
-        <Route exact path = '/about' component={InfoCommerce}/>
+        <Route exact path="/admin/users" component={Users} />
+        <Route exact path='/about' component={InfoCommerce} />
+        <Route exact path="/admin" component={DashStyles} />
       </Switch>
     </div>
   );
