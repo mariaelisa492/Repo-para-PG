@@ -40,3 +40,7 @@ export const GET_PRODUCT_DETAIL = "GET_PRODUCT_DETAIL"
 
 export const ADD_PRODUCT_FAV = "ADD_PRODUCT_FAV"
 export const REMOVE_PRODUCT_FAV = "REMOVE_PRODUCT_FAV"
+
+//---------------ABOUT
+export const GET_ABOUT = "GET_ABOUT"
+export const UPDATE_ABOUT = "UPDATE_ABOUT"
