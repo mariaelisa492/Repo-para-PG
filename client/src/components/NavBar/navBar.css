@@ -139,7 +139,7 @@
 .profileOptions 
 {
   position: absolute;
-  top: 85px;
+  /*top: 85px;*/
   right: 5px;
   background-color: #fff;
   color: #909090;
@@ -147,6 +147,7 @@
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5), 0px 0px 6px rgba(0, 0, 0, 0.5);
+  transition: all 750ms;
 }
 
 .profileOptions ul li:first-child
@@ -182,12 +183,14 @@
 
 .showProfOpt 
 {
-  display: block;
+  top: 85px;
+  opacity: 1;
 }
 
 .hideProfOpt 
 {
-  display: none;
+  top: -200px;
+  opacity: 0;
 }
 
 .cartIcon 
