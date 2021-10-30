@@ -7,6 +7,7 @@ export function QuestionForm({productId, nickname, close}){
     const [question, setQuestion] = React.useState({
         question: '',
         user: nickname,
+        productq: productId
     });
 
  
@@ -19,10 +20,10 @@ export function QuestionForm({productId, nickname, close}){
         });
     }
 
-    const handleSubmit= (e, question, productId) => {
+    const handleSubmit= (e, question) => {
         e.preventDefault();
-        console.log(productId, 'productId en handleSubmit');    
-        addQuestion({question, productId})
+        console.log(question.productId, 'productId en handleSubmit');    
+        addQuestion({question})
         window.location.reload();   
     }
 

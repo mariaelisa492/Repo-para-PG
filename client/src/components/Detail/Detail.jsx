@@ -33,7 +33,7 @@ export default function () {
   const { user, isAuthenticated } = useAuth0()
   const productDetail = useSelector(state => state.productDetail);
 
-  const { image, name, description, category, _id, stock, brand, model, price, reviews } = productDetail;
+  const { image, name, description, category, _id, stock, brand, model, price, reviews, questions } = productDetail;
   const [modalQuestionOpen, setModalQuestionOpen] = useState(false);
 
   function handleModalQuestion() {
@@ -110,7 +110,7 @@ export default function () {
           </div>
 
           <div >
-            {isAuthenticated?<button onClick={toggleModal} className="reviewBtn"> make a review</button>:<button className="reviewBtn" onClick={showDialog}> make a review</button>}
+            {isAuthenticated?<button onClick={toggleModal} className="reviewBtn"> Make a review</button>:<button className="reviewBtn" onClick={showDialog}> make a review</button>}
           
           </div>
 
@@ -122,12 +122,12 @@ export default function () {
           </div>
           {isAuthenticated ?
           <ReactModal isOpen={modalQuestionOpen} className='modalQuestionForm' overlayClassName='reactModalOverlay' >
-            <QuestionForm productId={_id} nickname={user?.nickname} close={handleModalQuestion} />
+            <QuestionForm productId={id} nickname={user?.nickname} close={handleModalQuestion} />
           </ReactModal>
           : null
             }
         <div className='questionsInDetails'>
-          <Questions productId={_id}/>
+          <Questions productId={id} questions={questions}/>
         </div>
 
           <ReactModal isOpen={showPopupReview} className='reactModalContent' overlayClassName='reactModalOverlay'>

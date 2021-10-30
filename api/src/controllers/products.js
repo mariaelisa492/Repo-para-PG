@@ -149,6 +149,7 @@ const createProductQuestion = async (req, res) => {
     try {
         console.log(question, 'question in api')
         const product = await Products.findById(id);
+        console.log(product, 'product')
         product.questions.push(question);
         await product.save();
         res.status(200).json({
@@ -166,6 +167,7 @@ const getProductQuestions = async (req, res) => {
     const { id } = req.params;
     try {
         const product = await Products.findById(id);
+        console.log('||||||||||||||',product.questions, 'product.questions', product.price, 'product.price','|||||||||')
         res.status(200).json(product.questions);
     } catch (error) {
         res.status(400).json({

@@ -9,7 +9,7 @@ import {
   GET_MY_ORDERS, EMPTY_CART, GET_PRODUCT_DETAIL,
   GET_WISHLIST, GET_USER, ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, 
   SET_USER, EDIT_USER, GET_QUESTIONS_BY_PRODUCT, GET_ALL_UNANSWERED_QUESTIONS,
-  GET_ABOUT, UPDATE_ABOUT,
+  GET_ABOUT, UPDATE_ABOUT, CLEAR_QUESTIONS,
   } from "../constants/index"
 
 export const getProducts = () => {
@@ -365,25 +365,10 @@ export const getWishlist = (email) =>{
 
 // ----------------------------- QUESTIONS
 
-export const getQuestionsByProduct = (productId) => {
-  console.log(productId, 'productId en getQuestionsByProduct');
-  return async (dispatch) => {
-    try {
-      const questions = await axios.get(`${LOCALHOST_URL}/products/questions/p/${productId}`);
-      return dispatch({
-        type: GET_QUESTIONS_BY_PRODUCT,
-        payload: questions.data,
-      })
-    } catch (error) {
-      console.log(error, 'getQuestionsByProduct ||Error||');
-    }
-  }
-}
-
-export const addQuestion = ({productId, question}) => {
-  console.log(productId, 'productId en addQuestion');
+export const addQuestion = ({question}) => {
+  console.log(question.productq, 'productq en addQuestion');
   console.log(question, 'question en addQuestion');
-     axios.post(`${LOCALHOST_URL}/products/questions/${productId}`, question)
+     axios.post(`${LOCALHOST_URL}/products/questions/p/${question.productq}`, question)
      .then(res => console.log(res, 'res en addQuestion'))
      .catch( err => console.log(err, 'err en addQuestion'))
 }
@@ -401,6 +386,7 @@ export const getAllUnansweredQuestions = () => {
     }
   };
 }
+
 
 // ----------------------------- ABOUT
 
