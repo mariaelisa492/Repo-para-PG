@@ -10,6 +10,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import AlertPopup from '../AlertPopups/AlertPopups';
 import Modal from "../Modal/Modal";
 import FormAbout from '../FormAbout/FormAbout';
+import { MdOutlineAddCircle } from 'react-icons/md'
 import "./Dashboard.css";
 
 export default function Dashboard() {
@@ -140,11 +141,14 @@ export default function Dashboard() {
     const handleClosePopupUpdateAbout = () => {
         setShowPopupUpdateAbout(false)
     }
-    
+
     return (
         <>
-           {/*  <div className="add-button-div">
-                <div className="table"> */}
+
+                <div className="table">
+            <div className="add-button-div">
+                    <button className='create add-button' onClick={handleOpenPopupCreate}><MdOutlineAddCircle size={28 }/></button>
+                    </div>
                     <DataTable
                         columns={columns}
                         data={items}
@@ -156,8 +160,8 @@ export default function Dashboard() {
                         paginationRowsPerPageOptions={[5, 8]}
                         pagination
                     />
-            
-           
+                </div>
+
 
 
             <ReactModal isOpen={showPopupCreate} className='reactModalContent' overlayClassName='reactModalOverlay'>

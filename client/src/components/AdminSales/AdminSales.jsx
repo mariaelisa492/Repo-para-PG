@@ -35,7 +35,7 @@ const AdminSales = () => {
 
     //-------------  PARA ACTUALIZAR EL STATUS DE LAS ORDENES
 
-   
+
 
 
     const columns = [
@@ -50,18 +50,13 @@ const AdminSales = () => {
             sortable: true
         },
         {
-            name: "Brand",
-            selector: "items[0].brand",
+            name: "Price by unit",
+            selector: "items[0].price",
             sortable: true
         },
         {
             name: "Quantity",
             selector: "items[0].qty",
-            sortable: true
-        },
-        {
-            name: "Price by unit",
-            selector: "items[0].price",
             sortable: true
         },
         {
@@ -102,17 +97,19 @@ const AdminSales = () => {
 
     return (
         <>
-            <DataTable
-                columns={columns}
-                data={ordenes}
-                title="My sales"
-                striped
-                highlightOnHover
-                paginationPerPage={5}
-                paginationRowsPerPageOptions={[5, 8]}
-                pagination
-                responsive
-            />
+            <div className="admin-sales-body">
+                <DataTable
+                    columns={columns}
+                    data={ordenes}
+                    title="My sales"
+                    striped
+                    highlightOnHover
+                    paginationPerPage={5}
+                    paginationRowsPerPageOptions={[5, 8]}
+                    pagination
+                    responsive
+                />
+            </div>
         </>
     )
 }

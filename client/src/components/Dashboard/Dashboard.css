@@ -1,30 +1,27 @@
-.add-button {
-  padding: 5px 25px;
-  background: rgba(19, 144, 247, 0.219);
-  color: #3a97fb;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 17px;
-  height: 40px;
-}
-
 .table {
-  height: 74vh;
+  /* height: 74vh;
   width: 85vw;
-  margin: 7vw -76px 35px 1vw;
+  margin: 7vw -76px 35px 1vw; */
+  width: 100%;
+padding-left: 81px;
+padding-right: 1px;
+padding-top: 60px;
 }
 
 .create {
   padding: 6px 0 0 0;
   margin: 0 0 0 0;
   height: 40px;
-  width: 84px;
-  text-align: center;
-}
+  width: 80px;
+  float: inline-end;
+  margin-right: 20px;
+  background-color: #24262b;
+  color: white;
+  }
 
 .add-button:hover {
-  background-color: rgba(19, 144, 247, 0.363);
-  transition: 0.4s;
+  background-color: rgba(10, 10, 10, 0.349);
+  transition: 0.3s;
 }
 
 .add-button-div {
@@ -32,6 +29,7 @@
   display: flex;
   justify-content: center;
   margin-left: 12px;
+  float: inline-end;
 }
 
 .actions {
