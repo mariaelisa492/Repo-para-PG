@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { LOCALHOST_URL } from '../../../redux/constants';
+import './FormAnswerQuestion.css'
 
 export function FormAnswerQuestion({questA}) {
     const question = questA[0]

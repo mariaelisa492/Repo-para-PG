@@ -18,7 +18,7 @@ function Footer() {
         dispatch(searchUserInDb(user?.email));
     }, [user]);
     const U = useSelector(state => state.user);
-    console.log(user, 'aaaaaaaaaaaaaa', U);
+   
     return (
         <footer className="footer">
             <div className="containerF">
