@@ -8,7 +8,7 @@ import {
   GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT,
   GET_MY_ORDERS, EMPTY_CART, GET_PRODUCT_DETAIL,
   GET_WISHLIST, GET_USER, ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, 
-  SET_USER, EDIT_USER, GET_QUESTIONS_BY_PRODUCT,
+  SET_USER, EDIT_USER, GET_QUESTIONS_BY_PRODUCT, GET_ALL_UNANSWERED_QUESTIONS,
 
   } from "../constants/index"
 
@@ -354,6 +354,19 @@ export const addQuestion = ({productId, question}) => {
      .catch( err => console.log(err, 'err en addQuestion'))
 }
 
+export const getAllUnansweredQuestions = () => {
+  return async (dispatch) => {
+    try {
+      const questions = await axios.get(`${LOCALHOST_URL}/products/questions/allUnanswered`);
+      return dispatch({
+        type: GET_ALL_UNANSWERED_QUESTIONS,
+        payload: questions.data,
+      })
+    } catch (error) {
+      console.log(error, 'getAllUnansweredQuestions ||Error||');
+    }
+  };
+}
 
 
 

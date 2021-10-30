@@ -6,7 +6,8 @@ import {
 	ADD_TO_CART, REMOVE_FROM_CART,
 	REMOVE_ITEM, EMPTY_CART, FILTER_CATEGORIES, SET_LIMIT,
 	GET_MY_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT, GET_PRODUCT_DETAIL,
-	ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, SET_USER, EDIT_USER, GET_QUESTIONS_BY_PRODUCT
+	ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, SET_USER, EDIT_USER, GET_QUESTIONS_BY_PRODUCT,
+	GET_ALL_UNANSWERED_QUESTIONS,
 } from "../constants/index"
 
 
@@ -287,6 +288,13 @@ export const rootReducer = (state = initialState, action) => {
 				...state,
 				questions: action.payload
 			}
+
+		case GET_ALL_UNANSWERED_QUESTIONS:
+			return{
+				...state,
+				questions: action.payload
+			}
+
 
 		default:
 			return state;

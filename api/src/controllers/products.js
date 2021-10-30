@@ -184,6 +184,33 @@ const getAllUnansweredQuestions = async (req, res) => {
     }
 }
 
+const answerQuestion = async (req, res) => {
+    const {product} = req.query;
+    const {question} = req.query;
+    const {answer} = req.body;
+    console.log(req.query, 'req query')
+    console.log(req.body, 'req body')
+    try {
+        const productF = await Products.findById(product);
+        // console.log(productF, 'productF')
+        const questionFound = productF.questions.find(q => q._id == question)
+        // console.log(questionFound, 'question found')
+        questionFound.answer = answer;
+        await productF.save();
+        res.status(200).json({
+            message: 'Successful',
+            productF
+        });
+
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({
+            message: 'Something went wrong while trying to answer the question. Try again later.',
+            error
+        })
+    }
+}
+
 
 
 module.exports = {
@@ -197,5 +224,6 @@ module.exports = {
     createProductReview,
     createProductQuestion,
     getProductQuestions,
-    getAllUnansweredQuestions
+    getAllUnansweredQuestions,
+    answerQuestion,
 }

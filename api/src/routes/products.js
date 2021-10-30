@@ -32,6 +32,8 @@ router.post('/questions/:id', products.createProductQuestion);
 router.get('/questions/p/:id', products.getProductQuestions);
 
 // obtener preguntas no respondidas
-router.get('/questions/allUnanswered', products.getAllUnansweredQuestions);    
+router.get('/questions/allUnanswered', products.getAllUnansweredQuestions);
+
+router.post('/questions' , products.answerQuestion);
 
 module.exports = router;
