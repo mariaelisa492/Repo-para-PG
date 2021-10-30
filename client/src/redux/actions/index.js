@@ -10,6 +10,7 @@ import {
   GET_WISHLIST, GET_USER, ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, 
   SET_USER, EDIT_USER,
   GET_ABOUT, UPDATE_ABOUT,
+  RESET_PRICE_ORDER,
   } from "../constants/index"
 
 export const getProducts = () => {
@@ -196,6 +197,12 @@ export const getProductsByPriceAsc = () => {
 export const getProductsByPriceDesc = () => {
   return {
     type: ORDER_PRICE_DESC
+  }
+};
+
+export const resetProductsByPrice = () => {
+  return {
+    type: RESET_PRICE_ORDER
   }
 };
 
