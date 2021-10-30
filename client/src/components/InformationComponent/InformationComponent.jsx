@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Map from "./Map/Map";
 import { FaMapMarkedAlt } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
 import { BsTelephoneFill } from 'react-icons/bs';
+import { getAbout } from '../../redux/actions/index';
 import './InformationComponent.css';
 
 export default function InfoComponent() {
+    const dispatch = useDispatch()
 
+    const about = useSelector(state => state.about);
+
+    const [inputAbout, setInputAbout] = useState(about);
+
+    useEffect(() => {
+        dispatch(getAbout());
+    }, [])
+
+    useEffect(() => {
+        setInputAbout(about)
+    }, [about])
 
     return (
         <div>
@@ -14,7 +28,7 @@ export default function InfoComponent() {
 
             <div>
                 <div className='divMap'>
-                    <Map />
+                    <Map address={`${inputAbout?.address}, ${inputAbout?.city}, ${inputAbout?.stateOrProvince}`}/>
                 </div>
             </div>
 
@@ -24,7 +38,7 @@ export default function InfoComponent() {
 
                     <div>
                         <h2>Adress</h2>
-                        <p className='textAbout'>742 Evergreen Terrace</p>
+                        <p className='textAbout'>{inputAbout?.address}</p>
                     </div>
                 </div>
 
@@ -33,7 +47,7 @@ export default function InfoComponent() {
 
                     <div>
                         <h2>Email</h2>
-                        <p className='textAbout'>wavemusicnotify@gmail.com</p>
+                        <p className='textAbout'>{inputAbout?.email}</p>
                     </div>
                 </div>
 
@@ -42,7 +56,7 @@ export default function InfoComponent() {
 
                     <div>
                         <h2>Telephone</h2>
-                        <p className='textAbout'>764-84377</p>
+                        <p className='textAbout'>{inputAbout?.telephone}</p>
                     </div>
                 </div>
             </div>

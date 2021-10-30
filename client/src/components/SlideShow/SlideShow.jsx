@@ -6,7 +6,7 @@ import img3 from './images/003.jpg'
 import { ReactComponent as FlechaDerecha } from './images/iconmonstr-arrow-63.svg'
 import { ReactComponent as FlechaIzquierda } from './images/iconmonstr-arrow-64.svg'
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import './SlideShow.css'
 
 
@@ -15,13 +15,14 @@ import './SlideShow.css'
 
 const SlideShow = () => {
     const slideshow = useRef(null)
+    const intervalo = useRef(null)
 
     const siguiente = () => {
-        if (slideshow.current.children.length > 0) {
-            const primerElemento = slideshow.current.children[0]
+        if (slideshow?.current?.children.length > 0) {
+            const primerElemento = slideshow?.current?.children[0]
             slideshow.current.style.transition = `400ms ease-out all`
 
-            const tamañoSlide = slideshow.current.children[0].offsetWidth;
+            const tamañoSlide = slideshow.current?.children[0].offsetWidth;
             slideshow.current.style.transform = `translateX(-${tamañoSlide}px)`
 
             const transition = () => {
@@ -39,9 +40,9 @@ const SlideShow = () => {
     }
 
     const anterior = () => {
-        if (slideshow.current.children.length > 0) {
-            const index = slideshow.current.children.length - 1;
-            const ultimoElemento = slideshow.current.children[index]
+        if (slideshow?.current?.children.length > 0) {
+            const index = slideshow.current?.children.length - 1;
+            const ultimoElemento = slideshow.current?.children[index]
             slideshow.current.insertBefore(ultimoElemento, slideshow.current.firstChild)
 
             slideshow.current.style.transition = 'none'
@@ -57,6 +58,15 @@ const SlideShow = () => {
 
     }
 
+    
+    useEffect(() => {
+        const intervalo = setInterval(() => {
+            siguiente()
+        }, 10000);
+   
+        }, [])
+    
+
 
 
 
@@ -68,10 +78,10 @@ const SlideShow = () => {
                         <img src={img1} alt="imagen1" className="slideImage" />
                     </div>
                     <div className="slide">
-                            <img src={img2} alt="imagen2" className="slideImage" />
+                        <img src={img2} alt="imagen2" className="slideImage" />
                     </div>
                     <div className="slide">
-                            <img src={img3} alt="imagen3" className="slideImage" />
+                        <img src={img3} alt="imagen3" className="slideImage" />
                     </div>
                 </div>
 
