@@ -64,11 +64,12 @@ useEffect(() => {
     setInputAbout(about)
 }, [about])
 
+
   return (
     <nav className="navBar">
       <div className='landscape'>
         <label className="logo">
-          <NavLink to="/" className="active"><img src={inputAbout.logo} alt="logo"/></NavLink>
+          <NavLink to="/" className="active"><img src={inputAbout.logo || logo} alt="logo"/></NavLink>
         </label>
 
         <div className='searchBar'>
@@ -93,7 +94,7 @@ useEffect(() => {
 
       <div className='portrait'>
         <label className="logo">
-          <NavLink to="/" className="active"><img src={inputAbout.logoSmall} alt="logo"/></NavLink>
+          <NavLink to="/" className="active"><img src={inputAbout.logoSmall || logoSmall} alt="logo"/></NavLink>
         </label>
 
         <div className={'popupSearchBar ' + (popup.search ? 'showSearch' : 'hideSearch')}>
