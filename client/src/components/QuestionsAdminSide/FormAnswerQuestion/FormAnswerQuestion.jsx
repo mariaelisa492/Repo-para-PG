@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { LOCALHOST_URL } from '../../../redux/constants';
 import './FormAnswerQuestion.css'
 
-export function FormAnswerQuestion({questA}) {
+export function FormAnswerQuestion({questA, handleClosePopup}) {
     const question = questA[0]
 
     const [answer, setAnswer] = useState('');;
@@ -23,6 +23,7 @@ export function FormAnswerQuestion({questA}) {
 
     return (
         <div className="formAnswerQ">
+            <button className='CloseFormA' onClick={handleClosePopup}>X</button>
             <form onSubmit={(e) => handleSubmit(e, answer)}>
                 <div className='QuestionToAnswer' >
                     <p>{question.question.question}</p>

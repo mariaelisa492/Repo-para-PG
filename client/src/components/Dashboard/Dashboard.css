@@ -7,6 +7,18 @@
   font-size: 17px;
   height: 40px;
 }
+.queSeaRow{
+  display: flex;
+  flex-direction: row;
+  padding: 5px 25px;
+  justify-content: space-around;
+  background: rgba(19, 144, 247, 0.219);
+  color: #3a97fb;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 17px;
+  height: 40px;
+}
 
 .table {
   height: 74vh;
