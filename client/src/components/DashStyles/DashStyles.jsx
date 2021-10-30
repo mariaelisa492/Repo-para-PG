@@ -1,11 +1,9 @@
 import React from 'react';
-import Dashboard from '../Dashboard/Dashboard';
-import NavBar from '../NavBar/NavBar';
 import { AiFillHome } from "react-icons/ai";
 import { MdAssignment } from "react-icons/md";
 import { FiShoppingCart } from "react-icons/fi";
 import "./DashStyles.css";
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const DashStyles = () => {
     return (
@@ -21,20 +19,20 @@ const DashStyles = () => {
                 <div class="menu__side" id="menu_side">
 
                     <div class="name__page">
-                        <Link to="/"><AiFillHome /></Link>
+                        <NavLink to="/"><AiFillHome /></NavLink>
                     </div>
 
                     <div class="options__menu">
 
 
                         <div class="option">
-                            <Link to="/admin/products" ><MdAssignment /></Link>
+                            <NavLink to="/admin/products" ><MdAssignment /></NavLink>
                         </div>
 
 
                         <a href="#">
                             <div class="option">
-                                <Link to="/admin/sales"> <FiShoppingCart /> </Link>
+                                <NavLink to="/admin/sales"> <FiShoppingCart /> </NavLink>
                             </div>
                         </a>
 

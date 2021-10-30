@@ -1,14 +1,9 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
 import DataTable from 'react-data-table-component'
-import { NavLink } from 'react-router-dom'
-import Footer from '../Footer/Footer'
-import NavBar from '../NavBar/NavBar'
 import { MdDeleteForever } from 'react-icons/md';
-import { deleteOrder, updateOrders } from '../../redux/actions'
-import { useDispatch, useSelector } from 'react-redux'
-import { AiOutlineSave } from "react-icons/ai";
+import { deleteOrder } from '../../redux/actions'
+import { useDispatch } from 'react-redux'
 import { LOCALHOST_URL } from "../../redux/constants/index"
 import "./AdminSales.css"
 
@@ -107,7 +102,6 @@ const AdminSales = () => {
 
     return (
         <>
-            <NavLink to="/admin">My products</NavLink>
             <DataTable
                 columns={columns}
                 data={ordenes}
@@ -117,6 +111,7 @@ const AdminSales = () => {
                 paginationPerPage={5}
                 paginationRowsPerPageOptions={[5, 8]}
                 pagination
+                responsive
             />
         </>
     )

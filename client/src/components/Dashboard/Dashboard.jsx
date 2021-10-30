@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ReactModal from 'react-modal';
-import NavBar from "../NavBar/NavBar";
 import DataTable from "react-data-table-component";
 import FormCreateProducts from '../FormCreateProducts/FormCreateProducts';
 import FormUpdateProducts from '../FormUpdateProduct/EditableRow';
@@ -10,10 +9,8 @@ import { MdDeleteForever } from 'react-icons/md';
 import { FaRegEdit } from 'react-icons/fa';
 import AlertPopup from '../AlertPopups/AlertPopups';
 import Modal from "../Modal/Modal";
-import { NavLink } from "react-router-dom";
-import Footer from "../Footer/Footer";
-import "./Dashboard.css";
 import FormAbout from '../FormAbout/FormAbout';
+import "./Dashboard.css";
 
 export default function Dashboard() {
 
@@ -62,7 +59,6 @@ export default function Dashboard() {
                 <button type="button" onClick={() => {
                     handleOpenPopupUpdate()
                     setidToUpdate(row._id)
-                    console.log(row._id)
                 }}><FaRegEdit /></button>
 
                 <button type="button" onClick={() => {
@@ -147,8 +143,8 @@ export default function Dashboard() {
     
     return (
         <>
-            <div className="add-button-div">
-                <div className="table">
+           {/*  <div className="add-button-div">
+                <div className="table"> */}
                     <DataTable
                         columns={columns}
                         data={items}
@@ -160,13 +156,7 @@ export default function Dashboard() {
                         paginationRowsPerPageOptions={[5, 8]}
                         pagination
                     />
-                </div>
-                {/* <div className="create"> */}
-                <button className='create add-button' onClick={handleOpenPopupCreate}>Create</button>
-                {/* </div> */}
-
-                <button className='create add-button' onClick={handleOpenPopupUpdateAbout}>Data About</button>
-            </div>
+            
            
 
 
