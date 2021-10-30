@@ -116,13 +116,16 @@ const createProductReview = async (req, res) => {
     console.log(req.body, "EL BODYYYYYY")
     console.log(id, "EEEEEEL IDDDDD DEL REVIEW")
     const { review, rating, user, productrv } = req.body;
-    // const existUser = await Products.findOne({ 'reviews.user': user })
-    // if (existUser) {
-    //     res.status(400).json({
-    //         message: 'You have already reviewed this product'
-    //     })
-    // }
-    // else {
+    const existUser = await Products.findById(id);
+
+    const filterReviews = existUser.reviews.filter(review => review.user === user);
+
+    if (filterReviews?.length > 0) {
+        res.status(400).json({
+            message: 'You have already reviewed this product'
+        })
+    }
+    else {
         try {
             const newReview = { review, rating, user, productrv }
             console.log(newReview)
@@ -137,7 +140,8 @@ const createProductReview = async (req, res) => {
             res.status(400).json({
                 message: 'Your request could not be processed. Please try again.'
             })
-        
+
+        }
     }
 }
 
@@ -222,7 +226,6 @@ const answerQuestion = async (req, res) => {
         })
     }
 }
-
 
 
 module.exports = {

@@ -24,7 +24,6 @@ export const Home = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getAbout());
     setLoading(true);
     setTimeout(() => {
       setLoading(false);

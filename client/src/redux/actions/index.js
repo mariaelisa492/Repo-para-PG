@@ -404,10 +404,20 @@ export const getAbout = () => {
   };
 }
 
-export const updateAbout = (id) => {
+export const updateAbout = (aboutObjet) => {
   return async (dispatch) => {
     try {
-      const about = await axios.put(`${LOCALHOST_URL}/about/update/${id}`);
+      const aboutAux = {
+        address: aboutObjet.address,
+        telephone: aboutObjet.telephone,
+        email: aboutObjet.email,
+        city: aboutObjet.city,
+        stateOrProvince: aboutObjet.stateOrProvince,
+        logo: aboutObjet.logo,
+        logoSmall: aboutObjet.logoSmall,
+      }
+      console.log(aboutAux, 'aboutAux en updateAbout');
+      const about = await axios.put(`${LOCALHOST_URL}/about/update/${aboutObjet._id}`, aboutAux);
       return dispatch({
         type: UPDATE_ABOUT,
         payload: about.data,
