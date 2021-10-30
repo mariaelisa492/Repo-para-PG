@@ -5,6 +5,7 @@ import SetItem from "../setItemCart/SetItem";
 import {AiTwotoneDelete} from "react-icons/ai"
 import './itemCart.css'
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 
 export default function ItemCart({ item }) {
@@ -15,6 +16,22 @@ export default function ItemCart({ item }) {
   const handleRemoveItem = (e) => {
     e.preventDefault();
     dispatch(removeItem(_id));
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+  })
+
+  Toast.fire({
+      icon: 'warning',
+      title: 'The product was removed from the cart!'
+  })
   };
 
   return (

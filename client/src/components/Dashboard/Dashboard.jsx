@@ -5,15 +5,15 @@ import DataTable from "react-data-table-component";
 import FormCreateProducts from '../FormCreateProducts/FormCreateProducts';
 import FormUpdateProducts from '../FormUpdateProduct/EditableRow';
 import { useDispatch, useSelector, } from "react-redux";
-import { deleteProduct } from "../../redux/actions";
+import { deleteProduct, getAbout } from "../../redux/actions";
 import { MdDeleteForever } from 'react-icons/md';
 import { FaRegEdit } from 'react-icons/fa';
-import "./Dashboard.css";
 import AlertPopup from '../AlertPopups/AlertPopups';
 import Modal from "../Modal/Modal";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Footer from "../Footer/Footer";
-
+import "./Dashboard.css";
+import FormAbout from '../FormAbout/FormAbout';
 
 export default function Dashboard() {
 
@@ -22,6 +22,7 @@ export default function Dashboard() {
     const [pending, setPending] = useState(true);
 
     useEffect(() => {
+        dispatch(getAbout());
         const timeout = setTimeout(() => {
             setPending(false);
         }, 1000);
@@ -134,6 +135,16 @@ export default function Dashboard() {
     const [successCreated, setsuccessCreated] = useState(false)
     const showPopup = (boolean) => setsuccessCreated(boolean)
 
+    // estado para mostrar popup About
+    const [showPopupUpdateAbout, setShowPopupUpdateAbout] = useState(false);
+
+    const handleOpenPopupUpdateAbout = () => {
+        setShowPopupUpdateAbout(true)
+    }
+    const handleClosePopupUpdateAbout = () => {
+        setShowPopupUpdateAbout(false)
+    }
+    
     return (
         <>
             <div>
@@ -160,8 +171,11 @@ export default function Dashboard() {
                 {/* <div className="create"> */}
                 <button className='create add-button' onClick={handleOpenPopupCreate}>Create</button>
                 {/* </div> */}
+
+                <button className='create add-button' onClick={handleOpenPopupUpdateAbout}>Data About</button>
             </div>
            
+
 
             <ReactModal isOpen={showPopupCreate} className='reactModalContent' overlayClassName='reactModalOverlay'>
                 <FormCreateProducts handleClosePopup={handleClosePopupCreate} showPopup={showPopup} />
@@ -183,6 +197,11 @@ export default function Dashboard() {
                 hideFunc={() => showPopup(false)}
                 message='Product created with success!'
             />
+
+            <ReactModal isOpen={showPopupUpdateAbout} className='reactModalContent' overlayClassName='reactModalOverlay'>
+                <FormAbout handleClosePopup={handleClosePopupUpdateAbout} />
+            </ReactModal>
+
             <div>
                 <Footer />
             </div>

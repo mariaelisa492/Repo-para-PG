@@ -4,8 +4,6 @@ export const LOCALHOST_URL = "http://localhost:5000"
 // ----------------- TYPES FOR REQUESTS
 export const GET_PRODUCTS = "GET_PRODUCTS"
 export const GET_BYNAME = "GET_BYNAME"
-export const GET_ORDERS = "GET_ORDERS"
-export const GET_MY_ORDERS = "GET_MY_ORDERS"
 export const GET_SINGLE_PRODUCT = "GET_SINGLE_PRODUCT"
 export const EMPTY_CART = "EMPTY_CART"
 export const GET_WISHLIST = "GET_WISHLIST"
@@ -45,3 +43,15 @@ export const REMOVE_PRODUCT_FAV = "REMOVE_PRODUCT_FAV"
 
 export const GET_QUESTIONS_BY_PRODUCT = "GET_QUESTIONS_BY_PRODUCT"
 export const GET_ALL_UNANSWERED_QUESTIONS = "GET_ALL_UNANSWERED_QUESTIONS"
+
+//---------------- ORDERS
+
+export const GET_ORDERS = "GET_ORDERS"
+export const GET_MY_ORDERS = "GET_MY_ORDERS"
+export const UPDATE_ORDER = "UPDATE_ORDER"
+export const DELETE_ORDER = "DELETE_ORDER"
+
+//---------------ABOUT
+
+export const GET_ABOUT = "GET_ABOUT"
+export const UPDATE_ABOUT = "UPDATE_ABOUT"

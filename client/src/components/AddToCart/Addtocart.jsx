@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { addCart, removeCart, removeItem } from '../../redux/actions';
 import { Link } from "react-router-dom";
 import { useState } from 'react';
+import Swal from 'sweetalert2'
 
 export default function({ id, stock }) {
 
@@ -15,6 +16,22 @@ export default function({ id, stock }) {
     if(count < stock){
       setCount(count + 1);
       dispatch(addCart(id)) 
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast.fire({
+        icon: 'success',
+        title: 'The product was added to the cart!'
+    })
     }
   }
 

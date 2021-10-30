@@ -113,21 +113,31 @@ const createManyProducts = async (req, res) => {
 
 const createProductReview = async (req, res) => {
     const { id } = req.query;
+    console.log(req.body, "EL BODYYYYYY")
+    console.log(id, "EEEEEEL IDDDDD DEL REVIEW")
     const { review, rating, user, productrv } = req.body;
+    // const existUser = await Products.findOne({ 'reviews.user': user })
+    // if (existUser) {
+    //     res.status(400).json({
+    //         message: 'You have already reviewed this product'
+    //     })
+    // }
+    // else {
         try {
-        const newReview = { review, rating, user, productrv }
-        console.log(newReview)    
-        const product = await Products.findById(id);
-        product.reviews.push(newReview);
-        await product.save();
-        res.status(200).json({
-            message: 'Successful',
-            product
-        });
-    } catch (error) {
-        res.status(400).json({
-            message: 'Your request could not be processed. Please try again.'
-        })
+            const newReview = { review, rating, user, productrv }
+            console.log(newReview)
+            const product = await Products.findById(id);
+            product.reviews.push(newReview);
+            await product.save();
+            res.status(200).json({
+                message: 'Successful',
+                product
+            });
+        } catch (error) {
+            res.status(400).json({
+                message: 'Your request could not be processed. Please try again.'
+            })
+        
     }
 }
 

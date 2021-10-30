@@ -81,11 +81,14 @@
   text-align: left;
 }
 
-/* .topDescription 
-{
-  border: 1px solid blue;
+/* .topDescription .wishListTrue{
+  color: none
 }
-
+ .topDescription .wishListFalse
+{
+  color: #6b6969ed;
+} */
+/*
 .imageSlider
 {
   border: 1px solid red;

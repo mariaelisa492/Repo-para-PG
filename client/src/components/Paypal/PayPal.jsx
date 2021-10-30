@@ -9,7 +9,7 @@ const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 function CheckoutBut({totalPrice, items, totalItems}) {
   
 
-  const {user} = useAuth0()
+  const {user, isAuthenticated} = useAuth0()
   const dispatch = useDispatch()
   
 
@@ -50,11 +50,10 @@ function CheckoutBut({totalPrice, items, totalItems}) {
           status: "Processing"  
         }))         
         )}
-        
         />
-      
+
     </div>
-    
+      
     );
     
   }
