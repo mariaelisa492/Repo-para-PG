@@ -28,13 +28,13 @@ const DashStyles = () => {
 
 
                         <div class="option">
-                            <MdAssignment />
+                            <Link to="/admin/products" ><MdAssignment /></Link>
                         </div>
 
 
                         <a href="#">
                             <div class="option">
-                                <Link to="admin/sales"> <FiShoppingCart /> </Link>
+                                <Link to="/admin/sales"> <FiShoppingCart /> </Link>
                             </div>
                         </a>
 
@@ -43,7 +43,7 @@ const DashStyles = () => {
                 </div>
 
                 <div className="dashboard-main">
-                    <Dashboard />
+                    
                 </div>
 
                 <script src="js/script.js"></script>
