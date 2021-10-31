@@ -6,7 +6,9 @@ import {
 	ADD_TO_CART, REMOVE_FROM_CART,
 	REMOVE_ITEM, EMPTY_CART, FILTER_CATEGORIES, SET_LIMIT,
 	GET_MY_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT, GET_PRODUCT_DETAIL,
-	ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, SET_USER, EDIT_USER, UPDATE_ORDER, DELETE_ORDER, GET_WISHLIST, UPDATE_ABOUT, GET_ABOUT
+	ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, SET_USER, EDIT_USER, 
+	GET_ALL_UNANSWERED_QUESTIONS,
+	UPDATE_ORDER, DELETE_ORDER, GET_WISHLIST, UPDATE_ABOUT, GET_ABOUT
 } from "../constants/index"
 
 
@@ -26,6 +28,8 @@ const initialState = {
 	order: {},
 	orders: [],
 	productDetail: {},
+	productsFavs:[],
+	questions:[],
 	wishList:[],
 	about: {},
 };
@@ -214,6 +218,7 @@ export const rootReducer = (state = initialState, action) => {
 			}
 
 		// ---- Cart ---- //
+		
 		case ADD_TO_CART:
 			const item = state.products.find(item => item._id === action.payload.id)
 			const inCart = state.cart.find(item => item._id === action.payload.id ? true : false)
@@ -249,6 +254,7 @@ export const rootReducer = (state = initialState, action) => {
 			};
 
 		//	--------------------------- USERS
+
 		case SET_USER:
 
 			return {
@@ -262,7 +268,9 @@ export const rootReducer = (state = initialState, action) => {
 				...state,
 				user: action.payload
 			}
+
 		// ---------------- PAGINATION
+
 		case SET_LIMIT:
 			return {
 				...state,
@@ -274,23 +282,39 @@ export const rootReducer = (state = initialState, action) => {
 				...state,
 				productDetail: action.payload
 			};
+
 		// -------- WishList
+
 		case GET_WISHLIST:
 			return {
 				...state,
 				wishList: [...action.payload]
 			}
+
 		// --------- About
+
 		case GET_ABOUT:
 			return {
 				...state,
 				about: action.payload
 			}
+			
 		case UPDATE_ABOUT:
 			return {
 				...state,
 				about: action.payload
 			}
+
+			// ----------------- QUESTIONS
+ 
+		case GET_ALL_UNANSWERED_QUESTIONS:
+			return{
+				...state,
+				questions: action.payload
+			}
+
+
+
 		default:
 			return state;
 	}
