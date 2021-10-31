@@ -85,7 +85,7 @@ export default function About({ handleClosePopup }) {
                 }}
                 className='formCreateProducts containerformProducts'
             >
-                <button
+                <span
                     onClick={() => {
                         handleClosePopup()
                         setInputAbout({
@@ -101,7 +101,7 @@ export default function About({ handleClosePopup }) {
                     className='btnCloseFormProducts containerformProducts'
                 >
                     <FaTimes />
-                </button>
+                </span>
 
                 <div>
                     <div>

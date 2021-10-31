@@ -64,22 +64,22 @@ export default function Login() {
                             <p className="forgot-password">Forgot Password?</p>
                         </div>
 
-                        <button type="submit" className="submit">Login</button>
+                        <span type="submit" className="submit">Login</span>
                     </form>
 
                     <div className="social-login">
                         <label>Or login with</label>
                         <div className="social-container">
 
-                            <button>
+                            <span>
                                 <FaFacebook size={28} />
-                            </button>
-                            <button>
+                            </span>
+                            <span>
                                 <FcGoogle size={28} />
-                            </button>
-                            <button>
+                            </span>
+                            <span>
                                 < ImLinkedin2 size={28} />
-                            </button>
+                            </span>
                         </div>
                     </div>
 

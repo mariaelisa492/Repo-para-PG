@@ -76,7 +76,7 @@ export default function Create({ handleClosePopup, showPopup }) {
         }}
         className='formCreateProducts containerformProducts'
       >
-        <button onClick={handleClosePopup} className='btnCloseFormProducts containerformProducts'><FaTimes /></button>
+        <span onClick={handleClosePopup} className='btnCloseFormProducts containerformProducts'><FaTimes /></span>
 
         <div>
           <div>

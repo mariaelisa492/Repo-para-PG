@@ -76,10 +76,12 @@
     border-radius: 22px;
     margin-left: 70px;
     cursor: pointer;
+    border: none;
 }
 
 .button_none{
     display: none;
+    border: none;
 }
 
 

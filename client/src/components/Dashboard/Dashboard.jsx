@@ -59,16 +59,19 @@ export default function Dashboard() {
         {
             name: "Actions",
             cell: row => (<div className="actions">
-                <button type="button" onClick={() => {
+                <button onClick={() => {
                     handleOpenPopupUpdate()
                     setidToUpdate(row._id)
                     console.log(row._id)
-                }}><FaRegEdit /></button>
+                }}
+                className='iconTable'
+                ><FaRegEdit /></button>
 
-                <button type="button" onClick={() => {
+                <button onClick={() => {
                     handleDeleteProduct(row._id);
                     handeOpenAlertDelete();
                 }}
+                className='iconTable'
                 >
                     <MdDeleteForever />
                 </button>
@@ -170,10 +173,10 @@ export default function Dashboard() {
                     />
                 </div>
                 {/* <div className="create"> */}
-                <button className='create add-button' onClick={handleOpenPopupCreate}>Create</button>
+                <span className='create add-button' onClick={handleOpenPopupCreate}>Create</span>
                 {/* </div> */}
 
-                <button className='create add-button' onClick={handleOpenPopupUpdateAbout}>Data About</button>
+                <span className='create add-button' onClick={handleOpenPopupUpdateAbout}>Data About</span>
             </div>
            
 

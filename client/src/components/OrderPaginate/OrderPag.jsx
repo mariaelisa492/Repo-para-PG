@@ -4,8 +4,8 @@ import './orderPag.css'
 export default function Paginado({prev, next}) {
     return (
         <ul className="pos">
-            <button className="prev" onClick={prev}>Prev</button> 
-            <button className="next" onClick={next}>Next</button>           
+            <span className="prev" onClick={prev}>Prev</span> 
+            <span className="next" onClick={next}>Next</span>           
         </ul>
   );
 }

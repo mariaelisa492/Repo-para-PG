@@ -112,7 +112,7 @@ export default function UserProfile() {
 
                             {userProfile.user ?
                                 <div className='userName'>
-                                    <button className='userBtnTopRight' onClick={toggleModal}><FaRegEdit className='editIcon' />Edit</button>
+                                    <span className='userBtnTopRight' onClick={toggleModal}><FaRegEdit className='editIcon' />Edit</span>
                                     <p>First Name: {userProfile.user[0]?.firstName}</p>
                                     <p>Last Name: {userProfile.user[0]?.lastName}</p>
                                     <p>Gender: {userProfile.user[0]?.gender}</p>
@@ -127,8 +127,8 @@ export default function UserProfile() {
                             </div>
 
                             <div className='userNameOrder'>
-                                <button className="btnOrders" onClick={(e) => { handleOrders(e) }}><FiArchive /></button>
-                                <button className="btnWish" onClick={(e) => { handleWish(e) }}>Wishes</button>
+                                <span className="btnOrders" onClick={(e) => { handleOrders(e) }}><FiArchive /></span>
+                                <span className="btnWish" onClick={(e) => { handleWish(e) }}>Wishes</span>
                             </div>
                         </div>
 

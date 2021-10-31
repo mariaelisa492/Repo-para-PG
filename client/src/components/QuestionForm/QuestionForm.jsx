@@ -48,7 +48,7 @@ return(
                     placeholder="Ask here"
                 />
             
-            <button type="submit">Send</button>
+            <span type="submit">Send</span>
     </div>
         </form>
     )

@@ -95,12 +95,12 @@ const AdminSales = () => {
                         value="Update"
                     />
                 </form>
-                <button type="button" onClick={() => {
+                <span type="button" onClick={() => {
                     handleDeleteOrder(row._id);
                 }}
                 >
                     <MdDeleteForever />
-                </button>
+                </span>
             </div>)
         }
     ]

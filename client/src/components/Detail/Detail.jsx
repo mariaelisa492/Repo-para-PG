@@ -110,7 +110,7 @@ export default function () {
           </div>
 
           <div >
-            {isAuthenticated?<button onClick={toggleModal} className="reviewBtn"> Make a review</button>:<button className="reviewBtn" onClick={showDialog}> make a review</button>}
+            {isAuthenticated?<span onClick={toggleModal} className="reviewBtn"> Make a review</span>:<soan className="reviewBtn" onClick={showDialog}> make a review</soan>}
           
           </div>
 
@@ -118,7 +118,7 @@ export default function () {
             <ReviewCard reviews={reviews} />
           </div>
           <div className='questionFormB'>
-            <button className='questionFormButtonOpen' onClick={handleModalQuestion}>Ask a Question</button>
+            <span className='questionFormButtonOpen' onClick={handleModalQuestion}>Ask a Question</span>
           </div>
           {isAuthenticated ?
           <ReactModal isOpen={modalQuestionOpen} className='modalQuestionForm' overlayClassName='reactModalOverlay' >
