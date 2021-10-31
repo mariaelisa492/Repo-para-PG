@@ -110,7 +110,7 @@ export default function () {
           </div>
 
           <div >
-            {isAuthenticated?<span onClick={toggleModal} className="reviewBtn"> Make a review</span>:<soan className="reviewBtn" onClick={showDialog}> make a review</soan>}
+            {isAuthenticated?<span onClick={toggleModal} className="reviewBtn"> Make a review</span>:<span className="reviewBtn" onClick={showDialog}> make a review</span>}
           
           </div>
 
