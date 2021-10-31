@@ -77,12 +77,21 @@
     padding: 20px;
 }
 
+
+
 .userNameOrder{
-    cursor: pointer;
     width: 6%;
     font-size: 30px;
 }
 
+.userNameOrder button{
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
 
 .userData{
     margin: 10px;
@@ -130,6 +139,7 @@
     color: #1f1f1f;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 12px;
 }
 
 .btnOrders{
@@ -139,26 +149,6 @@
    padding: 10px;
 }
 
-.btnWish{
-    color: #413e3e;
-    border-radius: 4px;
-    padding: 10px;
-}
-
-.btnWish:hover{
-    cursor: pointer;
-    color: #1f1f1f;
-}
-
-.btnWish{
-    color: #413e3e;
-    border-radius: 4px;
-}
-
-.btnWish:hover{
-    cursor: pointer;
-    color: #1f1f1f;
-}
 
 .btnOrders:hover{
     background-color: #0465a5;
@@ -168,10 +158,13 @@
     cursor: pointer;
     background-color: #0465a5;
 }
+
+ /* emmmmmmm */
+
 button{
     border: none;
-    cursor: pointer;
 }
+
 @media (max-width: 858px){   
     .userName{
         width: 80%;
