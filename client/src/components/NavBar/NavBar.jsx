@@ -67,7 +67,6 @@ export default function NavBar({ showDropDownMenu }) {
 
   const cart = useSelector(state => state.cart);
 
-
   return (
     <nav className="navBar">
       <div className='landscape'>

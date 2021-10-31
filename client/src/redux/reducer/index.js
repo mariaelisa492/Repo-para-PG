@@ -7,8 +7,8 @@ import {
 	REMOVE_ITEM, EMPTY_CART, FILTER_CATEGORIES, SET_LIMIT,
 	GET_MY_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT, GET_PRODUCT_DETAIL,
 	ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, SET_USER, EDIT_USER, 
-	GET_ALL_UNANSWERED_QUESTIONS,
-	UPDATE_ORDER, DELETE_ORDER, GET_WISHLIST, UPDATE_ABOUT, GET_ABOUT
+	GET_ALL_UNANSWERED_QUESTIONS, RESET_PRICE_ORDER,
+	UPDATE_ORDER, DELETE_ORDER, GET_WISHLIST, UPDATE_ABOUT, GET_ABOUT,
 } from "../constants/index"
 
 
@@ -80,12 +80,6 @@ export const rootReducer = (state = initialState, action) => {
 				orders: [...deletedOrder]
 			}
 
-		case GET_SINGLE_PRODUCT:
-			return {
-				...state,
-				product: action.payload
-			}
-
 		// ---- ORDENAMIENTOS ---- //	
 		case GET_SINGLE_PRODUCT:
 			return {
@@ -130,6 +124,22 @@ export const rootReducer = (state = initialState, action) => {
 				filteredProducts: [...sortedPriceDesc],
 				filteredTF: true
 			};
+
+    case RESET_PRICE_ORDER:
+      if (state.category) {
+        return {
+          ...state,
+          filteredProducts: state.products.filter(p => p.category === state.category),
+          filteredTF: true,
+        };
+      } else {
+        return {
+          ...state,
+          filteredProducts: [ ...state.products ],
+          filteredTF: false,
+        };
+      }
+
 
 		// ---- FILTROS ---- //
 		case FILTER_PRICE_ONLY_LESSTHAN:
