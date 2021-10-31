@@ -40,6 +40,11 @@ export const GET_PRODUCT_DETAIL = "GET_PRODUCT_DETAIL"
 export const ADD_PRODUCT_FAV = "ADD_PRODUCT_FAV"
 export const REMOVE_PRODUCT_FAV = "REMOVE_PRODUCT_FAV"
 
+//---------------QUESTIONS
+
+export const GET_QUESTIONS_BY_PRODUCT = "GET_QUESTIONS_BY_PRODUCT"
+export const GET_ALL_UNANSWERED_QUESTIONS = "GET_ALL_UNANSWERED_QUESTIONS"
+export const CLEAR_QUESTIONS = "CLEANR_QUESTIONS"
 
 //---------------- ORDERS
 
@@ -49,5 +54,6 @@ export const UPDATE_ORDER = "UPDATE_ORDER"
 export const DELETE_ORDER = "DELETE_ORDER"
 
 //---------------ABOUT
+
 export const GET_ABOUT = "GET_ABOUT"
 export const UPDATE_ABOUT = "UPDATE_ABOUT"

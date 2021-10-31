@@ -64,6 +64,7 @@ export default function NavBar({ showDropDownMenu }) {
       setInputAbout(about);
   }, [about])
 
+
   const cart = useSelector(state => state.cart);
 
   return (

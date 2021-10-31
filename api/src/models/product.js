@@ -14,6 +14,21 @@ const reviewSchema = mongoose.Schema(
     }
 );
 
+
+const questionSchema = mongoose.Schema(
+    {
+        question: { type: String, required: true },
+        answer: { type: String, required: true, default: "No answer yet" },
+        user: { type: String, required: true },
+        productq: { type: String, required: true },
+    },
+    {
+        timestamps: true
+    }
+);
+
+  
+
   
 
 
@@ -55,6 +70,7 @@ const ProductSchema = new Schema({
         required: true
     },
     reviews: [reviewSchema],
+    questions: [questionSchema],
 
 });
 
