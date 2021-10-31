@@ -31,7 +31,7 @@ export function FormAnswerQuestion({questA, handleClosePopup}) {
                 <div className='answer'>
                     <textarea name='answer' value={answer} onChange={handleChange} />
                 </div>
-                <button type='submit'>Submit</button>
+                <span type='submit'>Submit</span>
             </form>
         </div>
     );

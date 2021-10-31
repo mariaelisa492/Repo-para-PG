@@ -108,7 +108,7 @@ export default function EditableRow({ handleClosePopup, id }) {
                 className='formCreateProducts containerformProducts'
             >
                 <div>
-                    <button
+                    <span
                         onClick={() => {
                             handleClosePopup()
                             setItems({
@@ -125,7 +125,7 @@ export default function EditableRow({ handleClosePopup, id }) {
                         className='btnCloseFormProducts'
                     >
                         <FaTimes />
-                    </button>
+                    </span>
                 </div>
 
                 <div>

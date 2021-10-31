@@ -24,9 +24,9 @@ export default function({ id, qty }) {
 
   return(
     <div className='add-button-item'>
-        <button className='Remove-item' onClick={(e) => {handleRemoveCart(e)}}><AiFillMinusCircle/></button>
+        <span className='Remove-item' onClick={(e) => {handleRemoveCart(e)}}><AiFillMinusCircle/></span>
         <span className='qty'>{qty}</span>
-        <button className='Add-item'onClick={(e) => {handleAddCart(e)}}><AiFillPlusCircle/></button>
+        <span className='Add-item'onClick={(e) => {handleAddCart(e)}}><AiFillPlusCircle/></span>
     </div>
   );
 }

@@ -86,8 +86,8 @@ const SlideShow = () => {
                 </div>
 
                 <div className="controls">
-                    <button className="btn" onClick={anterior}><FaAngleLeft /></button>
-                    <button className="btn2" onClick={siguiente}><FaAngleRight /></button>
+                    <span className="btn" onClick={anterior}><FaAngleLeft /></span>
+                    <span className="btn2" onClick={siguiente}><FaAngleRight /></span>
                 </div>
 
 
