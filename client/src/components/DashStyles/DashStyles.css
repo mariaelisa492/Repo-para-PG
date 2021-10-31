@@ -18,6 +18,7 @@
 
 .icon__menu{
     width: 50px;
+    margin-top: 15px;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -110,10 +111,6 @@
     cursor: pointer;
 }
 
-a.selected{
-    color: #fff;
-}
-
 .selected:before{
     content: '';
     width: 3px;
@@ -149,5 +146,8 @@ a.selected{
         width: 100vw;
         border-radius: 0px;
         cursor: pointer;
+    }
+    .admin-sales-body{
+        padding-left: 0px;
     }
 }
