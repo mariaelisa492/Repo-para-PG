@@ -56,6 +56,12 @@
   color: black;
 }
 
+.profilePic 
+{
+  padding: 0px;
+  display: flex;
+}
+
 .menuIcon
 {
   color: black;
@@ -65,6 +71,15 @@
   font-size: 1.8em;
 }
 
+.userCircle 
+{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 0px;
+  margin: auto 20px auto 10px;
+  cursor: pointer;
+}
 .portrait
 {
   display: none;
@@ -121,6 +136,111 @@
   cursor: pointer;
 }
 
+.profileOptions 
+{
+  position: absolute;
+  /*top: 85px;*/
+  right: 5px;
+  background-color: #fff;
+  color: #909090;
+  padding: 0px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5), 0px 0px 6px rgba(0, 0, 0, 0.5);
+  transition: all 750ms;
+}
+
+.profileOptions ul li:first-child
+{
+  background-color: #e0e0e0;
+  color: #6f6f6f;
+  font-weight: bold;
+}
+
+.profileOptions ul li
+{
+  padding: 10px 80px 10px 40px;
+  border-bottom: 1px solid #d0d0d0;
+  color: #6f6f6f;
+}
+
+.profileLink, .profileActive 
+{
+  color: #6f6f6f;
+}
+
+.exitIcon 
+{
+  color: orange;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.logoutOption 
+{
+  cursor: pointer;
+}
+
+.showProfOpt 
+{
+  top: 85px;
+  opacity: 1;
+}
+
+.hideProfOpt 
+{
+  top: -200px;
+  opacity: 0;
+}
+
+.cartIcon 
+{
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.itemCount 
+{
+  position: absolute;
+  top: -18px;
+  right: 10px;
+  font-size: 16px;
+  color: black;
+}
+
+.cartIcon 
+{
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.itemCount 
+{
+  position: absolute;
+  top: -18px;
+  right: 10px;
+  font-size: 16px;
+  color: black;
+}
+
+.cartIcon 
+{
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.itemCount 
+{
+  position: absolute;
+  top: -18px;
+  right: 10px;
+  font-size: 16px;
+  color: black;
+}
+
 @media (max-width: 858px){
   .landscape
   {
@@ -140,5 +260,11 @@
   {
     margin: auto 8px;
     font-size: 1.5em;
+  }
+  .userCircle 
+  {
+    margin: auto 8px;
+    width: 36px;
+    height: 36px;
   }
 }

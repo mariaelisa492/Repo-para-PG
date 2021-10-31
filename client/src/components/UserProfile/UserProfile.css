@@ -129,13 +129,25 @@
     background-color: #0070ba;
     color: #1f1f1f;
     border-radius: 4px;
-
+    cursor: pointer;
 }
 
 .btnOrders{
    background-color: #0070ba;
    color: #1f1f1f;
    border-radius: 4px;
+   padding: 10px;
+}
+
+.btnWish{
+    color: #413e3e;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.btnWish:hover{
+    cursor: pointer;
+    color: #1f1f1f;
 }
 
 .btnOrders:hover{
@@ -146,7 +158,10 @@
     cursor: pointer;
     background-color: #0465a5;
 }
-
+button{
+    border: none;
+    cursor: pointer;
+}
 @media (max-width: 858px){   
     .userName{
         width: 80%;

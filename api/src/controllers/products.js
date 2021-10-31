@@ -113,21 +113,35 @@ const createManyProducts = async (req, res) => {
 
 const createProductReview = async (req, res) => {
     const { id } = req.query;
+    console.log(req.body, "EL BODYYYYYY")
+    console.log(id, "EEEEEEL IDDDDD DEL REVIEW")
     const { review, rating, user, productrv } = req.body;
-        try {
-        const newReview = { review, rating, user, productrv }
-        console.log(newReview)    
-        const product = await Products.findById(id);
-        product.reviews.push(newReview);
-        await product.save();
-        res.status(200).json({
-            message: 'Successful',
-            product
-        });
-    } catch (error) {
+    const existUser = await Products.findById(id);
+
+    const filterReviews = existUser.reviews.filter(review => review.user === user);
+
+    if (filterReviews?.length > 0) {
         res.status(400).json({
-            message: 'Your request could not be processed. Please try again.'
+            message: 'You have already reviewed this product'
         })
+    }
+    else {
+        try {
+            const newReview = { review, rating, user, productrv }
+            console.log(newReview)
+            const product = await Products.findById(id);
+            product.reviews.push(newReview);
+            await product.save();
+            res.status(200).json({
+                message: 'Successful',
+                product
+            });
+        } catch (error) {
+            res.status(400).json({
+                message: 'Your request could not be processed. Please try again.'
+            })
+
+        }
     }
 }
 
@@ -139,6 +153,7 @@ const createProductQuestion = async (req, res) => {
     try {
         console.log(question, 'question in api')
         const product = await Products.findById(id);
+        console.log(product, 'product')
         product.questions.push(question);
         await product.save();
         res.status(200).json({
@@ -156,6 +171,7 @@ const getProductQuestions = async (req, res) => {
     const { id } = req.params;
     try {
         const product = await Products.findById(id);
+        console.log('||||||||||||||',product.questions, 'product.questions', product.price, 'product.price','|||||||||')
         res.status(200).json(product.questions);
     } catch (error) {
         res.status(400).json({
@@ -210,7 +226,6 @@ const answerQuestion = async (req, res) => {
         })
     }
 }
-
 
 
 module.exports = {

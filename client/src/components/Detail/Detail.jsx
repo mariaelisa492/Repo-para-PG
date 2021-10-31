@@ -4,15 +4,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import AddToCart from '../AddToCart/Addtocart';
 import Rating from '../Rating/Rating';
 import ImageSlider from '../ImageSlider/ImageSlider';
-import { getProductDetail, addToWishList } from '../../redux/actions';
-import { FaHeart } from 'react-icons/fa';
+import ButtonFav from '../wishBtn/ButtonFav';
+import { getProductDetail, addToWishList, deleteWishItem } from '../../redux/actions';
+import { FaHeart, FaWizardsOfTheCoast } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import Loader from "../Loader/Loader";
 import ReviewCard from '../Review/ReviewCard';
 import { useAuth0 } from '@auth0/auth0-react'
 import { Questions } from '../Questions/Questions';
 import { QuestionForm } from '../QuestionForm/QuestionForm';
-import ReactModal from 'react-modal';
+import { ReviewForm } from '../Review/ReviewForm';
+import ReactModal from "react-modal";
+import Modal from "../Modal/Modal";
+import { getWishlist } from '../../redux/actions';
 
 //>> temp solution to rating
 const styleRating = {
@@ -28,19 +32,39 @@ export default function () {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0()
   const productDetail = useSelector(state => state.productDetail);
-  const { image, name, description, category, _id, stock, brand, model, price, reviews } = productDetail;
+
+  const { image, name, description, category, _id, stock, brand, model, price, reviews, questions } = productDetail;
   const [modalQuestionOpen, setModalQuestionOpen] = useState(false);
 
   function handleModalQuestion() {
     setModalQuestionOpen(!modalQuestionOpen);
   }
 
+  const totalRating = reviews?.map(review => review.rating).reduce((a, b) => a + b, 0)/ reviews?.length;
+  const ratingDefault = totalRating > 0 ? totalRating : 5;
+  
+  // console.log(totalRating, "EL TOTAL RATING");
 
+  const [showPopupReview, setShowPopupReview] = useState(false)
+  const [ popup, setPopup ] = useState({
+       makeReview: false,
+  });
+  const showDialog = () => setPopup({ ...popup, makeReview: true });
+  const hideDialog = () => setPopup({ ...popup, makeReview: false });
+
+  function toggleModal() {
+    setShowPopupReview(!showPopupReview);
+  }
+
+  
   useEffect(() => {
     window.scrollTo(0, 0)
+    dispatch(getWishlist(user?.email))
     dispatch(getProductDetail(id))
-  }, [dispatch])
-
+  }, [dispatch, ButtonFav])
+  
+ 
+  
   return (
     <div className='fullview'>
       {JSON.stringify(productDetail) !== '{}' ?
@@ -51,7 +75,7 @@ export default function () {
 
               <div className='leftView'>
                 <div className='topDescription'>
-                  <h3>{category} <b><FaHeart /></b></h3>
+                  <h3>{category} <b> <ButtonFav id={id} user={user?.email}/> </b> </h3>
                   <h1>{name}</h1>
                   <p>{description.split('.')[0]}.</p>
                 </div>
@@ -65,7 +89,7 @@ export default function () {
               <div className='rightView'>
 
                 <div style={styleRating}>
-                  <Rating rating={9} />
+                  <Rating rating={ratingDefault} />
                 </div>
                 <div className='price'>
                   <span>$ {price}</span>
@@ -85,6 +109,11 @@ export default function () {
             </div>
           </div>
 
+          <div >
+            {isAuthenticated?<button onClick={toggleModal} className="reviewBtn"> Make a review</button>:<button className="reviewBtn" onClick={showDialog}> make a review</button>}
+          
+          </div>
+
           <div>
             <ReviewCard reviews={reviews} />
           </div>
@@ -93,13 +122,22 @@ export default function () {
           </div>
           {isAuthenticated ?
           <ReactModal isOpen={modalQuestionOpen} className='modalQuestionForm' overlayClassName='reactModalOverlay' >
-            <QuestionForm productId={_id} nickname={user?.nickname} close={handleModalQuestion} />
+            <QuestionForm productId={id} nickname={user?.nickname} close={handleModalQuestion} />
           </ReactModal>
           : null
             }
         <div className='questionsInDetails'>
-          <Questions productId={_id}/>
+          <Questions productId={id} questions={questions}/>
         </div>
+
+          <ReactModal isOpen={showPopupReview} className='reactModalContent' overlayClassName='reactModalOverlay'>
+            <ReviewForm handleClosePopUp={toggleModal} />
+          </ReactModal>
+
+          <Modal 
+        show={popup.makeReview}
+        hideFunc={hideDialog}
+        message="You need to be logged in to perform this action!" />
 
         </div> : <Loader />}
     </div>

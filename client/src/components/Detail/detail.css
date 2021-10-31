@@ -81,11 +81,14 @@
   text-align: left;
 }
 
-/* .topDescription 
-{
-  border: 1px solid blue;
+/* .topDescription .wishListTrue{
+  color: none
 }
-
+ .topDescription .wishListFalse
+{
+  color: #6b6969ed;
+} */
+/*
 .imageSlider
 {
   border: 1px solid red;
@@ -120,6 +123,13 @@
   text-align: center;
   margin: 10px auto;
 }
+.questionsInDetails{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 40px 0px 20px;
+}
 
 .modalQuestionForm{
   display: flex;
@@ -152,6 +162,19 @@
   font-size: 20px;
   font-family: 'Cantarell', sans-serif; 
   resize: none; 
+}
+
+.questionFormButtonOpen{
+  text-align: center;
+  padding: 7px;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-left: 10vw;
+  background-image: linear-gradient(to left, #fdaa48, #f2ab15);
+  color: #0f0f0f;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 4px;
 }
 .price span 
 {

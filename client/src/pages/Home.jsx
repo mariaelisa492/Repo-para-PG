@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Footer from "../components/Footer/Footer";
 import ProductsList from "../components/ProductsList/ProductsList";
 import NavBar from "../components/NavBar/NavBar";
@@ -9,6 +9,7 @@ import FilterProducts from "../components/FilterProducts/FilterProducts";
 import DropDownMenu from "../components/DropDownMenu/DropDownMenu";
 import { categories } from "../components/Categories/categoriesExport";
 import Loader from "../components/Loader/Loader";
+import { cleanQuestions, getAbout } from '../redux/actions/index';
 import './home.css';
 
 export const Home = () => {
@@ -20,12 +21,15 @@ export const Home = () => {
   console.log(products, 'products')
   const [loading, setLoading] = useState(false);
 
+  const dispatch = useDispatch()
+
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 3000);
   }, [])
+
 
   function showDropDownMenu() {
     setShowMenu(!showMenu);

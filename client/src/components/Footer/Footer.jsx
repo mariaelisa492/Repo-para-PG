@@ -4,9 +4,21 @@ import { AiFillGithub } from "react-icons/ai";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { TiSocialLinkedin } from "react-icons/ti";
 import "./Footer.css"
+import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {useAuth0} from '@auth0/auth0-react';
+import { searchUserInDb } from "../../redux/actions";
+
 
 function Footer() {
 
+    const {user} = useAuth0();
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(searchUserInDb(user?.email));
+    }, [user]);
+    const U = useSelector(state => state.user);
+   
     return (
         <footer className="footer">
             <div className="containerF">
@@ -16,6 +28,7 @@ function Footer() {
                         <ul className="list-services">
                             <li><a href="/about">about us</a></li>
                             <li><a href="/home">our services</a></li>
+                            { U.user ? U.user[0]?.role === 'ROLE_ADMIN' ? <li><NavLink className='AdminPanelLink' to='/admin'>Admin panel</NavLink></li> : null : null}
                         </ul>
                     </div>
                     <div className="footer-col">

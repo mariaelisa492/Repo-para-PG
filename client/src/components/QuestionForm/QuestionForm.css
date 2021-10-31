@@ -43,3 +43,13 @@
     background: rgba(223, 139, 13, 0.212);
     border-radius: 15px;
 }
+.BTNrompeF{
+    background-color: #00bcd4;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 10px;
+}
