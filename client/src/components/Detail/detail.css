@@ -170,12 +170,19 @@
   cursor: pointer;
   align-self: flex-start;
   margin-left: 10vw;
-  background-image: linear-gradient(to left, #fdaa48, #f2ab15);
+  background-color:  #f2ab15;
   color: #0f0f0f;
   font-size: 13px;
   font-weight: bold;
   border-radius: 4px;
 }
+
+.questionFormButtonOpen:hover{
+  color: #0f0f0f;
+  background-color: #fac78d;
+}
+
+
 .price span 
 {
   font-size: 40px;
