@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.css';
+import './components/Login/Login.css'
 import { Route, Switch } from 'react-router';
 import { Home } from './pages/Home'
 import { Detail } from './pages/Detail';
