@@ -1,5 +1,5 @@
 import './detail.css';
-import { useEffect, useState } from 'react'
+import { useEffect, useState   } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import AddToCart from '../AddToCart/Addtocart';
 import Rating from '../Rating/Rating';
@@ -11,6 +11,8 @@ import { useParams } from 'react-router-dom';
 import Loader from "../Loader/Loader";
 import ReviewCard from '../Review/ReviewCard';
 import { useAuth0 } from '@auth0/auth0-react'
+import { Questions } from '../Questions/Questions';
+import { QuestionForm } from '../QuestionForm/QuestionForm';
 import { ReviewForm } from '../Review/ReviewForm';
 import ReactModal from "react-modal";
 import Modal from "../Modal/Modal";
@@ -31,8 +33,12 @@ export default function () {
   const { user, isAuthenticated } = useAuth0()
   const productDetail = useSelector(state => state.productDetail);
 
-  const { image, name, description, category, _id, stock, brand, model, price, reviews } = productDetail;
+  const { image, name, description, category, _id, stock, brand, model, price, reviews, questions } = productDetail;
+  const [modalQuestionOpen, setModalQuestionOpen] = useState(false);
 
+  function handleModalQuestion() {
+    setModalQuestionOpen(!modalQuestionOpen);
+  }
 
   const totalRating = reviews?.map(review => review.rating).reduce((a, b) => a + b, 0)/ reviews?.length;
   const ratingDefault = totalRating > 0 ? totalRating : 5;
@@ -104,13 +110,25 @@ export default function () {
           </div>
 
           <div >
-            {isAuthenticated?<button onClick={toggleModal} className="reviewBtn"> make a review</button>:<button className="reviewBtn" onClick={showDialog}> make a review</button>}
+            {isAuthenticated?<button onClick={toggleModal} className="reviewBtn"> Make a review</button>:<button className="reviewBtn" onClick={showDialog}> make a review</button>}
           
           </div>
 
           <div>
             <ReviewCard reviews={reviews} />
           </div>
+          <div className='questionFormB'>
+            <button className='questionFormButtonOpen' onClick={handleModalQuestion}>Ask a Question</button>
+          </div>
+          {isAuthenticated ?
+          <ReactModal isOpen={modalQuestionOpen} className='modalQuestionForm' overlayClassName='reactModalOverlay' >
+            <QuestionForm productId={id} nickname={user?.nickname} close={handleModalQuestion} />
+          </ReactModal>
+          : null
+            }
+        <div className='questionsInDetails'>
+          <Questions productId={id} questions={questions}/>
+        </div>
 
           <ReactModal isOpen={showPopupReview} className='reactModalContent' overlayClassName='reactModalOverlay'>
             <ReviewForm handleClosePopUp={toggleModal} />

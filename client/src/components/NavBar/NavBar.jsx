@@ -48,27 +48,30 @@ export default function NavBar({ showDropDownMenu }) {
   const hadleChangeLogout = ()=>{
     localStorage.removeItem('items');
     logout({returnTo:window.location.origin})
-}
+  }
 
-const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
-const about = useSelector(state => state.about);
+  const about = useSelector(state => state.about);
 
-const [inputAbout, setInputAbout] = useState(about);
+  const [inputAbout, setInputAbout] = useState(about);
 
-useEffect(() => {
-    dispatch(getAbout());
-}, [])
+  useEffect(() => {
+      dispatch(getAbout());
+  }, [])
 
-useEffect(() => {
-    setInputAbout(about)
-}, [about])
+  useEffect(() => {
+      setInputAbout(about);
+  }, [about])
+
+
+  const cart = useSelector(state => state.cart);
 
   return (
     <nav className="navBar">
       <div className='landscape'>
         <label className="logo">
-          <NavLink to="/" className="active"><img src={inputAbout.logo} alt="logo"/></NavLink>
+          <NavLink to="/" className="active"><img src={inputAbout.logo || logo} alt="logo"/></NavLink>
         </label>
 
         <div className='searchBar'>
@@ -76,9 +79,11 @@ useEffect(() => {
         </div>
 
         <div className='userActions'>
-              <NavLink to="/cart" activeClassName='activeLink' >
-                <GrCart className='menuIcon' />
-              </NavLink>
+          <NavLink to="/cart" activeClassName='activeLink' >
+            <div className='cartIcon'>
+              <GrCart className='menuIcon' /><span className='itemCount' >{cart.length}</span>
+            </div>
+          </NavLink>
           
           {isAuthenticated &&
             <div className='profilePic' onClick={toggleUserOptions}>
@@ -93,7 +98,7 @@ useEffect(() => {
 
       <div className='portrait'>
         <label className="logo">
-          <NavLink to="/" className="active"><img src={inputAbout.logoSmall} alt="logo"/></NavLink>
+          <NavLink to="/" className="active"><img src={inputAbout.logoSmall || logoSmall} alt="logo"/></NavLink>
         </label>
 
         <div className={'popupSearchBar ' + (popup.search ? 'showSearch' : 'hideSearch')}>
@@ -104,11 +109,11 @@ useEffect(() => {
         <div className='mobileOptions'>
           <FaSearch className='noLink' onClick={showBar}/>
 
-          {isAuthenticated
-            ? <NavLink to="/cart" activeClassName='activeLink' className='profilePic' >
-                <GrCart className='menuIcon' />
-              </NavLink>
-            : <GrCart className='menuIcon' onClick={showDialog} />}
+          <NavLink to="/cart" activeClassName='activeLink' >
+            <div className='cartIcon'>
+              <GrCart className='menuIcon' /><span className='itemCount' >{cart.length}</span>
+            </div>
+          </NavLink>
 
           {isAuthenticated &&
             <div className='profilePic' onClick={toggleUserOptions}>
