@@ -150,10 +150,11 @@ export default function Dashboard() {
             <div>
                 <NavBar />
             </div>
-            <div>
+            <div className='queSeaRow'>
                 <NavLink to="/admin/sales">Sales</NavLink>
+                <NavLink to="/admin/users">Users</NavLink>
+                <NavLink to='/admin/questions'>Questions</NavLink>
             </div>
-            <NavLink to="/admin/users">Users</NavLink>
             <div className="add-button-div">
                 <div className="table">
                     <DataTable
