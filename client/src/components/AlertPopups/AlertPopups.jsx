@@ -22,7 +22,7 @@ export default function AlertPopup({ activeAlert, actionAlert, handleOpenAlert, 
                             </div>
 
                             <div className='divBtnAlert'>
-                                <button
+                                <span
                                     onClick={() => {
                                         // setSuccessOrCanceled('caceled');
                                         // setActiveAnotherAlert(true);
@@ -32,9 +32,9 @@ export default function AlertPopup({ activeAlert, actionAlert, handleOpenAlert, 
                                     className='btnAlert canceledButton'
                                 >
                                     No, cancel!
-                                </button>
+                                </span>
 
-                                <button
+                                <span
                                     onClick={() => {
                                         // setSuccessOrCanceled('success');
                                         // setActiveAnotherAlert(true);
@@ -45,7 +45,7 @@ export default function AlertPopup({ activeAlert, actionAlert, handleOpenAlert, 
                                     className='btnAlert successButton'
                                 >
                                     Yes, {actionAlert} it!
-                                </button>
+                                </span>
                             </div>
                         </div>
                     </div>

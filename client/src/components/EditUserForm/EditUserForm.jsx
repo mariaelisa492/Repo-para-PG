@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { editUser } from "../../redux/actions/index"
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './EditUserForm.css'
 import { useDispatch } from 'react-redux';
 
@@ -282,13 +282,13 @@ function EditUserForm({_id, handleClosePopUp}) {
                 </div>
                 
                 <div className="inputContainter">
-                    <button type="submit" className="butt">Confirm</button>
+                    <span type="submit" className="butt">Confirm</span>
                     <br></br>
                     <br></br>
                 
-                <Link to='/profile'>
-                    <button className="butt" onClick={handleClosePopUp}>Back</button>            
-                </Link>
+                <NavLink to='/profile'>
+                    <span type='button' className="butt" onClick={handleClosePopUp}>Back</span>            
+                </NavLink>
                 </div>
                 </form>
             </div>
