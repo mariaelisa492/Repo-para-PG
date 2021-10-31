@@ -13,21 +13,25 @@
 }
 
 .chat__body {
-  border-radius: 50px !important;
-}
-
-.chat__audio {
-  display: none !important;
+  border-radius: 50px 50px 0px 0px !important;
 }
 
 .chat__form .round-block {
   border-radius: 0 !important;
 }
 
+.chat__audio {
+  display: none !important;
+}
+
 .message__suggested-btn:hover {
   box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.5);
 }
 
-.message__avatar {
-    background-color: #0070ba !important;
+.card__buttons button {
+  background-color: #0070ba !important;
+}
+
+.message--right .message__body {
+  background-color: #0070ba !important;
 }
