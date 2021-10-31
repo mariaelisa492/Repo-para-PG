@@ -6,6 +6,7 @@ import "./wishListProfile.css"
 function WishListProfile({wishes, user}){
     
     const products = useSelector(state => state.products)
+    const wish = useSelector(state => state.wishList)
     
     const productWish = []
 
@@ -17,22 +18,18 @@ function WishListProfile({wishes, user}){
         }
     }
 
-
-    console.log('!!!!!!!!!!!! SOY PRODUCTS', productWish)
-    console.log('!!!!!!!!!!!! SOY WISHES', wishes)
-
     return (
         <>
             <div className="containerWishList">
                 <h1 className="tittleWish"> Wish List</h1>
                 <div className="wishesContainer">
                     <div className="wishes"> 
-                        <WishesProfile wishes={productWish} user={user}/>
-                        <WishesProfile wishes={productWish} user={user}/>
-                        <WishesProfile wishes={productWish} user={user}/>
+                    {productWish.map(products => {
+                      return  <WishesProfile wishes={products} user={user}/>
+                    })}  
                     </div>
                     <div className="totalWishes">
-                        <p> total Wishes: </p>
+                        <p> total Wishes: {wish.length} </p>
                     </div>
                 </div>
             </div>  

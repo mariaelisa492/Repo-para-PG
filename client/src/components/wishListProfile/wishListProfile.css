@@ -1,6 +1,7 @@
 .containerWishList {
     display: flex;
     flex-direction: column;
+    margin: 0.5% auto 7%; 
 }
 
 .tittleWish {
@@ -23,10 +24,8 @@
     width: 100%;
     background-color: white;
     border-radius: 2px;
-    height: 60vh;
     border: 1px solid;
-    border-color: rgb(216, 212, 212);
-      
+    border-color: rgb(216, 212, 212);    
 }
 
 .wishes
@@ -43,5 +42,7 @@
     padding-right: 4%;
     border: 1px solid;
     border-style: inset;
+    border-right: none;
+    border-left: none;
     border-color: rgb(236, 228, 228);
 }
