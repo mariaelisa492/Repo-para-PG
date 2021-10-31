@@ -25,7 +25,7 @@ const DashStyles = () => {
                 <div class="menu__side" id="menu_side">
 
                     <div class="name__page">
-                        <NavLink to="/"><AiOutlineHome size={30} /></NavLink>
+                        <NavLink className="dash-home-icon" to="/"><AiOutlineHome size={30} /></NavLink>
                     </div>
 
                     <div class="options__menu">

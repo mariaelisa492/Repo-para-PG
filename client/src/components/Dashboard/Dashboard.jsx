@@ -23,7 +23,7 @@ export default function Dashboard() {
         dispatch(getAbout());
         const timeout = setTimeout(() => {
             setPending(false);
-        }, 1000);
+        }, 0.5000);
         return () => clearTimeout(timeout);
     }, []);
 
@@ -38,7 +38,24 @@ export default function Dashboard() {
             name: "Name",
             selector: "name",
             sortable: true
+        }
+        ,
+        {
+            name: "Brand",
+            selector: "brand",
+            sortable: true
         },
+        {
+            name: "Model",
+            selector: "model",
+            sortable: true
+        },
+        {
+            name: "Category",
+            selector: "category",
+            sortable: true
+        }
+        ,
         {
             name: "Price",
             selector: "price",
@@ -47,11 +64,6 @@ export default function Dashboard() {
         {
             name: "Stock",
             selector: "stock",
-            sortable: true
-        },
-        {
-            name: "Brand",
-            selector: "brand",
             sortable: true
         },
         {
@@ -145,22 +157,22 @@ export default function Dashboard() {
     return (
         <>
 
-                <div className="table">
-            <div className="add-button-div">
-                    <button className='create add-button' onClick={handleOpenPopupCreate}><MdOutlineAddCircle size={28 }/></button>
-                    </div>
-                    <DataTable
-                        columns={columns}
-                        data={items}
-                        progressPending={pending}
-                        title="My products"
-                        striped
-                        highlightOnHover
-                        paginationPerPage={5}
-                        paginationRowsPerPageOptions={[5, 8]}
-                        pagination
-                    />
+            <div className="table">
+                <div className="add-button-div">
+                    <button className='create add-button' onClick={handleOpenPopupCreate}><MdOutlineAddCircle size={28} /></button>
                 </div>
+                <DataTable
+                    columns={columns}
+                    data={items}
+                    progressPending={pending}
+                    title="My products"
+                    striped
+                    highlightOnHover
+                    paginationPerPage={5}
+                    paginationRowsPerPageOptions={[5, 8]}
+                    pagination
+                />
+            </div>
 
 
 

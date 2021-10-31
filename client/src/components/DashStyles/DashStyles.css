@@ -25,6 +25,10 @@
     transform: translateX(10px);
 }
 
+.dash-home-icon{
+    color: white;
+}
+
 .icon__menu i{
     font-size: 20px;
     position: absolute;
@@ -71,7 +75,7 @@
 }
 
 .options__menu{
-    padding: 20px 30px;
+    padding: 40px 30px;
     position: absolute;
     top: 80px;
 }
@@ -132,12 +136,18 @@ a.selected{
 
 
 @media screen and (max-width: 760px){
-    .body_move{
-        margin-left: 0px;
+    .table{
+        padding-left: 0px;
     }
 
-    .menu__side_move{
+    .menu__side{
         width: 80px;
         left: -80px;
+    }
+    .create{
+        margin-right: -1px;
+        width: 100vw;
+        border-radius: 0px;
+        cursor: pointer;
     }
 }

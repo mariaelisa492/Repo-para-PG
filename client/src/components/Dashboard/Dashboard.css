@@ -9,18 +9,20 @@ padding-top: 60px;
 }
 
 .create {
-  padding: 6px 0 0 0;
+  padding: 4px 0 0 0;
   margin: 0 0 0 0;
-  height: 40px;
+  height: 39px;
   width: 80px;
   float: inline-end;
   margin-right: 20px;
-  background-color: #24262b;
+  background-color: #FF9F1C;
   color: white;
+  border-radius: 5px;
+  margin-bottom: 5px;
   }
 
 .add-button:hover {
-  background-color: rgba(10, 10, 10, 0.349);
+  background-color: gray;
   transition: 0.3s;
 }
 
