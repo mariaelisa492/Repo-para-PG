@@ -7,7 +7,7 @@ export const validationFunction = (input) => {
     errors.telephone =
       "Telephone is required and it can be just numbers and special characters";
 
-  if (!input.address || !/^([0-9])*$/.test(input.address))
+  if (!input.address || /^([0-9])*$/.test(input.address))
     errors.address = "Address is required and it can't be just numbers";
 
   if (!input.city || !/^([a-zA-Z])*$/.test(input.city))

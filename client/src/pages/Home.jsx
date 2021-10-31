@@ -9,7 +9,7 @@ import FilterProducts from "../components/FilterProducts/FilterProducts";
 import DropDownMenu from "../components/DropDownMenu/DropDownMenu";
 import { categories } from "../components/Categories/categoriesExport";
 import Loader from "../components/Loader/Loader";
-import { getAbout } from '../redux/actions/index';
+import { cleanQuestions, getAbout } from '../redux/actions/index';
 import './home.css';
 
 export const Home = () => {
@@ -24,12 +24,12 @@ export const Home = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getAbout());
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 3000);
   }, [])
+
 
   function showDropDownMenu() {
     setShowMenu(!showMenu);

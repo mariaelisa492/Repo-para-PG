@@ -8,8 +8,8 @@ import {
   GET_PRODUCTS, FILTER_PRICE_RANGE, SET_LIMIT,
   GET_MY_ORDERS, EMPTY_CART, GET_PRODUCT_DETAIL,
   GET_WISHLIST, GET_USER, ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, 
-  SET_USER, EDIT_USER,
-  GET_ABOUT, UPDATE_ABOUT,
+  SET_USER, EDIT_USER, GET_QUESTIONS_BY_PRODUCT, GET_ALL_UNANSWERED_QUESTIONS,
+  GET_ABOUT, UPDATE_ABOUT, CLEAR_QUESTIONS, RESET_PRICE_ORDER,
   } from "../constants/index"
 
 export const getProducts = () => {
@@ -199,6 +199,12 @@ export const getProductsByPriceDesc = () => {
   }
 };
 
+export const resetProductsByPrice = () => {
+  return {
+    type: RESET_PRICE_ORDER
+  }
+};
+
 export const filterProductsByPriceLessThan = (price) => {
   return {
     type: FILTER_PRICE_ONLY_LESSTHAN,
@@ -363,7 +369,33 @@ export const getWishlist = (email) =>{
   }
 } 
 
+// ----------------------------- QUESTIONS
+
+export const addQuestion = ({question}) => {
+  console.log(question.productq, 'productq en addQuestion');
+  console.log(question, 'question en addQuestion');
+     axios.post(`${LOCALHOST_URL}/products/questions/p/${question.productq}`, question)
+     .then(res => console.log(res, 'res en addQuestion'))
+     .catch( err => console.log(err, 'err en addQuestion'))
+}
+
+export const getAllUnansweredQuestions = () => {
+  return async (dispatch) => {
+    try {
+      const questions = await axios.get(`${LOCALHOST_URL}/products/questions/allUnanswered`);
+      return dispatch({
+        type: GET_ALL_UNANSWERED_QUESTIONS,
+        payload: questions.data,
+      })
+    } catch (error) {
+      console.log(error, 'getAllUnansweredQuestions ||Error||');
+    }
+  };
+}
+
+
 // ----------------------------- ABOUT
+
 export const getAbout = () => {
   return async (dispatch) => {
     try {
@@ -378,10 +410,20 @@ export const getAbout = () => {
   };
 }
 
-export const updateAbout = (id) => {
+export const updateAbout = (aboutObjet) => {
   return async (dispatch) => {
     try {
-      const about = await axios.put(`${LOCALHOST_URL}/about/update/${id}`);
+      const aboutAux = {
+        address: aboutObjet.address,
+        telephone: aboutObjet.telephone,
+        email: aboutObjet.email,
+        city: aboutObjet.city,
+        stateOrProvince: aboutObjet.stateOrProvince,
+        logo: aboutObjet.logo,
+        logoSmall: aboutObjet.logoSmall,
+      }
+      console.log(aboutAux, 'aboutAux en updateAbout');
+      const about = await axios.put(`${LOCALHOST_URL}/about/update/${aboutObjet._id}`, aboutAux);
       return dispatch({
         type: UPDATE_ABOUT,
         payload: about.data,
@@ -389,5 +431,5 @@ export const updateAbout = (id) => {
     } catch (error) {
       console.log(error, 'updateAbout ||Error||');
     }
-  };
+  }
 }
