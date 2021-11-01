@@ -10,7 +10,7 @@ import Swal from 'sweetalert2'
 
 export default function ItemCart({ item }) {
   console.log("ITEMS DEL CARRITOOOOOO", item);
-  const { _id, image, name, price, qty } = item;
+  const { _id, image, name, price, qty, stock } = item;
   const dispatch = useDispatch();
 
   const handleRemoveItem = (e) => {
@@ -48,7 +48,7 @@ export default function ItemCart({ item }) {
         
         <div className="actions-items">
           <div>
-            <SetItem id={_id} qty={qty} />
+            <SetItem id={_id} qty={qty} stock={stock}/>
           </div>
           <div>
             <button className ="button-items-delete" onClick={(e) => { handleRemoveItem(e) }}><AiTwotoneDelete/><h6>Delete</h6></button>

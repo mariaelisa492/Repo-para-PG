@@ -1,16 +1,35 @@
 import './setItem.css';
 import { useDispatch } from "react-redux"
 import { addCart, removeCart, removeItem } from '../../redux/actions';
-import {AiFillPlusCircle, AiFillMinusCircle} from "react-icons/ai"
+import {AiFillPlusCircle, AiFillMinusCircle} from "react-icons/ai";
+import Swal from 'sweetalert2'
 
 
-export default function({ id, qty }) {
+export default function({ id, qty, stock }) {
 
   const dispatch = useDispatch()
 
   const handleAddCart = (e) => {
     e.preventDefault()
-    dispatch(addCart(id)) 
+    if(qty < stock){
+      dispatch(addCart(id)) 
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast.fire({
+        icon: 'success',
+        title: 'The product was added to the cart!'
+    })
+    } 
   }
 
   const handleRemoveCart = (e) => {
