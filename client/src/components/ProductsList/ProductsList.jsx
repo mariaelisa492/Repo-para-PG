@@ -103,11 +103,11 @@ export default function ProductsList({ filteredProducts }) {
         
         <div >
           <div className="button_pagination">
-            <button onClick={lower} className='arrowPage'><MdOutlineArrowBackIosNew  /> <h4  >Previous</h4> </button>
+            <button onClick={lower} className='arrowPage'><MdOutlineArrowBackIosNew className="next-back-arrow" /> <h4  >Prev</h4> </button>
             <div className="pagination">
               <p>{limit} to {limit + 8 < filteredProducts.length ? limit + 8 : filteredProducts.length} of {filteredProducts.length}</p>
             </div>
-            <button onClick={raise} className='arrowPage'><h4>Next</h4> <MdOutlineArrowForwardIos /></button>
+            <button onClick={raise} className='arrowPage'><h4>Next</h4> <MdOutlineArrowForwardIos className="next-back-arrow" /></button>
           </div>
         </div>
           <hr/>
