@@ -54,8 +54,8 @@ const ProductSchema = new Schema({
     },
     updated: Date,
     created: {
-        type: Date,
-        default: Date.now
+        type: String,
+        
     },
     brand:{
         type: String,

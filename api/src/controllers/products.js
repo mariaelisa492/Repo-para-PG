@@ -7,6 +7,7 @@ const createProduct = async (req, res) => {
         description: req.body.description,
         image: req.body.image,
         price: req.body.price,
+        created: req.body.created,
         stock: req.body.stock,
         brand: req.body.brand,
         model: req.body.model,
