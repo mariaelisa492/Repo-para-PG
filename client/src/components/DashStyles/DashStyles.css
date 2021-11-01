@@ -152,5 +152,9 @@
     .questions-admin-sales-body {
         margin-top: 114px;
     }
+
+    .admin-users-dashboard {
+        padding: 125px 0 0 0px;
+    }
     
 }

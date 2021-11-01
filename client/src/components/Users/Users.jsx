@@ -10,6 +10,7 @@ import AlertPopup from '../AlertPopups/AlertPopups';
 import {deleteUser, makeAdmin} from '../../redux/actions/index'
 import { MdDeleteForever } from 'react-icons/md';
 import {GrUserAdmin} from 'react-icons/gr';
+import "./Users.css";
 
 export const Users = () => {
 
@@ -117,11 +118,7 @@ export const Users = () => {
     }, []);
 
     return (
-        <>
-            <div>
-                <NavBar />
-            </div>
-            <NavLink to="/admin">My products</NavLink>
+        <div className="admin-users-dashboard">
             {
                 users.length > 0 ?
                     <div className="userTableContainer">
@@ -159,6 +156,6 @@ export const Users = () => {
                     </div>
 
             }
-        </>
+        </div>
     )
 }

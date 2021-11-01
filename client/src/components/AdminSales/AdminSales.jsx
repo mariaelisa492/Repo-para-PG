@@ -122,12 +122,10 @@ const AdminSales = () => {
                     pagination
                     responsive
                 />
-            </div>
-            <div className="adminSM">
-                <ReactModal isOpen={openModal} className='reactModalContent' overlayClassName='reactModalOverlay'>
+            </div>      
+                <ReactModal isOpen={openModal} className="modal-admin-sales" /* overlayClassName='reactModalOverlay' */>
                     <AdminForm handleClosePopup={handleModal} showPopup={openModal} id={idToChange} />
                 </ReactModal>
-            </div>
         </div>
     )
 }

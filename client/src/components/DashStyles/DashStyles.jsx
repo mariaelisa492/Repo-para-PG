@@ -5,6 +5,7 @@ import { FiShoppingBag } from "react-icons/fi";
 import { RiQuestionAnswerLine } from "react-icons/ri";
 import { FiInfo } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
+import {HiOutlineUsers} from "react-icons/hi"
 import "./DashStyles.css";
 import { NavLink } from 'react-router-dom';
 
@@ -40,6 +41,10 @@ const DashStyles = () => {
 
                         <div class="option">
                             <NavLink activeClassName="selected" to="/admin/questions"> <RiQuestionAnswerLine /> </NavLink>
+                        </div>
+
+                        <div class="option">
+                            <NavLink activeClassName="selected" to="/admin/users"> <HiOutlineUsers /> </NavLink>
                         </div>
 
                         <div class="option">
