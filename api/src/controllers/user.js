@@ -1,5 +1,6 @@
 const { LEGAL_TCP_SOCKET_OPTIONS } = require('mongodb');
 const User = require('../models/user');
+const axios = require('axios').default;
 
 
 const createUser = async (req, res) => {
@@ -119,6 +120,27 @@ const deleteUser = async (req, res) => {
     }
 }
 
+const requestPasswordReset = async function(req, res) {
+  let { email } = req.body
+
+  let options = {
+    method: 'POST',
+    url: 'https://dev-auhhzee9.us.auth0.com/dbconnections/change_password',
+    headers: {'content-type': 'application/json'},
+    data: {
+      client_id: 'xQDFmB5mg94YjlPVoWP5k3TjEpOoW92t',
+      email,
+      connection: 'Username-Password-Authentication'
+    }
+  }
+
+  axios.request(options).then(function (response) {
+    return res.json({data: response.data})
+  }).catch(function (error) {
+    return res.send({error})
+  })
+}
+
 
 // -------------- WISH LIST
 
@@ -171,5 +193,6 @@ module.exports = {
     deleteUser,
     makeAdmin,
     getWishList,
-    toggleWishList
+    toggleWishList,
+    requestPasswordReset,
 }
