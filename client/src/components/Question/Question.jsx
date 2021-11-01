@@ -10,7 +10,7 @@ export function Question({ user, question, answer }) {
         <div className="reviewContainer">
             <div className="info-review">
                 <div className='ratingReview'>
-                    <BsChatLeftTextFill className="user-message-icon" />
+                <BsChatRightTextFill className="admin-message-icon" />                    
                     <div className="userQuestion">{user}    </div>
                     <div className="userWants"> wants to know...</div>
                 </div>
@@ -21,7 +21,7 @@ export function Question({ user, question, answer }) {
             <div className="info-review">
 
                 <div className='answerContainer'>
-                    <div className="userQuestion">Answer<BsChatRightTextFill className="admin-message-icon" /></div>
+                    <div className="userQuestion">Answer<BsChatLeftTextFill className="user-message-icon" /></div>
                 </div>
                 <div className='answer'>
                     <div>{answer}</div>
