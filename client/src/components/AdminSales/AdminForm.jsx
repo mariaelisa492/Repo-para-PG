@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateOrders } from '../../redux/actions';
+import './AdminForm.css'
 
-const AdminForm = ({ id }) => {
+export const AdminForm = ({ id, handleClosePopup }) => {
 
     //-------------  PARA ACTUALIZAR EL STATUS DE LAS ORDENES
 
@@ -13,8 +14,6 @@ const AdminForm = ({ id }) => {
     const handleSubmit = (e, id, newStatus) => {
         e.preventDefault()
         dispatch(updateOrders({ _id: id }, newStatus));
-        console.log(id, "ESTE ES EL ID")
-        console.log(newStatus, "ESTE ES EL STATUUUS")
     }
 
     const handleChange = (e) => {
@@ -22,8 +21,15 @@ const AdminForm = ({ id }) => {
     };
 
     return (
-        <div>
-            <form onSubmit={(e) => handleSubmit(e, id, newStatus)}>
+        <div className='AdminSalesModal'>
+            <div className='cerrar'>
+                <button onClick={() => {
+                    handleClosePopup()
+                }}>
+                    X
+                </button>
+            </div>
+            <form className='LeForm' onSubmit={(e) => handleSubmit(e, id, newStatus)}>
                 <select name="status" value={newStatus} onChange={handleChange}>
                     <option value="Not processed" >Not processed</option>
                     <option value="Processing">Processing</option>
@@ -39,5 +45,3 @@ const AdminForm = ({ id }) => {
         </div>
     )
 }
-
-export default AdminForm;

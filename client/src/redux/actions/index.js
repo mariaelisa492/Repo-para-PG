@@ -130,7 +130,7 @@ export const getAllOrders = () => {
     try {
       const orders = await axios.get(`${LOCALHOST_URL}/orders`);
       return dispatch({
-        type: GET_MY_ORDERS,
+        type: GET_ORDERS,
         payload: orders.data,
       });
     } catch (error) {

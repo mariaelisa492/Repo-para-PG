@@ -6,7 +6,7 @@ import { deleteOrder, getAllOrders, updateOrders } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { LOCALHOST_URL } from "../../redux/constants/index"
 import ReactModal from 'react-modal';
-import AdminForm from './AdminForm';
+import {AdminForm} from './AdminForm';
 import "./AdminSales.css"
 
 
@@ -21,7 +21,7 @@ const AdminSales = () => {
 
     const [idToChange, setIdToChange] = useState(null);
 
-    function handleOpen() {
+    function handleModal() {
         setOpenModal(!openModal)
     };
 
@@ -31,13 +31,8 @@ const AdminSales = () => {
 
     function laOnClick(e) {
         idChange(e)
-        handleOpen()
+        handleModal()
     };
-
-   
-   
-
-    console.log(orders, "ESTA ES LA ORDERESSS")
 
 
 
@@ -87,22 +82,34 @@ const AdminSales = () => {
         },
         {
             name: "Actions",
-            cell: row => (<div className="actions">
-                <button onClick={laOnClick(row._id)}>
+            cell: row => (
+            
+            <div className="actions">
+                <button 
+                onClick={
+
+                    () => laOnClick(row._id)
+                    
+                    }>
                     P
                 </button>
-                <button type="button" onClick={() => {
+                <button
+                type="button" 
+                onClick={() => {
                     handleDeleteOrder(row._id);
                 }}
+
                 >
                     <MdDeleteForever />
                 </button>
-            </div>)
+            </div>
+            
+            )
         }
     ]
 
     return (
-        <>
+        <div >
             <div className="admin-sales-body">
                 <DataTable
                     columns={columns}
@@ -116,10 +123,12 @@ const AdminSales = () => {
                     responsive
                 />
             </div>
-            <ReactModal isOpen={openModal} className='reactModalContent' overlayClassName='reactModalOverlay'>
-                <AdminForm handle={handleOpen} showPopup={openModal} id={idToChange} />
-            </ReactModal>
-        </>
+            <div className="adminSM">
+                <ReactModal isOpen={openModal} className='reactModalContent' overlayClassName='reactModalOverlay'>
+                    <AdminForm handleClosePopup={handleModal} showPopup={openModal} id={idToChange} />
+                </ReactModal>
+            </div>
+        </div>
     )
 }
 
