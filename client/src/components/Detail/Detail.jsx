@@ -110,7 +110,7 @@ export default function () {
           </div>
 
           <div >
-            {isAuthenticated?<button onClick={toggleModal} className="reviewBtn"> Make a review</button>:<button className="reviewBtn" onClick={showDialog}> make a review</button>}
+            {isAuthenticated?<button onClick={toggleModal} className="reviewBtn">Review this product</button>:<button className="reviewBtn" onClick={showDialog}> make a review</button>}
           
           </div>
 
@@ -118,10 +118,10 @@ export default function () {
             <ReviewCard reviews={reviews} />
           </div>
           <div className='questionFormB'>
-            <button className='questionFormButtonOpen' onClick={handleModalQuestion}>Ask a Question</button>
+            <button className='reviewBtn' onClick={handleModalQuestion}>Ask a Question</button>
           </div>
           {isAuthenticated ?
-          <ReactModal isOpen={modalQuestionOpen} className='modalQuestionForm' overlayClassName='reactModalOverlay' >
+          <ReactModal isOpen={modalQuestionOpen} className='modalReviewForm' overlayClassName='reactModalOverlay' >
             <QuestionForm productId={id} nickname={user?.nickname} close={handleModalQuestion} />
           </ReactModal>
           : null
@@ -130,7 +130,7 @@ export default function () {
           <Questions productId={id} questions={questions}/>
         </div>
 
-          <ReactModal isOpen={showPopupReview} className='reactModalContent' overlayClassName='reactModalOverlay'>
+          <ReactModal isOpen={showPopupReview} className='modalReviewForm' overlayClassName='reactModalOverlay'>
             <ReviewForm handleClosePopUp={toggleModal} />
           </ReactModal>
 
