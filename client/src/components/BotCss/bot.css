@@ -1,0 +1,37 @@
+#sntch_webchat,
+#sntch_webchat iframe {
+  height: 300px !important;
+  width: 300px !important;
+}
+
+.chat__header {
+  background-color: #f2ab15 !important;
+}
+
+.chat__avatar {
+  border-color: #000 !important;
+}
+
+.chat__body {
+  border-radius: 50px 50px 0px 0px !important;
+}
+
+.chat__form .round-block {
+  border-radius: 0 !important;
+}
+
+.chat__audio {
+  display: none !important;
+}
+
+.message__suggested-btn:hover {
+  box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.5);
+}
+
+.card__buttons button {
+  background-color: #0070ba !important;
+}
+
+.message--right .message__body {
+  background-color: #0070ba !important;
+}
