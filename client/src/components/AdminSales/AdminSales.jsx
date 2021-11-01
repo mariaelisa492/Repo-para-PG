@@ -1,15 +1,12 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
 import DataTable from 'react-data-table-component'
-import { NavLink } from 'react-router-dom'
-import Footer from '../Footer/Footer'
-import NavBar from '../NavBar/NavBar'
 import { MdDeleteForever } from 'react-icons/md';
-import { deleteOrder, updateOrders } from '../../redux/actions'
+import { deleteOrder, getAllOrders, updateOrders } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
-import { AiOutlineSave } from "react-icons/ai";
 import { LOCALHOST_URL } from "../../redux/constants/index"
+import ReactModal from 'react-modal';
+import AdminForm from './AdminForm';
 import "./AdminSales.css"
 
 
@@ -17,31 +14,45 @@ const AdminSales = () => {
 
     //-------------  PARA TRAER TODAS LAS ORDENES
 
-    const [ordenes, setOrdenes] = useState([])
 
-    useEffect(() => {
-        async function fetchData() {
-            const request = await axios.get(`${LOCALHOST_URL}/orders`)
-            setOrdenes(request.data.map(el => el))
-            return request
-        }
-        fetchData();
-    }, []);
+    const orders = useSelector(state => state.orders)
+
+    const [openModal, setOpenModal] = useState(false);
+
+    const [idToChange, setIdToChange] = useState(null);
+
+    function handleOpen() {
+        setOpenModal(!openModal)
+    };
+
+    function idChange(e) {
+        setIdToChange(e)
+    };
+
+    function laOnClick(e) {
+        idChange(e)
+        handleOpen()
+    };
+
+   
+   
+
+    console.log(orders, "ESTA ES LA ORDERESSS")
+
 
 
     //-------------  PARA ELIMINAR ORDENES
 
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch(getAllOrders())
+    }, [])
+   
+
     const handleDeleteOrder = (id) => {
         dispatch(deleteOrder(id));
     }
-
-
-    //-------------  PARA ACTUALIZAR EL STATUS DE LAS ORDENES
-
-   
-
 
     const columns = [
         {
@@ -77,19 +88,9 @@ const AdminSales = () => {
         {
             name: "Actions",
             cell: row => (<div className="actions">
-                <form>
-                    <select type="button">
-                        <option value="">Not processed</option>
-                        <option>Processing</option>
-                        <option>Shipped</option>
-                        <option>Delivered</option>
-                        <option>Dispatched</option>
-                    </select>
-                    <input
-                        type="submit"
-                        value="Update"
-                    />
-                </form>
+                <button onClick={laOnClick(row._id)}>
+                    P
+                </button>
                 <button type="button" onClick={() => {
                     handleDeleteOrder(row._id);
                 }}
@@ -105,7 +106,7 @@ const AdminSales = () => {
             <div className="admin-sales-body">
                 <DataTable
                     columns={columns}
-                    data={ordenes}
+                    data={orders}
                     title="My sales"
                     striped
                     highlightOnHover
@@ -115,6 +116,9 @@ const AdminSales = () => {
                     responsive
                 />
             </div>
+            <ReactModal isOpen={openModal} className='reactModalContent' overlayClassName='reactModalOverlay'>
+                <AdminForm handle={handleOpen} showPopup={openModal} id={idToChange} />
+            </ReactModal>
         </>
     )
 }
