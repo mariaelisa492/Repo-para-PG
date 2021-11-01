@@ -153,14 +153,16 @@ export const getMyOrders = (user) => {
   };
 };
 
-export const updateOrders = (order) => {
+export const updateOrders = (order, status) => {
   return async (dispatch) => {
     try {
       const objOrder =
       {
-        status: order.status,
+        status: status,
       };
       const orders = await axios.put(`${LOCALHOST_URL}/orders/${order._id}`, objOrder);
+      /* console.log(orders, "ESTO ES ORDERSSSSS") */
+      console.log(status, "ESTO ES SOLO STATUS")
       return dispatch({
         type: "UPDATE_ORDER",
         payload: orders.data.order
