@@ -2,11 +2,11 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component'
 import { MdDeleteForever } from 'react-icons/md';
-import { deleteOrder, getAllOrders, updateOrders } from '../../redux/actions'
+import { deleteOrder, getAllOrders } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
-import { LOCALHOST_URL } from "../../redux/constants/index"
 import ReactModal from 'react-modal';
-import {AdminForm} from './AdminForm';
+import { AdminForm } from './AdminForm';
+import { FaRegEdit } from 'react-icons/fa';
 import "./AdminSales.css"
 
 
@@ -43,7 +43,7 @@ const AdminSales = () => {
     useEffect(() => {
         dispatch(getAllOrders())
     }, [])
-   
+
 
     const handleDeleteOrder = (id) => {
         dispatch(deleteOrder(id));
@@ -57,17 +57,21 @@ const AdminSales = () => {
         },
         {
             name: "Name",
-            selector: "items[0].name",
+            cell: row => (
+                row.items.map(el => el.name + " + ")
+            ),
             sortable: true
         },
         {
             name: "Price by unit",
-            selector: "items[0].price",
+            cell: row => (
+                row.items.map(el => el.price + " + ")
+            ),
             sortable: true
         },
         {
             name: "Quantity",
-            selector: "items[0].qty",
+            selector: "quantity",
             sortable: true
         },
         {
@@ -83,27 +87,23 @@ const AdminSales = () => {
         {
             name: "Actions",
             cell: row => (
-            
-            <div className="actions">
-                <button 
-                onClick={
 
-                    () => laOnClick(row._id)
-                    
-                    }>
-                    P
-                </button>
-                <button
-                type="button" 
-                onClick={() => {
-                    handleDeleteOrder(row._id);
-                }}
+                <div className="actions">
+                    <button
+                        onClick={() => laOnClick(row._id)}>
+                        <FaRegEdit />
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => {
+                            handleDeleteOrder(row._id);
+                        }}
 
-                >
-                    <MdDeleteForever />
-                </button>
-            </div>
-            
+                    >
+                        <MdDeleteForever />
+                    </button>
+                </div>
+
             )
         }
     ]
