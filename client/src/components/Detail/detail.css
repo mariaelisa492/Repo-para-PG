@@ -128,7 +128,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px 40px 0px 20px;
+  width: 100%;
+  /* padding: 20px 40px 0px 20px; */
 }
 .modalReviewForm{
   display: flex;
@@ -178,7 +179,7 @@
   cursor: pointer;
   align-self: flex-start;
   margin-left: 10vw;
-  background-image: linear-gradient(to left, #fdaa48, #f2ab15);
+  background-color: #f2ab15;
   color: #0f0f0f;
   font-size: 13px;
   font-weight: bold;
