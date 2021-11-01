@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import './components/Login/Login.css'
-import { Route, Switch } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router';
 import { Home } from './pages/Home'
 import { Detail } from './pages/Detail';
-import { getProducts } from './redux/actions/index'
+import { getProducts, searchUserInDb } from './redux/actions/index'
 import { useDispatch } from 'react-redux'
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import { Categories } from './components/Categories/Categories';
@@ -14,13 +14,19 @@ import { Users } from './components/Users/Users';
 import AdminSales from './components/AdminSales/AdminSales';
 import InfoCommerce from './pages/InfoCommerce';
 import { QuestionsAdminSide } from './components/QuestionsAdminSide/QuestionsAdminSide';
+import { useSelector } from 'react-redux'
+import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
   const dispatch = useDispatch()
+  const u = useSelector(state => state.user)
+  const role = u.user ? u.user[0]?.role : null
+  const {user} = useAuth0();
 
   useEffect(() => {
     dispatch(getProducts())
-  }, [dispatch])
+    dispatch(searchUserInDb(user?.email))
+  }, [dispatch, user])
 
   return (
     <div className="App">
@@ -36,6 +42,7 @@ function App() {
         <Route exact path = '/about' component={InfoCommerce}/>
         <Route exact path = '/admin/questions' component={QuestionsAdminSide}/>
       </Switch>
+      {role !== 'ROLE_ADMIN' ? <Redirect from='/admin' to='/' /> : null}
     </div>
   );
 }
