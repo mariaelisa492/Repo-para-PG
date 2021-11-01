@@ -10,7 +10,7 @@ export  const categories = {
         'Drum Kits',
         'Digital Drums',
         'Electrical Drum Kits',
-        'Tropial',
+        'Tropical',
         'Other'
     ],
     Pianos:[
