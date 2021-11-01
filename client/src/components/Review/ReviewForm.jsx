@@ -21,13 +21,13 @@ export function ReviewForm({ handleClosePopUp }) {
     const { id } = useParams();
 
 
-    const stars = Array(10).fill(0)
+    const stars = Array(5).fill(0)
     const [rating, setRating] = useState(0);
     const [hoverValue, setHoverValue] = useState(undefined);
     const [review, setReview] = useState("");
 
     const handleCllick = value => {
-        setRating(value);
+        setRating(value * 2);
     };
 
     const handleMouseOver = value => {
