@@ -9,7 +9,7 @@ import "./ReviewForm.css";
 
 
 const colors = {
-    orange: "#FFBA5A",
+    orange: "#0070BA",
     grey: "a9a9a9"
 };
 
@@ -21,13 +21,13 @@ export function ReviewForm({ handleClosePopUp }) {
     const { id } = useParams();
 
 
-    const stars = Array(10).fill(0)
+    const stars = Array(5).fill(0)
     const [rating, setRating] = useState(0);
     const [hoverValue, setHoverValue] = useState(undefined);
     const [review, setReview] = useState("");
 
     const handleCllick = value => {
-        setRating(value);
+        setRating(value * 2);
     };
 
     const handleMouseOver = value => {
@@ -82,7 +82,7 @@ export function ReviewForm({ handleClosePopUp }) {
                             />
                         })}
                     </div>
-                    <h2 className="reviewUser">{user.nickname}</h2>
+                   
                     <textarea
                         resize="none"
                         className="reviewText"
@@ -90,7 +90,7 @@ export function ReviewForm({ handleClosePopUp }) {
                         onChange={e => handleChange(e)}
                         placeholder="what's your feedback" />
                     <div className="butons-container">
-                        <button type="submit" className="reviewSendBtn" maxlength="200" >Send</button>
+                        <button type="submit" className="reviewBackBtn" maxlength="200" >Send</button>
                         <button className="reviewBackBtn" onClick={handleClosePopUp}>Back</button>
                     </div>
                 </form>

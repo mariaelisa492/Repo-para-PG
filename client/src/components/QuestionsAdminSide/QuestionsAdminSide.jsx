@@ -31,7 +31,7 @@ export const QuestionsAdminSide = () => {
             console.log(error);
         }
     }
-
+    console.log(questions)
     function handleClosePopupAnswer() {
         setOpenPopUpAnswer(false);
     }
@@ -58,7 +58,7 @@ export const QuestionsAdminSide = () => {
         },
         {
             name: "Product",
-            selector: "questionFromProduct",
+            selector: "question.productn",
             sortable: true
         },
         {
@@ -95,9 +95,9 @@ export const QuestionsAdminSide = () => {
             </div>
 
             <div className="popupAnswer">
-                <ReactModal isOpen={openPopUpAnswer} className='reactModalContent' overlayClassName='reactModalOverlay'>
-                    <FormAnswerQuestion handleClosePopup={handleClosePopupAnswer} showPopup={openPopUpAnswer} questA={QTA} />
-                </ReactModal>
+            <ReactModal isOpen={openPopUpAnswer} className='modalReviewForm' overlayClassName='reactModalOverlay'>
+                <FormAnswerQuestion handleClosePopup={handleClosePopupAnswer} showPopup={openPopUpAnswer} questA={QTA} />
+            </ReactModal>
             </div>
         </>
     )
