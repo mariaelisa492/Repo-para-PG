@@ -1,27 +1,32 @@
 import React from 'react';
-import './Question.css'
+import './Question.css';
+import { BsChatLeftTextFill } from 'react-icons/bs';
+import { BsChatRightTextFill } from 'react-icons/bs';
 
 
-export function Question({user, question, answer}) {
+export function Question({ user, question, answer }) {
 
     return (
-        <div className="questionAll">
-            <div className="questionC">
-                <div className='userinQ'>
-                    <h4>The user </h4>
-                    <h3>{user}</h3>
-                    <h4> wants to know...</h4>
+        <div className="reviewContainer">
+            <div className="info-review">
+                <div className='ratingReview'>
+                <BsChatRightTextFill className="admin-message-icon" />                    
+                    <div className="userQuestion">{user}    </div>
+                    <div className="userWants"> wants to know...</div>
                 </div>
                 <div className='question'>
-                    <p>{question}</p>
+                    <div>{question}</div>
                 </div>
             </div>
-            <div className="answerC">
+            <div className="info-review">
+
+                <div className='answerContainer'>
+                    <div className="userQuestion">Answer<BsChatLeftTextFill className="user-message-icon" /></div>
+                </div>
                 <div className='answer'>
-                    <h5>Answer:</h5>
-                    <p>{answer}</p>
+                    <div>{answer}</div>
                 </div>
             </div>
-        </div>  
+        </div>
     )
 }

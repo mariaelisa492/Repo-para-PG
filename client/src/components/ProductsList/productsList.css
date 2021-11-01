@@ -33,18 +33,18 @@
 .button_pagination button{
     display: flex;
     border: 0px;
-    padding: 10px 0px 10px 0px;
+    /* padding: 10px 0px 10px 0px; */
     width: 100px;
-    margin: 0 0px 8px 10px;
+    /* margin: 0 0px 8px 10px; */
     cursor: pointer;
     border-radius: 5px;
     font-size: 15px;
-    color: rgb(39, 167, 154);
+    color: #0070ba;
     background: none;
 }
 
 .arrowPage:hover{
-    color: rgba(16, 107, 98, 0.685);
+    color: #025c97;
     text-decoration: underline;
 }
 .button_pagination .pagination{
@@ -102,4 +102,13 @@
 }
 .labels {
     margin:5px;
+}
+
+   
+
+.next-back-arrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0vh;
 }

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ReactModal from 'react-modal';
-import NavBar from "../NavBar/NavBar";
 import DataTable from "react-data-table-component";
 import FormCreateProducts from '../FormCreateProducts/FormCreateProducts';
 import FormUpdateProducts from '../FormUpdateProduct/EditableRow';
@@ -10,10 +9,9 @@ import { MdDeleteForever } from 'react-icons/md';
 import { FaRegEdit } from 'react-icons/fa';
 import AlertPopup from '../AlertPopups/AlertPopups';
 import Modal from "../Modal/Modal";
-import { NavLink } from "react-router-dom";
-import Footer from "../Footer/Footer";
-import "./Dashboard.css";
 import FormAbout from '../FormAbout/FormAbout';
+import { MdOutlineAddCircle } from 'react-icons/md'
+import "./Dashboard.css";
 
 export default function Dashboard() {
 
@@ -25,7 +23,7 @@ export default function Dashboard() {
         dispatch(getAbout());
         const timeout = setTimeout(() => {
             setPending(false);
-        }, 1000);
+        }, 0.5000);
         return () => clearTimeout(timeout);
     }, []);
 
@@ -40,7 +38,24 @@ export default function Dashboard() {
             name: "Name",
             selector: "name",
             sortable: true
+        }
+        ,
+        {
+            name: "Brand",
+            selector: "brand",
+            sortable: true
         },
+        {
+            name: "Model",
+            selector: "model",
+            sortable: true
+        },
+        {
+            name: "Category",
+            selector: "category",
+            sortable: true
+        }
+        ,
         {
             name: "Price",
             selector: "price",
@@ -52,17 +67,11 @@ export default function Dashboard() {
             sortable: true
         },
         {
-            name: "Brand",
-            selector: "brand",
-            sortable: true
-        },
-        {
             name: "Actions",
             cell: row => (<div className="actions">
                 <button type="button" onClick={() => {
                     handleOpenPopupUpdate()
                     setidToUpdate(row._id)
-                    console.log(row._id)
                 }}><FaRegEdit /></button>
 
                 <button type="button" onClick={() => {
@@ -144,38 +153,28 @@ export default function Dashboard() {
     const handleClosePopupUpdateAbout = () => {
         setShowPopupUpdateAbout(false)
     }
-    
+
     return (
         <>
-            <div>
-                <NavBar />
-            </div>
-            <div className='queSeaRow'>
-                <NavLink to="/admin/sales">Sales</NavLink>
-                <NavLink to="/admin/users">Users</NavLink>
-                <NavLink to='/admin/questions'>Questions</NavLink>
-            </div>
-            <div className="add-button-div">
-                <div className="table">
-                    <DataTable
-                        columns={columns}
-                        data={items}
-                        progressPending={pending}
-                        title="My products"
-                        striped
-                        highlightOnHover
-                        paginationPerPage={5}
-                        paginationRowsPerPageOptions={[5, 8]}
-                        pagination
-                    />
-                </div>
-                {/* <div className="create"> */}
-                <button className='create add-button' onClick={handleOpenPopupCreate}>Create</button>
-                {/* </div> */}
 
-                <button className='create add-button' onClick={handleOpenPopupUpdateAbout}>Data About</button>
+            <div className="table">
+                <div className="add-button-div">
+                    <button className='create add-button' onClick={handleOpenPopupCreate}><MdOutlineAddCircle size={28} /></button>
+                </div>
+                <DataTable
+                    columns={columns}
+                    data={items}
+                    progressPending={pending}
+                    title="My products"
+                    striped
+                    highlightOnHover
+                    paginationPerPage={5}
+                    paginationRowsPerPageOptions={[5, 8]}
+                    pagination
+                />
             </div>
-           
+
+
 
 
             <ReactModal isOpen={showPopupCreate} className='reactModalContent' overlayClassName='reactModalOverlay'>
@@ -202,10 +201,6 @@ export default function Dashboard() {
             <ReactModal isOpen={showPopupUpdateAbout} className='reactModalContent' overlayClassName='reactModalOverlay'>
                 <FormAbout handleClosePopup={handleClosePopupUpdateAbout} />
             </ReactModal>
-
-            <div>
-                <Footer />
-            </div>
         </>
     )
 };
