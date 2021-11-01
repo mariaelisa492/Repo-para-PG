@@ -1,10 +1,12 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import WishesProfile from '../wishesProfile/WishesProfile'
+import "./wishListProfile.css"
 
-function WishListProfile({wishes}){
+function WishListProfile({wishes, user}){
     
     const products = useSelector(state => state.products)
+    const wish = useSelector(state => state.wishList)
     
     const productWish = []
 
@@ -15,16 +17,19 @@ function WishListProfile({wishes}){
            } 
         }
     }
-    console.log('!!!!!!!!!!!! SOY PRODUCTS', productWish)
-    console.log('!!!!!!!!!!!! SOY WISHES', wishes)
 
     return (
         <>
             <div className="containerWishList">
-                <h1> Your Wish List</h1>
+                <h1 className="tittleWish"> Wish List</h1>
                 <div className="wishesContainer">
                     <div className="wishes"> 
-                        <WishesProfile wishes={wishes}/>
+                    {productWish.map(products => {
+                      return  <WishesProfile wishes={products} user={user}/>
+                    })}  
+                    </div>
+                    <div className="totalWishes">
+                        <p> total Wishes: {wish.length} </p>
                     </div>
                 </div>
             </div>  

@@ -1,11 +1,48 @@
 .containerWishList {
-    max-width: 1150px;
-    margin: 0 auto;
-}
-
-.wishesContainer {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    margin: 0.5% auto 7%; 
 }
 
+.tittleWish {
+    display: flex;
+    align-items: center;
+    padding-top: 0.7%;
+    margin-left: 12.4%;
+    font-weight: 600;
+    font-size: 24px;  
+}
+
+.wishesContainer 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    margin: 1% auto;
+    max-width: 75%;
+    border-radius: 4px;
+    width: 100%;
+    background-color: white;
+    border-radius: 2px;
+    border: 1px solid;
+    border-color: rgb(216, 212, 212);    
+}
+
+.wishes
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.totalWishes 
+{
+    display: flex;
+    font-size: 160%;
+    justify-content: end;
+    padding-right: 4%;
+    border: 1px solid;
+    border-style: inset;
+    border-right: none;
+    border-left: none;
+    border-color: rgb(236, 228, 228);
+}

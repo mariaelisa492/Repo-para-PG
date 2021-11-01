@@ -86,7 +86,7 @@ export default function UserProfile() {
                     <div className="favContainer">
                         <div className="soyH1" onClick={(e) => { handleToggle(e) }}>{"back"} </div>
                         <div className="">
-                            <WishListProfile wishes={wishes}/>
+                            <WishListProfile wishes={wishes} user={user?.email}/>
                         </div>
                     </div>
                     :
