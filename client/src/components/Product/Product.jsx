@@ -45,7 +45,7 @@ export default function Product({ _id, img, name, price, reviews, isActive, stoc
     }
 
 
-//show a div if created is 15 days less than today
+//show a div if created is 15 days less than today.
     const showDiv = () => {
         if (created) {
             const createdDate = new Date(created)
