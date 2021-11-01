@@ -153,7 +153,7 @@ const createProductQuestion = async (req, res) => {
     try {
         console.log(question, 'question in api')
         const product = await Products.findById(id);
-        console.log(product, 'product')
+        // console.log(product, 'product')
         product.questions.push(question);
         await product.save();
         res.status(200).json({
@@ -161,8 +161,10 @@ const createProductQuestion = async (req, res) => {
             product
         });
     } catch (error) {
-        res.status(400).json({
-            message: 'Something went wrong while trying to post a question. Try again later.'
+        console.log(error)
+        res.status(404).json({
+            message: 'Something went wrong while trying to post a question. Try again later.',
+            error
         })
     }
 }
