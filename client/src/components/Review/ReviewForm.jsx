@@ -9,7 +9,7 @@ import "./ReviewForm.css";
 
 
 const colors = {
-    orange: "#FFBA5A",
+    orange: "#0070BA",
     grey: "a9a9a9"
 };
 
@@ -82,7 +82,7 @@ export function ReviewForm({ handleClosePopUp }) {
                             />
                         })}
                     </div>
-                    <h2 className="reviewUser">{user.nickname}</h2>
+                   
                     <textarea
                         resize="none"
                         className="reviewText"
@@ -90,7 +90,7 @@ export function ReviewForm({ handleClosePopUp }) {
                         onChange={e => handleChange(e)}
                         placeholder="what's your feedback" />
                     <div className="butons-container">
-                        <button type="submit" className="reviewSendBtn" maxlength="200" >Send</button>
+                        <button type="submit" className="reviewBackBtn" maxlength="200" >Send</button>
                         <button className="reviewBackBtn" onClick={handleClosePopUp}>Back</button>
                     </div>
                 </form>

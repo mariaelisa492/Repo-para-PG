@@ -130,14 +130,23 @@
   align-items: center;
   padding: 20px 40px 0px 20px;
 }
-
+.modalReviewForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  width: 75vh;
+  height: 50vh; 
+  background-color: rgba(255, 255, 255, 0.747);
+  border-radius: 10px;
+}
 .modalQuestionForm{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   align-self: center;
-  width: 60vh;
+  width: 70vh;
   height: 50vh; 
   background-color: rgba(255, 166, 0, 0.377);
   border-radius: 10px;
@@ -148,9 +157,8 @@
   justify-content: center;
   align-items: center;
   align-self: center;
-  width: 60vh;
+  width: 70vh;
   height: 50vh;
-  background-color: rgba(255, 166, 0, 0.377);
   border-radius: 10px;
 }
 .modalQuestionForm textarea{

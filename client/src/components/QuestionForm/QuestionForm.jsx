@@ -37,20 +37,22 @@ export function QuestionForm({productId, nickname, close}){
     }
 
 return(
-    <form onSubmit={(e) => handleSubmit(e, question, productId)}>
-        <div className='closeQuestionForm' onClick={handleClose}>X</div>
-            <div className="questionForm">
+    <div className="questionForm">
+        <form className='form' onSubmit={(e) => handleSubmit(e, question, productId)}>
             <h1> Your question:  </h1>
                 <textarea
+                    className="reviewText"
                     name="question"
                     value={question.question}
                     onChange={handleChange}
                     placeholder="Ask here"
                 />
-            
-            <button type="submit">Send</button>
-    </div>
+            <div className='butons-container' >
+                <button type="submit">Send</button>
+                <button type="button" onClick={handleClose}>Back</button>
+            </div>
         </form>
+    </div>
     )
 
 }
