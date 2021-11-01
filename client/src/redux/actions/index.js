@@ -114,10 +114,26 @@ export const updateProduct = (product) => {
 
 
 // --------------------------- ORDER ACTIONS
+export const removeStock = (order) => {
+  return async (dispatch) => {
+    try {
+      order.items.map(
+        async (item) => {
+          const product = await axios.put(`${LOCALHOST_URL}/products/stock/${item._id}`, { qty: item.qty })
+        }
+      )
+    }
+    catch (error) {
+      console.log("Error al actualizar stock")
+    }
+  }
+}
+
 export const setNewOrder = (order) => {
   return (dispatch) => {
     try {
       axios.post(`${LOCALHOST_URL}/orders/create`, order).then(setTimeout(() => { dispatch(emptyCart()) }, 2000))
+      .then(setTimeout(() => { dispatch(removeStock(order)) }, 800))
     }
     catch (error) {
       console.log(error);
