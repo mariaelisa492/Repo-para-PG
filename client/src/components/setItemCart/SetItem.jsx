@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux"
 import { addCart, removeCart, removeItem } from '../../redux/actions';
 import {AiFillPlusCircle, AiFillMinusCircle} from "react-icons/ai"
 import Swal from 'sweetalert2';
-
+import {AiFillPlusCircle, AiFillMinusCircle} from "react-icons/ai";
+import Swal from 'sweetalert2'
 export default function({ id, qty, stock }) {
 
   const dispatch = useDispatch()
@@ -28,7 +29,7 @@ export default function({ id, qty, stock }) {
         icon: 'success',
         title: 'The product was added to the cart!'
     })
-    }
+    } 
   }
 
   const handleRemoveCart = (e) => {

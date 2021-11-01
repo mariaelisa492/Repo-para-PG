@@ -48,7 +48,8 @@ export default function ItemCart({ item }) {
         
         <div className="actions-items">
           <div>
-            <SetItem id={_id} qty={qty} stock={stock} />
+
+            <SetItem id={_id} qty={qty} stock={stock}/>
           </div>
           <div>
             <button className ="button-items-delete" onClick={(e) => { handleRemoveItem(e) }}><AiTwotoneDelete/><h6>Delete</h6></button>
