@@ -128,7 +128,7 @@ export default function UserProfile() {
 
                             <div className='userNameOrder'>
                                 <button className="btnOrders" onClick={(e) => { handleOrders(e) }}><FiArchive /></button>
-                                <button className="btnWish" onClick={(e) => { handleWish(e) }}>Wishes</button>
+                                <button className="btnOrders" onClick={(e) => { handleWish(e) }}>Wishes</button>
                             </div>
                         </div>
 
