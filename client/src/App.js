@@ -49,7 +49,7 @@ function App() {
         <Route exact path='/admin/about' component={About} />
       </Switch>
       <Route path="/admin" component={DashStyles} />
-      {role !== 'ROLE_ADMIN' ? <Redirect from='/admin' to='/' /> : null}
+      {/* {role !== 'ROLE_ADMIN' ? <Redirect from='/admin' to='/' /> : null} */}
     </div>
   );
 }
