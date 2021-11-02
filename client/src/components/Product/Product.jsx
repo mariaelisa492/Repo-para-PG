@@ -52,7 +52,7 @@ export default function Product({ _id, img, name, price, reviews, isActive, stoc
                 toast: true,
                 position: 'top-end',
                 showConfirmButton: false,
-                timer: 3000,
+                timer: 800,
                 timerProgressBar: true,
                 didOpen: (toast) => {
                     toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -96,14 +96,14 @@ export default function Product({ _id, img, name, price, reviews, isActive, stoc
                 <div className="product-details">
                     <span className="product-catagory">MUSIC</span>
                     <NavLink className="link-product" to={'detail/' + _id}>
-                        <h4><a href="">{name}</a></h4>
+                        <h4>{name}</h4>
                     </NavLink>
                     <p><Rating rating={ratingDefault} /></p>
                     <div className="product-bottom-details">
                         <div className="product-price"><small>$ {price + 200}</small>$ {price}</div>
                         <div className="product-links">
-                        <a className="button-items-delete" onClick={(e) => { handleAddCart(e) }}><FaCartPlus /></a>
-                        <a className={state.wish? "wishListTrue" : ""} onClick={e => handleWish(e)}><BsHeartFill /></a>
+                        <span className="button-items-delete" onClick={(e) => { handleAddCart(e) }}><FaCartPlus /></span>
+                        <span className={state.wish? "wishListTrue" : ""} onClick={e => handleWish(e)}><BsHeartFill /></span>
                         </div>
                     </div>
                 </div>
