@@ -230,6 +230,25 @@ const answerQuestion = async (req, res) => {
     }
 }
 
+const removeStock = async (req, res) => {
+    const { id } = req.params;
+    const { qty } = req.body;
+    try {
+        const product = await Products.findById(id);
+        product.stock = product.stock - qty;
+        await product.save();
+        res.status(200).json({
+            message: 'Successful',
+            product
+        });
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({
+            message: 'Something went wrong while trying to remove stock. Try again later.',
+            error    
+        })
+    }
+}
 
 module.exports = {
     createProduct,
@@ -244,4 +263,5 @@ module.exports = {
     getProductQuestions,
     getAllUnansweredQuestions,
     answerQuestion,
+    removeStock
 }
