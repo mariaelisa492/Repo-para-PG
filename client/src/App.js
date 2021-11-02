@@ -22,14 +22,14 @@ import About from './components/FormAbout/FormAbout';
 
 function App() {
   const dispatch = useDispatch()
-  const u = useSelector(state => state.user)
+ /*  const u = useSelector(state => state.user)
   const role = u.user ? u.user[0]?.role : null
-  const {user} = useAuth0();
+  const {user} = useAuth0(); */
 
   useEffect(() => {
     dispatch(getProducts())
-    dispatch(searchUserInDb(user?.email))
-  }, [dispatch, user])
+    /* dispatch(searchUserInDb(user?.email)) */
+  }, [dispatch/* , user */])
 
   return (
     <div className="App">

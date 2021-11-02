@@ -15,7 +15,7 @@ export function FormAnswerQuestion({questA, handleClosePopup}) {
     const handleSubmit = (event) => {
         event.preventDefault();
         axios.post(`${LOCALHOST_URL}/products/questions?product=${question.questionFromProduct}&question=${question.question._id}`, {answer: answer})
-        .then(window.location.reload()) 
+        .then(setTimeout(() => window.location.reload(), 300)) 
 
     }
 

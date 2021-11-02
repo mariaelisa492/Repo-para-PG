@@ -106,7 +106,7 @@ export const Users = () => {
             console.log(idEdit, "idEdit")
             dispatch(makeAdmin(idEdit))
             handleEditSuccess()
-            window.location.reload()
+            setTimeout(() => window.location.reload(), 300)
         }
     }, [successEdit])
 
