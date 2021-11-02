@@ -1,4 +1,5 @@
 import React from "react";
+import { Link} from "react-router-dom";
 import ButtonFav from "../wishBtn/ButtonFav";
 import "./wishesProfile.css";
 
@@ -17,7 +18,9 @@ export default function WishesProfile({ wishes, user }) {
 
           <div className="principalData">
             <div className="tittle">
+            <Link  to={'detail/' + _id}>
               <h2>{name}</h2>
+            </Link>
               <p>${price}</p>
             </div>
           </div>
