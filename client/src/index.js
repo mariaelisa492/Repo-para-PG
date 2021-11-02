@@ -8,6 +8,8 @@ import {BrowserRouter} from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
 import {Auth0Provider} from '@auth0/auth0-react'
 
+require('dotenv').config();
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
