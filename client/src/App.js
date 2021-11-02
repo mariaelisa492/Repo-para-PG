@@ -17,6 +17,8 @@ import DashStyles from './components/DashStyles/DashStyles';
 import { QuestionsAdminSide } from './components/QuestionsAdminSide/QuestionsAdminSide';
 import { useSelector } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react';
+import About from './components/FormAbout/FormAbout';
+
 
 function App() {
   const dispatch = useDispatch()
@@ -44,6 +46,7 @@ function App() {
         <Route exact path="/admin/users" component={Users} />
         <Route exact path='/about' component={InfoCommerce} />
         <Route exact path='/admin/questions' component={QuestionsAdminSide} />
+        <Route exact path='/admin/about' component={About} />
       </Switch>
       <Route path="/admin" component={DashStyles} />
       {role !== 'ROLE_ADMIN' ? <Redirect from='/admin' to='/' /> : null}

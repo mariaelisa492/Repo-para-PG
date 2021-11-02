@@ -9,7 +9,8 @@ import FilterProducts from "../components/FilterProducts/FilterProducts";
 import DropDownMenu from "../components/DropDownMenu/DropDownMenu";
 import { categories } from "../components/Categories/categoriesExport";
 import Loader from "../components/Loader/Loader";
-import { cleanQuestions, getAbout } from '../redux/actions/index';
+import { cleanQuestions, getAbout, getWishlist } from '../redux/actions/index';
+import { useAuth0 } from '@auth0/auth0-react'
 import './home.css';
 
 export const Home = () => {
@@ -17,6 +18,9 @@ export const Home = () => {
   const [showMenu, setShowMenu] = useState(false);
   const products = useSelector((state) => state.products)
   const filteredTF = useSelector((state) => state.filteredTF)
+
+  const {user, isAuthenticated} = useAuth0()
+
   console.log(filteredTF, 'FILTEREDTF')
   console.log(products, 'products')
   const [loading, setLoading] = useState(false);
@@ -25,9 +29,12 @@ export const Home = () => {
 
   useEffect(() => {
     setLoading(true);
+    if(isAuthenticated){
+      dispatch(getWishlist(user?.email))
+    }
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 500);
   }, [])
 
 

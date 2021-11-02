@@ -4,9 +4,9 @@ import { getAllUnansweredQuestions } from '../../redux/actions';
 import { FaRegEdit } from 'react-icons/fa';
 import { MdDeleteForever, MdQuestionAnswer } from 'react-icons/md';
 import DataTable from 'react-data-table-component';
-import NavBar from '../NavBar/NavBar';
 import { FormAnswerQuestion } from './FormAnswerQuestion/FormAnswerQuestion';
 import ReactModal from 'react-modal';
+import "./QuestionsAdminSide.css";
 
 export const QuestionsAdminSide = () => {
 
@@ -19,18 +19,18 @@ export const QuestionsAdminSide = () => {
 
     function handleOpenPopupAnswer(id) {
         try {
-        setIdToAnswer(id);
-        setOpenPopUpAnswer(true);
-        console.log(id, 'iddddddddd');
-        console.log(questions, 'questions');
-        let q = questions.filter(question => question.question._id === id);
-        console.log(q, 'qqqqqqq');
-        setQTA(q);
+            setIdToAnswer(id);
+            setOpenPopUpAnswer(true);
+            console.log(id, 'iddddddddd');
+            console.log(questions, 'questions');
+            let q = questions.filter(question => question.question._id === id);
+            console.log(q, 'qqqqqqq');
+            setQTA(q);
         } catch (error) {
             console.log(error);
         }
     }
-
+    console.log(questions)
     function handleClosePopupAnswer() {
         setOpenPopUpAnswer(false);
     }
@@ -57,7 +57,7 @@ export const QuestionsAdminSide = () => {
         },
         {
             name: "Product",
-            selector: "questionFromProduct",
+            selector: "question.productn",
             sortable: true
         },
         {
@@ -68,7 +68,7 @@ export const QuestionsAdminSide = () => {
                     console.log(row.question._id, "id question")
                 }}><MdQuestionAnswer /></button>
 
-             {/*    <button type="button" onClick={() => {
+                {/*    <button type="button" onClick={() => {
                     handleDeleteProduct(row._id);
                     handeOpenAlertDelete();
                 }}
@@ -79,28 +79,25 @@ export const QuestionsAdminSide = () => {
         }
     ]
     return (
-        <div className='questionsAdminSideC'>
-            <div className='navBarQAScontainer' >
-                <NavBar />
+        <>
+            <div className="questions-admin-sales-body">
+                <DataTable
+                    columns={columns}
+                    data={items}
+                    title="Yet to answer"
+                    striped
+                    highlightOnHover
+                    paginationPerPage={5}
+                    paginationRowsPerPageOptions={[5, 8]}
+                    pagination
+                />
             </div>
-            <div className="table">
-                    <DataTable
-                        columns={columns}
-                        data={items}
-                        title="Yet to answer"
-                        striped
-                        highlightOnHover
-                        paginationPerPage={5}
-                        paginationRowsPerPageOptions={[5, 8]}
-                        pagination
-                    />
-                </div>
 
             <div className="popupAnswer">
-            <ReactModal isOpen={openPopUpAnswer} className='reactModalContent' overlayClassName='reactModalOverlay'>
+            <ReactModal isOpen={openPopUpAnswer} className='modalReviewForm' overlayClassName='reactModalOverlay'>
                 <FormAnswerQuestion handleClosePopup={handleClosePopupAnswer} showPopup={openPopUpAnswer} questA={QTA} />
             </ReactModal>
             </div>
-        </div>
+        </>
     )
 }

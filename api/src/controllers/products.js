@@ -7,6 +7,7 @@ const createProduct = async (req, res) => {
         description: req.body.description,
         image: req.body.image,
         price: req.body.price,
+        created: req.body.created,
         stock: req.body.stock,
         brand: req.body.brand,
         model: req.body.model,
@@ -153,7 +154,7 @@ const createProductQuestion = async (req, res) => {
     try {
         console.log(question, 'question in api')
         const product = await Products.findById(id);
-        console.log(product, 'product')
+        // console.log(product, 'product')
         product.questions.push(question);
         await product.save();
         res.status(200).json({
@@ -161,8 +162,10 @@ const createProductQuestion = async (req, res) => {
             product
         });
     } catch (error) {
-        res.status(400).json({
-            message: 'Something went wrong while trying to post a question. Try again later.'
+        console.log(error)
+        res.status(404).json({
+            message: 'Something went wrong while trying to post a question. Try again later.',
+            error
         })
     }
 }
@@ -227,6 +230,25 @@ const answerQuestion = async (req, res) => {
     }
 }
 
+const removeStock = async (req, res) => {
+    const { id } = req.params;
+    const { qty } = req.body;
+    try {
+        const product = await Products.findById(id);
+        product.stock = product.stock - qty;
+        await product.save();
+        res.status(200).json({
+            message: 'Successful',
+            product
+        });
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({
+            message: 'Something went wrong while trying to remove stock. Try again later.',
+            error    
+        })
+    }
+}
 
 module.exports = {
     createProduct,
@@ -241,4 +263,5 @@ module.exports = {
     getProductQuestions,
     getAllUnansweredQuestions,
     answerQuestion,
+    removeStock
 }

@@ -92,6 +92,7 @@ export default function ProductsList({ filteredProducts }) {
                 name={e.name}
                 price={e.price}
                 reviews={e.reviews}
+                created={e.created}
                 _id={e._id}
                 isActive={e.isActive}
                 stock={e.stock}

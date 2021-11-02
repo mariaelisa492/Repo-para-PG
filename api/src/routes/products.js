@@ -16,6 +16,7 @@ router.get('/:id', products.getProduct);
 
 //actualizar producto
 router.put('/:id', products.updateProduct);
+router.put('/stock/:id', products.removeStock);
 
 //borrar producto
 router.delete('/:id', products.deleteProduct);
