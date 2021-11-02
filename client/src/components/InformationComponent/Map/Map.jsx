@@ -3,9 +3,9 @@ import mbxGeocoding from '@mapbox/mapbox-sdk/services/geocoding';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import './Map.css';
 
-const { TOKEN_MAP } = process.env;
+const { PK_TOKEN_MAP } = process.env;
 
-mapboxgl.accessToken = TOKEN_MAP;
+mapboxgl.accessToken = PK_TOKEN_MAP;
 
 export default function Map({ address }) {
 
