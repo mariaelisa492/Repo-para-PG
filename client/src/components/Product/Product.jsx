@@ -57,7 +57,10 @@ export default function Product({ _id, img, name, price, reviews, isActive, stoc
                 didOpen: (toast) => {
                     toast.addEventListener('mouseenter', Swal.stopTimer)
                     toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
+                },
+                /* customClass: {
+                    container: 'sweet-alert'
+                } */
             })
 
             Toast.fire({
