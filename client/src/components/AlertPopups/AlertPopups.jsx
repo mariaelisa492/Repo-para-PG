@@ -39,12 +39,12 @@ export default function AlertPopup({ activeAlert, actionAlert, handleOpenAlert, 
                                         // setSuccessOrCanceled('success');
                                         // setActiveAnotherAlert(true);
                                         // handleOpenAlert();
-                                        handleOpenAlert();
                                         handleSuccess();
+                                        handleOpenAlert();
                                     }}
                                     className='btnAlert successButton'
                                 >
-                                    Yes, {actionAlert} it!
+                                    Yes, {actionAlert}
                                 </button>
                             </div>
                         </div>

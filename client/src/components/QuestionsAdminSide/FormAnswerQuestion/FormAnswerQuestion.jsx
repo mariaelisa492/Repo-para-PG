@@ -22,16 +22,18 @@ export function FormAnswerQuestion({questA, handleClosePopup}) {
     console.log(question, 'question on AnswerForm');
 
     return (
-        <div className="formAnswerQ">
-            <button className='CloseFormA' onClick={handleClosePopup}>X</button>
-            <form onSubmit={(e) => handleSubmit(e, answer)}>
+        <div className="review">
+            <form className='form' onSubmit={(e) => handleSubmit(e, answer)}>
                 <div className='QuestionToAnswer' >
                     <p>{question.question.question}</p>
                 </div>
                 <div className='answer'>
-                    <textarea name='answer' value={answer} onChange={handleChange} />
+                    <textarea className='textAF' name='answer' value={answer} onChange={handleChange} />
                 </div>
-                <button type='submit'>Submit</button>
+                <div className='butons-container'>
+                    <button className='reviewBackBtn' type='submit'>Submit</button>
+                    <button className='reviewBackBtn' onClick={handleClosePopup}> Back</button>
+                </div>
             </form>
         </div>
     );
