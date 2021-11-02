@@ -111,6 +111,9 @@
     cursor: pointer;
 }
 
+.product-links .wishListTrue {
+    color: #ffa500;
+}
 .product-links a {
     display: inline-block;
     margin-left: 5px;
@@ -124,6 +127,3 @@
     color: #ffa500;
     font-size: 28px;
 }
-
-
-
