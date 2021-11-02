@@ -23,6 +23,7 @@ export default function Create({ handleClosePopup, showPopup }) {
     description: '',
     image: '',
     price: '',
+    created: new Date(),
     stock: '',
     brand: '',
     model: '',

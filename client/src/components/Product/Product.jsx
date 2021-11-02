@@ -8,7 +8,10 @@ import { addCart } from '../../redux/actions';
 import { useDispatch } from "react-redux";
 import Swal from 'sweetalert2'
 
-export default function Product({ _id, img, name, price, reviews, isActive, stock }) {
+export default function Product({ _id, img, name, price, reviews, isActive, stock, created }) {
+ console.log(created, "soy created")
+    const today = new Date()
+    console.log(today,"soy todaay")
 
     const totalRating = reviews?.map(review => review.rating).reduce((a, b) => a + b, 0)/ reviews?.length;
     const ratingDefault = totalRating > 0 ? totalRating : 5;
@@ -41,10 +44,27 @@ export default function Product({ _id, img, name, price, reviews, isActive, stoc
         }
     }
 
+
+//show a div if created is 15 days less than today.
+    const showDiv = () => {
+        if (created) {
+            const createdDate = new Date(created)
+            const diff = Math.abs(today - createdDate)
+            const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 24))
+            console.log(diffDays, "soy diffDays")
+            if (diffDays <= 15) {
+                return (
+                    <div className="badge">New</div>
+                )
+            }
+        }
+    }
+
+
     return (
         <>
             <div className="product-card">
-                <div className="badge">New</div>
+                <div >{showDiv()}</div>
                 <Link to={'detail/' + _id}>
                     <div className="product-tumb">
                         <img src={img} alt="" />
