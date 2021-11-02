@@ -9,7 +9,7 @@ import { LOCALHOST_URL } from '../../redux/constants'
 import AlertPopup from '../AlertPopups/AlertPopups';
 import {deleteUser, makeAdmin} from '../../redux/actions/index'
 import { MdDeleteForever } from 'react-icons/md';
-import {GrUserAdmin} from 'react-icons/gr';
+import { GrUserAdmin, GrMailOption } from 'react-icons/gr';
 
 export const Users = () => {
 
@@ -51,6 +51,11 @@ export const Users = () => {
                     >
                         <span><GrUserAdmin /></span>
                     </button>
+                  <button className='mailOption' type='button' onClick={() => {
+                      handleAlertResetMail(row.email);
+                  }}>
+                    <span><GrMailOption /></span>
+                  </button>
                 </div>
             )
         }
@@ -105,6 +110,34 @@ export const Users = () => {
     }, [successEdit])
 
     // ---------------------- EDIT USER STUFF ends here ----------------------
+
+    // ---------------------- SEND RESET PASS MAIL starts here ---------------
+
+    const [ activeAlertMail, setActiveAlertMail ] = useState({ 
+        show: false,
+        email: '',
+    })
+
+    const sendResetPassMail = email => { 
+        fetch(`${LOCALHOST_URL}/users/resetpass`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        })
+        .then(data => data.json())
+        .then(res => alert(res.data))
+        .catch(e => alert('fetch fail: ' + e))
+    }
+
+    const handleAlertResetMail = email => {
+        setActiveAlertMail({ ...activeAlertMail, show: !activeAlertMail.show, email })
+    }
+
+    const handleAlertResetMailSuccess = () => {
+        sendResetPassMail(activeAlertMail.email)
+    }
+
+    // ---------------------- SEND RESET PASS MAIL ends here -----------------
     
     useEffect(() => {
         async function fetchData() {
@@ -117,7 +150,7 @@ export const Users = () => {
     }, []);
 
     return (
-        <>
+        <div className='adminUsers'>
             <div>
                 <NavBar />
             </div>
@@ -151,6 +184,14 @@ export const Users = () => {
                                 handleSuccess={handleEditSuccess}
                             />
                         </div>
+                        <div className="alert-send-reset">
+                            <AlertPopup
+                                activeAlert={activeAlertMail.show}
+                                actionAlert='request password reset'
+                                handleOpenAlert={handleAlertResetMail}
+                                handleSuccess={handleAlertResetMailSuccess}
+                            />
+                        </div>
                     </div>
 
                     :
@@ -159,6 +200,6 @@ export const Users = () => {
                     </div>
 
             }
-        </>
+        </div>
     )
 }
