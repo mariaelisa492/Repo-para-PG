@@ -41,7 +41,8 @@
 
 .slide img
 {
-  width: 100%;
+  min-width: 100%;
+  min-height: 40vh;
   vertical-align: middle;
 }
 
@@ -73,7 +74,6 @@
   background: none;
   background-color: rgba(255, 255, 255, 0.3);
   cursor: pointer;
-  display: block;
   transition: all 500ms;
 }
 
@@ -103,3 +103,4 @@
 {
   background: rgba(255, 255, 255, 0.6);
 }
+

@@ -1,0 +1,62 @@
+.containerReviews{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.infoReviewsContainer{
+    display: flex;
+    flex-direction: column;
+    width: 80%;   
+    margin: 40px auto;
+  
+    position: relative;
+    left: 0px;
+    overflow: hidden;     
+}
+
+.cardsReviewsContainer{
+    display: flex;
+    flex-direction: column;
+     
+  }
+
+  .reviewBtn{    
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+    width: 10vw;
+    align-self: flex-start;
+    margin-left: 10vw;
+    height:7vh;
+    background-color:  #fdaa48;
+    color: #0f0f0f;
+    font-size: 13px;
+    font-weight: bold;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-radius: 4px;
+    overflow: hidden;
+    
+  }
+
+  .reviewBtn:hover{
+    background-color: #fac78d;
+    transition: .5s;
+  }
+
+  @media (max-width: 858px){   
+    .reviewBtn{
+        width: 30%;
+        
+    }
+    
+}
+  
+
+
+

@@ -1,0 +1,16 @@
+.admin-sales-body {
+    padding-left: 80px;
+    padding-right: 0px;
+    padding-top: 124px;
+}
+
+.adminSM{
+    padding-left: 80px;
+    padding-right: 0px;
+    padding-top: 124px;
+    z-index: 1000;
+}
+
+.modal-admin-sales {
+    margin: 200px 174px 0px 198px;
+}

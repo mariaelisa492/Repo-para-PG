@@ -13,31 +13,28 @@ const UserSchema = new Schema({
         required: true, 
         unique: true
     },
-    password: {
-        type: String,
-        required: true 
-    },
-    firstName: {
-        type: String,
-        required: true
+     firstName: {
+        type: String
     },
     lastName: {
-        type: String,
-        required: true
+        type: String
     },
     gender: {
         type: String
     },
-    nacionality: {
+    nationality: {
         type: String
     },
     birthDate: {
         type: String
     },
+    address: {
+        type: String
+    },
     role: {
         type: String,
-        default: 'ROLE_SELLER',
-        enum: ['ROLE_SELLER', 'ROLE_ADMIN']
+        default: 'ROLE_USER',
+        enum: ['ROLE_USER', 'ROLE_ADMIN']
     },
     isActive: {
         type: Boolean,
@@ -47,7 +44,13 @@ const UserSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
-    }
+    },
+    wishList: [
+        {
+          type: Schema.ObjectId,
+          ref: "Product",
+        },
+    ]
 });
 
 const Users = mongoose.model("User", UserSchema);

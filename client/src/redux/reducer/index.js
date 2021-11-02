@@ -1,13 +1,15 @@
 import {
 	GET_PRODUCTS, GET_BYNAME,
 	ORDER_PRICE_ASC, ORDER_PRICE_DESC,
-	FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN,
+	FILTER_PRICE_ONLY_LESSTHAN, FILTER_PRICE_ONLY_MORETHAN, NO_FILTER,
 	FILTER_PRICE_RANGE, DELETE_PRODUCT,
 	ADD_TO_CART, REMOVE_FROM_CART,
 	REMOVE_ITEM, EMPTY_CART, FILTER_CATEGORIES, SET_LIMIT,
-	GET_MY_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT
- } from "../constants/index"
-
+	GET_MY_ORDERS, GET_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT, GET_PRODUCT_DETAIL,
+	ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, SET_USER, EDIT_USER, 
+	GET_ALL_UNANSWERED_QUESTIONS, RESET_PRICE_ORDER,
+	UPDATE_ORDER, DELETE_ORDER, GET_WISHLIST, UPDATE_ABOUT, GET_ABOUT,
+} from "../constants/index"
 
 
 const initialState = {
@@ -16,30 +18,40 @@ const initialState = {
 	product: {},
 	products: [],
 	filteredProducts: [],
-	cart: [],
-	limit:0,
+	cart: localStorage.items?.length > 0 ? JSON.parse(localStorage.getItem('items')) : [],
+	limit: 0,
 	currentItem: null,
+	category: null,
+	priceRange: false,
 	filteredTF: false,
-	orders: []
+	user: {},
+	order: {},
+	orders: [],
+	productDetail: {},
+	productsFavs:[],
+	questions:[],
+	wishList:[],
+	about: {},
 };
 
 export const rootReducer = (state = initialState, action) => {
+
 	switch (action.type) {
 
-			case GET_PRODUCTS:
+		case GET_PRODUCTS:
 			return {
 				...state,
 				products: action.payload
 			};
 
-			case GET_BYNAME: 
+		case GET_BYNAME:
 			return {
 				...state,
 				filteredProducts: [...action.payload],
 				filteredTF: true
 			};
 
-			case DELETE_PRODUCT:
+		case DELETE_PRODUCT:
 			let deletedProduct = state.products.filter(el => el._id !== action.payload._id)
 			return {
 				...state,
@@ -50,14 +62,30 @@ export const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				orders: [...action.payload]
-			}	
+			}
 
-			case GET_SINGLE_PRODUCT:
-				return {
-					...state,
-					product: action.payload
-				}
-								
+		case GET_ORDERS:
+			return {
+				...state,
+				orders: [...action.payload]
+			}
+
+		case UPDATE_ORDER:
+			const indice = state.orders.findIndex(order => order._id === action.payload._id);
+			state.orders[indice] = action.payload;
+			console.log(action.payload, "payload de mi UPDATE_ORDER")
+			return {
+				...state,
+				orders: [...state.orders]
+			};
+
+		case DELETE_ORDER:
+			let deletedOrder = state.orders.filter(el => el._id !== action.payload._id)
+			return {
+				...state,
+				orders: [...deletedOrder]
+			}
+
 		// ---- ORDENAMIENTOS ---- //	
 		case GET_SINGLE_PRODUCT:
 			return {
@@ -65,13 +93,13 @@ export const rootReducer = (state = initialState, action) => {
 				product: action.payload
 			}
 
-			case UPDATE_PRODUCT:
-				let index = state.products.findIndex( product => product._id === action.payload._id);
-				state.products[index] = action.payload;
-				return {
-				  ...state,
-				  products: [...state.products]
-				};
+		case UPDATE_PRODUCT:
+			const index = state.products.findIndex(product => product._id === action.payload._id);
+			state.products[index] = action.payload;
+			return {
+				...state,
+				products: [...state.products]
+			};
 
 		case ORDER_PRICE_ASC:
 			var sortedPriceAsc
@@ -103,8 +131,23 @@ export const rootReducer = (state = initialState, action) => {
 				filteredTF: true
 			};
 
-		// ---- FILTROS ---- //
+    case RESET_PRICE_ORDER:
+      if (state.category) {
+        return {
+          ...state,
+          filteredProducts: state.products.filter(p => p.category === state.category),
+          filteredTF: true,
+        };
+      } else {
+        return {
+          ...state,
+          filteredProducts: [ ...state.products ],
+          filteredTF: false,
+        };
+      }
 
+
+		// ---- FILTROS ---- //
 		case FILTER_PRICE_ONLY_LESSTHAN:
 			var filt1;
 			if (state.filteredTF) {
@@ -137,79 +180,157 @@ export const rootReducer = (state = initialState, action) => {
 
 		case FILTER_PRICE_RANGE:
 			var filt3;
+      // Si filtramos de nuevo sobre el filtrado anterior, no habra coincidencias
+      // Recarguemos esto primero.  SOLUCION PROVISORIA, llamado a una ruta con 
+      // filtrado seria lo ideal.
+			var temp;
+			if (state.category) {
+				temp = state.products.filter(p => p.category === state.category);
+			} else {
+				temp = [...state.products];
+			}
+
 			if (state.filteredTF) {
-				filt3 = state.filteredProducts.filter((e) => e.price > action.payload.price1 && e.price < action.payload.price2)
+				filt3 = temp.filter((e) => e.price > action.payload.price1 && e.price < action.payload.price2)
 			}
 			else {
-				filt3 = state.products.filter((e) => e.price > action.payload.price1 && e.price < action.payload.price2)
+				filt3 = temp.filter((e) => e.price > action.payload.price1 && e.price < action.payload.price2)
 			}
 			// console.log('filterPriceRange', filt3)
 			return {
 				...state,
 				filteredProducts: [...filt3],
-				filteredTF: true
+				filteredTF: true,
+        		priceRange: true
 			};
 
 		case FILTER_CATEGORIES:
 			var filt4;
 			console.log(action.payload, 'categories Filters redux')
+      	/*
 			if (state.filteredTF) {
 				filt4 = state.filteredProducts.filter((e) => e.category === action.payload)
 			}
 			else {
 				filt4 = state.products.filter((e) => e.category === action.payload)
 			}
+      	*/
+      	// Arreglo provisorio, lo ideal seria una llamada al servidor
+      		filt4 = state.products.filter((e) => e.category === action.payload)
 			return {
 				...state,
 				filteredProducts: [...filt4],
-				filteredTF: true
+				filteredTF: true,
+				category: action.payload,
+				priceRange: false,
 			}
-      
-		                      // ---- Cart ---- //
-      
-		case ADD_TO_CART: 
-		// modificar name por id
-		const item = state.products.find(item => item._id === action.payload.id)
-		const inCart = state.cart.find(item => item._id === action.payload.id ? true : false)
-		return {
-			...state,
-			cart: inCart ? 
-			state.cart.map( item => item._id === action.payload.id ? 
-				{...item, qty: item.qty + 1} 
-				: item 
-			) 
-			: [...state.cart, {...item, qty: 1}]
-		};
-      
-		case REMOVE_FROM_CART: 
-		return {
-			...state,
-			cart: state.cart.map( item => item._id === action.payload.id ? 
-				{...item, qty: item.qty - 1} 
-				: item 
-			) 
-		};
-      
-		case REMOVE_ITEM: 
-		return {
-			...state,
-			cart: state.cart.filter((item) => item._id !== action.payload.id)
-		}; 
-      
-		case EMPTY_CART:
-		return {
-			...state,
-			cart: []
-		};
 
-				// ---------------- PAGINATION
-	
+		case NO_FILTER:
+			return {
+				...state,
+				filteredProducts: [...state.products],
+				filteredTF: false,
+				priceRange: false,
+			}
+
+		// ---- Cart ---- //
+		
+		case ADD_TO_CART:
+			const item = state.products.find(item => item._id === action.payload.id)
+			const inCart = state.cart.find(item => item._id === action.payload.id ? true : false)
+			return {
+				...state,
+				cart: inCart ?
+					state.cart.map(item => item._id === action.payload.id ?
+						{ ...item, qty: item.qty + 1 }
+						: item
+					)
+					: [...state.cart, { ...item, qty: 1 }]
+			};
+
+		case REMOVE_FROM_CART:
+			return {
+				...state,
+				cart: state.cart.map(item => item._id === action.payload.id ?
+					{ ...item, qty: item.qty - 1 }
+					: item
+				)
+			};
+
+		case REMOVE_ITEM:
+			return {
+				...state,
+				cart: state.cart.filter((item) => item._id !== action.payload.id)
+			};
+
+		case EMPTY_CART:
+			return {
+				...state,
+				cart: []
+			};
+
+		//	--------------------------- USERS
+
+		case SET_USER:
+
+			return {
+				...state,
+				user: action.payload
+			}
+
+		case EDIT_USER:
+
+			return {
+				...state,
+				user: action.payload
+			}
+
+		// ---------------- PAGINATION
+
 		case SET_LIMIT:
 			return {
 				...state,
 				limit: action.payload
 			}
+
+		case GET_PRODUCT_DETAIL:
+			return {
+				...state,
+				productDetail: action.payload
+			};
+
+		// -------- WishList
+
+		case GET_WISHLIST:
+			return {
+				...state,
+				wishList: [...action.payload]
+			}
+
+		// --------- About
+
+		case GET_ABOUT:
+			return {
+				...state,
+				about: action.payload
+			}
 			
+		case UPDATE_ABOUT:
+			return {
+				...state,
+				about: action.payload
+			}
+
+			// ----------------- QUESTIONS
+ 
+		case GET_ALL_UNANSWERED_QUESTIONS:
+			return{
+				...state,
+				questions: action.payload
+			}
+
+
+
 		default:
 			return state;
 	}

@@ -4,14 +4,15 @@
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.8.0",
+    "@mapbox/mapbox-sdk": "^0.13.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "auth0": "^2.37.0",
-    "auth0-react": "^3.1.0",
     "axios": "^0.22.0",
     "cloudinary": "^1.27.1",
     "fetch": "^1.1.0",
+    "mapbox-gl": "^2.5.1",
     "react": "^17.0.2",
     "react-data-table-component": "^7.4.4",
     "react-dom": "^17.0.2",
@@ -23,6 +24,7 @@
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.3.1",
+    "sweetalert2": "^11.1.9",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { RiFacebookCircleFill } from "react-icons/ri";
+import { AiFillGithub } from "react-icons/ai";
+import { AiFillTwitterCircle } from "react-icons/ai";
+import { TiSocialLinkedin } from "react-icons/ti";
 import "./Footer.css"
+import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {useAuth0} from '@auth0/auth0-react';
+import { searchUserInDb } from "../../redux/actions";
+
 
 function Footer() {
+
+    const {user} = useAuth0();
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(searchUserInDb(user?.email));
+    }, [user]);
+    const U = useSelector(state => state.user);
+   
     return (
         <footer className="footer">
             <div className="containerF">
@@ -9,9 +26,9 @@ function Footer() {
                     <div className="footer-col">
                         <h4>company</h4>
                         <ul className="list-services">
-                            <li><a href="/home">about us</a></li>
+                            <li><a href="/about">about us</a></li>
                             <li><a href="/home">our services</a></li>
-                            <li><a href="/home">privacy policy</a></li>
+                            { U.user ? U.user[0]?.role === 'ROLE_ADMIN' ? <li><NavLink className='AdminPanelLink' to='/admin'>Admin panel</NavLink></li> : null : null}
                         </ul>
                     </div>
                     <div className="footer-col">
@@ -19,31 +36,26 @@ function Footer() {
                         <ul className="list-services">
                             <li><a href="/home">FAQ</a></li>
                             <li><a href="/home">shipping</a></li>
-                            <li><a href="/home">returns</a></li>
-                            <li><a href="/home">payment options</a></li>
                         </ul>
                     </div>
                     <div className="footer-col">
-                        <h4>online shop</h4>
                         <ul className="list-services">
-                            <li><a href="/home">guitars</a></li>
-                            <li><a href="/home">pianos</a></li>
-                            <li><a href="/home">harmonica</a></li>
-                            <li><a href="/home">bass</a></li>
+                            <h4>contact us</h4>
+                            <li><a href="mailto:wavemusic@gmail.com" target="_blank">E-mail</a></li>
                         </ul>
                     </div>
                     <div className="footer-col">
                         <h4>follow us</h4>
                         <div className="social-links">
-                            <a href="https://www.facebook.com/" target="_blank"><img src="https://www.seekpng.com/png/full/265-2657650_facebook-icon-png-facebook.png" alt="img not found"/></a>
-                            <a href="https://www.twitter.com/" target="_blank"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9z9eNuepcLQvNO13lEZB8kcXRgQI42Xd1Gw&usqp=CAU" alt="img not found"/></a>
-                            <a href="https://www.linkedin.com/" target="_blank"><img src="https://aux.iconspalace.com/uploads/linkedin-round-icon-256.png" alt="img not found"/></a>
-                            <a href="https://www.github.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="img not found"/></a>
+                            <a href="https://www.facebook.com/Wave-Music-107797495029344/" target="_blank"><RiFacebookCircleFill size={42} /></a>
+                            <a href="https://www.twitter.com/" target="_blank"><AiFillTwitterCircle size={42} /></a>
+                            <a href="https://www.linkedin.com/" target="_blank"><TiSocialLinkedin size={38} className="linkedin-icon" /></a>
+                            <a href="https://www.github.com/" target="_blank"><AiFillGithub size={42} /></a>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer >
     )
 };
 

@@ -16,13 +16,8 @@ router.post('/login', async(req, res) =>{
 });
 
 //todos los usuarios
-router.get('/', async(req, res) =>{
-    try {
-        
-    } catch (error) {
-        
-    }
-});
+router.get('/', users.findAllUser)
+  
 
 //obtener usuario
 router.get('/:id', async(req, res) =>{
@@ -33,13 +28,23 @@ router.get('/:id', async(req, res) =>{
     }
 });
 
-//actualizar usuario
-router.put('/:id', async(req, res) =>{
-    try {
-        
-    } catch (error) {
-        
-    }
-});
+// actualizar usuario
+router.put('/:id', users.updateUser)
+    
+// encontrar usuario
+router.get('/user/:email', users.findUser)
+
+// eliminar usuario
+router.delete('/:id', users.deleteUser)
+
+// hacer admin a un usuario
+router.put('/makeAdmin/:id', users.makeAdmin)
+
+// enviar mail de actualizacion de contraseña
+router.post('/resetpass', users.requestPasswordReset)
+
+// Wish List
+router.post("/toggleWish", users.toggleWishList)
+router.get("/wishlist/all", users.getWishList);
 
 module.exports = router;

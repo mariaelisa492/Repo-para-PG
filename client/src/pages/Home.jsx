@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Footer from "../components/Footer/Footer";
 import ProductsList from "../components/ProductsList/ProductsList";
 import NavBar from "../components/NavBar/NavBar";
@@ -9,6 +9,8 @@ import FilterProducts from "../components/FilterProducts/FilterProducts";
 import DropDownMenu from "../components/DropDownMenu/DropDownMenu";
 import { categories } from "../components/Categories/categoriesExport";
 import Loader from "../components/Loader/Loader";
+import { cleanQuestions, getAbout, getWishlist } from '../redux/actions/index';
+import { useAuth0 } from '@auth0/auth0-react'
 import './home.css';
 
 export const Home = () => {
@@ -16,16 +18,25 @@ export const Home = () => {
   const [showMenu, setShowMenu] = useState(false);
   const products = useSelector((state) => state.products)
   const filteredTF = useSelector((state) => state.filteredTF)
+
+  const {user, isAuthenticated} = useAuth0()
+
   console.log(filteredTF, 'FILTEREDTF')
   console.log(products, 'products')
   const [loading, setLoading] = useState(false);
 
+  const dispatch = useDispatch()
+
   useEffect(() => {
     setLoading(true);
+    if(isAuthenticated){
+      dispatch(getWishlist(user?.email))
+    }
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 500);
   }, [])
+
 
   function showDropDownMenu() {
     setShowMenu(!showMenu);
@@ -45,7 +56,7 @@ export const Home = () => {
       </div>
 
       <div className='mainView' >
-        <DropDownMenu showMenu={showMenu} showDropDownMenu={showDropDownMenu} />
+        <DropDownMenu categories={categories} showMenu={showMenu} showDropDownMenu={showDropDownMenu} />
         <TopMenu categories={categories} />
         <div className='slideAndProducts'>
           <div>

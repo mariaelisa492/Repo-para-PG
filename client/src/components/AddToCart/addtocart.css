@@ -1,15 +1,17 @@
 .cartBtns 
 {
+  /*
   position: absolute;
   top: 110px;
   right: 20px;
+  */
   width: 150px;
 }
 
 .lbl 
 {
   display: block;
-  background-color: #19b9ac;
+  background-color: #0070ba;
   color: white;
   width: 150px;
   font-size: 20px;
@@ -17,6 +19,7 @@
   line-height: 36px;
   text-align: center;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .btns 
@@ -42,12 +45,13 @@
 {
   display: block;
   width: 50px;
-  background-color: #19b9ac;
+  background-color:  #0070ba;
   color: white;
   font-size: 24px;
   height: 36px;
   line-height: 36px;
   text-align: center;
   cursor: pointer;
+  border-radius: 5px;
 }
 

@@ -9,7 +9,7 @@ const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 function CheckoutBut({totalPrice, items, totalItems}) {
   
 
-  const {user} = useAuth0()
+  const {user, isAuthenticated} = useAuth0()
   const dispatch = useDispatch()
   
 
@@ -29,11 +29,8 @@ function CheckoutBut({totalPrice, items, totalItems}) {
     return actions.order.capture();
   };
 
-  
-    console.log('!!!!!!!!!!!!!!!!!', user.email)
   return (
     <div className="paypalButContainer">
-     
       <PayPalButton style={{ color: "blue", shape: "pill", label: "pay", height: 40, with:20}}
         createOrder={(data, actions) => createOrder(data, actions)}
         onApprove={(data, actions) => onApprove(data, actions).then(
@@ -43,7 +40,10 @@ function CheckoutBut({totalPrice, items, totalItems}) {
             {
               name: elem.name,
               brand: elem.brand,
-              qty: elem.qty
+              qty: elem.qty,
+              img: elem.image,
+              price: elem.price,
+              _id: elem._id
             } 
           )),
           quantity: totalItems,
@@ -51,11 +51,10 @@ function CheckoutBut({totalPrice, items, totalItems}) {
           status: "Processing"  
         }))         
         )}
-        
         />
-      
+
     </div>
-    
+      
     );
     
   }

@@ -16,11 +16,25 @@ router.get('/:id', products.getProduct);
 
 //actualizar producto
 router.put('/:id', products.updateProduct);
+router.put('/stock/:id', products.removeStock);
 
 //borrar producto
 router.delete('/:id', products.deleteProduct);
 
 //crear muchos productos
 router.post('/create-many', products.createManyProducts);
+
+router.post('/review', products.createProductReview);
+
+// crear pregunta
+router.post('/questions/p/:id', products.createProductQuestion);
+
+// obtener preguntas por producto
+router.get('/questions/p/:id', products.getProductQuestions);
+
+// obtener preguntas no respondidas
+router.get('/questions/allUnanswered', products.getAllUnansweredQuestions);
+
+router.post('/questions' , products.answerQuestion);
 
 module.exports = router;
