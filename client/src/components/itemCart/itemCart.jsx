@@ -9,7 +9,7 @@ import Swal from 'sweetalert2'
 
 
 export default function ItemCart({ item }) {
-  console.log("ITEMS DEL CARRITOOOOOO", item);
+ 
   const { _id, image, name, price, qty } = item;
   const dispatch = useDispatch();
 

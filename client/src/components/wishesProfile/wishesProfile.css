@@ -58,6 +58,8 @@
 }
 .tittle h2 {
     letter-spacing: 2.5px;
+    color: black;
+    text-decoration: none;
 }
 .tittle p {
     margin-top: 2.5%;
