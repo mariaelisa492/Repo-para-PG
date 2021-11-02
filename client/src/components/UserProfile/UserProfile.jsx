@@ -7,6 +7,7 @@ import Loader from "../Loader/Loader";
 import { getMyOrders, getWishlist, searchUserInDb } from "../../redux/actions";
 import HistoryCard from "../historyCartCard/historyCard"
 import { FiArchive } from "react-icons/fi";
+import { BsHeartFill } from 'react-icons/bs';
 import './UserProfile.css'
 import EditUserForm from "../EditUserForm/EditUserForm";
 import WishListProfile from "../wishListProfile/WishListProfile";
@@ -123,12 +124,12 @@ export default function UserProfile() {
                                 : null}
 
                             <div className='userInfo'>
-                                <h2>Your Orders</h2>
+                                <h2>Orders and Wishes</h2>
                             </div>
 
                             <div className='userNameOrder'>
                                 <button className="btnOrders" onClick={(e) => { handleOrders(e) }}><FiArchive /></button>
-                                <button className="btnWish" onClick={(e) => { handleWish(e) }}>Wishes</button>
+                                <button className="btnOrders" onClick={(e) => { handleWish(e) }}><BsHeartFill /></button>
                             </div>
                         </div>
 
