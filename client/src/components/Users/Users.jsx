@@ -4,12 +4,13 @@ import DataTable from 'react-data-table-component'
 import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import NavBar from '../NavBar/NavBar'
-import './Users.css'
 import { LOCALHOST_URL } from '../../redux/constants'
 import AlertPopup from '../AlertPopups/AlertPopups';
 import {deleteUser, makeAdmin} from '../../redux/actions/index'
 import { MdDeleteForever } from 'react-icons/md';
-import { GrUserAdmin, GrMailOption } from 'react-icons/gr';
+import {GrUserAdmin, GrMailOption} from 'react-icons/gr';
+import "./Users.css";
+
 
 export const Users = () => {
 
@@ -150,11 +151,7 @@ export const Users = () => {
     }, []);
 
     return (
-        <div className='adminUsers'>
-            <div>
-                <NavBar />
-            </div>
-            <NavLink to="/admin">My products</NavLink>
+        <div className="admin-users-dashboard">
             {
                 users.length > 0 ?
                     <div className="userTableContainer">

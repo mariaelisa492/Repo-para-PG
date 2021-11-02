@@ -15,6 +15,7 @@ import AdminSales from './components/AdminSales/AdminSales';
 import InfoCommerce from './pages/InfoCommerce';
 import DashStyles from './components/DashStyles/DashStyles';
 import { QuestionsAdminSide } from './components/QuestionsAdminSide/QuestionsAdminSide';
+import About from './components/FormAbout/FormAbout';
 
 function App() {
   const dispatch = useDispatch()
@@ -38,6 +39,7 @@ function App() {
         <Route exact path="/admin/users" component={Users} />
         <Route exact path='/about' component={InfoCommerce} />
         <Route exact path='/admin/questions' component={QuestionsAdminSide} />
+        <Route exact path='/admin/about' component={About} />
       </Switch>
       <Route path="/admin" component={DashStyles} />
     </div>

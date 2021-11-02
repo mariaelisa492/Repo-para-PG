@@ -1,0 +1,10 @@
+.questions-admin-sales-body {
+    margin: 124px 0px 0 80px;
+}
+
+@media screen and (max-width: 760px){
+    .questions-admin-sales-body {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}

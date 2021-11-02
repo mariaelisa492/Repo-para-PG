@@ -13,7 +13,6 @@
     align-items: center;
     position: fixed;
     top: 0;
-    z-index: 200;
 }
 
 .icon__menu{
@@ -84,7 +83,6 @@
 .options__menu a{
     cursor: pointer;
     display: block;
-    position: relative;
     transition: color 300ms;
     color: white;
 }
@@ -150,4 +148,13 @@
     .admin-sales-body{
         padding-left: 0px;
     }
+
+    .questions-admin-sales-body {
+        margin-top: 114px;
+    }
+
+    .admin-users-dashboard {
+        padding: 125px 0 0 0px;
+    }
+    
 }
