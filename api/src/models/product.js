@@ -21,6 +21,7 @@ const questionSchema = mongoose.Schema(
         answer: { type: String, required: true, default: "No answer yet" },
         user: { type: String, required: true },
         productq: { type: String, required: true },
+        productn: { type: String, required: true },
     },
     {
         timestamps: true
@@ -54,8 +55,8 @@ const ProductSchema = new Schema({
     },
     updated: Date,
     created: {
-        type: Date,
-        default: Date.now
+        type: String,
+        
     },
     brand:{
         type: String,

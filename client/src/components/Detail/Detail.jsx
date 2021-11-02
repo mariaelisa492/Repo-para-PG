@@ -122,7 +122,7 @@ export default function () {
           </div>
           {isAuthenticated ?
           <ReactModal isOpen={modalQuestionOpen} className='modalReviewForm' overlayClassName='reactModalOverlay' >
-            <QuestionForm productId={id} nickname={user?.nickname} close={handleModalQuestion} />
+            <QuestionForm productId={id} nickname={user?.nickname} productN={name} close={handleModalQuestion} />
           </ReactModal>
           : null
             }

@@ -2,12 +2,14 @@ import React from 'react';
 import { addQuestion } from '../../redux/actions';
 import './QuestionForm.css'
 
-export function QuestionForm({productId, nickname, close}){
+export function QuestionForm({productN, productId, nickname, close}){
   
+    console.log(productN)
     const [question, setQuestion] = React.useState({
         question: '',
         user: nickname,
-        productq: productId
+        productq: productId,
+        productn: productN
     });
 
  

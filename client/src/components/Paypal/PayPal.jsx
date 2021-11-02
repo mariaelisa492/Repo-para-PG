@@ -42,7 +42,8 @@ function CheckoutBut({totalPrice, items, totalItems}) {
               brand: elem.brand,
               qty: elem.qty,
               img: elem.image,
-              price: elem.price
+              price: elem.price,
+              _id: elem._id
             } 
           )),
           quantity: totalItems,
