@@ -34,10 +34,10 @@ export function ReviewForm({ handleClosePopUp }) {
         setHoverValue(value);
     };
 
-    const handleMouseLeave = () => {
+/*     const handleMouseLeave = () => {
         setHoverValue(undefined);
     };
-
+ */
     const handleChange = e => {
         setReview(e.target.value);
     };
@@ -78,7 +78,7 @@ export function ReviewForm({ handleClosePopUp }) {
                                 color={(hoverValue || rating) > i ? colors.orange : colors.grey}
                                 onClick={() => handleCllick(i + 1)}
                                 onMouseOver={() => handleMouseOver(i + 1)}
-                                onMouseLeave={handleMouseLeave}
+                         /*        onMouseLeave={handleMouseLeave} */
                             />
                         })}
                     </div>
