@@ -4,22 +4,22 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
-  background-color: #4b47470c;
+  height: 100%;  
   border-radius: 5px;
   padding: 20px; 
   }
 
   .Title{
       font-weight: bolder;
+      margin: 10px;
   }
   
   .CreateForm  {
     margin-left: 10%;
     margin-right: 10%;
     padding: 20px;
-    background-color: #f5f5f517;
-    font-size: 16px;
+    text-align: center;
+    font-size: 18px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,44 +35,62 @@
     flex-direction: row; 
     width: 80%;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
+    border: none; 
  }
 
   .select{
-      background-color: #e6e2e2b9;
+      
       height: 40px;
       width: 100%;
-      border-radius: 10px;
+      border:none;
       margin:5px;
       font-weight:normal;
   }
     
   .styleForm {
-    margin: 8px;
-    padding: 2px;
-    border-radius: 9px;
-    border: 1px solid #313131;
-    width: 70%;
+    margin: 10px;
+    padding: 10px;
+    border: #ffffff;
+    height: 90%;
+    width: 100%;
     font-size: 15px;
     padding: 2px;
   }
   
-  .styleForm:focus{
-      border:  1px solid #313131;
-      border-radius: 9px;
+  .styleForm:focus {
+    outline-color: #0070ba;
   }
   
   .butt{
-    cursor: pointer;
-    width: 93%;
-    justify-content: center;
-    border-radius: 10px;
-    background-color: #0070ba;
-    color: #181818 ;
-    margin: 13px;
-       
-  }
+      display: flex;
+      justify-content: center;
+      align-items: center;  
+      text-align: center;
+      padding: 5px;
+      cursor: pointer;
+      width: 45%;           
+      height:7vh;
+      background-color:  #fdaa48;      
+      color: #0f0f0f;
+      font-size: 13px;
+      font-weight: bold;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      border-radius: 4px;
+      overflow: hidden;      
+    }
 
   .butt:hover{
-      background-color: #0465a5;
+      background-color: #fac78d;
+      transition: .5s;
+  }
+
+  .butt-edituser-container{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      margin-top: 20px;
   }
