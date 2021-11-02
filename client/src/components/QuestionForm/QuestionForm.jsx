@@ -26,7 +26,7 @@ export function QuestionForm({productN, productId, nickname, close}){
         e.preventDefault();
         console.log(question.productId, 'productId en handleSubmit');    
         addQuestion({question})
-        window.location.reload();   
+        setTimeout(() => {window.location.reload()}, 300);   
     }
 
     const handleClose = (e) => {
