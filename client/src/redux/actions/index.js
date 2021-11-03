@@ -356,6 +356,24 @@ export const makeAdmin = (id) => {
   }
 }
 
+export const bannedUser = (id) => {
+  return async (dispatch) => {
+    dispatch(toggleUpdate())
+    try {
+      const userEdited = await axios.put(`${LOCALHOST_URL}/users/bannedUser/${id}`);
+      return dispatch({
+        type: EDIT_USER,
+        payload: userEdited.data,
+      })
+    }
+    catch (error) {
+      console.log(error, 'bannedUser ||Error||');
+    }finally{
+      dispatch(toggleUpdate())
+    }
+  }
+}
+
 export const deleteUser = (id) => {
   return async (dispatch) => {
     dispatch(toggleUpdate())

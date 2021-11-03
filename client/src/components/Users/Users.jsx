@@ -4,11 +4,12 @@ import DataTable from 'react-data-table-component'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import NavBar from '../NavBar/NavBar'
+import {ImBlocked} from 'react-icons/im'
 import { LOCALHOST_URL } from '../../redux/constants'
 import AlertPopup from '../AlertPopups/AlertPopups';
-import {deleteUser, makeAdmin} from '../../redux/actions/index'
+import { deleteUser, makeAdmin, bannedUser } from '../../redux/actions/index'
 import { MdDeleteForever } from 'react-icons/md';
-import {GrUserAdmin, GrMailOption} from 'react-icons/gr';
+import { GrUserAdmin, GrMailOption } from 'react-icons/gr';
 import "./Users.css";
 
 
@@ -46,7 +47,7 @@ export const Users = () => {
                     >
                         <MdDeleteForever />
                     </button>
-                    <button className='GrUserAdmin'type="button" onClick={() => {
+                    <button className='GrUserAdmin' type="button" onClick={() => {
                         handleEditUser(row._id);
                         handeOpenAlertEdit();
                     }
@@ -54,11 +55,22 @@ export const Users = () => {
                     >
                         <span><GrUserAdmin /></span>
                     </button>
-                  <button className='mailOption' type='button' onClick={() => {
-                      handleAlertResetMail(row.email);
-                  }}>
-                    <span><GrMailOption /></span>
-                  </button>
+                    <button className='mailOption' type='button' onClick={() => {
+                        handleAlertResetMail(row.email);
+                    }}>
+                        <span><GrMailOption /></span>
+                    </button>
+
+                    <button className='GrUserAdmin' type="button" onClick={() => {
+                        handleBanUser(row._id);
+                        handeOpenAlertBan();
+                    }
+                    }
+                    >
+                        <span><ImBlocked /></span>
+                    </button>
+
+
                 </div>
             )
         }
@@ -107,28 +119,52 @@ export const Users = () => {
         if (successEdit) {
             console.log(idEdit, "idEdit")
             dispatch(makeAdmin(idEdit))
-            handleEditSuccess()           
+            handleEditSuccess()
         }
     }, [successEdit])
+
+    // ---------------------- BAN USER STUFF starts here ----------------------
+    const [activeAlertBan, setactiveAlertBan] = useState(false);
+    const [successBan, setSuccessBan] = useState(false);
+
+    const handeOpenAlertBan = () => {
+        setactiveAlertBan(!activeAlertBan)
+    } 
+    const [idBan, setidBan] = useState(null)
+    const handleBanUser = (id) => {
+        setidBan(id)
+    }
+
+    const handleBanSuccess = () => {
+        setSuccessBan(!successBan)
+    }
+
+    useEffect(() => {
+        if (successBan) {
+            
+            dispatch(bannedUser(idBan))
+            handleBanSuccess()
+        }
+    }, [successBan])
 
     // ---------------------- EDIT USER STUFF ends here ----------------------
 
     // ---------------------- SEND RESET PASS MAIL starts here ---------------
 
-    const [ activeAlertMail, setActiveAlertMail ] = useState({ 
+    const [activeAlertMail, setActiveAlertMail] = useState({
         show: false,
         email: '',
     })
 
-    const sendResetPassMail = email => { 
+    const sendResetPassMail = email => {
         fetch(`${LOCALHOST_URL}/users/resetpass`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email }),
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email }),
         })
-        .then(data => data.json())
-        .then(res => alert(res.data))
-        .catch(e => alert('fetch fail: ' + e))
+            .then(data => data.json())
+            .then(res => alert(res.data))
+            .catch(e => alert('fetch fail: ' + e))
     }
 
     const handleAlertResetMail = email => {
@@ -140,7 +176,7 @@ export const Users = () => {
     }
 
     // ---------------------- SEND RESET PASS MAIL ends here -----------------
-    
+
     useEffect(() => {
         async function fetchData() {
             const request = await axios.get(`${LOCALHOST_URL}/users`)
@@ -180,6 +216,14 @@ export const Users = () => {
                                 actionAlert='make admin'
                                 handleOpenAlert={handeOpenAlertEdit}
                                 handleSuccess={handleEditSuccess}
+                            />
+                        </div>
+                        <div className="alert-ban-user">
+                            <AlertPopup
+                                activeAlert={activeAlertBan}
+                                actionAlert='ban usser'
+                                handleOpenAlert={handeOpenAlertBan}
+                                handleSuccess={handleBanSuccess}
                             />
                         </div>
                         <div className="alert-send-reset">
