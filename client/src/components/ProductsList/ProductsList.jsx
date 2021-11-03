@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import Product from "../Product/Product";
+import { getWishlist } from "../../redux/actions";
+import { useAuth0 } from '@auth0/auth0-react'
 import { getProductsByPriceAsc, getProductsByPriceDesc, setLimit, getProducts, filterProductsByPriceLessThan, filterProductsByPriceMoreThan, filterProductsByPriceRange } from "../../redux/actions";
 import "./productsList.css";
 import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/md';
@@ -9,11 +11,15 @@ import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/
 export default function ProductsList({ filteredProducts }) {
   // console.log(filteredProducts, "ProductsList");
 
+  const {user} = useAuth0()
   const limit = useSelector((state)=> state.limit)
   const [lessThan, setLessThan] = useState(null)
   const [moreThan, setMoreThan] = useState(null)
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    dispatch(getWishlist(user?.email))
+  }, [])
   
   function handleSelectOrderChange(e){
     
