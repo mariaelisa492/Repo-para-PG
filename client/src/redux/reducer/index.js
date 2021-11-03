@@ -8,7 +8,7 @@ import {
 	GET_MY_ORDERS, GET_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT, GET_PRODUCT_DETAIL,
 	ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, SET_USER, EDIT_USER, 
 	GET_ALL_UNANSWERED_QUESTIONS, RESET_PRICE_ORDER,
-	UPDATE_ORDER, DELETE_ORDER, GET_WISHLIST, UPDATE_ABOUT, GET_ABOUT,
+	UPDATE_ORDER, DELETE_ORDER, GET_WISHLIST, UPDATE_ABOUT, GET_ABOUT, TOGGLE_UPDATE,
 } from "../constants/index"
 
 
@@ -32,6 +32,7 @@ const initialState = {
 	questions:[],
 	wishList:[],
 	about: {},
+  update: false,
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -282,7 +283,7 @@ export const rootReducer = (state = initialState, action) => {
 
 			return {
 				...state,
-				user: action.payload
+				// user: action.payload
 			}
 
 		// ---------------- PAGINATION
@@ -328,6 +329,13 @@ export const rootReducer = (state = initialState, action) => {
 				...state,
 				questions: action.payload
 			}
+		
+		case TOGGLE_UPDATE:
+			return{
+				...state,
+				update: !state.update
+			}
+
 
 
 

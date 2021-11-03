@@ -13,7 +13,8 @@ export const AdminForm = ({ id, handleClosePopup }) => {
 
     const handleSubmit = (e, id, newStatus) => {
         e.preventDefault()
-        dispatch(updateOrders({ _id: id }, newStatus));
+        dispatch(updateOrders({ _id: id }, newStatus)).then(handleClosePopup())
+
     }
 
     const handleChange = (e) => {
@@ -21,27 +22,30 @@ export const AdminForm = ({ id, handleClosePopup }) => {
     };
 
     return (
-        <div className='AdminSalesModal'>
-            <div className='cerrar'>
-                <button onClick={() => {
-                    handleClosePopup()
-                }}>
-                    X
-                </button>
+        <div className="adminSalesGeneral">
+            <div className='AdminSalesModal'>
+                <form className='LeForm' onSubmit={(e) => handleSubmit(e, id, newStatus)}>
+                    <select className='select-mysales' name="status" value={newStatus} onChange={handleChange}>
+                        <option value="Not processed" >Not processed</option>
+                        <option value="Processing">Processing</option>
+                        <option value="Shipped">Shipped</option>
+                        <option value="Delivered">Delivered</option>
+                        <option value="Dispatched">Dispatched</option>
+                    </select>
+                    <div className='cerrar-cont'>
+                        <button className='cerrar' onClick={() => {
+                            handleClosePopup()
+                        }}>
+                            Back
+                        </button>
+                        <input
+                            className='cerrar'
+                            type="submit"
+                            value="Update"
+                        />
+                    </div>
+                </form>
             </div>
-            <form className='LeForm' onSubmit={(e) => handleSubmit(e, id, newStatus)}>
-                <select name="status" value={newStatus} onChange={handleChange}>
-                    <option value="Not processed" >Not processed</option>
-                    <option value="Processing">Processing</option>
-                    <option value="Shipped">Shipped</option>
-                    <option value="Delivered">Delivered</option>
-                    <option value="Dispatched">Dispatched</option>
-                </select>
-                <input
-                    type="submit"
-                    value="Update"
-                />
-            </form>
         </div>
     )
 }

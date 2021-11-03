@@ -9,8 +9,15 @@ import {
   GET_MY_ORDERS, EMPTY_CART, GET_PRODUCT_DETAIL,
   GET_WISHLIST, GET_USER, ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, 
   SET_USER, EDIT_USER, GET_QUESTIONS_BY_PRODUCT, GET_ALL_UNANSWERED_QUESTIONS,
-  GET_ABOUT, UPDATE_ABOUT, CLEAR_QUESTIONS, RESET_PRICE_ORDER,
+  GET_ABOUT, UPDATE_ABOUT, CLEAR_QUESTIONS, RESET_PRICE_ORDER, TOGGLE_UPDATE
   } from "../constants/index"
+
+
+export const toggleUpdate = ()=>{
+  return {
+    type: TOGGLE_UPDATE
+  }
+}  
 
 export const getProducts = () => {
   return async (dispatch) => {
@@ -171,6 +178,7 @@ export const getMyOrders = (user) => {
 
 export const updateOrders = (order, status) => {
   return async (dispatch) => {
+    dispatch(toggleUpdate())
     try {
       const objOrder =
       {
@@ -185,6 +193,8 @@ export const updateOrders = (order, status) => {
       })
     } catch (error) {
       console.log("Error al actualizar la orden")
+    }finally{
+      dispatch(toggleUpdate())
     }
   }
 };
@@ -309,6 +319,7 @@ export const searchUserInDb = (email) => {
 
 export const editUser = (user) => {
   return async (dispatch) => {
+    dispatch(toggleUpdate())
     try {
       console.log(user, 'user en editUser');
       const userEdited = await axios.put(`${LOCALHOST_URL}/users/${user._id}`, user);
@@ -321,32 +332,59 @@ export const editUser = (user) => {
     catch (error) {
       console.log(error, 'editUser ||Error||');
     }
+    finally {
+      dispatch(toggleUpdate())
+    }
   }
 }
 
 export const makeAdmin = (id) => {
   return async (dispatch) => {
+    dispatch(toggleUpdate())
     try {
       const userEdited = await axios.put(`${LOCALHOST_URL}/users/makeAdmin/${id}`);
       return dispatch({
         type: EDIT_USER,
-        payload: userEdited.data,
+        // payload: userEdited.data,
       })
     }
     catch (error) {
       console.log(error, 'makeAdmin ||Error||');
+    }finally{
+      dispatch(toggleUpdate())
+    }
+  }
+}
+
+export const bannedUser = (id) => {
+  return async (dispatch) => {
+    dispatch(toggleUpdate())
+    try {
+      const userEdited = await axios.put(`${LOCALHOST_URL}/users/bannedUser/${id}`);
+      return dispatch({
+        type: EDIT_USER,
+        // payload: userEdited.data,
+      })
+    }
+    catch (error) {
+      console.log(error, 'bannedUser ||Error||');
+    }finally{
+      dispatch(toggleUpdate())
     }
   }
 }
 
 export const deleteUser = (id) => {
-  return async () => {
+  return async (dispatch) => {
+    dispatch(toggleUpdate())
     try {
       const userDeleted = await axios.delete(`${LOCALHOST_URL}/users/${id}`);
       return userDeleted
     }
     catch (error) {
       console.log(error, 'deleteUser ||Error||');
+    }finally{
+      dispatch(toggleUpdate())
     }
   }
 }
@@ -390,11 +428,18 @@ export const getWishlist = (email) =>{
 // ----------------------------- QUESTIONS
 
 export const addQuestion = ({question}) => {
-  console.log(question.productq, 'productq en addQuestion');
-  console.log(question, 'question en addQuestion');
-     axios.post(`${LOCALHOST_URL}/products/questions/p/${question.productq}`, question)
-     .then(res => console.log(res, 'res en addQuestion'))
-     .catch( err => console.log(err, 'err en addQuestion'))
+  //console.log(question.productq, 'productq en addQuestion');
+  //console.log(question, 'question en addQuestion');
+  return async (dispatch) => {
+    dispatch(toggleUpdate())
+    try {
+      await axios.post(`${LOCALHOST_URL}/products/questions/p/${question.productq}`, question);
+    } catch (err) {
+      console.log('ERROR EN ADD QUESTIONS: ' + err);
+    } finally {
+      dispatch(toggleUpdate());
+    }
+  }
 }
 
 export const getAllUnansweredQuestions = () => {

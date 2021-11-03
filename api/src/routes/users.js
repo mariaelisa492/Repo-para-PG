@@ -39,6 +39,8 @@ router.delete('/:id', users.deleteUser)
 
 // hacer admin a un usuario
 router.put('/makeAdmin/:id', users.makeAdmin)
+// hacer banned a un usuario
+router.put('/bannedUser/:id', users.banUser)
 
 // enviar mail de actualizacion de contraseña
 router.post('/resetpass', users.requestPasswordReset)

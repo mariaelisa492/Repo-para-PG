@@ -4,6 +4,8 @@
   flex-direction: row;
   justify-content: right;
   padding: 20px 50px 10px 0px;
+  max-width: 1780px;
+  margin: 0px auto;
 }
 
 .filterSelector

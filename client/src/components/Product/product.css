@@ -1,8 +1,8 @@
 .product-card {
-    width: 380px;
+    width: 315px;
     position: relative;
     box-shadow: 0 2px 7px #dfdfdf;
-    margin: 50px auto;
+    margin: 48px auto;
     background: #ffffff;
     border-radius: 10px;
 }
@@ -30,8 +30,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 300px;
-    padding: 50px;
+    height: 230px;
+    padding: 30px;
     background: white;
     border-radius: 12px;
 }
@@ -42,11 +42,11 @@
 }
 
 .product-details {
-    padding: 30px;
-    height: 250px;
+    padding: 20px 25px;
+    height: 215px;
     background-color: #dcdcdc;
-    border-bottom-left-radius:12px;
-    border-bottom-right-radius:12px
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px
 }
 
 .product-catagory {
@@ -55,20 +55,21 @@
     font-weight: 700;
     text-transform: uppercase;
     color: #838996;
-    margin-bottom: 18px;
+    margin-bottom: 15px;
 }
 
-.product-details h4 a {
+.product-details h4 {
     font-weight: 500;
     display: block;
-    margin-bottom: 18px;
+    margin-bottom: 15px;
     text-transform: uppercase;
     color: #363636;
     text-decoration: none;
     transition: 0.3s;
+    font-size: 15px;
 }
 
-.product-details h4 a:hover {
+.product-details h4:hover {
     color: black;
     transition: 0.5s;
     text-decoration: underline;
@@ -77,8 +78,26 @@
 .product-details p {
     font-size: 15px;
     line-height: 22px;
-    margin-bottom: 18px;
-    color: #f4ca16
+    margin-bottom: 15px;
+    color: #f4ca16;
+}
+
+.product-stock {
+    font-size: 12px;
+    line-height: 22px;
+    margin-bottom: 15px;
+    color: #838996;
+    font-weight: 700;
+}
+
+.stock-0 {
+    color: red;
+}
+
+.product-ratingStock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .product-bottom-details {
@@ -114,16 +133,20 @@
 .product-links .wishListTrue {
     color: #ffa500;
 }
-.product-links a {
+.product-links span {
     display: inline-block;
-    margin-left: 5px;
+    margin-left: 6px;
     color: #808080;
     transition: 0.3s;
-    font-size: 25px;
+    font-size: 23px;
     
 }
 
-.product-links a:hover {
+.product-links span:hover {
     color: #ffa500;
-    font-size: 28px;
+    font-size: 26px;
+}
+
+.sweet-alert{
+    margin-top: 80px;
 }

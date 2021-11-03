@@ -1,5 +1,7 @@
 .containerList {
     width: 100%;
+    max-width: 1705px;
+    margin: 0px auto;
 }
 
 .productList {

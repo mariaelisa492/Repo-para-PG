@@ -21,6 +21,8 @@ export default function UserProfile() {
 
     const orders = useSelector(state => state.orders)
     const wishes = useSelector(state => state.wishList)
+
+    const update = useSelector(state => state.update)
     
 
     const [toggle, setToggle] = useState(false)
@@ -45,7 +47,7 @@ export default function UserProfile() {
         if (user?.email) {
             dispatch(searchUserInDb(user.email))
         }
-    }, [user])
+    }, [user, update])
 
 
     if (isLoading) {

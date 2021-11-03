@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { editUser } from "../../redux/actions/index"
-import { NavLink } from 'react-router-dom';
 import './EditUserForm.css'
 import { useDispatch } from 'react-redux';
+import { toggleUpdate } from "../../redux/actions";
+
 
 // email: 
 // username: 
@@ -26,6 +27,9 @@ function EditUserForm({ _id, handleClosePopUp }) {
 
     const dispatch = useDispatch()
 
+
+
+
     function handleSubmit(e, firstName, lastName, gender, nationality, birthDate, address) {
         e.preventDefault()
         let data = {
@@ -38,10 +42,7 @@ function EditUserForm({ _id, handleClosePopUp }) {
             _id
         }
         // console.log(data, 'data in editUserForm')
-        dispatch(editUser(data))
-            .then(
-                window.location.reload()
-            )
+        dispatch(editUser(data)).then(handleClosePopUp())
     }
 
     return (

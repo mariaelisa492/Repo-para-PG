@@ -28,7 +28,7 @@ function Footer() {
                         <ul className="list-services">
                             <li><a href="/about">about us</a></li>
                             <li><a href="/home">our services</a></li>
-                            { U.user ? U.user[0]?.role === 'ROLE_ADMIN' ? <li><NavLink className='AdminPanelLink' to='/admin'>Admin panel</NavLink></li> : null : null}
+                            { U.user ? U.user[0]?.role === 'ROLE_ADMIN' ? <li><NavLink className='AdminPanelLink' to='/admin/products'>Admin panel</NavLink></li> : null : null}
                         </ul>
                     </div>
                     <div className="footer-col">
