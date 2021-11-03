@@ -48,14 +48,14 @@ export default function ProductsList({ filteredProducts }) {
 
   
   function raise() {
-    if (limit + 8 <= filteredProducts.length) {
-      dispatch(setLimit(limit + 8))
+    if (limit + 15 <= filteredProducts.length) {
+      dispatch(setLimit(limit + 15))
     }
   }
 
   function lower() {
-    if (limit - 8 >= 0) {
-      dispatch(setLimit(limit - 8))
+    if (limit - 15 >= 0) {
+      dispatch(setLimit(limit - 15))
     }
   }
   
@@ -77,7 +77,7 @@ export default function ProductsList({ filteredProducts }) {
     }
   }
   
-  var slicedFilteredProducts = filteredProducts.slice(limit, limit + 8)
+  var slicedFilteredProducts = filteredProducts.slice(limit, limit + 15)
   var keyblablabla = 0
   
   return (
@@ -106,7 +106,7 @@ export default function ProductsList({ filteredProducts }) {
           <div className="button_pagination">
             <button onClick={lower} className='arrowPage'><MdOutlineArrowBackIosNew className="next-back-arrow" /> <h4  >Prev</h4> </button>
             <div className="pagination">
-              <p>{limit} to {limit + 8 < filteredProducts.length ? limit + 8 : filteredProducts.length} of {filteredProducts.length}</p>
+              <p>{limit} to {limit + 15 < filteredProducts.length ? limit + 15 : filteredProducts.length} of {filteredProducts.length}</p>
             </div>
             <button onClick={raise} className='arrowPage'><h4>Next</h4> <MdOutlineArrowForwardIos className="next-back-arrow" /></button>
           </div>

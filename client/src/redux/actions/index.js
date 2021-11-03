@@ -9,8 +9,15 @@ import {
   GET_MY_ORDERS, EMPTY_CART, GET_PRODUCT_DETAIL,
   GET_WISHLIST, GET_USER, ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, 
   SET_USER, EDIT_USER, GET_QUESTIONS_BY_PRODUCT, GET_ALL_UNANSWERED_QUESTIONS,
-  GET_ABOUT, UPDATE_ABOUT, CLEAR_QUESTIONS, RESET_PRICE_ORDER,
+  GET_ABOUT, UPDATE_ABOUT, CLEAR_QUESTIONS, RESET_PRICE_ORDER, TOGGLE_UPDATE
   } from "../constants/index"
+
+
+export const toggleUpdate = ()=>{
+  return {
+    type: TOGGLE_UPDATE
+  }
+}  
 
 export const getProducts = () => {
   return async (dispatch) => {
@@ -393,13 +400,13 @@ export const addQuestion = ({question}) => {
   //console.log(question.productq, 'productq en addQuestion');
   //console.log(question, 'question en addQuestion');
   return async (dispatch) => {
-    dispatch({ type: 'SEND_DATA' });
+    dispatch(toggleUpdate())
     try {
       await axios.post(`${LOCALHOST_URL}/products/questions/p/${question.productq}`, question);
     } catch (err) {
       console.log('ERROR EN ADD QUESTIONS: ' + err);
     } finally {
-      dispatch({ type: 'UPDATE_DATA' });
+      dispatch(toggleUpdate());
     }
   }
 }

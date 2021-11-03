@@ -8,7 +8,7 @@ import {
 	GET_MY_ORDERS, GET_ORDERS, GET_SINGLE_PRODUCT, UPDATE_PRODUCT, GET_PRODUCT_DETAIL,
 	ADD_PRODUCT_FAV, REMOVE_PRODUCT_FAV, SET_USER, EDIT_USER, 
 	GET_ALL_UNANSWERED_QUESTIONS, RESET_PRICE_ORDER,
-	UPDATE_ORDER, DELETE_ORDER, GET_WISHLIST, UPDATE_ABOUT, GET_ABOUT,
+	UPDATE_ORDER, DELETE_ORDER, GET_WISHLIST, UPDATE_ABOUT, GET_ABOUT, TOGGLE_UPDATE,
 } from "../constants/index"
 
 
@@ -329,18 +329,14 @@ export const rootReducer = (state = initialState, action) => {
 				...state,
 				questions: action.payload
 			}
+		
+		case TOGGLE_UPDATE:
+			return{
+				...state,
+				update: !state.update
+			}
 
-    case 'SEND_DATA':
-      return {
-        ...state, 
-        update: true,
-      }
 
-    case 'UPDATE_DATA':
-      return {
-        ...state,
-        update: false,
-      }
 
 
 		default:
