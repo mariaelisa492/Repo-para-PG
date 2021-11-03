@@ -345,7 +345,7 @@ export const makeAdmin = (id) => {
       const userEdited = await axios.put(`${LOCALHOST_URL}/users/makeAdmin/${id}`);
       return dispatch({
         type: EDIT_USER,
-        payload: userEdited.data,
+        // payload: userEdited.data,
       })
     }
     catch (error) {
@@ -363,7 +363,7 @@ export const bannedUser = (id) => {
       const userEdited = await axios.put(`${LOCALHOST_URL}/users/bannedUser/${id}`);
       return dispatch({
         type: EDIT_USER,
-        payload: userEdited.data,
+        // payload: userEdited.data,
       })
     }
     catch (error) {

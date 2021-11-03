@@ -283,7 +283,7 @@ export const rootReducer = (state = initialState, action) => {
 
 			return {
 				...state,
-				user: action.payload
+				// user: action.payload
 			}
 
 		// ---------------- PAGINATION
