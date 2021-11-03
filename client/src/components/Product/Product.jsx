@@ -57,7 +57,10 @@ export default function Product({ _id, img, name, price, reviews, isActive, stoc
                 didOpen: (toast) => {
                     toast.addEventListener('mouseenter', Swal.stopTimer)
                     toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
+                },
+                /* customClass: {
+                    container: 'sweet-alert'
+                } */
             })
 
             Toast.fire({
@@ -90,7 +93,7 @@ export default function Product({ _id, img, name, price, reviews, isActive, stoc
                 <div >{showDiv()}</div>
                 <Link to={'detail/' + _id}>
                     <div className="product-tumb">
-                        <img src={img} alt="" />
+                        <img src={img} alt={name} />
                     </div>
                 </Link>
                 <div className="product-details">
@@ -98,7 +101,12 @@ export default function Product({ _id, img, name, price, reviews, isActive, stoc
                     <NavLink className="link-product" to={'detail/' + _id}>
                         <h4>{name}</h4>
                     </NavLink>
-                    <p><Rating rating={ratingDefault} /></p>
+                    <div className='product-ratingStock'>
+                        <p><Rating rating={ratingDefault} /></p>
+                        <span className={`product-stock ${stock === 0 ? 'stock-0' : ''}`}>
+                            STOCK: {stock}
+                        </span>
+                    </div>
                     <div className="product-bottom-details">
                         <div className="product-price"><small>$ {price + 200}</small>$ {price}</div>
                         <div className="product-links">

@@ -98,7 +98,7 @@ export default function () {
                 <AddToCart id={id} stock={stock} />
 
               </div>
-              <h6 className="stock_title">Stock: {stock} units</h6>
+              <h6 className={`stock_title ${stock === 0 ? 'stock-0' : ''}`}>Stock: {stock} units</h6>
 
             </div>
             {/* <p className="stock_title">Stock: {stock} units</p> */}

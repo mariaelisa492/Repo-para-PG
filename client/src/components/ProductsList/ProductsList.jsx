@@ -10,6 +10,7 @@ import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/
 
 export default function ProductsList({ filteredProducts }) {
   // console.log(filteredProducts, "ProductsList");
+  const qtyProductsPage = 15;
 
   const {user} = useAuth0()
   const limit = useSelector((state)=> state.limit)
@@ -54,14 +55,14 @@ export default function ProductsList({ filteredProducts }) {
 
   
   function raise() {
-    if (limit + 8 <= filteredProducts.length) {
-      dispatch(setLimit(limit + 8))
+    if (limit + qtyProductsPage <= filteredProducts.length) {
+      dispatch(setLimit(limit + qtyProductsPage))
     }
   }
 
   function lower() {
-    if (limit - 8 >= 0) {
-      dispatch(setLimit(limit - 8))
+    if (limit - qtyProductsPage >= 0) {
+      dispatch(setLimit(limit - qtyProductsPage))
     }
   }
   
@@ -83,7 +84,7 @@ export default function ProductsList({ filteredProducts }) {
     }
   }
   
-  var slicedFilteredProducts = filteredProducts.slice(limit, limit + 8)
+  var slicedFilteredProducts = filteredProducts.slice(limit, limit + qtyProductsPage)
   var keyblablabla = 0
   
   return (
@@ -112,7 +113,7 @@ export default function ProductsList({ filteredProducts }) {
           <div className="button_pagination">
             <button onClick={lower} className='arrowPage'><MdOutlineArrowBackIosNew className="next-back-arrow" /> <h4  >Prev</h4> </button>
             <div className="pagination">
-              <p>{limit} to {limit + 8 < filteredProducts.length ? limit + 8 : filteredProducts.length} of {filteredProducts.length}</p>
+              <p>{limit} to {limit + qtyProductsPage < filteredProducts.length ? limit + qtyProductsPage : filteredProducts.length} of {filteredProducts.length}</p>
             </div>
             <button onClick={raise} className='arrowPage'><h4>Next</h4> <MdOutlineArrowForwardIos className="next-back-arrow" /></button>
           </div>
