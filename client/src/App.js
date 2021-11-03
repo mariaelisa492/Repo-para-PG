@@ -18,22 +18,24 @@ import { QuestionsAdminSide } from './components/QuestionsAdminSide/QuestionsAdm
 import { useSelector } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react';
 import About from './components/FormAbout/FormAbout';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 
 function App() {
   const dispatch = useDispatch()
 /*   const u = useSelector(state => state.user)
-  const role = u.user ? u.user[0]?.role : null
-  const {user} = useAuth0(); */
+  const role = u.user ? u.user[0]?.role : null*/
+  const {user} = useAuth0(); 
 
   useEffect(() => {
     dispatch(getProducts())
-/*     dispatch(searchUserInDb(user?.email))
- */  }, [dispatch/* , user */])
+   /*  dispatch(searchUserInDb(user?.email)) */
+  }, [dispatch/* , user */])
 
-  return (
-    <div className="App">
+ return (
+   <div className="App">
       <Switch>
+        <PrivateRoute exact path='/admin' component={DashStyles} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/detail/:id" component={Detail} />
         <Route exact path="/cart" component={ShoppingCart} />
@@ -47,8 +49,8 @@ function App() {
         <Route exact path='/about' component={InfoCommerce} />
         <Route exact path='/admin/questions' component={QuestionsAdminSide} />
         <Route exact path='/admin/about' component={About} />
+        {/* <PrivateRoute exact path='/> */}
       </Switch>
-      <Route path="/admin" component={DashStyles} />
       {/* {role !== 'ROLE_ADMIN' ? <Redirect from='/admin' to='/' /> : null} */}
     </div>
   );
