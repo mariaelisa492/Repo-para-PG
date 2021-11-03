@@ -3,7 +3,7 @@ import mbxGeocoding from '@mapbox/mapbox-sdk/services/geocoding';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import './Map.css';
 
-const { PK_TOKEN_MAP } = process.env;
+const  PK_TOKEN_MAP  = "pk.eyJ1IjoiYWd1c3RpbmFyZW5hcyIsImEiOiJja3ZoaDc1cjdjYW81MnBuejBrcHV0NTZ5In0.Jm0DbbsNcEmvoXLYxI9c7g";
 
 mapboxgl.accessToken = PK_TOKEN_MAP;
 
