@@ -316,6 +316,7 @@ export const searchUserInDb = (email) => {
 
 export const editUser = (user) => {
   return async (dispatch) => {
+    dispatch(toggleUpdate())
     try {
       console.log(user, 'user en editUser');
       const userEdited = await axios.put(`${LOCALHOST_URL}/users/${user._id}`, user);
@@ -327,6 +328,9 @@ export const editUser = (user) => {
     }
     catch (error) {
       console.log(error, 'editUser ||Error||');
+    }
+    finally {
+      dispatch(toggleUpdate())
     }
   }
 }
