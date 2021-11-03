@@ -1,9 +1,12 @@
 import React from 'react';
 import { addQuestion } from '../../redux/actions';
+import { useDispatch } from 'react-redux';
 import './QuestionForm.css'
 
 export function QuestionForm({productN, productId, nickname, close}){
   
+    const dispatch = useDispatch();
+
     console.log(productN)
     const [question, setQuestion] = React.useState({
         question: '',
@@ -25,8 +28,8 @@ export function QuestionForm({productN, productId, nickname, close}){
     const handleSubmit= (e, question) => {
         e.preventDefault();
         console.log(question.productId, 'productId en handleSubmit');    
-        addQuestion({question})
-        window.location.reload();   
+        addQuestion({question})(dispatch).then(handleClose(e));
+        //window.location.reload();   
     }
 
     const handleClose = (e) => {

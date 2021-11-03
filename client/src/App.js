@@ -17,6 +17,7 @@ import DashStyles from './components/DashStyles/DashStyles';
 import { QuestionsAdminSide } from './components/QuestionsAdminSide/QuestionsAdminSide';
 import About from './components/FormAbout/FormAbout';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import CommonRoute from './components/PrivateRoute/CommonRoute';
 
 
 function App() {
@@ -30,12 +31,12 @@ function App() {
     <div className="App">
 
       <Switch>
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/detail/:id" component={Detail} />
-        <Route exact path="/cart" component={ShoppingCart} />
         <Route exact path="/" component={Home} />
-        <Route exact path='/categories' component={Categories} />
-        <Route exact path='/about' component={InfoCommerce} />
+        <Route exact path="/detail/:id" component={Detail} />
+        <CommonRoute exact path='/about' component={InfoCommerce} />
+        <CommonRoute exact path="/profile" component={Profile} />
+        <CommonRoute exact path="/cart" component={ShoppingCart} />
+        {/* <Route exact path='/categories' component={Categories} /> */}
         <PrivateRoute exact path="/admin/users" component={Users} />
         <PrivateRoute exact path="/admin/products" component={Dashboard} />
         <PrivateRoute exact path="/admin/sales" component={AdminSales} />

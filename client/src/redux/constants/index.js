@@ -12,6 +12,10 @@ export const GET_WISHLIST = "GET_WISHLIST"
 export const DELETE_PRODUCT = "DELETE_PRODUCT"
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
 
+//--------------------INTERNAL
+
+export const TOGGLE_UPDATE = "TOGGLE_UPDATE"
+
 // ------------------ USERS
 export const CREATE_USER = 'CREATE_USER'
 export const SET_USER = 'SET_USER'
@@ -45,6 +49,7 @@ export const REMOVE_PRODUCT_FAV = "REMOVE_PRODUCT_FAV"
 export const GET_QUESTIONS_BY_PRODUCT = "GET_QUESTIONS_BY_PRODUCT"
 export const GET_ALL_UNANSWERED_QUESTIONS = "GET_ALL_UNANSWERED_QUESTIONS"
 export const CLEAR_QUESTIONS = "CLEANR_QUESTIONS"
+
 
 //---------------- ORDERS
 
