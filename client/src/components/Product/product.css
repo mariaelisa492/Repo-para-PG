@@ -83,10 +83,15 @@
 }
 
 .product-stock {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 22px;
     margin-bottom: 15px;
     color: #838996;
+    font-weight: 700;
+}
+
+.stock-0 {
+    color: red;
 }
 
 .product-ratingStock {

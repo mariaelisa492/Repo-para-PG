@@ -103,7 +103,9 @@ export default function Product({ _id, img, name, price, reviews, isActive, stoc
                     </NavLink>
                     <div className='product-ratingStock'>
                         <p><Rating rating={ratingDefault} /></p>
-                        <span className="product-stock">Stock: {stock}</span>
+                        <span className={`product-stock ${stock === 0 ? 'stock-0' : ''}`}>
+                            STOCK: {stock}
+                        </span>
                     </div>
                     <div className="product-bottom-details">
                         <div className="product-price"><small>$ {price + 200}</small>$ {price}</div>
