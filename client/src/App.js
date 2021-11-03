@@ -20,30 +20,30 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 
 function App() {
-  const dispatch = useDispatch() 
+  const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getProducts())
   }, [dispatch])
 
- return (
-   <div className="App">
+  return (
+    <div className="App">
+
       <Switch>
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/detail/:id" component={Detail} />
         <Route exact path="/cart" component={ShoppingCart} />
         <Route exact path="/" component={Home} />
         <Route exact path='/categories' component={Categories} />
+        <Route exact path='/about' component={InfoCommerce} />
         <PrivateRoute exact path="/admin/users" component={Users} />
-        <Route exact path='/about' component={InfoCommerce} /> 
         <PrivateRoute exact path="/admin/products" component={Dashboard} />
         <PrivateRoute exact path="/admin/sales" component={AdminSales} />
         <PrivateRoute exact path="/admin/users" component={Users} />
-        <Route exact path='/about' component={InfoCommerce} />
         <PrivateRoute exact path='/admin/questions' component={QuestionsAdminSide} />
         <PrivateRoute exact path='/admin/about' component={About} />
       </Switch>
-        <PrivateRoute exact path='/admin' component={DashStyles} />
+      <Route path='/admin' component={DashStyles} />
     </div>
   );
 }
