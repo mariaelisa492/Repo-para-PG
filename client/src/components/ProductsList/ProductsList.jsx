@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import Product from "../Product/Product";
+import { getWishlist } from "../../redux/actions";
+import { useAuth0 } from '@auth0/auth0-react'
 import { getProductsByPriceAsc, getProductsByPriceDesc, setLimit, getProducts, filterProductsByPriceLessThan, filterProductsByPriceMoreThan, filterProductsByPriceRange } from "../../redux/actions";
 import "./productsList.css";
 import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/md';
@@ -8,12 +10,17 @@ import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/
 
 export default function ProductsList({ filteredProducts }) {
   // console.log(filteredProducts, "ProductsList");
+  const qtyProductsPage = 15;
 
+  const {user} = useAuth0()
   const limit = useSelector((state)=> state.limit)
   const [lessThan, setLessThan] = useState(null)
   const [moreThan, setMoreThan] = useState(null)
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    dispatch(getWishlist(user?.email))
+  }, [])
   
   function handleSelectOrderChange(e){
     
@@ -48,14 +55,18 @@ export default function ProductsList({ filteredProducts }) {
 
   
   function raise() {
-    if (limit + 15 <= filteredProducts.length) {
-      dispatch(setLimit(limit + 15))
+
+    if (limit + qtyProductsPage <= filteredProducts.length) {
+      dispatch(setLimit(limit + qtyProductsPage))
+
     }
   }
 
   function lower() {
-    if (limit - 15 >= 0) {
-      dispatch(setLimit(limit - 15))
+
+    if (limit - qtyProductsPage >= 0) {
+      dispatch(setLimit(limit - qtyProductsPage))
+
     }
   }
   
@@ -77,7 +88,9 @@ export default function ProductsList({ filteredProducts }) {
     }
   }
   
-  var slicedFilteredProducts = filteredProducts.slice(limit, limit + 15)
+
+  var slicedFilteredProducts = filteredProducts.slice(limit, limit + qtyProductsPage)
+
   var keyblablabla = 0
   
   return (
@@ -106,7 +119,9 @@ export default function ProductsList({ filteredProducts }) {
           <div className="button_pagination">
             <button onClick={lower} className='arrowPage'><MdOutlineArrowBackIosNew className="next-back-arrow" /> <h4  >Prev</h4> </button>
             <div className="pagination">
-              <p>{limit} to {limit + 15 < filteredProducts.length ? limit + 15 : filteredProducts.length} of {filteredProducts.length}</p>
+
+              <p>{limit} to {limit + qtyProductsPage < filteredProducts.length ? limit + qtyProductsPage : filteredProducts.length} of {filteredProducts.length}</p>
+
             </div>
             <button onClick={raise} className='arrowPage'><h4>Next</h4> <MdOutlineArrowForwardIos className="next-back-arrow" /></button>
           </div>
