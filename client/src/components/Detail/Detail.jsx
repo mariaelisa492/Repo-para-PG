@@ -32,6 +32,7 @@ export default function () {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0()
   const productDetail = useSelector(state => state.productDetail);
+  const update = useSelector(state => state.update);
 
   const { image, name, description, category, _id, stock, brand, model, price, reviews, questions } = productDetail;
   const [modalQuestionOpen, setModalQuestionOpen] = useState(false);
@@ -61,8 +62,11 @@ export default function () {
     window.scrollTo(0, 0)
     dispatch(getWishlist(user?.email))
     dispatch(getProductDetail(id))
-  }, [dispatch, ButtonFav])
+  }, [dispatch, ButtonFav]);
   
+  useEffect(() => {
+    dispatch(getProductDetail(id));
+  }, [update]);
  
   
   return (

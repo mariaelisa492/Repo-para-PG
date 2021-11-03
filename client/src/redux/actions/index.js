@@ -390,11 +390,18 @@ export const getWishlist = (email) =>{
 // ----------------------------- QUESTIONS
 
 export const addQuestion = ({question}) => {
-  console.log(question.productq, 'productq en addQuestion');
-  console.log(question, 'question en addQuestion');
-     axios.post(`${LOCALHOST_URL}/products/questions/p/${question.productq}`, question)
-     .then(res => console.log(res, 'res en addQuestion'))
-     .catch( err => console.log(err, 'err en addQuestion'))
+  //console.log(question.productq, 'productq en addQuestion');
+  //console.log(question, 'question en addQuestion');
+  return async (dispatch) => {
+    dispatch({ type: 'SEND_DATA' });
+    try {
+      await axios.post(`${LOCALHOST_URL}/products/questions/p/${question.productq}`, question);
+    } catch (err) {
+      console.log('ERROR EN ADD QUESTIONS: ' + err);
+    } finally {
+      dispatch({ type: 'UPDATE_DATA' });
+    }
+  }
 }
 
 export const getAllUnansweredQuestions = () => {

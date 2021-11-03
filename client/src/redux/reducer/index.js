@@ -32,6 +32,7 @@ const initialState = {
 	questions:[],
 	wishList:[],
 	about: {},
+  update: false,
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -329,6 +330,17 @@ export const rootReducer = (state = initialState, action) => {
 				questions: action.payload
 			}
 
+    case 'SEND_DATA':
+      return {
+        ...state, 
+        update: true,
+      }
+
+    case 'UPDATE_DATA':
+      return {
+        ...state,
+        update: false,
+      }
 
 
 		default:
