@@ -340,6 +340,7 @@ export const editUser = (user) => {
 
 export const makeAdmin = (id) => {
   return async (dispatch) => {
+    dispatch(toggleUpdate())
     try {
       const userEdited = await axios.put(`${LOCALHOST_URL}/users/makeAdmin/${id}`);
       return dispatch({
@@ -349,18 +350,23 @@ export const makeAdmin = (id) => {
     }
     catch (error) {
       console.log(error, 'makeAdmin ||Error||');
+    }finally{
+      dispatch(toggleUpdate())
     }
   }
 }
 
 export const deleteUser = (id) => {
-  return async () => {
+  return async (dispatch) => {
+    dispatch(toggleUpdate())
     try {
       const userDeleted = await axios.delete(`${LOCALHOST_URL}/users/${id}`);
       return userDeleted
     }
     catch (error) {
       console.log(error, 'deleteUser ||Error||');
+    }finally{
+      dispatch(toggleUpdate())
     }
   }
 }

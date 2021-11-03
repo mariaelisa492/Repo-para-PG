@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import NavBar from '../NavBar/NavBar'
 import { LOCALHOST_URL } from '../../redux/constants'
@@ -13,6 +13,8 @@ import "./Users.css";
 
 
 export const Users = () => {
+
+    const update = useSelector(state => state.update)
 
     const [users, setUsers] = useState([])
     const dispatch = useDispatch()
@@ -105,8 +107,7 @@ export const Users = () => {
         if (successEdit) {
             console.log(idEdit, "idEdit")
             dispatch(makeAdmin(idEdit))
-            handleEditSuccess()
-            window.location.reload()
+            handleEditSuccess()           
         }
     }, [successEdit])
 
@@ -148,7 +149,7 @@ export const Users = () => {
             return request
         }
         fetchData();
-    }, []);
+    }, [update]);
 
     return (
         <div className="admin-users-dashboard">
