@@ -1,4 +1,4 @@
-import { Route, Redirect } from 'react-router'
+import { Route } from 'react-router'
 import { NavLink } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
@@ -12,15 +12,13 @@ const PrivateRoute = ({ component:Component, rest}) => {
     const { user } = useAuth0();
 
     const userRedux = useSelector(state => state.user)
-    console.log('!!!!!!!!!!!!!! USER REDUx', userRedux)
     const role = userRedux.user ? userRedux.user[0]?.role : null
-    console.log('!!!!!!!!!!!!! SOY ROLE', {...rest})
     
-     useEffect(() => {
+    useEffect(() => {
      dispatch(searchUserInDb(user?.email))
     }, [user] ) 
 
-  console.log('fafafa: ',  userRedux);
+
     return (
         <Route {...rest}> {role 
           ? <Component /> 
