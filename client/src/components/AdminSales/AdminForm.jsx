@@ -13,7 +13,8 @@ export const AdminForm = ({ id, handleClosePopup }) => {
 
     const handleSubmit = (e, id, newStatus) => {
         e.preventDefault()
-        dispatch(updateOrders({ _id: id }, newStatus));
+        dispatch(updateOrders({ _id: id }, newStatus)).then(handleClosePopup())
+
     }
 
     const handleChange = (e) => {

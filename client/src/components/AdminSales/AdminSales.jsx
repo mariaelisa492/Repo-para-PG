@@ -16,6 +16,8 @@ const AdminSales = () => {
 
 
     const orders = useSelector(state => state.orders)
+    const update = useSelector(state => state.update)
+
 
     const [openModal, setOpenModal] = useState(false);
 
@@ -42,7 +44,7 @@ const AdminSales = () => {
 
     useEffect(() => {
         dispatch(getAllOrders())
-    }, [])
+    }, [update])
 
 
     const handleDeleteOrder = (id) => {

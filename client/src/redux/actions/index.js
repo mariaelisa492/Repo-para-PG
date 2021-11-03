@@ -178,6 +178,7 @@ export const getMyOrders = (user) => {
 
 export const updateOrders = (order, status) => {
   return async (dispatch) => {
+    dispatch(toggleUpdate())
     try {
       const objOrder =
       {
@@ -192,6 +193,8 @@ export const updateOrders = (order, status) => {
       })
     } catch (error) {
       console.log("Error al actualizar la orden")
+    }finally{
+      dispatch(toggleUpdate())
     }
   }
 };
