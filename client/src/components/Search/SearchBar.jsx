@@ -1,37 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { AutoComplete } from "../Autocomplete/Autocomplete";
 import {getProductsByName} from '../../redux/actions'
-import { BsSearch } from "react-icons/bs";
 import { FaSearch } from 'react-icons/fa';
 import "./searchBar.css";
 
 export const Search = ({ hideFunc }) => {
 
     const dispatch = useDispatch()
+    const products = useSelector(state => state.products);
 
-    const [inputValue, setInputValue] = useState("");
-
-    const handleInputChange = (e) => {
-        setInputValue(e.target.value)  
-    };
+    const [input, setInput] = useState("");
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        dispatch(getProductsByName(inputValue))
-        setInputValue("");
+        dispatch(getProductsByName(input))
+        setInput("");
         if (typeof hideFunc === 'function') hideFunc();
-}
+    }
+
+    const productsName = () => {
+        const names = products.map(product => product.name)
+        return names
+    }
 
     return (
         <div className="container-search">
             <div className="search-box">
                 <form className="search-form" onSubmit={handleSubmit}>
-                    <input
-                        className = "search-text"
-                        placeholder="Search musical instruments"
-                        type="text"
-                        value={inputValue}
-                        onChange={handleInputChange}
+                    <AutoComplete
+                        suggestions={
+                            productsName()
+                        }
+                        input={input}
+                        setInput={setInput}
                     />
                     <button className='search-button' type='submit'>   
                         <span><FaSearch /></span>

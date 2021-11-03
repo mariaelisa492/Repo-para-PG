@@ -104,7 +104,7 @@
   width: 100vw;
   height: 100vh;
   position: fixed;
-  padding-top: 40px;
+  padding-top: 57px;
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
@@ -132,7 +132,7 @@
   border-radius: 5px;
   text-align: center;
   line-height: 40px;
-  margin: 40px;
+  margin: 5px;
   cursor: pointer;
 }
 
@@ -191,38 +191,6 @@
 {
   top: -200px;
   opacity: 0;
-}
-
-.cartIcon 
-{
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-
-.itemCount 
-{
-  position: absolute;
-  top: -18px;
-  right: 10px;
-  font-size: 16px;
-  color: black;
-}
-
-.cartIcon 
-{
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-
-.itemCount 
-{
-  position: absolute;
-  top: -18px;
-  right: 10px;
-  font-size: 16px;
-  color: black;
 }
 
 .cartIcon 
