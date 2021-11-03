@@ -35,22 +35,22 @@ function App() {
  return (
    <div className="App">
       <Switch>
-        <PrivateRoute exact path='/admin' component={DashStyles} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/detail/:id" component={Detail} />
         <Route exact path="/cart" component={ShoppingCart} />
         <Route exact path="/" component={Home} />
         <Route exact path='/categories' component={Categories} />
-        <Route exact path="/admin/users" component={Users} />
+        <PrivateRoute exact path="/admin/users" component={Users} />
         <Route exact path='/about' component={InfoCommerce} /> 
-        <Route exact path="/admin/products" component={Dashboard} />
-        <Route exact path="/admin/sales" component={AdminSales} />
-        <Route exact path="/admin/users" component={Users} />
+        <PrivateRoute exact path="/admin/products" component={Dashboard} />
+        <PrivateRoute exact path="/admin/sales" component={AdminSales} />
+        <PrivateRoute exact path="/admin/users" component={Users} />
         <Route exact path='/about' component={InfoCommerce} />
-        <Route exact path='/admin/questions' component={QuestionsAdminSide} />
-        <Route exact path='/admin/about' component={About} />
+        <PrivateRoute exact path='/admin/questions' component={QuestionsAdminSide} />
+        <PrivateRoute exact path='/admin/about' component={About} />
         {/* <PrivateRoute exact path='/> */}
       </Switch>
+        <PrivateRoute exact path='/admin' component={DashStyles} />
       {/* {role !== 'ROLE_ADMIN' ? <Redirect from='/admin' to='/' /> : null} */}
     </div>
   );
