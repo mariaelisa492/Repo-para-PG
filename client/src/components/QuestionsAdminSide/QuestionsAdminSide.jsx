@@ -10,7 +10,11 @@ import "./QuestionsAdminSide.css";
 
 export const QuestionsAdminSide = () => {
 
+
+
     const questions = useSelector(state => state.questions);
+    const update = useSelector(state => state.update);
+
     const dispatch = useDispatch();
     const [idToAnswer, setIdToAnswer] = useState(null);
     const [openPopUpAnswer, setOpenPopUpAnswer] = useState(false);
@@ -38,7 +42,7 @@ export const QuestionsAdminSide = () => {
 
     useEffect(() => {
         dispatch(getAllUnansweredQuestions());
-    }, [])
+    }, [update]);
 
     useEffect(() => {
         setItems(questions);
