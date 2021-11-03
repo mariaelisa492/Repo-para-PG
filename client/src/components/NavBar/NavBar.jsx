@@ -103,7 +103,7 @@ export default function NavBar({ showDropDownMenu }) {
 
         <div className={'popupSearchBar ' + (popup.search ? 'showSearch' : 'hideSearch')}>
           <Search hideFunc={hideBar}/>
-          <p className='closeSearch' onClick={hideBar}>close</p>
+          <p className='closeSearch' onClick={hideBar}>Close</p>
         </div>
 
         <div className='mobileOptions'>
