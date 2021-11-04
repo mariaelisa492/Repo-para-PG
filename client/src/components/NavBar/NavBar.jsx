@@ -29,6 +29,7 @@ export default function NavBar({ showDropDownMenu }) {
     profile: false,
   });
 
+  const { user, isAuthenticated, logout } = useAuth0()
 
   function createUser() {
     axios.post(`${LOCALHOST_URL}/users/signup`, { email: user.email, username: user.nickname })
@@ -66,8 +67,6 @@ export default function NavBar({ showDropDownMenu }) {
   }, [about])
 
   const cart = useSelector(state => state.cart);
-
-  const { user, isAuthenticated, logout } = useAuth0()
 
   // Esto es para ingresar como Admin desde el panel de usuario.
 
