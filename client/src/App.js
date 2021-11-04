@@ -32,7 +32,7 @@ function App() {
     <div className="App">
 
       <Switch>
-        <Route exact path="/" component={Home} />
+        <CommonRoute exact path="/" component={Home} />
         <Route exact path="/detail/:id" component={Detail} />
         <CommonRoute exact path='/about' component={InfoCommerce} />
         <CommonRoute exact path="/profile" component={Profile} />
