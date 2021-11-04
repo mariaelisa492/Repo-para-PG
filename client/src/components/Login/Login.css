@@ -5,7 +5,7 @@
 }
 
 .body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     min-height: 100vh;
     width: 100%;
     font-size: 14px;
@@ -138,5 +138,5 @@ button.submit:hover {
 .error {
     color: red;
     margin-bottom: -17px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
