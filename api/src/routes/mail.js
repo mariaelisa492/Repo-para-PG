@@ -1,9 +1,14 @@
 const { Router } = require('express')
 const router = Router()
-const { sendMail, sendNewsletter, sendPromo } = require('../controllers/mail')
+const { sendMail, sendNewsletter, sendPromo, sendOrder } = require('../controllers/mail')
 
+router.get('/wavemail', (req, res) => {
+    return res.send('hello from wave music')
+})
 
-router.post('/confirm', sendMail)
+router.post('/wavemail', sendMail)    // this is just for testing mail service
+
+router.post('/confirm', sendOrder)
 
 router.post('/promo', sendPromo)
 
