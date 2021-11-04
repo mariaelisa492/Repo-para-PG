@@ -1,9 +1,7 @@
 .containerCart{
     max-width: 1150px;
     margin: 0 auto;
-    /* margin: 5px 10px 5px 10px; */
-    /* height: 600px; */
-    /* flex-direction: row; */
+    font-family: 'Poppins', sans-serif;
 }
 
 .keepShopping{

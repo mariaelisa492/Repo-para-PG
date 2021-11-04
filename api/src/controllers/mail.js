@@ -46,7 +46,7 @@ const sendOrder = async (req, res) => {
   const text = `Items: ${quantity}, Total: ${totalPrice}, Status: ${status}`
   const html = `<div style="color:black">
     <h1 style='background-color:orange;font-weight:normal;padding:20px;color:white'>
-      Thank you for buyin on Wave Music
+      Thank you for choosing Wave Music
     </h1>
     <table style="text-align:left;padding:10px;min-width:80%">
       <tr>

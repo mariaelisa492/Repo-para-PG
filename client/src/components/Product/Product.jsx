@@ -11,7 +11,7 @@ import { toggleWishList } from '../../redux/actions';
 import { useAuth0 } from '@auth0/auth0-react'
 import Swal from 'sweetalert2'
 
-export default function Product({ _id, img, name, price, reviews, isActive, stock, created }) {
+export default function Product({ _id, img, name, price, oldPrice, reviews, isActive, stock, created }) {
  console.log(created, "soy created")
     const today = new Date()
     console.log(today,"soy todaay")
@@ -87,10 +87,13 @@ export default function Product({ _id, img, name, price, reviews, isActive, stoc
     }
 
 
+
+
     return (
         <>
             <div className="product-card">
                 <div >{showDiv()}</div>
+                <div >{oldPrice ?  <div className="badge2">SALE!</div> : null }</div>
                 <Link to={'detail/' + _id}>
                     <div className="product-tumb">
                         <img src={img} alt={name} />
@@ -104,11 +107,11 @@ export default function Product({ _id, img, name, price, reviews, isActive, stoc
                     <div className='product-ratingStock'>
                         <p><Rating rating={ratingDefault} /></p>
                         <span className={`product-stock ${stock === 0 ? 'stock-0' : ''}`}>
-                            STOCK: {stock}
+                            {stock === 0 ? 'OUT OF STOCK' : `STOCK: ${stock}`}
                         </span>
                     </div>
                     <div className="product-bottom-details">
-                        <div className="product-price"><small>$ {price + 200}</small>$ {price}</div>
+                        <div className="product-price">{oldPrice ? <small> $ {oldPrice}</small> : null} $ {price}</div>
                         <div className="product-links">
                         <span className="button-items-delete" onClick={(e) => { handleAddCart(e) }}><FaCartPlus /></span>
                         <span className={state.wish? "wishListTrue" : ""} onClick={e => handleWish(e)}><BsHeartFill /></span>

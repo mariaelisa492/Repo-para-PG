@@ -10,12 +10,12 @@
   margin: 0 0 0 0;
   height: 39px;
   width: 80px;
-  float: inline-end;
   margin-right: 20px;
   background-color: #FF9F1C;
   color: white;
   border-radius: 5px;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .add-button:hover {
@@ -28,7 +28,7 @@
   display: flex;
   justify-content: center;
   margin-left: 12px;
-  float: inline-end;
+  float: right;
 }
 
 .actions {
