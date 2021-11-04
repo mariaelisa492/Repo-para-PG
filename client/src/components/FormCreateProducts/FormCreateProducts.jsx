@@ -82,7 +82,7 @@ export default function Create({ handleClosePopup, showPopup }) {
         <div>
           <div>
             <div className='containerformProducts'>
-              <label className='labelCreateProducts'>Name:</label>
+              <label className='labelCreateProducts'>Name</label>
               <input
                 type='text'
                 name='name'
@@ -103,7 +103,7 @@ export default function Create({ handleClosePopup, showPopup }) {
         <div>
           <div>
             <div className='containerformProducts'>
-              <label className='labelCreateProducts'>Description:</label>
+              <label className='labelCreateProducts'>Description</label>
               <textarea
                 name='description'
                 onChange={e => handleInputChange(e.target.name, e.target.value)}
@@ -124,7 +124,7 @@ export default function Create({ handleClosePopup, showPopup }) {
         <div>
           <div>
             <div className='containerformProducts'>
-              <label className='labelCreateProducts'>Image:</label>
+              <label className='labelCreateProducts'>Image</label>
               <input
                 type='file'
                 name='image'
@@ -145,7 +145,7 @@ export default function Create({ handleClosePopup, showPopup }) {
         <div>
           <div>
             <div className='containerformProducts'>
-              <label className='labelCreateProducts'>Price:</label>
+              <label className='labelCreateProducts'>Price</label>
               <input
                 type='number'
                 name='price'
@@ -166,7 +166,7 @@ export default function Create({ handleClosePopup, showPopup }) {
         <div>
           <div>
             <div className='containerformProducts'>
-              <label className='labelCreateProducts'>Stock:</label>
+              <label className='labelCreateProducts'>Stock</label>
               <input
                 type='number'
                 name='stock'
@@ -187,7 +187,7 @@ export default function Create({ handleClosePopup, showPopup }) {
         <div>
           <div>
             <div className='containerformProducts'>
-              <label className='labelCreateProducts'>Brand:</label>
+              <label className='labelCreateProducts'>Brand</label>
               <input
                 type='text'
                 name='brand'
@@ -208,7 +208,7 @@ export default function Create({ handleClosePopup, showPopup }) {
         <div>
           <div>
             <div className='containerformProducts'>
-              <label className='labelCreateProducts'>Model:</label>
+              <label className='labelCreateProducts'>Model</label>
               <input
                 type='text'
                 name='model'
@@ -228,7 +228,7 @@ export default function Create({ handleClosePopup, showPopup }) {
 
         <div>
           <div className='containerformProducts'>
-            <label className='labelCreateProducts'>Category:</label>
+            <label className='labelCreateProducts'>Category</label>
 
             <select
               name='category'
