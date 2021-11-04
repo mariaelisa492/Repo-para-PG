@@ -80,14 +80,14 @@ export default function UserProfile() {
                 {toggle ?
                 toggleOrder ?
                     <div className="historyContainer">
-                        <div className="soyH1" onClick={(e) => { handleToggle(e) }}>{"back"} </div>
+                        <div className="soyH1" onClick={(e) => { handleToggle(e) }}>{"Back"} </div>
                         <div className="">
                             <HistoryCard order={orders} />
                         </div>
                     </div>
                     :
                     <div className="favContainer">
-                        <div className="soyH1" onClick={(e) => { handleToggle(e) }}>{"back"} </div>
+                        <div className="soyH1" onClick={(e) => { handleToggle(e) }}>{"Back"} </div>
                         <div className="">
                             <WishListProfile wishes={wishes} user={user?.email}/>
                         </div>

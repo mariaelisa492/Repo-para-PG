@@ -20,11 +20,10 @@
     justify-content:space-between;
     margin: 1% auto;
     max-width: 75%;
-    border-radius: 4px;
+    border-radius: 5px;
     width: 100%;
-    background-color: white;
+    background-color: transparent;
     border-radius: 2px;
-    border: 1px solid;
     border-color: rgb(216, 212, 212);    
 }
 
@@ -40,9 +39,7 @@
     font-size: 160%;
     justify-content: end;
     padding-right: 4%;
-    border: 1px solid;
-    border-style: inset;
     border-right: none;
     border-left: none;
-    border-color: rgb(236, 228, 228);
+    border-color: transparent;
 }
