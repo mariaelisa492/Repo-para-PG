@@ -3,10 +3,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 70%;
   height: 100%;  
   border-radius: 5px;
-  padding: 20px; 
+  
   }
 
   .Title{
@@ -14,26 +14,23 @@
       margin: 10px;
   }
   
-  .CreateForm  {
-    margin-left: 10%;
-    margin-right: 10%;
-    padding: 20px;
+  .CreateForm  { 
+   width: 100%;
     text-align: center;
     font-size: 18px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
-    border-radius: 30px;
-   
+    align-content: center;   
   }
+
 
   .inputContainter {
     margin-left: 10px; 
     margin-right: 10px;
     display: flex;
     flex-direction: row; 
-    width: 80%;
+    width: 100%;
     align-items: center;
     justify-content: center;
     border: none; 

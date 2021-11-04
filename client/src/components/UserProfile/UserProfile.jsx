@@ -135,7 +135,7 @@ export default function UserProfile() {
                             </div>
                         </div>
 
-                        <ReactModal isOpen={showPopupEditUser} className='reactModalContent' overlayClassName='reactModalOverlay'>
+                        <ReactModal isOpen={showPopupEditUser} className='reactModalContentUser' overlayClassName='reactModalOverlay'>
                             <EditUserForm _id={userProfile.user ? userProfile.user[0]?._id : null} handleClosePopUp={toggleModal} />
                         </ReactModal>
 
