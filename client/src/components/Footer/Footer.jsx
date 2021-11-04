@@ -37,8 +37,8 @@ function Footer() {
                         <div className="social-links">
                             <a href="https://www.facebook.com/Wave-Music-107797495029344/" target="_blank"><RiFacebookCircleFill size={42} /></a>
                             <a href="https://www.twitter.com/" target="_blank"><AiFillTwitterCircle size={42} /></a>
-                            <a href="https://www.linkedin.com/" target="_blank"><TiSocialLinkedin size={38} className="linkedin-icon" /></a>
-                            <a href="https://www.github.com/" target="_blank"><AiFillGithub size={42} /></a>
+                            <a href="https://www.linkedin.com/" target="_blank"><TiSocialLinkedin size={37} className="linkedin-icon" /></a>
+                            <a href="https://www.github.com/" target="_blank"><AiFillGithub size={42} className="github-icons" /></a>
                         </div>
                     </div>
                 </div>
