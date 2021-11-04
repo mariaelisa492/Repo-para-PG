@@ -87,6 +87,8 @@ export default function ProductsList({ filteredProducts }) {
       setLessThan(value)
     }
   }
+
+  var paginationFilteredProducts = filteredProducts.slice(limit, limit + 8)
   
 
   var slicedFilteredProducts = filteredProducts.slice(limit, limit + qtyProductsPage)
@@ -103,6 +105,7 @@ export default function ProductsList({ filteredProducts }) {
               <Product
                 img={e.image}
                 name={e.name}
+                oldPrice={e.oldPrice}
                 price={e.price}
                 reviews={e.reviews}
                 created={e.created}

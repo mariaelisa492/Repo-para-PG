@@ -29,6 +29,8 @@ function CheckoutBut({totalPrice, items, totalItems}) {
     return actions.order.capture();
   };
 
+  
+    //console.log('!!!!!!!!!!!!!!!!!', user.email)
   return (
     <div className="paypalButContainer">
       <PayPalButton style={{ color: "blue", shape: "pill", label: "pay", height: 40, with:20}}

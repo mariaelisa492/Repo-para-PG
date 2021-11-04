@@ -1,9 +1,11 @@
+/* eslint import/no-webpack-loader-syntax: off */
+
 import React from "react";
 import mbxGeocoding from '@mapbox/mapbox-sdk/services/geocoding';
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
+import mapboxgl from '!mapbox-gl/dist/mapbox-gl.js';
 import './Map.css';
 
-const  PK_TOKEN_MAP  = "pk.eyJ1IjoiYWd1c3RpbmFyZW5hcyIsImEiOiJja3ZoaDc1cjdjYW81MnBuejBrcHV0NTZ5In0.Jm0DbbsNcEmvoXLYxI9c7g";
+const  PK_TOKEN_MAP  = "pk.eyJ1IjoiYWd1c3RpbmFyZW5hcyIsImEiOiJja3ZrMWp1dDBkMDdoMnBtYTVzNGs5eGlzIn0.-b5vu-xR5fvCib6EI-Z_9A";
 
 mapboxgl.accessToken = PK_TOKEN_MAP;
 

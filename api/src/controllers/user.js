@@ -13,6 +13,13 @@ const createUser = async (req, res) => {
             username: username,
         })
     }
+    let userOld = await User.findOne({ email: email })
+    if (userOld) {
+        return res.status(400).json({
+            message: 'User already exists',
+            userOld
+        })
+    }
     try {
         let user = await newUser.save();
         res.status(200).json({
