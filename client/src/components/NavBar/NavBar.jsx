@@ -14,30 +14,31 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAbout } from '../../redux/actions/index';
 import axios from "axios";
 import { LOCALHOST_URL } from "../../redux/constants";
+import { searchUserInDb } from "../../redux/actions";
 
 
 export default function NavBar({ showDropDownMenu }) {
+
   // Este componente es demasiado grande!  Pero con el tiempo que tenemos
   // prefiero no tocarlo por ahora, veremos la semana proxima si se puede
   // limpiar y refactorear un poco.
 
-  const { user, isAuthenticated, logout } = useAuth0()
-  const [ popup, setPopup ] = useState({
+  const [popup, setPopup] = useState({
     search: false,
     login: false,
-    profile: false, 
+    profile: false,
   });
 
 
-    function createUser() {
-      axios.post(`${LOCALHOST_URL}/users/signup`, { email: user.email, username: user.nickname })
-      console.log("ACA DEBERIA APARECER EL CREATE USER")
+  function createUser() {
+    axios.post(`${LOCALHOST_URL}/users/signup`, { email: user.email, username: user.nickname })
+    console.log("ACA DEBERIA APARECER EL CREATE USER")
   }
 
-    setTimeout(() => {
+  setTimeout(() => {
     isAuthenticated ? createUser() : console.log("NO ESTA AUTENTICADO")
-    }, 5000)
-   
+  }, 5000)
+
 
   const showBar = () => setPopup({ ...popup, search: true });
   const hideBar = () => setPopup({ ...popup, search: false });
@@ -45,9 +46,9 @@ export default function NavBar({ showDropDownMenu }) {
   const hideDialog = () => setPopup({ ...popup, login: false });
   const toggleUserOptions = () => setPopup({ ...popup, profile: !popup.profile });
 
-  const hadleChangeLogout = ()=>{
+  const hadleChangeLogout = () => {
     localStorage.removeItem('items');
-    logout({returnTo:window.location.origin})
+    logout({ returnTo: window.location.origin })
   }
 
   const dispatch = useDispatch()
@@ -57,21 +58,30 @@ export default function NavBar({ showDropDownMenu }) {
   const [inputAbout, setInputAbout] = useState(about);
 
   useEffect(() => {
-      dispatch(getAbout());
+    dispatch(getAbout());
   }, [])
 
   useEffect(() => {
-      setInputAbout(about);
+    setInputAbout(about);
   }, [about])
 
-
   const cart = useSelector(state => state.cart);
+
+  const { user, isAuthenticated, logout } = useAuth0()
+
+  // Esto es para ingresar como Admin desde el panel de usuario.
+
+  useEffect(() => {
+    dispatch(searchUserInDb(user?.email));
+  }, [user]);
+
+  const U = useSelector(state => state.user);
 
   return (
     <nav className="navBar">
       <div className='landscape'>
         <label className="logo">
-          <NavLink to="/" className="active"><img src={inputAbout.logo || logo} alt="logo"/></NavLink>
+          <NavLink to="/" className="active"><img src={inputAbout.logo || logo} alt="logo" /></NavLink>
         </label>
 
         <div className='searchBar'>
@@ -84,7 +94,7 @@ export default function NavBar({ showDropDownMenu }) {
               <GrCart className='menuIcon' /><span className='itemCount' >{cart.length}</span>
             </div>
           </NavLink>
-          
+
           {isAuthenticated &&
             <div className='profilePic' onClick={toggleUserOptions}>
               {/*<FaUser className='menuIcon' />*/}
@@ -92,22 +102,22 @@ export default function NavBar({ showDropDownMenu }) {
             </div>
           }
 
-          {!isAuthenticated && <LoginTest/>}
+          {!isAuthenticated && <LoginTest />}
         </div>
       </div>
 
       <div className='portrait'>
         <label className="logo">
-          <NavLink to="/" className="active"><img src={inputAbout.logoSmall || logoSmall} alt="logo"/></NavLink>
+          <NavLink to="/" className="active"><img src={inputAbout.logoSmall || logoSmall} alt="logo" /></NavLink>
         </label>
 
         <div className={'popupSearchBar ' + (popup.search ? 'showSearch' : 'hideSearch')}>
-          <Search hideFunc={hideBar}/>
+          <Search hideFunc={hideBar} />
           <p className='closeSearch' onClick={hideBar}>Close</p>
         </div>
 
         <div className='mobileOptions'>
-          <FaSearch className='noLink' onClick={showBar}/>
+          <FaSearch className='noLink' onClick={showBar} />
 
           <NavLink to="/cart" activeClassName='activeLink' >
             <div className='cartIcon'>
@@ -122,13 +132,13 @@ export default function NavBar({ showDropDownMenu }) {
             </div>
           }
 
-          {!isAuthenticated && <LoginTest/>}
+          {!isAuthenticated && <LoginTest />}
 
-          <FaBars className='noLink' onClick={showDropDownMenu}/>
+          <FaBars className='noLink' onClick={showDropDownMenu} />
         </div>
       </div>
 
-      <Modal 
+      <Modal
         show={popup.login}
         hideFunc={hideDialog}
         message="You need to be logged in to perform this action!" />
@@ -141,8 +151,9 @@ export default function NavBar({ showDropDownMenu }) {
               Your profile
             </NavLink>
           </li>
+          {U.user ? U.user[0]?.role === 'ROLE_ADMIN' ? <li><NavLink activeClassName='profileActive' className='profileLink' to='/admin/products'>Admin panel</NavLink></li> : null : null}
           <li className='logoutOption' onClick={hadleChangeLogout}>
-            Logout <FaArrowRight className='exitIcon'/>
+            Logout <FaArrowRight className='exitIcon' />
           </li>
         </ul>
       </div>
