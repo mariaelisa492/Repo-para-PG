@@ -1,5 +1,5 @@
 // ----------------- LINKS
-export const LOCALHOST_URL = "https://herokupftest.herokuapp.com"
+export const LOCALHOST_URL = "http://localhost:5000"
 
 // ----------------- TYPES FOR REQUESTS
 export const GET_PRODUCTS = "GET_PRODUCTS"
