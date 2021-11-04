@@ -225,7 +225,7 @@ export default function Dashboard() {
 
             <div className="table">
                 <div className="add-button-div">
-                    <button className='create add-button' onClick={handleOpenPopupCreate}><MdOutlineAddCircle size={28} /></button>
+                    <button className='create add-button' onClick={handleOpenPopupCreate}><MdOutlineAddCircle size={32} /></button>
                 </div>
                 <DataTable
                     columns={columns}
