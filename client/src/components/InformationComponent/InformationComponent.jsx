@@ -37,7 +37,7 @@ export default function InfoComponent() {
                     <div className='iconAbout'><FaMapMarkedAlt /></div>
 
                     <div>
-                        <h2>Adress</h2>
+                        <h2>Address</h2>
                         <p className='textAbout'>{inputAbout?.address}</p>
                     </div>
                 </div>
