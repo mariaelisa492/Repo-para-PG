@@ -53,8 +53,8 @@ return(
                     placeholder="Ask here"
                 />
             <div className='butons-container' >
-                <button type="submit">Send</button>
                 <button type="button" onClick={handleClose}>Back</button>
+                <button type="submit">Send</button>
             </div>
         </form>
     </div>

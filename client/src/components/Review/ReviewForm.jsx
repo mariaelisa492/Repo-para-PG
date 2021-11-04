@@ -107,8 +107,8 @@ export function ReviewForm({ handleClosePopUp }) {
                     onChange={e => handleChange(e)}
                     placeholder="what's your feedback" />
                 <div className="butons-container">
-                    <button type="submit" className="reviewBackBtn" maxlength="200" >Send</button>
                     <button className="reviewBackBtn" onClick={handleClosePopUp}>Back</button>
+                    <button type="submit" className="reviewBackBtn" maxlength="200" >Send</button>
                 </div>
             </form>
 
