@@ -104,7 +104,7 @@ export default function Product({ _id, img, name, price, reviews, isActive, stoc
                     <div className='product-ratingStock'>
                         <p><Rating rating={ratingDefault} /></p>
                         <span className={`product-stock ${stock === 0 ? 'stock-0' : ''}`}>
-                            STOCK: {stock}
+                            {stock === 0 ? 'OUT OF STOCK' : `STOCK: ${stock}`}
                         </span>
                     </div>
                     <div className="product-bottom-details">
