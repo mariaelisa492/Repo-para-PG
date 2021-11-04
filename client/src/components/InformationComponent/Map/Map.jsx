@@ -46,7 +46,7 @@ export default function Map({ address }) {
 
             const map = new mapboxgl.Map({
                 container: 'map',
-                style: 'mapbox://styles/mapbox/streets-v11',
+                style: 'mapbox://styles/agustinarenas/ckvl44h974wil15pefu0w5qlh',
                 center: feature.center,
                 //Zoom de la ubicacion
                 zoom: 15
