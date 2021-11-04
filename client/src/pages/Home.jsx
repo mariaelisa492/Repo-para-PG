@@ -19,6 +19,8 @@ export const Home = () => {
   const products = useSelector((state) => state.products)
   const filteredTF = useSelector((state) => state.filteredTF)
 
+  console.log('SOOOOOOY FILTEREDPRODUCST DE HOME', filteredProducts)
+
   const {user, isAuthenticated} = useAuth0()
 
   console.log(filteredTF, 'FILTEREDTF')
