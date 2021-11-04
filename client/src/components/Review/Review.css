@@ -53,13 +53,15 @@
 
     
        .reviewTextUser{
-           font-family: 'Poppins', sans-serif;           font-weight: normal;
+           font-family: 'Poppins', sans-serif;           
+           font-weight: normal;
            color: black;
            font-size: 18px;
        }
     
        .reviewText2{
-           font-family: 'Poppins', sans-serif;           font-weight: normal;
+           font-family: 'Poppins', sans-serif;           
+           font-weight: normal;
            color: gray;
            font-size: 18px;
        }
