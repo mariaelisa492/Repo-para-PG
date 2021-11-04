@@ -105,6 +105,7 @@ export default function ProductsList({ filteredProducts }) {
               <Product
                 img={e.image}
                 name={e.name}
+                oldPrice={e.oldPrice}
                 price={e.price}
                 reviews={e.reviews}
                 created={e.created}

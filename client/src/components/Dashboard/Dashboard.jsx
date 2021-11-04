@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import ReactModal from 'react-modal';
 import DataTable from "react-data-table-component";
 import FormCreateProducts from '../FormCreateProducts/FormCreateProducts';
@@ -7,17 +8,29 @@ import { useDispatch, useSelector, } from "react-redux";
 import { deleteProduct, getAbout } from "../../redux/actions";
 import { MdDeleteForever } from 'react-icons/md';
 import { FaRegEdit } from 'react-icons/fa';
+import { MdLocalOffer } from 'react-icons/md';
 import AlertPopup from '../AlertPopups/AlertPopups';
 import Modal from "../Modal/Modal";
 import FormAbout from '../FormAbout/FormAbout';
 import { MdOutlineAddCircle } from 'react-icons/md'
+import { MdPriceCheck } from 'react-icons/md'
+import { FormOffer } from './FormOffer/FormOffer';
+import {toggleUpdate} from '../../redux/actions';
 import "./Dashboard.css";
+import { LOCALHOST_URL } from "../../redux/constants";
 
 export default function Dashboard() {
 
     const [idToUpdate, setidToUpdate] = useState('')
 
     const [pending, setPending] = useState(true);
+    const [dataToOffer, setDataToOffer] = useState({id:"", price:"", oldPrice:""})
+    const [showPopupOffer, setShowPopupOffer] = useState(false);
+    const update = useSelector(state => state.update);
+
+    useEffect(() => {
+        console.log(dataToOffer)
+    }, [dataToOffer])
 
     useEffect(() => {
         dispatch(getAbout());
@@ -57,10 +70,16 @@ export default function Dashboard() {
         }
         ,
         {
+            name: "old Price",
+            selector: "oldPrice",
+            sortable: true
+        },
+        {
             name: "Price",
             selector: "price",
             sortable: true
         },
+       
         {
             name: "Stock",
             selector: "stock",
@@ -81,6 +100,20 @@ export default function Dashboard() {
                 >
                     <MdDeleteForever />
                 </button>
+                <button type="button" onClick={() => {
+                    handleUpdateOffer(row._id, row.price, row.oldPrice);
+                   
+                }}
+                >
+                    <MdLocalOffer />
+                </button>
+                <button type="button" onClick={() => {
+                    setOldPrice0(row._id);
+                   
+                }}
+                >
+                    <MdPriceCheck />
+                </button>
             </div>)
         },
 
@@ -93,7 +126,40 @@ export default function Dashboard() {
 
     useEffect(() => {
         setItems(products)
-    }, [products])
+    }, [products, update])
+
+    const setOldPrice0 = async (id) => {      
+            dispatch(toggleUpdate())
+            try {
+                await axios.put(`${LOCALHOST_URL}/products/${id}`, {
+                    oldPrice: 0,
+                   
+                })
+            } catch (error) {
+                console.log(error);
+            } finally {
+                dispatch(toggleUpdate())              
+            }
+        }
+    
+
+
+
+    const handleTogglePopupOffer = () => {
+        setShowPopupOffer(!showPopupOffer);
+    }
+  
+
+
+    const handleUpdateOffer = (id, price, oldPrice) => {
+        setDataToOffer({id: id, price: price, oldPrice: oldPrice});
+        handleTogglePopupOffer()
+    }
+
+
+
+
+
 
     const handleDeleteProduct = (id) => {
         setidDelete(id);
@@ -201,6 +267,10 @@ export default function Dashboard() {
             <ReactModal isOpen={showPopupUpdateAbout} className='reactModalContent' overlayClassName='reactModalOverlay'>
                 <FormAbout handleClosePopup={handleClosePopupUpdateAbout} />
             </ReactModal>
+
+             <ReactModal isOpen={showPopupOffer} className='modalReviewForm' overlayClassName='reactModalOverlay'> 
+                <FormOffer handleClosePopup={handleTogglePopupOffer} id={dataToOffer.id} price={dataToOffer.price} oldPrice={dataToOffer.oldPrice}/>
+             </ReactModal> 
         </>
     )
 };
