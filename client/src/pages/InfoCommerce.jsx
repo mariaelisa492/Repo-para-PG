@@ -5,17 +5,17 @@ import InfoComponent from '../components/InformationComponent/InformationCompone
 
 export default function InfoCommerce() {
     return (
-        <div>
+        <div className="page-shopping">
 
-            <div>
+            <div className="nav_page_user">
                 <NavBar />
             </div>
 
-            <div>
+            <div className="user_page_container">
                 <InfoComponent />
             </div>
 
-            <div>
+            <div className="footer_page_user">
                 <Footer />
             </div>
 
