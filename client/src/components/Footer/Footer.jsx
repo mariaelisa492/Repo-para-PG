@@ -16,14 +16,14 @@ function Footer() {
                         <h4>company</h4>
                         <ul className="list-services">
                             <li><a href="/about">about us</a></li>
-                            <li><a href="/home">our services</a></li>
+                            <li><a href="/">our services</a></li>
                         </ul>
                     </div>
                     <div className="footer-col">
                         <h4>get help</h4>
                         <ul className="list-services">
-                            <li><a href="/home">FAQ</a></li>
-                            <li><a href="/home">shipping</a></li>
+                            <li><a href="/">FAQ</a></li>
+                            <li><a href="/">shipping</a></li>
                         </ul>
                     </div>
                     <div className="footer-col">
