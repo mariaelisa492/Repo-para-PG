@@ -7,6 +7,7 @@ const createProduct = async (req, res) => {
         description: req.body.description,
         image: req.body.image,
         price: req.body.price,
+        oldPrice: req.body.oldPrice,
         created: req.body.created,
         stock: req.body.stock,
         brand: req.body.brand,
@@ -52,9 +53,9 @@ const getProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
     const { id } = req.params;
-    const { name, description, image, price, stock, brand, model, category } = req.body;
+    const { name, description, image, price, oldPrice, stock, brand, model, category } = req.body;
     try {
-        const updateProduct = { name, description, image, price, stock, brand, model, category, _id: id }
+        const updateProduct = { name, description, image, price, oldPrice, stock, brand, model, category, _id: id }
         await Products.findByIdAndUpdate(id, updateProduct, { new: true });
         res.status(200).json(updateProduct);
     } catch (error) {

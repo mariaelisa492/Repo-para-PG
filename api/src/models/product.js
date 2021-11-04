@@ -54,7 +54,9 @@ const ProductSchema = new Schema({
         required:true
     },
     oldPrice: {
-        type: Number
+        type: Number,
+        default: 0,
+        required:true
     },
     updated: Date,
     created: {

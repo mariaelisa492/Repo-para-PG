@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router';
 import { Home } from './pages/Home'
 import { Detail } from './pages/Detail';
 import { getProducts } from './redux/actions/index'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import { Categories } from './components/Categories/Categories';
 import { Profile } from './pages/Profile';
@@ -22,10 +22,11 @@ import CommonRoute from './components/PrivateRoute/CommonRoute';
 
 function App() {
   const dispatch = useDispatch()
+  const update = useSelector(state => state.update)
 
   useEffect(() => {
     dispatch(getProducts())
-  }, [dispatch])
+  }, [dispatch, update])
 
   return (
     <div className="App">
