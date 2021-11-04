@@ -48,8 +48,8 @@ export function FormAnswerQuestion({questA, handleClosePopup}) {
                     <textarea className='textAF' name='answer' value={answer} onChange={handleChange} />
                 </div>
                 <div className='butons-container'>
-                    <button className='reviewBackBtn' type='submit'>Submit</button>
                     <button className='reviewBackBtn' onClick={handleClosePopup}> Back</button>
+                    <button className='reviewBackBtn' type='submit'>Submit</button>
                 </div>
             </form>
         </div>

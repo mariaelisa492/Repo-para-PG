@@ -140,7 +140,8 @@ export const setNewOrder = (order) => {
   return (dispatch) => {
     try {
       axios.post(`${LOCALHOST_URL}/orders/create`, order).then(setTimeout(() => { dispatch(emptyCart()) }, 2000))
-      .then(setTimeout(() => { dispatch(removeStock(order)) }, 800))
+        .then(setTimeout(() => { dispatch(removeStock(order)) }, 800))
+        .then(axios.post(`${LOCALHOST_URL}/mail/confirm`, order))
     }
     catch (error) {
       console.log(error);

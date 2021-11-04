@@ -16,7 +16,8 @@
 .titleAboutUS {
   margin: 0.5em auto;
   font-size: 2em;
-  font-family: "Cantarell", sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: lighter;
 }
 
 .divMap {
