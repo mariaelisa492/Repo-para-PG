@@ -21,7 +21,7 @@
   .ddCategories 
   {
     font-size: 24px;
-    font-family: 'ubuntu', 'cantarell', sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
   }
 
@@ -47,7 +47,7 @@
     display: block;
     padding: 20px;
     font-size: 24px;
-    font-family: 'ubuntu', 'cantarel', sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
     border-top: 1px solid #d0d0d0;
     color: #707070;
