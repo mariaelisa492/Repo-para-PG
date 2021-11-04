@@ -22,6 +22,7 @@ export  const categories = {
         'Digital Keyboards'
     ],
     Bass:[
-        'Electric Bass'
+        'Electric Bass', 
+        'Acoustic-Electric Bass'
     ]
 }
