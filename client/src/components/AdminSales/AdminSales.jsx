@@ -92,10 +92,12 @@ const AdminSales = () => {
 
                 <div className="actions">
                     <button
+                        title="Edit"
                         onClick={() => laOnClick(row._id)}>
                         <FaRegEdit />
                     </button>
                     <button
+                        title="Delete"
                         type="button"
                         onClick={() => {
                             handleDeleteOrder(row._id);

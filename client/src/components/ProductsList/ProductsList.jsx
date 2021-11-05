@@ -56,7 +56,7 @@ export default function ProductsList({ filteredProducts }) {
   
   function raise() {
 
-    if (limit + qtyProductsPage <= filteredProducts.length) {
+    if (limit + qtyProductsPage < filteredProducts.length) {
       dispatch(setLimit(limit + qtyProductsPage))
 
     }

@@ -88,26 +88,36 @@ export default function Dashboard() {
         {
             name: "Actions",
             cell: row => (<div className="actions">
-                <button type="button" onClick={() => {
+                <button type="button" 
+                    title="Edit"
+                    onClick={() => {
                     handleOpenPopupUpdate()
                     setidToUpdate(row._id)
                 }}><FaRegEdit /></button>
 
-                <button type="button" onClick={() => {
+                <button type="button" 
+                    title="Delete"
+                    onClick={() => {
                     handleDeleteProduct(row._id);
                     handeOpenAlertDelete();
                 }}
                 >
                     <MdDeleteForever />
                 </button>
-                <button type="button" onClick={() => {
+                <button 
+                    title="Set offer"
+                    type="button" 
+                    onClick={() => {
                     handleUpdateOffer(row._id, row.price, row.oldPrice);
                    
                 }}
                 >
                     <MdLocalOffer />
                 </button>
-                <button type="button" onClick={() => {
+                <button 
+                    title="Delete offer"
+                    type="button" 
+                    onClick={() => {
                     setOldPrice0(row._id);
                    
                 }}
