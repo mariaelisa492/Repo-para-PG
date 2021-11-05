@@ -21,7 +21,7 @@ export default function ProductsList({ filteredProducts }) {
 
   useEffect(() => {
     dispatch(getWishlist(user?.email))
-  }, [slicedFilteredProducts])
+  }, [])
   
   function handleSelectOrderChange(e){
     
