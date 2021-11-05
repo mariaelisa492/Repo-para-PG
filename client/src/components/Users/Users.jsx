@@ -39,7 +39,9 @@ export const Users = () => {
             name: "Actions",
             cell: row => (
                 <div className="actions">
-                    <button type="button" onClick={() => {
+                    <button 
+                        title='Delete'
+                        type="button" onClick={() => {
                         handleDeleteUser(row._id);
                         handeOpenAlertDelete();
                     }
@@ -47,7 +49,9 @@ export const Users = () => {
                     >
                         <MdDeleteForever />
                     </button>
-                    <button className='GrUserAdmin' type="button" onClick={() => {
+                    <button 
+                        title='Make admin'
+                        className='GrUserAdmin' type="button" onClick={() => {
                         handleEditUser(row._id);
                         handeOpenAlertEdit();
                     }
@@ -55,13 +59,18 @@ export const Users = () => {
                     >
                         <span><GrUserAdmin /></span>
                     </button>
-                    <button className='mailOption' type='button' onClick={() => {
+                    <button 
+                        title='Send reset password'
+                        className='mailOption' 
+                        type='button' onClick={() => {
                         handleAlertResetMail(row.email);
                     }}>
                         <span><GrMailOption /></span>
                     </button>
 
-                    <button className='GrUserAdmin' type="button" onClick={() => {
+                    <button 
+                        title='Ban user'
+                        className='GrUserAdmin' type="button" onClick={() => {
                         handleBanUser(row._id);
                         handeOpenAlertBan();
                     }
