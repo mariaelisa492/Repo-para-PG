@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAbout } from '../../redux/actions/index';
 import axios from "axios";
 import { LOCALHOST_URL } from "../../redux/constants";
-import { searchUserInDb } from "../../redux/actions";
+import { searchUserInDb, reset_filter } from "../../redux/actions";
 
 
 export default function NavBar({ showDropDownMenu }) {
@@ -40,6 +40,11 @@ export default function NavBar({ showDropDownMenu }) {
     isAuthenticated ? createUser() : console.log("NO ESTA AUTENTICADO")
   }, 5000)
 
+  // Handle Reset:
+  const handleReset = (e) => {
+    e.preventDefault()
+    dispatch(reset_filter())
+  }
 
   const showBar = () => setPopup({ ...popup, search: true });
   const hideBar = () => setPopup({ ...popup, search: false });
@@ -79,8 +84,8 @@ export default function NavBar({ showDropDownMenu }) {
   return (
     <nav className="navBar">
       <div className='landscape'>
-        <label className="logo">
-          <NavLink to="/" className="active"><img src={inputAbout.logo || logo} alt="logo" /></NavLink>
+        <label className="logo" onClick={(e) => handleReset(e)} >
+          <NavLink to="/" className="active" ><img src={inputAbout.logo || logo} alt="logo" /></NavLink>
         </label>
 
         <div className='searchBar'>

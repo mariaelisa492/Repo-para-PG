@@ -230,6 +230,7 @@ export const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				filteredProducts: [...state.products],
+				category: null,
 				filteredTF: false,
 				priceRange: false,
 			}

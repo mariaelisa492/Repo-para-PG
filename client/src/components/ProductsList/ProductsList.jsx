@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Product from "../Product/Product";
 import { getWishlist } from "../../redux/actions";
 import { useAuth0 } from '@auth0/auth0-react'
+import noProduct from '../../images/noProduct.png'
 import { getProductsByPriceAsc, getProductsByPriceDesc, setLimit, getProducts, filterProductsByPriceLessThan, filterProductsByPriceMoreThan, filterProductsByPriceRange } from "../../redux/actions";
 import "./productsList.css";
 import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/md';
@@ -99,7 +100,13 @@ export default function ProductsList({ filteredProducts }) {
     <>
       <div className="containerList">
         <div className="productList">
-          {slicedFilteredProducts.map((e) => {
+          {slicedFilteredProducts.length <= 0 ?
+          <div className="productNotFound">
+            <img classname="emptyImg" src={noProduct}  alt={"no hay productos"} />
+            <h1>Sorry friend, we dont have this product yet...</h1> 
+          </div> 
+          :
+          slicedFilteredProducts.map((e) => {
             keyblablabla++
             return (
               <Product
@@ -117,18 +124,19 @@ export default function ProductsList({ filteredProducts }) {
             );
           })}
         </div>
-        
+       {slicedFilteredProducts.length > 0 ? 
         <div >
           <div className="button_pagination">
             <button onClick={lower} className='arrowPage'><MdOutlineArrowBackIosNew className="next-back-arrow" /> <h4  >Prev</h4> </button>
             <div className="pagination">
-
               <p>{limit} to {limit + qtyProductsPage < filteredProducts.length ? limit + qtyProductsPage : filteredProducts.length} of {filteredProducts.length}</p>
-
-            </div>
+            </div> 
             <button onClick={raise} className='arrowPage'><h4>Next</h4> <MdOutlineArrowForwardIos className="next-back-arrow" /></button>
           </div>
         </div>
+        :
+        null
+        }
           <hr/>
 
         {/* Comento de manera temporal para poner los filtros y ordenamientos arriba,
