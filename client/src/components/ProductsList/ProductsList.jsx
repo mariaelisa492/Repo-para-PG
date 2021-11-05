@@ -89,10 +89,10 @@ export default function ProductsList({ filteredProducts }) {
     }
   }
 
-  var paginationFilteredProducts = filteredProducts.reverse().slice(limit, limit + 8)
+  var paginationFilteredProducts = filteredProducts.slice(limit, limit + 8)
   
 
-  var slicedFilteredProducts = filteredProducts.slice(limit, limit + qtyProductsPage)
+  var slicedFilteredProducts = [...filteredProducts].reverse().slice(limit, limit + qtyProductsPage)
 
   var keyblablabla = 0
   
