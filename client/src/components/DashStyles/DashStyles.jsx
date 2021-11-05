@@ -46,7 +46,7 @@ const DashStyles = () => {
                         </div>
 
                         <div className="option">
-                            <NavLink activeClassName="selected" to="/admin/sarasa"> <FiInfo /> </NavLink>
+                            <NavLink activeClassName="selected" to="/admin/about"> <FiInfo /> </NavLink>
                         </div>
 
                     </div>
