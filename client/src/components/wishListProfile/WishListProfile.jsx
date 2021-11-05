@@ -29,7 +29,7 @@ function WishListProfile({wishes, user}){
                     })}  
                     </div>
                     <div className="totalWishes">
-                        <p> total Wishes: {wish.length} </p>
+                        <p> Total Wishes: {wish.length} </p>
                     </div>
                 </div>
             </div>  

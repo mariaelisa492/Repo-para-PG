@@ -1,0 +1,41 @@
+.bannedContainer {
+	width: 100%;
+	margin: 0 auto;
+	font-family: 'Poppins', sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: black;
+	height: 100vh;
+	padding-top: 40px;
+}
+
+.banned-title {
+	font-size: 3rem;
+	color: red;
+	padding: 30px;
+}
+
+.banned-img {
+	width: 310px;
+	height: 310px;
+}
+
+.banned-button {
+	background-color: red;
+	color: white;
+	font-weight: bold;
+	border-radius: 5px;
+	margin: 20px;
+	font-size: 18px;
+}
+
+@media (max-width: 858px) {
+	.bannedContainer {
+		height: 100vh;
+	}
+	.banned-title {
+		text-align: center;
+		font-size: 2rem;
+	}
+}

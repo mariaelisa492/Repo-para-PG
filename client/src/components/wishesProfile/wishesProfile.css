@@ -4,20 +4,19 @@
     justify-content: space-between;
     background-color: rgb(255, 255, 255);
     border: 1px solid;
-    border-color: rgba(156, 156, 156, 0.39);
+    border: thin solid #dcdcdc;
     min-height: 25vh;
-    border-left: none;
-    border-right: none;
+    border-radius: 10px;
     margin-bottom: 0.2%;
+    align-items: center;
+    text-align: center;
 }
 
 .imgWish 
 {
-    /* max-height: 100%; */
     width: 30%;
     margin: 0%;
     object-fit: contain;
-    /* border: 1px solid; */
 }
 
 .imgWish img
@@ -30,11 +29,9 @@
 {
     display: flex;
     flex-direction: row;
-    /* flex-wrap: no-wrap; */
     justify-content: space-between;
-   /*  border: 1px solid; */
     width: 68%;
-    /* height: 20vh; */
+   
 }
  
 .principalData
@@ -43,7 +40,7 @@
     flex-direction: column;
     justify-content: flex-start;
    /*  border: 1px solid; */
-    width: 80%;
+    width: 70%;
 }
 
 .tittle
@@ -57,9 +54,10 @@
     margin: 4% 4% 0; 
 }
 .tittle h2 {
-    letter-spacing: 2.5px;
+    letter-spacing: 2px;
     color: black;
     text-decoration: none;
+    font-size: 1.3rem;
 }
 .tittle p {
     margin-top: 2.5%;
@@ -80,15 +78,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: flex-end;
-    /* align-content: space-between;  */
+    align-items: center;
     height: 100%;
     width: 100%;
     font-size: 14px;
     font-weight: 400;
     line-height: 2;
-    margin: auto auto;
-    /* border: 1px solid rebeccapurple;*/
+    margin: 0 30px 0 0;
 } 
 
 .brandWish h3
@@ -102,13 +98,16 @@
     justify-content: flex-end;
     margin: 5% 15% 2% 0;
     font-size: 170%;
-   /*  border: 1px solid red; */
 }
 
-@media(max-width: 600px){
+@media(max-width: 780px){
     .itemWishContainer, .infoOfProducts {
         flex-direction: column;
         width: 100%;
+    }
+
+    .tittle h2{
+        font-size: 1.1rem;
     }
     
     .imgWish{
@@ -121,13 +120,12 @@
 
     .secondData, .principalData{
         width: 100%;
-        /* background-color: rgb(112, 60, 60); */
     }
 
     .brandWish{
         width: 100%;
-        /* background-color: red; */
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-evenly;
+        margin: 0 -20px 0 0;
     }
 }
