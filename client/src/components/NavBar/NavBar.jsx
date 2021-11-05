@@ -84,8 +84,8 @@ export default function NavBar({ showDropDownMenu }) {
   return (
     <nav className="navBar">
       <div className='landscape'>
-        <label className="logo">
-          <NavLink to="/" className="active" onClick={(e) => handleReset(e)}><img src={inputAbout.logo || logo} alt="logo" /></NavLink>
+        <label className="logo" onClick={(e) => handleReset(e)} >
+          <NavLink to="/" className="active" ><img src={inputAbout.logo || logo} alt="logo" /></NavLink>
         </label>
 
         <div className='searchBar'>

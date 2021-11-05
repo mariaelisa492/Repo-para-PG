@@ -3,3 +3,17 @@
   display: flex;
   flex-direction: column;
 }
+
+.pageContainer
+{
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  min-width: 100vw;
+}
+
+.footerHome
+{
+  position: absolute;
+  bottom: 0;
+}

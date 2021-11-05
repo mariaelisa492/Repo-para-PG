@@ -100,7 +100,7 @@ export default function ProductsList({ filteredProducts }) {
     <>
       <div className="containerList">
         <div className="productList">
-          {slicedFilteredProducts.length === 0 ?
+          {slicedFilteredProducts.length <= 0 ?
           <div className="productNotFound">
             <img classname="emptyImg" src={noProduct}  alt={"no hay productos"} />
             <h1>Sorry friend, we dont have this product yet...</h1> 
