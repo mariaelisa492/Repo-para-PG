@@ -51,6 +51,18 @@ const getOrder = async (req, res) => {
     }
 };
 
+const getOrderById = async (req, res) => {
+    const { id } = req.params
+    try {
+        const order = await Order.find({ '_id': id })
+        return res.status(200).json(order)
+    } catch (err) {
+        return res.status(404).json({
+            message: 'Error in getOrderById: ' + err,
+        })
+    }
+}
+
 const updateOrder = async (req, res) => {
     const { status } = req.body;
     const { id } = req.params;
@@ -93,5 +105,6 @@ module.exports = {
     getAllOrders,
     getOrder,
     updateOrder,
-    deleteOrder
+    deleteOrder,
+    getOrderById,
 }
