@@ -8,6 +8,9 @@ router.get('/', orders.getAllOrders)
 //obtener todas las ordenes de un vendedor
 router.get('/userOrders', orders.getOrder)
 
+// obtener una orden por id
+router.get('/byId/:id', orders.getOrderById)
+
 //creo una orden
 router.post('/create', orders.createOrder)
  

@@ -41,13 +41,24 @@ const sendOrder = async (req, res) => {
 
   const { user, items, quantity, totalPrice, status } = req.body
 
+  let title, img;
+  if (status.toLowerCase() === 'processing') {
+    title = 'Thanks for choosing WaveMusic!'
+    img = 'https://res.cloudinary.com/dbu76tbs6/image/upload/v1636058319/package_qrk1tm.png'
+  } else {
+    title = 'Your order is on the way!'
+    img = 'https://res.cloudinary.com/dbu76tbs6/image/upload/v1636061218/icon-delivery_tamycf.png'
+  }
   const to = user
   const subject = 'Thank you for buying on Wave Music!'
   const text = `Items: ${quantity}, Total: ${totalPrice}, Status: ${status}`
-  const html = `<div style="color:black">
-    <h1 style='background-color:orange;font-weight:normal;padding:20px;color:white'>
-      Thank you for choosing Wave Music
-    </h1>
+  const html = `<div style="color:black;text-align:center">
+    <div style='background-color:orange;background-image:linear-gradient(to left, #fdaa48, #f2ab15);font-weight:normal;padding:20px;color:black;text-align:center'>
+      <img src='https://res.cloudinary.com/dbu76tbs6/image/upload/v1636057840/waveMusic_zynjer.png' alt='Wave Music' />
+    </div>
+    <h1 style='color:#6f6f6f'>${title}</h1>
+    <img style='margin:20px;width:30%' src=${img} alt='' />
+    <h2>Your order:</h2>
     <table style="text-align:left;padding:10px;min-width:80%">
       <tr>
         <th style="text-align:left">Item</th><th>Brand</th><th>Quantity</th><th>Price</th>
@@ -61,12 +72,19 @@ const sendOrder = async (req, res) => {
           <td>${item.price}</td>
         </tr>`)
     }).join(' ')}
+    <tr style="color:black">
+      <td>-</td>
+      <td>-</td>
+      <td>Total:</td>
+      <td>${totalPrice}</td>
+    </tr>
     </table>
-    <p><strong>Total: </strong> ${totalPrice}</p>
-    <hr />
-    <p><strong>Status: </strong> ${status}</p>
-    <hr />
-    <small>Wave Music is powered by Henry Students.</small></div>`
+    <p style='padding:10px;margin:10px;text-align:left;border-top:1px solid orange'>
+      <strong>Status: </strong> ${status}
+    </p>
+    <p style='padding:10px;margin:0px 10px;background:#eeeeee;color:#6f6f6f'>
+      <small>Wave Music is powered by Henry Students.</small></div>
+    </p>`
 
   let transporter = nodemailer.createTransport({
     host: host,

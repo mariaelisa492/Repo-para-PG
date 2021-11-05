@@ -187,6 +187,10 @@ export const updateOrders = (order, status) => {
       };
       const orders = await axios.put(`${LOCALHOST_URL}/orders/${order._id}`, objOrder);
       /* console.log(orders, "ESTO ES ORDERSSSSS") */
+      // obtener la orden por id (orders tiene el status viejo)
+      const updated = await axios.get(`${LOCALHOST_URL}/orders/byId/${order._id}`);
+      // mandar el mail con el nuevo estado:
+      const mail = await axios.post(`${LOCALHOST_URL}/mail/confirm`, updated.data[0]);
       console.log(status, "ESTO ES SOLO STATUS")
       return dispatch({
         type: "UPDATE_ORDER",
