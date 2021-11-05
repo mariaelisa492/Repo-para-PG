@@ -49,7 +49,7 @@ function EditUserForm({ _id, handleClosePopUp }) {
         <div className='CreateFormContainer'>
             < div className='CreateForm'>
                 <form onSubmit={(e) => handleSubmit(e, firstname, lastname, gender, nationality, birthDate, address)} className="form">
-                    <div className="Title">Edit your personal infromation</div>
+                    <div className="Title">Edit your personal information</div>
                     <div className="inputContainter">
                         {/* <label className='containers'>Firstname</label> */}
                         <input type="text" placeholder="Firstname" value={firstname} onChange={(e) => setFirstName(e.target.value)} className="styleForm" required />
@@ -283,8 +283,8 @@ function EditUserForm({ _id, handleClosePopUp }) {
                     </div>
 
                     <div className="butt-edituser-container">
-                        <button type="submit" className="butt">Confirm</button>                       
                         <button className="butt" onClick={handleClosePopUp}>Back</button>                        
+                        <button type="submit" className="butt">Confirm</button>                       
                     </div>
                 </form>
             </div>

@@ -7,7 +7,7 @@ function HistoryOrders({ image, name, price, qty, brand  }) {
     return (
         <div className="item-containerHistory">
           
-          <div>
+          <div className="imgcontainerH">
             <img className="itemCartImgHistory" src={image}  alt={"imagen de producto"} />
           </div>
         
