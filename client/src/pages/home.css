@@ -4,11 +4,4 @@
   flex-direction: column;
 }
 
-.pageContainer
-{
-  min-height: 100vh;
-  position: relative;
-  overflow: hidden;
-  min-width: 100vw;
-}
 
