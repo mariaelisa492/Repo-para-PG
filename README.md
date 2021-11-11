@@ -138,13 +138,21 @@ https://user-images.githubusercontent.com/72575052/141355176-47292890-37d9-47be-
 
 Texto
 
-Video
+
+https://user-images.githubusercontent.com/72575052/141361241-c912030b-c2a2-435b-981a-3374caeee1e7.mp4
+
+https://user-images.githubusercontent.com/72575052/141362109-e86a963b-381b-44c1-9781-b52677c453a5.mp4
+
 
 ## Modificar o poner en descuento un producto
 
 Texto
 
-Video
+
+https://user-images.githubusercontent.com/72575052/141361262-b3918ec8-0a98-4557-a1de-b6817102c34a.mp4
+
+https://user-images.githubusercontent.com/72575052/141361748-688c1f2a-d21e-46ef-a07f-8d2baf80a6a4.mp4
+
 
 ## Modificar estado de la compra o cancelar
 
@@ -166,13 +174,17 @@ https://user-images.githubusercontent.com/72575052/141355716-ce55a9b7-2e91-472c-
 
 Texto
 
-Video
+
+https://user-images.githubusercontent.com/72575052/141363561-c6a548ad-a746-41a5-be1b-922a00941a34.mp4
+
 
 ## Modificar datos de la tienda
 
 Texto
 
-Video
+
+https://user-images.githubusercontent.com/72575052/141362363-1eff9a11-bd36-49ea-baf9-eb6d97dfaab7.mp4
+
 
 ## Link del proyecto deployado
 
