@@ -72,7 +72,7 @@ https://user-images.githubusercontent.com/72575052/141349779-05fcf56c-f0f9-4785-
 
 ## Ver el perfil del usuario y modificar
 
-Texto
+Cuando se quiere ver el perfil del usuario hay que apretar la imagen del usuario en la barra de navegación, y seleccionar la opcion de "Your profile". A la hora de modificar el perfil se tiene que hacer clic en el boton "Edit" y modificar los cambios deseados.
 
 
 https://user-images.githubusercontent.com/72575052/141350720-ec4831e4-f10e-4a36-a101-fff4f01e9bfd.mp4
@@ -80,7 +80,7 @@ https://user-images.githubusercontent.com/72575052/141350720-ec4831e4-f10e-4a36-
 
 ## Comprar
 
-Texto
+Para realizar una compra se tiene que agregar los productos deseados, se puede hacer desde la página principal en la tarjeta del producto o desde la página del detalle. Se pueden agregar productos hasta el stock máximo, desde el carrito se pueden agregar o restar mas productos del mismo tipo o eliminar la cantidad total del producto.
 
 
 https://user-images.githubusercontent.com/72575052/141352089-67afea8b-1644-448d-a020-a8d6abe62047.mp4
@@ -88,7 +88,7 @@ https://user-images.githubusercontent.com/72575052/141352089-67afea8b-1644-448d-
 
 ## Ver mis compras
 
-Texto
+Se pueden ver las compras desde el perfil del usuario, en el botón con el Ícono de una caja. Se pueden ver los productos comprados en cada compra, la fecha de compra, el precio total y el estado de la compra.
 
 
 https://user-images.githubusercontent.com/72575052/141351483-1d6da661-cc23-4fda-a7f4-c24fca5bc5b7.mp4
@@ -96,7 +96,7 @@ https://user-images.githubusercontent.com/72575052/141351483-1d6da661-cc23-4fda-
 
 ## Agregar a la lista de deseos
 
-Texto
+Si un producto se lo quiere agregar o eliminar de la lista de deseos hay que hacer clic en el botón con forma de corazón en las tarjetas o desde el detalle del producto.
 
 
 https://user-images.githubusercontent.com/72575052/141352612-a39dcf4c-d135-422f-95a7-9cae14b40c71.mp4
@@ -104,7 +104,7 @@ https://user-images.githubusercontent.com/72575052/141352612-a39dcf4c-d135-422f-
 
 ## Ver lista de deseos
 
-Texto
+Para acceder a la lista de deseos hay que entrar al perfil del usuario y seleccionar el botón con forma de corazón. Se pueden ver los productos agregados a la lista de deseos y eliminar los productos que se quieran.
 
 
 https://user-images.githubusercontent.com/72575052/141352932-d3633c22-3e97-4366-a3dc-ba2423419f31.mp4
@@ -112,7 +112,7 @@ https://user-images.githubusercontent.com/72575052/141352932-d3633c22-3e97-4366-
 
 ## Hacer reviews y preguntas
 
-Texto
+Para hacer reviews hay que entrar al detalle del producto, seleccionar el botón "Review this product" y completar el formulario. Cuando se quiere hacer una pregunta hay que seleccionar el botón "Ask a Question". Se pueden ver las reviews y preguntas realizadas en el detalle de los productos.
 
 
 https://user-images.githubusercontent.com/72575052/141353932-b86dafc3-67d3-41f6-84b7-c23721b37c52.mp4
@@ -120,7 +120,7 @@ https://user-images.githubusercontent.com/72575052/141353932-b86dafc3-67d3-41f6-
 
 ## Ver datos de la tienda
 
-Texto
+Desde el footer se puede ver los datos de la tienda, el número de teléfono, el mail, la dirección de la tienda y un mapa de la ubicación del e-commerce.
 
 
 https://user-images.githubusercontent.com/72575052/141354573-85152edb-8a31-4e54-af48-e81f4dc5086e.mp4
@@ -128,7 +128,7 @@ https://user-images.githubusercontent.com/72575052/141354573-85152edb-8a31-4e54-
 
 ## Asistente virtual
 
-Texto
+Se puede acceder al asistente virtual tocando el botón que se encuentra abajo a la derecha. Al hablar con Maribot se puede llegar a la página de contacto y dependiendo de lo que se esté buscando te puede sugerir un producto.
 
 
 https://user-images.githubusercontent.com/72575052/141355176-47292890-37d9-47be-82ba-89c3dc67ac4b.mp4
@@ -136,8 +136,7 @@ https://user-images.githubusercontent.com/72575052/141355176-47292890-37d9-47be-
 
 ## Crear o eliminar productos
 
-Texto
-
+Para crear productos en la tienda se necesita ser usuario admin, para entrar en la página de administrador hay que apretar la imagen del usuario en la barra de navegación, y seleccionar la opcion de "Admin panel".  Al entrar tocar el botón “+” y completar el formulario. Cuando se quiere eliminar hay que buscar el producto y apretar el botón con forma de tacho de basura.
 
 https://user-images.githubusercontent.com/72575052/141361241-c912030b-c2a2-435b-981a-3374caeee1e7.mp4
 
@@ -146,7 +145,7 @@ https://user-images.githubusercontent.com/72575052/141362109-e86a963b-381b-44c1-
 
 ## Modificar o poner en descuento un producto
 
-Texto
+Dentro del panel de admin se puede modificar el producto tocando el botón con forma de un lápiz y modificar el formulario. A la hora de realizar una oferta se tiene que buscar el producto y tocar el botón con forma de una etiqueta, si se quiere eliminar la oferta se usa el botón con forma de tic. 
 
 
 https://user-images.githubusercontent.com/72575052/141361262-b3918ec8-0a98-4557-a1de-b6817102c34a.mp4
@@ -156,7 +155,7 @@ https://user-images.githubusercontent.com/72575052/141361748-688c1f2a-d21e-46ef-
 
 ## Modificar estado de la compra o cancelar
 
-Texto
+Dentro del panel de administrador en la sección de ventas se puede modificar el estado de una compra tocando el botón con forma de lápiz y seleccionando el nuevo estado de la compra. Cuando se quiere eliminar una compra se tiene que hace clic en el botón con forma de tacho de basura.
 
 
 https://user-images.githubusercontent.com/72575052/141356085-fcef8c8f-f9e8-4a54-a4d2-84c46c6de09c.mp4
@@ -164,7 +163,7 @@ https://user-images.githubusercontent.com/72575052/141356085-fcef8c8f-f9e8-4a54-
 
 ## Responder preguntas
 
-Texto
+Si se quiere responder preguntas hay que ir a la pagina de preguntas, apretar el botón con forma de mensaje y escribir la respuesta deseada.
 
 
 https://user-images.githubusercontent.com/72575052/141355716-ce55a9b7-2e91-472c-8737-af8e5212219e.mp4
@@ -172,7 +171,7 @@ https://user-images.githubusercontent.com/72575052/141355716-ce55a9b7-2e91-472c-
 
 ## Banear, eliminar, hacer admin y resetear las contraseñas de los usuarios
 
-Texto
+En la pagina de administrar usuarios se puede hacer administrador a un usuario usando el botón con una llave, si se quiere enviar un mail para que el usuario resetee su contraseña hay que apretar el botón con forma de un mail, cuando se quiere banear al usuario y que no pueda hacer nada se tiene que apretar el botón de prohibido. Finalmente, si se quiere eliminar el usuario hay que apretar el botón con forma de tacho de basura.
 
 
 https://user-images.githubusercontent.com/72575052/141363561-c6a548ad-a746-41a5-be1b-922a00941a34.mp4
@@ -180,7 +179,7 @@ https://user-images.githubusercontent.com/72575052/141363561-c6a548ad-a746-41a5-
 
 ## Modificar datos de la tienda
 
-Texto
+Cuando se quiere modificar algún dato del negocio se hace desde la página de administrar información, se modifica el dato en el formulario.
 
 
 https://user-images.githubusercontent.com/72575052/141362363-1eff9a11-bd36-49ea-baf9-eb6d97dfaab7.mp4
