@@ -70,14 +70,14 @@ export default function About({ handleClosePopup }) {
                 logo: '',
                 logoSmall: ''
             });
-            handleClosePopup();
+         
 
             handleUpgradeSuccesForm();
         }
     }, [successForm])
 
     return (
-        <div className='backgroundCreateProducts containerformProducts'>
+        <div className='backgroundCreateProducts containerformProducts2'>
             <form
                 onSubmit={e => {
                     handleSubmit(e)
@@ -85,23 +85,7 @@ export default function About({ handleClosePopup }) {
                 }}
                 className='formCreateProducts containerformProducts'
             >
-                <button
-                    onClick={() => {
-                        handleClosePopup()
-                        setInputAbout({
-                            email: '',
-                            telephone: '',
-                            address: '',
-                            city: '',
-                            stateOrProvince: '',
-                            logo: '',
-                            logoSmall: ''
-                        })
-                    }}
-                    className='btnCloseFormProducts containerformProducts'
-                >
-                    <FaTimes />
-                </button>
+            
 
                 <div>
                     <div>
